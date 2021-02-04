@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutComponent, LayoutHeaderComponent, LayoutFooterComponent } from './components/';
-import { AppRoutingModule } from '../../app-routing.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -12,7 +12,7 @@ import { AppRoutingModule } from '../../app-routing.module';
   ],
   imports: [
     CommonModule,
-    AppRoutingModule,
+    RouterModule,
   ]
 })
 export class LayoutModule { }

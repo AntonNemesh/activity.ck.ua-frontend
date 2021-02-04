@@ -1,8 +1,8 @@
 import { LayoutModule } from './layout';
-import { HomePageModule, CategoryPageModule } from './pages';
+import { HomePageModule, PlacesPageModule } from './pages';
 
 export const modules = [
   LayoutModule,
   HomePageModule,
-  CategoryPageModule,
+  PlacesPageModule,
 ];
