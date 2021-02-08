@@ -7,13 +7,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./places-page-view.component.css']
 })
 export class PlacesPageViewComponent implements OnInit {
-  public id_category: string;
+  public idCategory: string;
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.id_category = params.id_category;
+      this.idCategory = params.idCategory;
     });
   }
 
