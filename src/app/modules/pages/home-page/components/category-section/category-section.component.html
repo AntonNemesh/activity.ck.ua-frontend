@@ -1,0 +1,4 @@
+<h1>Що шукаєш?</h1>
+<ul>
+  <li *ngFor="let category of categories"><a routerLink="/{{category.id}}">{{ category.name }}</a></li>
+</ul>

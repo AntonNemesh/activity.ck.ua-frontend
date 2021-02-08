@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomePageViewComponent } from './components';
+import { HomePageViewComponent, CategorySectionComponent } from './components';
 import { LayoutModule } from '../../layout';
-
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
-  declarations: [HomePageViewComponent],
+  declarations: [HomePageViewComponent, CategorySectionComponent],
   imports: [
     CommonModule,
-    LayoutModule
+    LayoutModule,
+    RouterModule
   ]
 })
 export class HomePageModule { }

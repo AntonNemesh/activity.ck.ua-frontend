@@ -1,0 +1,2 @@
+export { ICategories } from './interfaces';
+
