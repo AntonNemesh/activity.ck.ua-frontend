@@ -1,14 +1,15 @@
 import { ICategories } from '../type';
 
 export const CATEGORIES: ICategories[] = [
-  {id: 'todo_something', name: 'зробити руками'},
+  {id: 'children', name: 'розваги з дітьми'},
   {id: 'recreation', name: 'активний відпочинок'},
-  {id: 'inspired_city', name: 'натхнення містом'},
-  {id: 'unique_things', name: 'унікальні речі'},
-  {id: 'gastronomic_adventures', name: 'гастрономічні пригоди'},
   {id: 'extreme', name: 'гострі відчуття'},
-  {id: 'experiment', name: 'готовий експерементувати'},
+  {id: 'todo_something', name: 'зробити руками'},
   {id: 'cultural', name: 'культурне натхнення'},
   {id: 'history', name: 'історичні враження'},
-  {id: 'children', name: 'розваги з дітьми'},
+  {id: 'unique_things', name: 'унікальні речі'},
+  {id: 'sleeping', name: 'затишну ночівлю'},
+  {id: 'inspired_city', name: 'натхнення містом'},
+  {id: 'gastronomic_adventures', name: 'гастрономічні пригоди'},
+  {id: 'experiment', name: 'готовий експерементувати'},
 ];
