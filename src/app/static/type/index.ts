@@ -1,2 +1,2 @@
-export { ICategories } from './interfaces';
+export { ICategories } from './categories.interface';
 
