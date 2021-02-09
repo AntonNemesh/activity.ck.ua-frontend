@@ -17,7 +17,7 @@ export class PlacesPageViewComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.idCategory = params.idCategory;
     });
-    this.placesService.getPlaces(this.idCategory).subscribe((data: any) => {
+    this.placesService.getPlaces(this.idCategory, 1, 10).subscribe((data: any) => {
       this.places = data;
     });
   }

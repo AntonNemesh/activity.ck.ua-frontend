@@ -9,14 +9,12 @@ export class PlacesService {
 
   constructor(private http: HttpClient) { }
 
-  public getPlaces(currentCategory: string, itemsPerPage?: number, currentPage?: number): Observable<any> {
+  public getPlaces(category: string, page: number, perPage: number): Observable<any> {
     const params = {
-      _limit: undefined,
-      _page: undefined,
-      idCategory: currentCategory,
+      idCategory: category,
+      _page: String(page),
+      _limit: String(perPage),
     };
-    if (itemsPerPage !== undefined) { params._limit = String(itemsPerPage); }
-    if (currentPage !== undefined) { params._page = String(currentPage); }
 
     return this.http.get('http://localhost:3000/places', { params });
   }
