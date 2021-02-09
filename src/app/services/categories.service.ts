@@ -18,7 +18,7 @@ export class CategoriesService {
     return this.categories[randomNumb].id;
   }
 
-  public getAllCategories(): ICategories[] {
+  public getCategories(): ICategories[] {
     return this.categories;
   }
 }

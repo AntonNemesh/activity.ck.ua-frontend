@@ -13,7 +13,7 @@ export class CategorySectionComponent implements OnInit {
   constructor(private categoryService: CategoriesService) { }
 
   get categories(): ICategories[] {
-    return this.categoryService.getAllCategories();
+    return this.categoryService.getCategories();
   }
 
   public updateRandomCategory(): void {
