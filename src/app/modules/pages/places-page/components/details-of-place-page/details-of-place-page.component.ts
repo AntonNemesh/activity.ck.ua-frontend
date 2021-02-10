@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {DetailsOfPlaceService} from '../../../../../services/details-of-place.service';
 
 @Component({
   selector: 'app-details-of-place-page',
@@ -7,14 +8,19 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./details-of-place-page.component.css']
 })
 export class DetailsOfPlacePageComponent implements OnInit {
-  public idPlace: string;
+  public placeId: string;
+  public nameOfPlace: string;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private detailsOfPlaces: DetailsOfPlaceService) {
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.idPlace = params.idPlace;
+      this.placeId = params.idPlace;
     });
-  }
+    this.detailsOfPlaces.getDetailsOfPlace(this.placeId).subscribe((
 
+    ));
+    console.log(this.nameOfPlace);
+  }
 }
