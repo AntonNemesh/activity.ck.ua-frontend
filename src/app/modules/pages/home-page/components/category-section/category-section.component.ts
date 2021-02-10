@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from '../../../../../services';
-import { ICategories } from '../../../../../static/type';
+import { IPlacesCategories } from '../../../../../static/type';
 
 @Component({
   selector: 'app-category-section',
@@ -12,7 +12,7 @@ export class CategorySectionComponent implements OnInit {
 
   constructor(private categoryService: CategoriesService) { }
 
-  get categories(): ICategories[] {
+  get categories(): IPlacesCategories[] {
     return this.categoryService.getCategories();
   }
 

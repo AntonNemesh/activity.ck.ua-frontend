@@ -1,6 +1,6 @@
-import { ICategories } from '../type';
+import { IPlacesCategories } from '../type';
 
-export const CATEGORIES: ICategories[] = [
+export const PLACES_CATEGORIES: IPlacesCategories[] = [
   {id: 'children', name: 'розваги з дітьми'},
   {id: 'recreation', name: 'активний відпочинок'},
   {id: 'extreme', name: 'гострі відчуття'},

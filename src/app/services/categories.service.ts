@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { ICategories } from '../static/type';
-import { CATEGORIES } from '../static/data';
+import { IPlacesCategories } from '../static/type';
+import { PLACES_CATEGORIES } from '../static/data';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriesService {
-  private categories: ICategories[] = CATEGORIES;
+  private categories: IPlacesCategories[] = PLACES_CATEGORIES;
 
   static getRandomNumbInRange(min, max): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -18,7 +18,7 @@ export class CategoriesService {
     return this.categories[randomNumb].id;
   }
 
-  public getCategories(): ICategories[] {
+  public getCategories(): IPlacesCategories[] {
     return this.categories;
   }
 }
