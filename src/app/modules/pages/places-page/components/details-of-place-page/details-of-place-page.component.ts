@@ -31,7 +31,6 @@ export class DetailsOfPlacePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      console.log(params);
       this.placeId = params.idPlace;
     });
     this.detailsOfPlaces.getDetailsOfPlace(this.placeId).subscribe(

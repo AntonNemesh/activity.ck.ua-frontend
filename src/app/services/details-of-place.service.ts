@@ -14,7 +14,6 @@ export class DetailsOfPlaceService {
     const params = {
       id: placeId
     };
-    console.log(placeId);
     return this.http.get<IDetailsOfPlaceInterface>('http://localhost:3000/places', {params});
   }
 }
