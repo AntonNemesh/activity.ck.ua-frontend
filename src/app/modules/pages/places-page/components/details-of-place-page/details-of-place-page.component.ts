@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {DetailsOfPlaceService} from '../../../../../services/details-of-place.service';
-import {IDetailsOfPlaceInterface} from '../../../../../static/type';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DetailsOfPlaceService } from '../../../../../services/details-of-place.service';
+import { IDetailsOfPlaceInterface } from '../../../../../static/type';
 
 @Component({
   selector: 'app-details-of-place-page',
@@ -26,14 +26,14 @@ export class DetailsOfPlacePageComponent implements OnInit {
   public detailsAboutInfo: string;
   public detailsRating: number;
 
-  constructor(private route: ActivatedRoute, private detailsOfPlaces: DetailsOfPlaceService) {
+  constructor(private route: ActivatedRoute, private detailsOfPlacesService: DetailsOfPlaceService) {
   }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.placeId = params.idPlace;
     });
-    this.detailsOfPlaces.getDetailsOfPlace(this.placeId).subscribe(
+    this.detailsOfPlacesService.getDetailsOfPlace(this.placeId).subscribe(
       (detailsOfPlace: IDetailsOfPlaceInterface) => {
         this.detailsPhotos = detailsOfPlace[0][`photos`];
         this.nameOfPlace = detailsOfPlace[0][`name`];
