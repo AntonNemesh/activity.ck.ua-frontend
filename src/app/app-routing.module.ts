@@ -5,7 +5,7 @@ import { HomePageViewComponent } from './modules/pages/home-page/components';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomePageViewComponent },
-  { path: 'places/:idCategory', loadChildren: () => import('./modules/pages/places-page').then(m => m.PlacesPageModule) },
+  { path: 'places/:categoryId', loadChildren: () => import('./modules/pages/places-page').then(m => m.PlacesPageModule) },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 

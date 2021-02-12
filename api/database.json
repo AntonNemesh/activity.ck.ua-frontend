@@ -2,7 +2,8 @@
   "places": [
     {
       "id": 1,
-      "idCategory": "culture",
+      "categoryId": "culture",
+      "typeId": "culture",
       "photos": [
         "",
         "",
@@ -21,7 +22,8 @@
     },
     {
       "id": 2,
-      "idCategory": "children",
+      "categoryId": "children",
+      "typeId": "children",
       "photos": [
         "",
         "",
@@ -40,7 +42,8 @@
     },
     {
       "id": 3,
-      "idCategory": "extreme",
+      "categoryId": "recreation",
+      "typeId": "water",
       "photos": [
         "",
         "",
@@ -59,7 +62,8 @@
     },
     {
       "id": 4,
-      "idCategory": "todo_something",
+      "categoryId": "todo_something",
+      "typeId": "todo_something",
       "photos": [
         "",
         "",
@@ -78,7 +82,8 @@
     },
     {
       "id": 5,
-      "idCategory": "recreation",
+      "categoryId": "recreation",
+      "typeId": "water",
       "photos": [
         "",
         "",
@@ -97,7 +102,8 @@
     },
     {
       "id": 6,
-      "idCategory": "history",
+      "categoryId": "history",
+      "typeId": "history",
       "photos": [
         "",
         "",
@@ -116,7 +122,8 @@
     },
     {
       "id": 7,
-      "idCategory": "unique_things",
+      "categoryId": "unique_things",
+      "typeId": "unique_things",
       "photos": [
         "",
         "",
@@ -135,7 +142,8 @@
     },
     {
       "id": 8,
-      "idCategory": "sleeping",
+      "categoryId": "sleeping",
+      "typeId": "hostels",
       "photos": [
         "",
         "",
@@ -154,7 +162,8 @@
     },
     {
       "id": 9,
-      "idCategory": "inspired_city",
+      "categoryId": "inspired_city",
+      "typeId": "inspired_city",
       "photos": [
         "",
         "",
@@ -173,7 +182,8 @@
     },
     {
       "id": 10,
-      "idCategory": "gastronomic_adventures",
+      "categoryId": "gastronomic_adventures",
+      "typeId": "fastfood",
       "photos": [
         "",
         "",
@@ -192,7 +202,8 @@
     },
     {
       "id": 11,
-      "idCategory": "gastronomic_adventures",
+      "categoryId": "gastronomic_adventures",
+      "typeId": "coffee",
       "photos": [
         "",
         "",
@@ -211,7 +222,8 @@
     },
     {
       "id": 12,
-      "idCategory": "gastronomic_adventures",
+      "categoryId": "gastronomic_adventures",
+      "typeId": "coffee",
       "photos": [
         "",
         "",
@@ -230,7 +242,8 @@
     },
     {
       "id": 13,
-      "idCategory": "extreme",
+      "categoryId": "recreation",
+      "typeId": "water",
       "photos": [
         "",
         "",
@@ -249,7 +262,8 @@
     },
     {
       "id": 14,
-      "idCategory": "todo_something",
+      "categoryId": "todo_something",
+      "typeId": "todo_something",
       "photos": [
         "",
         "",
@@ -268,7 +282,8 @@
     },
     {
       "id": 15,
-      "idCategory": "recreation",
+      "categoryId": "recreation",
+      "typeId": "sport",
       "photos": [
         "",
         "",
@@ -287,7 +302,8 @@
     },
     {
       "id": 16,
-      "idCategory": "history",
+      "categoryId": "history",
+      "typeId": "history",
       "photos": [
         "",
         "",
@@ -306,7 +322,8 @@
     },
     {
       "id": 17,
-      "idCategory": "unique_things",
+      "categoryId": "unique_things",
+      "typeId": "unique_things",
       "photos": [
         "",
         "",
@@ -325,7 +342,8 @@
     },
     {
       "id": 18,
-      "idCategory": "sleeping",
+      "categoryId": "sleeping",
+      "typeId": "hotels",
       "photos": [
         "",
         "",
@@ -344,7 +362,8 @@
     },
     {
       "id": 19,
-      "idCategory": "inspired_city",
+      "categoryId": "inspired_city",
+      "typeId": "inspired_city",
       "photos": [
         "",
         "",
@@ -363,7 +382,8 @@
     },
     {
       "id": 20,
-      "idCategory": "children",
+      "categoryId": "children",
+      "typeId": "children",
       "photos": [
         "",
         "",
@@ -382,7 +402,8 @@
     },
     {
       "id": 21,
-      "idCategory": "culture",
+      "categoryId": "culture",
+      "typeId": "culture",
       "photos": [
         "",
         "",
@@ -401,7 +422,8 @@
     },
     {
       "id": 22,
-      "idCategory": "children",
+      "categoryId": "children",
+      "typeId": "children",
       "photos": [
         "",
         "",
@@ -420,7 +442,8 @@
     },
     {
       "id": 23,
-      "idCategory": "extreme",
+      "categoryId": "recreation",
+      "typeId": "water",
       "photos": [
         "",
         "",
@@ -439,7 +462,8 @@
     },
     {
       "id": 24,
-      "idCategory": "todo_something",
+      "categoryId": "todo_something",
+      "typeId": "todo_something",
       "photos": [
         "",
         "",
@@ -458,7 +482,8 @@
     },
     {
       "id": 25,
-      "idCategory": "recreation",
+      "categoryId": "recreation",
+      "typeId": "gym",
       "photos": [
         "",
         "",
@@ -477,7 +502,8 @@
     },
     {
       "id": 26,
-      "idCategory": "history",
+      "categoryId": "history",
+      "typeId": "history",
       "photos": [
         "",
         "",
@@ -496,7 +522,8 @@
     },
     {
       "id": 27,
-      "idCategory": "unique_things",
+      "categoryId": "unique_things",
+      "typeId": "unique_things",
       "photos": [
         "",
         "",
@@ -515,7 +542,8 @@
     },
     {
       "id": 28,
-      "idCategory": "sleeping",
+      "categoryId": "sleeping",
+      "typeId": "hostels",
       "photos": [
         "",
         "",
@@ -534,7 +562,8 @@
     },
     {
       "id": 29,
-      "idCategory": "inspired_city",
+      "categoryId": "inspired_city",
+      "typeId": "inspired_city",
       "photos": [
         "",
         "",
@@ -553,7 +582,8 @@
     },
     {
       "id": 30,
-      "idCategory": "inspired_city",
+      "categoryId": "inspired_city",
+      "typeId": "inspired_city",
       "photos": [
         "",
         "",
@@ -572,7 +602,8 @@
     },
     {
       "id": 31,
-      "idCategory": "extreme",
+      "categoryId": "recreation",
+      "typeId": "water",
       "photos": [
         "",
         "",
@@ -591,7 +622,8 @@
     },
     {
       "id": 32,
-      "idCategory": "extreme",
+      "categoryId": "recreation",
+      "typeId": "water",
       "photos": [
         "",
         "",
@@ -610,7 +642,8 @@
     },
     {
       "id": 33,
-      "idCategory": "extreme",
+      "categoryId": "recreation",
+      "typeId": "water",
       "photos": [
         "",
         "",
@@ -629,7 +662,8 @@
     },
     {
       "id": 34,
-      "idCategory": "extreme",
+      "categoryId": "recreation",
+      "typeId": "gym",
       "photos": [
         "",
         "",
@@ -648,7 +682,8 @@
     },
     {
       "id": 35,
-      "idCategory": "extreme",
+      "categoryId": "recreation",
+      "typeId": "gym",
       "photos": [
         "",
         "",
@@ -667,7 +702,8 @@
     },
     {
       "id": 36,
-      "idCategory": "extreme",
+      "categoryId": "recreation",
+      "typeId": "gym",
       "photos": [
         "",
         "",
@@ -686,7 +722,8 @@
     },
     {
       "id": 37,
-      "idCategory": "extreme",
+      "categoryId": "recreation",
+      "typeId": "gym",
       "photos": [
         "",
         "",
@@ -705,7 +742,8 @@
     },
     {
       "id": 38,
-      "idCategory": "extreme",
+      "categoryId": "recreation",
+      "typeId": "gym",
       "photos": [
         "",
         "",
@@ -724,7 +762,8 @@
     },
     {
       "id": 39,
-      "idCategory": "extreme",
+      "categoryId": "recreation",
+      "typeId": "stadium",
       "photos": [
         "",
         "",
@@ -743,7 +782,8 @@
     },
     {
       "id": 40,
-      "idCategory": "extreme",
+      "categoryId": "recreation",
+      "typeId": "stadium",
       "photos": [
         "",
         "",
@@ -762,7 +802,8 @@
     },
     {
       "id": 41,
-      "idCategory": "extreme",
+      "categoryId": "recreation",
+      "typeId": "stadium",
       "photos": [
         "",
         "",
@@ -781,7 +822,8 @@
     },
     {
       "id": 42,
-      "idCategory": "extreme",
+      "categoryId": "recreation",
+      "typeId": "stadium",
       "photos": [
         "",
         "",
@@ -800,7 +842,8 @@
     },
     {
       "id": 43,
-      "idCategory": "extreme",
+      "categoryId": "recreation",
+      "typeId": "stadium",
       "photos": [
         "",
         "",
@@ -819,7 +862,8 @@
     },
     {
       "id": 44,
-      "idCategory": "extreme",
+      "categoryId": "recreation",
+      "typeId": "stadium",
       "photos": [
         "",
         "",
@@ -838,7 +882,8 @@
     },
     {
       "id": 45,
-      "idCategory": "extreme",
+      "categoryId": "recreation",
+      "typeId": "stadium",
       "photos": [
         "",
         "",
@@ -857,7 +902,8 @@
     },
     {
       "id": 46,
-      "idCategory": "extreme",
+      "categoryId": "recreation",
+      "typeId": "stadium",
       "photos": [
         "",
         "",
@@ -876,7 +922,8 @@
     },
     {
       "id": 47,
-      "idCategory": "extreme",
+      "categoryId": "extreme",
+      "typeId": "extreme",
       "photos": [
         "",
         "",
@@ -895,7 +942,8 @@
     },
     {
       "id": 48,
-      "idCategory": "extreme",
+      "categoryId": "extreme",
+      "typeId": "extreme",
       "photos": [
         "",
         "",
@@ -914,7 +962,8 @@
     },
     {
       "id": 49,
-      "idCategory": "extreme",
+      "categoryId": "extreme",
+      "typeId": "extreme",
       "photos": [
         "",
         "",
@@ -933,7 +982,8 @@
     },
     {
       "id": 50,
-      "idCategory": "extreme",
+      "categoryId": "extreme",
+      "typeId": "extreme",
       "photos": [
         "",
         "",
@@ -952,7 +1002,8 @@
     },
     {
       "id": 51,
-      "idCategory": "extreme",
+      "categoryId": "extreme",
+      "typeId": "extreme",
       "photos": [
         "",
         "",

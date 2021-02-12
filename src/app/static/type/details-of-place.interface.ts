@@ -1,6 +1,6 @@
 export interface IDetailsOfPlaceInterface {
   id: number;
-  idCategory: string;
+  categoryId: string;
   photos: Array<string>;
   name: string;
   phone: string;
