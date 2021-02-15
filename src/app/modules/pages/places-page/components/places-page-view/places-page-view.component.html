@@ -1,7 +1,8 @@
 <app-layout>
   <h2>Places {{categoryId}}</h2>
-  <app-filter-by-type (filterStateChange)="setFilterState($event)" [categoryId]="categoryId"></app-filter-by-type>
+  <app-filter-by-type (filterStateChange)="updateFilterState($event)" [categoryId]="categoryId"></app-filter-by-type>
   <ul>
     <li *ngFor="let place of places"><a routerLink="{{place.id}}">{{place.name}}</a></li>
   </ul>
+  <app-pagination [typesId]="typesId" [categoryId]="categoryId"></app-pagination>
 </app-layout>

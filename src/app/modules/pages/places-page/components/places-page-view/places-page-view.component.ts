@@ -12,29 +12,32 @@ export class PlacesPageViewComponent implements OnInit {
   public places: any;
   public typesId: string[];
 
+  private perPage = this.placesService.getPerPage();
+  public page = 1;
+
   constructor(private route: ActivatedRoute, private placesService: PlacesService) { }
 
   private updatePlaces(): void {
-    if (this.typesId === undefined) {
-      this.placesService.getPlaces(this.categoryId, 1, 50).subscribe((data: any) => {
-        this.places = data;
-      });
-      return;
-    }
-    if (this.typesId.length !== 0) {
+    let options;
+    if (this.typesId !== undefined && this.typesId.length !== 0) {
       this.places.length = 0;
-      this.placesService.getPlaces('', 1, 50, this.typesId[0]).subscribe((data: any) => {
-        this.places = data;
-      });
+      options = {
+        type: this.typesId[0],
+        page: this.page,
+        perPage: this.perPage
+      };
     } else {
-      this.places.length = 0;
-      this.placesService.getPlaces(this.categoryId, 1, 50).subscribe((data: any) => {
-        this.places = data;
-      });
+      options = {
+        category: this.categoryId,
+        page: this.page,
+        perPage: this.perPage
+      };
     }
+
+    this.placesService.getPlaces(options).subscribe((data: any) => { this.places = data; });
   }
 
-  public setFilterState(filterState): void {
+  public updateFilterState(filterState): void {
     this.typesId = filterState;
     this.updatePlaces();
   }

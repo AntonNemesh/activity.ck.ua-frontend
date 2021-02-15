@@ -3,6 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiUrlService } from './api-url.service';
 
+// @ts-ignore
+import * as DATABASE from './../../../api/database.json';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,23 +14,43 @@ export class PlacesService {
 
   constructor(private http: HttpClient, private apiUrlService: ApiUrlService) { }
 
-  public getPlaces(category: string, page: number, perPage: number, typeId?: string): Observable<any> {
+  private perPage = 3;
+
+  public getPerPage(): number {
+    return this.perPage;
+  }
+
+  public amountPages(options): any {
+    let counter = 0;
+
+    DATABASE.default.places.forEach((item) => {
+      if (options.type !== undefined) {
+        if (item.typeId === options.type) { counter++; }
+      } else {
+        if (item.categoryId === options.category) { counter++; }
+      }
+    });
+    return Math.ceil(counter / this.getPerPage());
+  }
+
+  public getPlaces(options): Observable<any> {
     let params;
 
-    if (typeId !== undefined) {
+    if (options.type !== undefined) {
       params = {
-        _page: String(page),
-        _limit: String(perPage),
-        typeId
+        typeId: String(options.type),
+        _page: String(options.page),
+        _limit: String(options.perPage),
       };
     } else {
       params = {
-        categoryId: category,
-        _page: String(page),
-        _limit: String(perPage),
+        categoryId: String(options.category),
+        _page: String(options.page),
+        _limit: String(options.perPage),
       };
     }
 
     return this.http.get(this.apiUrlService.generateApiLink('places'), { params });
   }
+
 }
