@@ -12,8 +12,8 @@ export class PlacesPageViewComponent implements OnInit {
   public places: any;
   public typesId: string[];
 
-  private perPage = this.placesService.getPerPage();
-  public page = 1;
+  private perPage;
+  private page;
 
   constructor(private route: ActivatedRoute, private placesService: PlacesService) { }
 
@@ -37,8 +37,18 @@ export class PlacesPageViewComponent implements OnInit {
     this.placesService.getPlaces(options).subscribe((data: any) => { this.places = data; });
   }
 
+  private resetPage(): void {
+    this.page = 1;
+  }
+
   public updateFilterState(filterState): void {
     this.typesId = filterState;
+    this.resetPage();
+    this.updatePlaces();
+  }
+
+  public updatePaginationState(page): void {
+    this.page = page;
     this.updatePlaces();
   }
 
@@ -46,6 +56,8 @@ export class PlacesPageViewComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.categoryId = params.categoryId;
     });
+    this.perPage = this.placesService.getPerPage();
+    this.resetPage();
     this.updatePlaces();
   }
 
