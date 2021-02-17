@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DetailsOfPlaceService } from '../../../../../services/details-of-place.service';
-import { IDetailsOfPlaceInterface } from '../../../../../static/type';
+import { IDetailsOfPlace } from '../../../../../static/type/details-of-place.interface';
 
 @Component({
   selector: 'app-details-of-place-page',
@@ -11,7 +11,7 @@ import { IDetailsOfPlaceInterface } from '../../../../../static/type';
 export class DetailsOfPlacePageComponent implements OnInit {
   public placeId: string;
   public nameOfPlace: string;
-  public detailOfPlace: IDetailsOfPlaceInterface;
+  public detailOfPlace: IDetailsOfPlace;
   public detailsPlaceId: number;
   public detailsCategoryId: string;
   public detailsPhotos: Array<string>;
@@ -34,7 +34,7 @@ export class DetailsOfPlacePageComponent implements OnInit {
       this.placeId = params.idPlace;
     });
     this.detailsOfPlacesService.getDetailsOfPlace(this.placeId).subscribe(
-      (detailsOfPlace: IDetailsOfPlaceInterface) => {
+      (detailsOfPlace: IDetailsOfPlace) => {
         this.detailsPhotos = detailsOfPlace[0][`photos`];
         this.nameOfPlace = detailsOfPlace[0][`name`];
         this.detailsPhone = detailsOfPlace[0][`phone`];
