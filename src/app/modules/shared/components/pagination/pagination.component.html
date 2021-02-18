@@ -10,5 +10,5 @@
     >{{page+1}}</a>
   </span>
   <span class="pagination__separator" *ngIf="this.separatorState[1]">...</span>
-  <a href="" (click)="setPage($event, totalPages)" class="button" [class.active]="checkState(totalPages)">{{totalPages}}</a>
+  <a href="" *ngIf="totalPages !== 1" (click)="setPage($event, totalPages)" class="button" [class.active]="checkState(totalPages)">{{totalPages}}</a>
 </div>
