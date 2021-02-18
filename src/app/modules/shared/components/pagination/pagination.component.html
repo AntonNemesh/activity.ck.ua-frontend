@@ -1,3 +1,14 @@
 <div>
-  <a href="" (click)="setPage($event, page+1)" class="button" [class.active]="checkState(page+1)" *ngFor="let item of [].constructor(totalPages); let page = index">{{page+1}}</a>
+  <a href="" (click)="setPage($event, 1)" class="button" [class.active]="checkState(1)">{{1}}</a>
+  <span class="pagination__separator" *ngIf="this.separatorState[0]">...</span>
+  <span *ngFor="let item of [].constructor(totalPages); let page = index">
+    <a href=""
+       *ngIf="checkButtonVisibility(page+1)"
+       (click)="setPage($event, page+1)"
+       [class.active]="checkState(page+1)"
+       class="button"
+    >{{page+1}}</a>
+  </span>
+  <span class="pagination__separator" *ngIf="this.separatorState[1]">...</span>
+  <a href="" (click)="setPage($event, totalPages)" class="button" [class.active]="checkState(totalPages)">{{totalPages}}</a>
 </div>
