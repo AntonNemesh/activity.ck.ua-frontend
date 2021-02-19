@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IDetailsOfPlace } from '../static/type/details-of-place.interface';
+import { IDetailsOfPlace } from '../static/type';
 import { ApiUrlService } from './api-url.service';
 
 @Injectable({
