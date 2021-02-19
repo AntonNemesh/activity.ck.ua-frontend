@@ -49,19 +49,19 @@ export class PaginationComponent implements OnInit {
   }
 
   private updateButtonsView(): void {
-    if (this.totalPages <= 7) {
+    if (this.totalPages <= 9) {
       this.setVisibleButtons(1, this.totalPages, [false, false]);
       return;
     }
-    if (this.page < 6) {
-      this.setVisibleButtons(1, 6, [false, true]);
+    if (this.page < 8) {
+      this.setVisibleButtons(1, 8, [false, true]);
       return;
     }
-    if (this.page > (this.totalPages - 5) ) {
-      this.setVisibleButtons(this.totalPages - 5, this.totalPages, [true, false]);
+    if (this.page > (this.totalPages - 7) ) {
+      this.setVisibleButtons(this.totalPages - 7, this.totalPages, [true, false]);
       return;
     }
-    this.setVisibleButtons(this.page - 2, this.page + 2, [true, true]);
+    this.setVisibleButtons(this.page - 3, this.page + 3, [true, true]);
   }
 
   public checkButtonVisibility(page): boolean {
