@@ -1,4 +1,4 @@
-export interface IDetailsOfPlaceInterface {
+export interface IDetailsOfPlace {
   id: number;
   categoryId: string;
   photos: Array<string>;
