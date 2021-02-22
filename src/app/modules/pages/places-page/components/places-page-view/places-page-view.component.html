@@ -1,13 +1,11 @@
 <app-layout>
   <h2>Places {{categoryId}}</h2>
   <app-filter-by-type (filterStateChange)="updateFilterState($event)"
-                      [categoryId]="categoryId">
-  </app-filter-by-type>
+                      [categoryId]="categoryId"></app-filter-by-type>
   <ul>
     <li *ngFor="let place of places"><a routerLink="{{place.id}}">{{place.name}}</a></li>
   </ul>
   <app-pagination (paginationStateChange)="updatePaginationState($event)"
                   [typesId]="typesId"
-                  [categoryId]="categoryId">
-  </app-pagination>
+                  [categoryId]="categoryId"></app-pagination>
 </app-layout>

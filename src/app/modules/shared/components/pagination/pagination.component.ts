@@ -14,15 +14,17 @@ export class PaginationComponent implements OnInit {
   private page: number;
   private buttonStart: number;
   private buttonEnd: number;
+  private activeButtons: number[];
 
   public totalPages: number;
   public separatorState: boolean[];
+  public isTheLastPage: boolean;
 
   @Input()
   categoryId;
 
   @Output()
-  paginationStateChange = new EventEmitter<number>();
+  paginationStateChange = new EventEmitter<any>();
 
   private updateTotalPages(): void {
     let options;
@@ -36,6 +38,8 @@ export class PaginationComponent implements OnInit {
 
   private resetPage(): void {
     this.page = 1;
+    this.isTheLastPage = true;
+    this.activeButtons = [];
   }
 
   private initSeparator(): void {
@@ -49,6 +53,8 @@ export class PaginationComponent implements OnInit {
   }
 
   private updateButtonsView(): void {
+    this.isTheLastPage = this.totalPages !== this.page;
+
     if (this.totalPages <= 9) {
       this.setVisibleButtons(1, this.totalPages, [false, false]);
       return;
@@ -76,12 +82,26 @@ export class PaginationComponent implements OnInit {
   public setPage(event, page): void {
     event.preventDefault();
     this.page = page;
-    this.paginationStateChange.emit(this.page);
+    this.paginationStateChange.emit([this.page, 'numb']);
+    this.activeButtons.length = 0;
     this.updateButtonsView();
   }
 
   public checkState(page): boolean {
-    return this.page === page;
+    if (this.activeButtons.length === 0) { return this.page === page; }
+    let result = false;
+    this.activeButtons.forEach((item: number) => {
+      if (item === page) { result = true; }
+    });
+    return result;
+  }
+
+  setNextPage(event): void {
+    event.preventDefault();
+    if (this.activeButtons.length === 0) { this.activeButtons.push(this.page); }
+    this.activeButtons.push(++this.page);
+    this.paginationStateChange.emit([this.page, 'more']);
+    this.updateButtonsView();
   }
 
   @Input('typesId')

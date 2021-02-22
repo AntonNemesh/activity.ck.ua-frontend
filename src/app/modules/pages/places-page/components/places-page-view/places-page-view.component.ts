@@ -17,10 +17,12 @@ export class PlacesPageViewComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private placesService: PlacesService) { }
 
-  private updatePlaces(): void {
+  private updatePlaces(typeOfPagination?): void {
     let options;
     if (this.typesId !== undefined && this.typesId.length !== 0) {
-      this.places.length = 0;
+      if (typeOfPagination === undefined || typeOfPagination === 'numb') {
+        this.places.length = 0;
+      }
       options = {
         type: this.typesId[0],
         page: this.page,
@@ -34,7 +36,13 @@ export class PlacesPageViewComponent implements OnInit {
       };
     }
 
-    this.placesService.getPlaces(options).subscribe((data: any) => { this.places = data; });
+    this.placesService.getPlaces(options).subscribe((data: any) => {
+      if (typeOfPagination === 'more') {
+        this.places = this.places.concat(data);
+        return;
+      }
+      this.places = data;
+    });
   }
 
   private resetPage(): void {
@@ -47,9 +55,9 @@ export class PlacesPageViewComponent implements OnInit {
     this.updatePlaces();
   }
 
-  public updatePaginationState(page): void {
+  public updatePaginationState([page, typeOfPagination]): void {
     this.page = page;
-    this.updatePlaces();
+    this.updatePlaces(typeOfPagination);
   }
 
   ngOnInit(): void {

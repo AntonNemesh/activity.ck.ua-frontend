@@ -1,4 +1,4 @@
-<div>
+<div class="pagination__numb">
   <a href="" (click)="setPage($event, 1)" class="button" [class.active]="checkState(1)">{{1}}</a>
   <span class="pagination__separator" *ngIf="this.separatorState[0]">...</span>
   <span *ngFor="let item of [].constructor(totalPages); let page = index">
@@ -11,4 +11,7 @@
   </span>
   <span class="pagination__separator" *ngIf="this.separatorState[1]">...</span>
   <a href="" *ngIf="totalPages !== 1" (click)="setPage($event, totalPages)" class="button" [class.active]="checkState(totalPages)">{{totalPages}}</a>
+</div>
+<div class="pagination__more">
+  <a href="" *ngIf="isTheLastPage" (click)="setNextPage($event)">Показати ще...</a>
 </div>

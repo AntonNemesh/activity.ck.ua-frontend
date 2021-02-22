@@ -14,7 +14,7 @@ export class PlacesService {
 
   constructor(private http: HttpClient, private apiUrlService: ApiUrlService) { }
 
-  private perPage = 3;
+  private perPage = 1;
 
   public getPerPage(): number {
     return this.perPage;
