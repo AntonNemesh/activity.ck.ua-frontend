@@ -10,7 +10,8 @@ import { PlacesService } from '../../../../../services';
 export class PlacesPageViewComponent implements OnInit {
   public categoryId: string;
   public places: any;
-  public typesId: string[];
+  public filterTypeState: string[];
+  public filterToleranceState: string[];
 
   private perPage;
   private page;
@@ -19,12 +20,12 @@ export class PlacesPageViewComponent implements OnInit {
 
   private updatePlaces(typeOfPagination?): void {
     let options;
-    if (this.typesId !== undefined && this.typesId.length !== 0) {
+    if (this.filterTypeState !== undefined && this.filterTypeState.length !== 0) {
       if (typeOfPagination === undefined || typeOfPagination === 'numb') {
         this.places.length = 0;
       }
       options = {
-        type: this.typesId[0],
+        type: this.filterTypeState[0],
         page: this.page,
         perPage: this.perPage
       };
@@ -34,6 +35,12 @@ export class PlacesPageViewComponent implements OnInit {
         page: this.page,
         perPage: this.perPage
       };
+    }
+
+    if (this.filterToleranceState !== undefined && this.filterToleranceState.length !== 0) {
+      this.filterToleranceState.forEach((item: string) => {
+        options[item] = true;
+      });
     }
 
     this.placesService.getPlaces(options).subscribe((data: any) => {
@@ -49,8 +56,14 @@ export class PlacesPageViewComponent implements OnInit {
     this.page = 1;
   }
 
-  public updateFilterState(filterState): void {
-    this.typesId = filterState;
+  public updateFilterTypeState(filterState): void {
+    this.filterTypeState = filterState;
+    this.resetPage();
+    this.updatePlaces();
+  }
+
+  public updateFilterToleranceState(filterState): void{
+    this.filterToleranceState = filterState;
     this.resetPage();
     this.updatePlaces();
   }
@@ -58,10 +71,6 @@ export class PlacesPageViewComponent implements OnInit {
   public updatePaginationState([page, typeOfPagination]): void {
     this.page = page;
     this.updatePlaces(typeOfPagination);
-  }
-
-  public setToleranceState(tolerance): void{
-    console.log('tolerance');
   }
 
   ngOnInit(): void {

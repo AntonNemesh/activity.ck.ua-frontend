@@ -10,7 +10,8 @@ export class PaginationComponent implements OnInit {
 
   constructor(private placesService: PlacesService) { }
 
-  private typesId;
+  private filterTypeState;
+  private filterToleranceState;
   private page: number;
   private buttonStart: number;
   private buttonEnd: number;
@@ -28,10 +29,15 @@ export class PaginationComponent implements OnInit {
 
   private updateTotalPages(): void {
     let options;
-    if (this.typesId !== undefined && this.typesId.length !== 0) {
-      options = { type: this.typesId[0] };
+    if (this.filterTypeState !== undefined && this.filterTypeState.length !== 0) {
+      options = { type: this.filterTypeState[0] };
     } else {
       options = { category: this.categoryId };
+    }
+    if (this.filterToleranceState !== undefined && this.filterToleranceState.length !== 0) {
+      this.filterToleranceState.forEach((item: string) => {
+        options[item] = true;
+      });
     }
     this.totalPages = this.placesService.amountPages(options);
   }
@@ -104,10 +110,19 @@ export class PaginationComponent implements OnInit {
     this.updateButtonsView();
   }
 
-  @Input('typesId')
-  set _typesId(value) {
+  @Input('filterTypeState')
+  set _filterTypeState(value) {
     if (value === undefined) { return; }
-    this.typesId = value;
+    this.filterTypeState = value;
+    this.updateTotalPages();
+    this.resetPage();
+    this.updateButtonsView();
+  }
+
+  @Input('filterToleranceState')
+  set _filterToleranceState(value) {
+    if (value === undefined) { return; }
+    this.filterToleranceState = value;
     this.updateTotalPages();
     this.resetPage();
     this.updateButtonsView();
