@@ -1,6 +1,6 @@
 import { LayoutModule } from './layout';
 import { HomePageModule, PlacesPageModule } from './pages';
-import {SharedModule} from './shared/shared.module';
+import { SharedModule } from './shared';
 
 export const modules = [
   LayoutModule,

@@ -12,37 +12,60 @@ export class PlacesPageViewComponent implements OnInit {
   public places: any;
   public typesId: string[];
 
+  private perPage;
+  private page;
+
   constructor(private route: ActivatedRoute, private placesService: PlacesService) { }
 
-  private updatePlaces(): void {
-    if (this.typesId === undefined) {
-      this.placesService.getPlaces(this.categoryId, 1, 50).subscribe((data: any) => {
-        this.places = data;
-      });
-      return;
-    }
-    if (this.typesId.length !== 0) {
-      this.places.length = 0;
-      this.placesService.getPlaces('', 1, 50, this.typesId[0]).subscribe((data: any) => {
-        this.places = data;
-      });
+  private updatePlaces(typeOfPagination?): void {
+    let options;
+    if (this.typesId !== undefined && this.typesId.length !== 0) {
+      if (typeOfPagination === undefined || typeOfPagination === 'numb') {
+        this.places.length = 0;
+      }
+      options = {
+        type: this.typesId[0],
+        page: this.page,
+        perPage: this.perPage
+      };
     } else {
-      this.places.length = 0;
-      this.placesService.getPlaces(this.categoryId, 1, 50).subscribe((data: any) => {
-        this.places = data;
-      });
+      options = {
+        category: this.categoryId,
+        page: this.page,
+        perPage: this.perPage
+      };
     }
+
+    this.placesService.getPlaces(options).subscribe((data: any) => {
+      if (typeOfPagination === 'more') {
+        this.places = this.places.concat(data);
+        return;
+      }
+      this.places = data;
+    });
   }
 
-  public setFilterState(filterState): void {
+  private resetPage(): void {
+    this.page = 1;
+  }
+
+  public updateFilterState(filterState): void {
     this.typesId = filterState;
+    this.resetPage();
     this.updatePlaces();
+  }
+
+  public updatePaginationState([page, typeOfPagination]): void {
+    this.page = page;
+    this.updatePlaces(typeOfPagination);
   }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.categoryId = params.categoryId;
     });
+    this.perPage = this.placesService.getPerPage();
+    this.resetPage();
     this.updatePlaces();
   }
 
