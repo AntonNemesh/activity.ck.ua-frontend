@@ -30,11 +30,9 @@ export class DetailsOfPlacePageComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.placeId = params.idPlace;
     });
-    const selectFilters$ = this.detailsOfPlacesService.getDetailsOfPlace(this.placeId).pipe(
+    this.detailsOfPlacesService.getDetailsOfPlace(this.placeId).pipe(
       map(((detailsOfPlace: IDetailsOfPlace) => (detailsOfPlace[0]))
-      ));
-
-    selectFilters$.subscribe(detailsOfPlace => {
+      )).subscribe(detailsOfPlace => {
       this.detailsPhotos = detailsOfPlace.photos;
       this.nameOfPlace = detailsOfPlace.name;
       this.detailsPhone = detailsOfPlace.phone;

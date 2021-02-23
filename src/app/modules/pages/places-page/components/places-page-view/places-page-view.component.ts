@@ -60,6 +60,10 @@ export class PlacesPageViewComponent implements OnInit {
     this.updatePlaces(typeOfPagination);
   }
 
+  public setToleranceState(tolerance): void{
+    console.log('tolerance');
+  }
+
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.categoryId = params.categoryId;

@@ -1,0 +1,4 @@
+<div *ngFor="let filter of toleranceFilterArray.controls; index as i">
+  <input type="checkbox" id="{{toleranceFilter[i].filterId}}" [formControl]="toleranceFilterArray.controls[i]"/>
+  <label for="{{toleranceFilter[i].filterId}}">{{toleranceFilter[i].name}}</label>
+</div>
