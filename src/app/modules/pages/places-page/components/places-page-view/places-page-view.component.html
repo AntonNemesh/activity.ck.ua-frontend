@@ -1,7 +1,7 @@
 <app-layout>
   <h2>Places {{categoryId}}</h2>
   <app-filter-by-type (filterStateChange)="setFilterState($event)" [categoryId]="categoryId"></app-filter-by-type>
-  <app-tolerance-filter (toleranceStateChange)="setToleranceState($event)"></app-tolerance-filter>
+  <app-filter-by-tolerance (toleranceStateChange)="setToleranceState($event)"></app-filter-by-tolerance>
   <ul>
     <li *ngFor="let place of places"><a routerLink="{{place.id}}">{{place.name}}</a></li>
   </ul>

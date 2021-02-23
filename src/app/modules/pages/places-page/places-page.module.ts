@@ -5,7 +5,7 @@ import { LayoutModule } from '../../layout';
 import { PlacesPageRoutingModule } from './places-page-routing.module';
 import { FilterByTypeComponent } from './components/filter-by-type/filter-by-type.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ToleranceFilterComponent } from './components/tolerance-filter/tolerance-filter/tolerance-filter.component';
+import { FilterByToleranceComponent } from './components/tolerance-filter/tolerance-filter/filter-by-tolerance.component';
 
 
 
@@ -15,7 +15,7 @@ import { ToleranceFilterComponent } from './components/tolerance-filter/toleranc
     DetailsOfPlacePageComponent,
     DetailsOfPlacePageComponent,
     FilterByTypeComponent,
-    ToleranceFilterComponent],
+    FilterByToleranceComponent],
   imports: [
     CommonModule,
     LayoutModule,

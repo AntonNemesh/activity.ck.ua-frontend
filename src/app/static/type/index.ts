@@ -1,6 +1,6 @@
 export { IPlacesCategories } from './places-categories.interface';
 export { IPlacesTypes } from './places-types.interface';
 export { IDetailsOfPlace } from './details-of-place.interface';
-export { IToleranceFilters } from './tolerance-filter.interface';
+export { IToleranceFilter } from './tolerance-filter.interface';
 
 
