@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FilterByTypeService } from '../../../../../services';
 import { IPlacesTypes } from '../../../../../static/type';
 import { FormArray, FormControl } from '@angular/forms';
@@ -22,7 +22,7 @@ export class FilterByTypeComponent implements OnInit {
 
   private setTypes(categoriesId): void {
     const types: IPlacesTypes[] = this.filterByTypeService.getTypes(this.categoryId);
-    if (types[0].typeId === categoriesId) { return; }
+    if (types[0].type_id === categoriesId) { return; }
     this.types = types;
     this.types.forEach(() => { this.formTypes.push(new FormControl(false)); });
   }
@@ -31,7 +31,7 @@ export class FilterByTypeComponent implements OnInit {
     const selectedTypes = [];
     filterState.forEach((item: boolean, index: number) => {
       if (!item) { return; }
-      selectedTypes.push(this.types[index].typeId);
+      selectedTypes.push(this.types[index].type_id);
     });
     return selectedTypes;
   }

@@ -1,7 +1,7 @@
 import { IToleranceFilter } from '../type';
 
 export const TOLERANCE_FILTER: IToleranceFilter[] = [
-  { filterId: 'accessibility', name: 'Доступність' },
-  { filterId: 'childFriendly', name: 'Дружні до дітей' },
-  { filterId: 'dogFriendly', name: 'Дружні до тварин' },
+  { filter_id: 'accessibility', name: 'Доступність' },
+  { filter_id: 'child_friendly', name: 'Дружні до дітей' },
+  { filter_id: 'dog_friendly', name: 'Дружні до тварин' },
 ];

@@ -23,86 +23,86 @@ export class PlacesService {
   public amountPages(options): any {
     let counter = 0;
     DATABASE.default.places.forEach((item) => {
-      if (options.type !== undefined) {
+      if (options.type_id !== undefined) {
         if (Object.keys(options).length === 1) {
-          if (item.typeId === options.type &&
+          if (item.type_id === options.type_id &&
             options.accessibility === undefined &&
-            options.dogFriendly === undefined &&
-            options.childFriendly === undefined) { counter++; return; }
+            options.dog_friendly === undefined &&
+            options.child_friendly === undefined) { counter++; return; }
           return;
         }
         if (Object.keys(options).length === 2) {
-          if (item.typeId === options.type &&
+          if (item.type_id === options.type_id &&
             item.accessibility === options.accessibility) { counter++; return; }
 
-          if (item.typeId === options.type &&
-            item.childFriendly === options.childFriendly) { counter++; return; }
+          if (item.type_id === options.type_id &&
+            item.child_friendly === options.child_friendly) { counter++; return; }
 
-          if (item.typeId === options.type &&
-            item.dogFriendly === options.dogFriendly) { counter++; return; }
+          if (item.type_id === options.type_id &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
           return;
         }
         if (Object.keys(options).length === 3) {
-          if (item.typeId === options.type &&
+          if (item.type_id === options.type_id &&
             item.accessibility === options.accessibility &&
-            item.childFriendly === options.childFriendly) { counter++; return; }
+            item.child_friendly === options.child_friendly) { counter++; return; }
 
-          if (item.typeId === options.type &&
+          if (item.type_id === options.type_id &&
             item.accessibility === options.accessibility &&
-            item.dogFriendly === options.dogFriendly) { counter++; return; }
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
 
-          if (item.typeId === options.type &&
-            item.childFriendly === options.childFriendly &&
-            item.dogFriendly === options.dogFriendly) { counter++; return; }
+          if (item.type_id === options.type_id &&
+            item.child_friendly === options.child_friendly &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
           return;
         }
         if (Object.keys(options).length === 4) {
-          if (item.typeId === options.type &&
+          if (item.type_id === options.type_id &&
             item.accessibility === options.accessibility &&
-            item.childFriendly === options.childFriendly &&
-            item.dogFriendly === options.dogFriendly) { counter++; return; }
+            item.child_friendly === options.child_friendly &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
           return;
         }
         return;
       }
-      if (options.category !== undefined) {
+      if (options.category_id !== undefined) {
         if (Object.keys(options).length === 1) {
-          if (item.categoryId === options.category &&
+          if (item.category_id === options.category_id &&
             options.accessibility === undefined &&
-            options.dogFriendly === undefined &&
-            options.childFriendly === undefined) { counter++; return; }
+            options.dog_friendly === undefined &&
+            options.child_friendly === undefined) { counter++; return; }
           return;
         }
         if (Object.keys(options).length === 2) {
-          if (item.categoryId === options.category &&
+          if (item.category_id === options.category_id &&
             item.accessibility === options.accessibility) { counter++; return; }
 
-          if (item.categoryId === options.category &&
-            item.childFriendly === options.childFriendly) { counter++; return; }
+          if (item.category_id === options.category_id &&
+            item.child_friendly === options.child_friendly) { counter++; return; }
 
-          if (item.categoryId === options.category &&
-            item.dogFriendly === options.dogFriendly) { counter++; return; }
+          if (item.category_id === options.category_id &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
           return;
         }
         if (Object.keys(options).length === 3) {
-          if (item.categoryId === options.category &&
+          if (item.category_id === options.category_id &&
             item.accessibility === options.accessibility &&
-            item.childFriendly === options.childFriendly) { counter++; return; }
+            item.child_friendly === options.child_friendly) { counter++; return; }
 
-          if (item.categoryId === options.category &&
+          if (item.category_id === options.category_id &&
             item.accessibility === options.accessibility &&
-            item.dogFriendly === options.dogFriendly) { counter++; return; }
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
 
-          if (item.categoryId === options.category &&
-            item.childFriendly === options.childFriendly &&
-            item.dogFriendly === options.dogFriendly) { counter++; return; }
+          if (item.category_id === options.category_id &&
+            item.child_friendly === options.child_friendly &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
           return;
         }
         if (Object.keys(options).length === 4) {
-          if (item.categoryId === options.category &&
+          if (item.category_id === options.category_id &&
             item.accessibility === options.accessibility &&
-            item.childFriendly === options.childFriendly &&
-            item.dogFriendly === options.dogFriendly) { counter++; return; }
+            item.child_friendly === options.child_friendly &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
           return;
         }
         return;
@@ -112,24 +112,13 @@ export class PlacesService {
   }
 
   public getPlaces(options): Observable<any> {
-    let params;
-    if (options.type !== undefined) {
-      params = {
-        typeId: String(options.type),
-        _page: String(options.page),
-        _limit: String(options.perPage),
-      };
-    } else {
-      params = {
-        categoryId: String(options.category),
-        _page: String(options.page),
-        _limit: String(options.perPage),
-      };
-    }
+    const params = {};
 
-    if (options.dogFriendly !== undefined)   { params.dogFriendly = options.dogFriendly; }
-    if (options.accessibility !== undefined) { params.accessibility = options.accessibility; }
-    if (options.childFriendly !== undefined) { params.childFriendly = options.childFriendly; }
+    for (const key in options) {
+      if (!options.hasOwnProperty(key)) { continue; }
+      params[key] = String(options[key]);
+    }
+    console.log(params);
 
     return this.http.get(this.apiUrlService.generateApiLink('places'), { params });
   }

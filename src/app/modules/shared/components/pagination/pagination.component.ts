@@ -30,9 +30,9 @@ export class PaginationComponent implements OnInit {
   private updateTotalPages(): void {
     let options;
     if (this.filterTypeState !== undefined && this.filterTypeState.length !== 0) {
-      options = { type: this.filterTypeState[0] };
+      options = { type_id: this.filterTypeState[0] };
     } else {
-      options = { category: this.categoryId };
+      options = { category_id: this.categoryId };
     }
     if (this.filterToleranceState !== undefined && this.filterToleranceState.length !== 0) {
       this.filterToleranceState.forEach((item: string) => {

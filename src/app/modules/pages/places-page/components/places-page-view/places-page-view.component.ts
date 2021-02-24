@@ -25,15 +25,15 @@ export class PlacesPageViewComponent implements OnInit {
         this.places.length = 0;
       }
       options = {
-        type: this.filterTypeState[0],
-        page: this.page,
-        perPage: this.perPage
+        type_id: this.filterTypeState[0],
+        _page: this.page,
+        _limit: this.perPage
       };
     } else {
       options = {
-        category: this.categoryId,
-        page: this.page,
-        perPage: this.perPage
+        category_id: this.categoryId,
+        _page: this.page,
+        _limit: this.perPage
       };
     }
 
@@ -75,7 +75,7 @@ export class PlacesPageViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.categoryId = params.categoryId;
+      this.categoryId = params.category_id;
     });
     this.perPage = this.placesService.getPerPage();
     this.resetPage();

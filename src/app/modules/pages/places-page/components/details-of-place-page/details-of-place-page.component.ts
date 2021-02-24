@@ -11,39 +11,39 @@ import { map } from 'rxjs/operators';
 })
 export class DetailsOfPlacePageComponent implements OnInit {
   public placeId: string;
-  public nameOfPlace: string;
-  public detailsPhotos: Array<string>;
+  public name: string;
+  public photos: Array<string>;
   public detailAddress: string;
-  public detailsPhone: string;
-  public detailsWebSite: string;
-  public detailsWorkTime: string;
-  public detailsAccessibility: boolean;
-  public detailsDogFriendly: boolean;
-  public detailsChildFriendly: boolean;
-  public detailsAboutInfo: string;
-  public detailsRating: number;
+  public phone: string;
+  public webSite: string;
+  public workTime: string;
+  public accessibility: boolean;
+  public dogFriendly: boolean;
+  public childFriendly: boolean;
+  public aboutInfo: string;
+  public rating: number;
 
   constructor(private route: ActivatedRoute, private detailsOfPlacesService: DetailsOfPlaceService) {
   }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.placeId = params.idPlace;
+      this.placeId = params.place_id;
     });
     this.detailsOfPlacesService.getDetailsOfPlace(this.placeId).pipe(
       map(((detailsOfPlace: IDetailsOfPlace) => (detailsOfPlace[0]))
       )).subscribe(detailsOfPlace => {
-      this.detailsPhotos = detailsOfPlace.photos;
-      this.nameOfPlace = detailsOfPlace.name;
-      this.detailsPhone = detailsOfPlace.phone;
+      this.photos = detailsOfPlace.photos;
+      this.name = detailsOfPlace.name;
+      this.phone = detailsOfPlace.phone;
       this.detailAddress = detailsOfPlace.address;
-      this.detailsWebSite = detailsOfPlace.webSite;
-      this.detailsWorkTime = detailsOfPlace.workTime;
-      this.detailsAccessibility = detailsOfPlace.accessibility;
-      this.detailsDogFriendly = detailsOfPlace.dogFriendly;
-      this.detailsChildFriendly = detailsOfPlace.childFriendly;
-      this.detailsAboutInfo = detailsOfPlace.aboutInfo;
-      this.detailsRating = detailsOfPlace.rating;
+      this.webSite = detailsOfPlace.web_site;
+      this.workTime = detailsOfPlace.work_time;
+      this.accessibility = detailsOfPlace.accessibility;
+      this.dogFriendly = detailsOfPlace.dog_friendly;
+      this.childFriendly = detailsOfPlace.child_friendly;
+      this.aboutInfo = detailsOfPlace.about_info;
+      this.rating = detailsOfPlace.rating;
     });
 
   }

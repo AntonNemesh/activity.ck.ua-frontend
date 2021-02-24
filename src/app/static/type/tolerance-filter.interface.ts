@@ -1,4 +1,4 @@
 export interface IToleranceFilter {
-  filterId: string;
+  filter_id: string;
   name: string;
 }

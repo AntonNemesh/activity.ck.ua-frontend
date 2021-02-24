@@ -4,7 +4,7 @@ import { DetailsOfPlacePageComponent, PlacesPageViewComponent } from './componen
 
 const routes: Routes = [
   { path: '', component: PlacesPageViewComponent },
-  { path: ':idPlace', component: DetailsOfPlacePageComponent },
+  { path: ':place_id', component: DetailsOfPlacePageComponent },
 ];
 
 @NgModule({

@@ -29,7 +29,7 @@ export class FilterByToleranceComponent implements OnInit {
     const selectedFilter = [];
     filterState.forEach((item: boolean, index: number) => {
       if (!item) { return; }
-      selectedFilter.push(this.toleranceFilter[index].filterId);
+      selectedFilter.push(this.toleranceFilter[index].filter_id);
     });
     return selectedFilter;
   }
