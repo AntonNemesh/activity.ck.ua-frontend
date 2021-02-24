@@ -25,7 +25,7 @@ export class PaginationComponent implements OnInit {
   categoryId;
 
   @Output()
-  paginationStateChange = new EventEmitter<any>();
+  paginationStateChange = new EventEmitter<[number, boolean]>();
 
   private updateTotalPages(): void {
     let options;
@@ -88,7 +88,7 @@ export class PaginationComponent implements OnInit {
   public setPage(event, page): void {
     event.preventDefault();
     this.page = page;
-    this.paginationStateChange.emit([this.page, 'numb']);
+    this.paginationStateChange.emit([this.page, false]);
     this.activeButtons.length = 0;
     this.updateButtonsView();
   }
@@ -106,7 +106,7 @@ export class PaginationComponent implements OnInit {
     event.preventDefault();
     if (this.activeButtons.length === 0) { this.activeButtons.push(this.page); }
     this.activeButtons.push(++this.page);
-    this.paginationStateChange.emit([this.page, 'more']);
+    this.paginationStateChange.emit([this.page, true]);
     this.updateButtonsView();
   }
 

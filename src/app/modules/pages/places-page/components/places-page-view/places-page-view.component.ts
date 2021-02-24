@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PlacesService } from '../../../../../services';
-import {IDetailsOfPlace} from '../../../../../static/type';
+import { IPlace } from '../../../../../static/type';
 
 @Component({
   selector: 'app-places-page-view',
@@ -10,7 +10,7 @@ import {IDetailsOfPlace} from '../../../../../static/type';
 })
 export class PlacesPageViewComponent implements OnInit {
   public categoryId: string;
-  public places: IDetailsOfPlace[];
+  public places: IPlace[];
   public filterTypeState: string[];
   public filterToleranceState: string[];
 
@@ -19,7 +19,7 @@ export class PlacesPageViewComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private placesService: PlacesService) { }
 
-  private updatePlaces(typeOfPagination?): void {
+  private updatePlaces(isConcatenation?): void {
     const params = {
       _page: this.page,
       _limit: this.perPage,
@@ -41,8 +41,8 @@ export class PlacesPageViewComponent implements OnInit {
       });
     }
 
-    this.placesService.getPlaces(params).subscribe((data: any) => {
-      if (typeOfPagination === 'more') {
+    this.placesService.getPlaces(params).subscribe((data: IPlace[]) => {
+      if (isConcatenation) {
         this.places = this.places.concat(data);
         return;
       }
@@ -67,9 +67,9 @@ export class PlacesPageViewComponent implements OnInit {
     this.updatePlaces();
   }
 
-  public updatePaginationState([page, typeOfPagination]): void {
+  public updatePaginationState([page, isConcatenation]): void {
     this.page = page;
-    this.updatePlaces(typeOfPagination);
+    this.updatePlaces(isConcatenation);
   }
 
   ngOnInit(): void {

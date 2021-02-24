@@ -1,6 +1,6 @@
 import { IPhotos } from './photos.interface';
 
-export interface IDetailsOfPlace {
+export interface IPlace {
   id: number;
   category_id: string;
   type_id: string;

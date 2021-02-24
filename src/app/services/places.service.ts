@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiUrlService } from './api-url.service';
+import { IPlace } from '../static/type';
 
 // @ts-ignore
 import * as DATABASE from './../../../api/database.json';
@@ -19,7 +20,7 @@ export class PlacesService {
     return this.perPage;
   }
 
-  public amountPages(options): any {
+  public amountPages(options): number {
     let counter = 0;
     DATABASE.default.places.forEach((item) => {
       if (options.type_id !== undefined) {
@@ -110,14 +111,14 @@ export class PlacesService {
     return (counter / this.getPerPage() >= 1) ? Math.ceil(counter / this.getPerPage()) : 1;
   }
 
-  public getPlaces(params): Observable<any> {
-    return this.http.get(this.apiUrlService.generateApiLink('places'), { params });
+  public getPlaces(params): Observable<IPlace[]> {
+    return this.http.get<IPlace[]>(this.apiUrlService.generateApiLink('places'), { params });
   }
 
-  public getPlaceById(placeId): Observable<any> {
+  public getPlaceById(placeId): Observable<IPlace> {
     const params = {
       id: placeId,
     };
-    return this.http.get(this.apiUrlService.generateApiLink('places'), { params });
+    return this.http.get<IPlace>(this.apiUrlService.generateApiLink('places'), { params });
   }
 }
