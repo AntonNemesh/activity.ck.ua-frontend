@@ -48,7 +48,6 @@ export class DetailsOfPlacePageComponent implements OnInit {
       this.childFriendly = detailsOfPlace.child_friendly;
       this.description = detailsOfPlace.description;
       this.rating = detailsOfPlace.rating;
-      console.log(this.photos);
     });
 
   }
