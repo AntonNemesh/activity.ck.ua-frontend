@@ -12,15 +12,17 @@ import { map } from 'rxjs/operators';
 export class DetailsOfPlacePageComponent implements OnInit {
   public placeId: string;
   public name: string;
+  public categoryId: string;
+  public typeId: string;
   public photos: Array<string>;
-  public detailAddress: string;
+  public address: string;
   public phone: string;
-  public webSite: string;
+  public website: string;
   public workTime: string;
   public accessibility: boolean;
   public dogFriendly: boolean;
   public childFriendly: boolean;
-  public aboutInfo: string;
+  public description: string;
   public rating: number;
 
   constructor(private route: ActivatedRoute, private detailsOfPlacesService: DetailsOfPlaceService) {
@@ -35,14 +37,16 @@ export class DetailsOfPlacePageComponent implements OnInit {
       )).subscribe(detailsOfPlace => {
       this.photos = detailsOfPlace.photos;
       this.name = detailsOfPlace.name;
+      this.typeId = detailsOfPlace.type_id;
+      this.categoryId = detailsOfPlace.category_id;
       this.phone = detailsOfPlace.phone;
-      this.detailAddress = detailsOfPlace.address;
-      this.webSite = detailsOfPlace.web_site;
+      this.address = detailsOfPlace.address;
+      this.website = detailsOfPlace.website;
       this.workTime = detailsOfPlace.work_time;
       this.accessibility = detailsOfPlace.accessibility;
       this.dogFriendly = detailsOfPlace.dog_friendly;
       this.childFriendly = detailsOfPlace.child_friendly;
-      this.aboutInfo = detailsOfPlace.about_info;
+      this.description = detailsOfPlace.description;
       this.rating = detailsOfPlace.rating;
     });
 
