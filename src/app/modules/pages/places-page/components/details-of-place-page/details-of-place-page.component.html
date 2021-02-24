@@ -1,6 +1,9 @@
 <app-layout>
   <h2>Детальна сторінка <span>{{placeId}}</span></h2>
   <p>{{name}}</p>
+  <div class="gallery">
+    <img *ngFor="let photo of photos" alt="{{photo.author_name}}" src="{{photo.photo_url}}">
+  </div>
   <p>{{categoryId}}</p>
   <p>{{typeId}}</p>
   <p>{{phone}}</p>

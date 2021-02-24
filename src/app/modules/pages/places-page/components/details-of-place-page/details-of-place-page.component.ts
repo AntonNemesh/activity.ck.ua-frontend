@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DetailsOfPlaceService } from '../../../../../services/details-of-place.service';
-import { IDetailsOfPlace } from '../../../../../static/type';
+import { IDetailsOfPlace, IPhotos } from '../../../../../static/type';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -14,7 +14,7 @@ export class DetailsOfPlacePageComponent implements OnInit {
   public name: string;
   public categoryId: string;
   public typeId: string;
-  public photos: Array<string>;
+  public photos: IPhotos[];
   public address: string;
   public phone: string;
   public website: string;
@@ -48,6 +48,7 @@ export class DetailsOfPlacePageComponent implements OnInit {
       this.childFriendly = detailsOfPlace.child_friendly;
       this.description = detailsOfPlace.description;
       this.rating = detailsOfPlace.rating;
+      console.log(this.photos);
     });
 
   }
