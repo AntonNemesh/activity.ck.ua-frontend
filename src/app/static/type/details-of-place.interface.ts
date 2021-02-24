@@ -1,8 +1,10 @@
+import { IPhotos } from './photos.interface';
+
 export interface IDetailsOfPlace {
   id: number;
   category_id: string;
   type_id: string;
-  photos: Array<string>;
+  photos: IPhotos[];
   name: string;
   phone: string;
   address: string;
