@@ -4,5 +4,7 @@
 .pagination__more {
   height: 50px;
   padding-top: 30px;
-  text-align: center;
+}
+.pagination__numb {
+  height: 26px;
 }
