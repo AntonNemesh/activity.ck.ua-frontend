@@ -6,7 +6,6 @@ import { ApiUrlService } from './api-url.service';
 // @ts-ignore
 import * as DATABASE from './../../../api/database.json';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -111,12 +110,7 @@ export class PlacesService {
     return (counter / this.getPerPage() >= 1) ? Math.ceil(counter / this.getPerPage()) : 1;
   }
 
-  public getPlaces(options): Observable<any> {
-    const params = {};
-    for (const key in options) {
-      if (!options.hasOwnProperty(key)) { continue; }
-      params[key] = String(options[key]);
-    }
+  public getPlaces(params): Observable<any> {
     return this.http.get(this.apiUrlService.generateApiLink('places'), { params });
   }
 

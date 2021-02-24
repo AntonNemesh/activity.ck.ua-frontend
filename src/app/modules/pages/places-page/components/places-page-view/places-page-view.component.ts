@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PlacesService } from '../../../../../services';
+import {IDetailsOfPlace} from '../../../../../static/type';
 
 @Component({
   selector: 'app-places-page-view',
@@ -9,45 +10,43 @@ import { PlacesService } from '../../../../../services';
 })
 export class PlacesPageViewComponent implements OnInit {
   public categoryId: string;
-  public places: any;
+  public places: IDetailsOfPlace[];
   public filterTypeState: string[];
   public filterToleranceState: string[];
 
-  private perPage;
-  private page;
+  private perPage: number;
+  private page: number;
 
   constructor(private route: ActivatedRoute, private placesService: PlacesService) { }
 
   private updatePlaces(typeOfPagination?): void {
-    let options;
+    const params = {
+      _page: this.page,
+      _limit: this.perPage,
+      category_id: undefined,
+      type_id: undefined,
+    };
+
     if (this.filterTypeState !== undefined && this.filterTypeState.length !== 0) {
-      if (typeOfPagination === undefined || typeOfPagination === 'numb') {
-        this.places.length = 0;
-      }
-      options = {
-        type_id: this.filterTypeState[0],
-        _page: this.page,
-        _limit: this.perPage
-      };
+      delete params.category_id;
+      params.type_id = this.filterTypeState[0];
     } else {
-      options = {
-        category_id: this.categoryId,
-        _page: this.page,
-        _limit: this.perPage
-      };
+      delete params.type_id;
+      params.category_id = this.categoryId;
     }
 
-    if (this.filterToleranceState !== undefined && this.filterToleranceState.length !== 0) {
+    if (this.filterToleranceState !== undefined) {
       this.filterToleranceState.forEach((item: string) => {
-        options[item] = true;
+        params[item] = true;
       });
     }
 
-    this.placesService.getPlaces(options).subscribe((data: any) => {
+    this.placesService.getPlaces(params).subscribe((data: any) => {
       if (typeOfPagination === 'more') {
         this.places = this.places.concat(data);
         return;
       }
+      if (this.places !== undefined) { this.places.length = 0; }
       this.places = data;
     });
   }
