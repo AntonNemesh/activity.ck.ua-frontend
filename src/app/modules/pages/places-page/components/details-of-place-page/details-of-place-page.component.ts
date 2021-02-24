@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DetailsOfPlaceService } from '../../../../../services/details-of-place.service';
+import { PlacesService } from '../../../../../services';
 import { IDetailsOfPlace, IPhotos } from '../../../../../static/type';
 import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-details-of-place-page',
@@ -25,14 +26,10 @@ export class DetailsOfPlacePageComponent implements OnInit {
   public description: string;
   public rating: number;
 
-  constructor(private route: ActivatedRoute, private detailsOfPlacesService: DetailsOfPlaceService) {
-  }
+  constructor(private route: ActivatedRoute, private placesService: PlacesService) {}
 
-  ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      this.placeId = params.place_id;
-    });
-    this.detailsOfPlacesService.getDetailsOfPlace(this.placeId).pipe(
+  private updatePlace(): void {
+    this.placesService.getPlaceById(this.placeId).pipe(
       map(((detailsOfPlace: IDetailsOfPlace) => (detailsOfPlace[0]))
       )).subscribe(detailsOfPlace => {
       this.photos = detailsOfPlace.photos;
@@ -49,6 +46,12 @@ export class DetailsOfPlacePageComponent implements OnInit {
       this.description = detailsOfPlace.description;
       this.rating = detailsOfPlace.rating;
     });
+  }
 
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.placeId = params.place_id;
+    });
+    this.updatePlace();
   }
 }

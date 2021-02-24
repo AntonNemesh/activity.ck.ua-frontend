@@ -114,4 +114,10 @@ export class PlacesService {
     return this.http.get(this.apiUrlService.generateApiLink('places'), { params });
   }
 
+  public getPlaceById(placeId): Observable<any> {
+    const params = {
+      id: placeId,
+    };
+    return this.http.get(this.apiUrlService.generateApiLink('places'), { params });
+  }
 }
