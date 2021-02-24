@@ -113,13 +113,10 @@ export class PlacesService {
 
   public getPlaces(options): Observable<any> {
     const params = {};
-
     for (const key in options) {
       if (!options.hasOwnProperty(key)) { continue; }
       params[key] = String(options[key]);
     }
-    console.log(params);
-
     return this.http.get(this.apiUrlService.generateApiLink('places'), { params });
   }
 
