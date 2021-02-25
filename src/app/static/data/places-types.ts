@@ -1,11 +1,11 @@
 import { IPlacesTypes } from '../type';
 
 export const PLACES_TYPES: IPlacesTypes[] = [
-  {categoryId: 'recreation', typeId: 'water', name: 'водні види'},
-  {categoryId: 'recreation', typeId: 'gym', name: 'тренажерні зали'},
-  {categoryId: 'recreation', typeId: 'stadium', name: 'стадіони'},
-  {categoryId: 'sleeping', typeId: 'hotels', name: 'готелі'},
-  {categoryId: 'sleeping', typeId: 'hostels', name: 'хостели'},
-  {categoryId: 'gastronomic_adventures', typeId: 'fastfood', name: 'заклади швидкого харчування'},
-  {categoryId: 'gastronomic_adventures', typeId: 'coffee', name: 'кав\'ярні'},
+  {category_id: 'recreation', type_id: 'water', name: 'водні види'},
+  {category_id: 'recreation', type_id: 'gym', name: 'тренажерні зали'},
+  {category_id: 'recreation', type_id: 'stadium', name: 'стадіони'},
+  {category_id: 'sleeping', type_id: 'hotels', name: 'готелі'},
+  {category_id: 'sleeping', type_id: 'hostels', name: 'хостели'},
+  {category_id: 'gastronomic_adventures', type_id: 'fastfood', name: 'заклади швидкого харчування'},
+  {category_id: 'gastronomic_adventures', type_id: 'coffee', name: 'кав\'ярні'},
 ];

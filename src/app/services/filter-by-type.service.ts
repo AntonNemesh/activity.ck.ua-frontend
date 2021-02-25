@@ -12,11 +12,11 @@ export class FilterByTypeService {
   public getTypes(categoryId): IPlacesTypes[] {
     const types = [];
     this.types.forEach((type: IPlacesTypes) => {
-      if (type.categoryId !== categoryId) { return; }
+      if (type.category_id !== categoryId) { return; }
       types.push(type);
     });
     if (types.length === 0) {
-      const type = { categoryId, typeId: categoryId, name: categoryId };
+      const type = { categoryId, type_id: categoryId, name: categoryId };
       types.push(type);
     }
     return types;

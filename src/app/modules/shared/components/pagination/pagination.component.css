@@ -1,0 +1,10 @@
+.pagination__separator {
+  padding: 0 10px;
+}
+.pagination__more {
+  height: 50px;
+  padding-top: 30px;
+}
+.pagination__numb {
+  height: 26px;
+}

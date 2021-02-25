@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PlacesService } from '../../../../../services';
+import { IPlace } from '../../../../../static/type';
 
 @Component({
   selector: 'app-places-page-view',
@@ -9,40 +10,74 @@ import { PlacesService } from '../../../../../services';
 })
 export class PlacesPageViewComponent implements OnInit {
   public categoryId: string;
-  public places: any;
-  public typesId: string[];
+  public places: IPlace[];
+  public filterTypeState: string[];
+  public filterToleranceState: string[];
+
+  private perPage: number;
+  private page: number;
 
   constructor(private route: ActivatedRoute, private placesService: PlacesService) { }
 
-  private updatePlaces(): void {
-    if (this.typesId === undefined) {
-      this.placesService.getPlaces(this.categoryId, 1, 50).subscribe((data: any) => {
-        this.places = data;
-      });
-      return;
-    }
-    if (this.typesId.length !== 0) {
-      this.places.length = 0;
-      this.placesService.getPlaces('', 1, 50, this.typesId[0]).subscribe((data: any) => {
-        this.places = data;
-      });
+  private updatePlaces(isConcatenation?): void {
+    const params = {
+      _page: this.page,
+      _limit: this.perPage,
+      category_id: undefined,
+      type_id: undefined,
+    };
+
+    if (this.filterTypeState !== undefined && this.filterTypeState.length !== 0) {
+      delete params.category_id;
+      params.type_id = this.filterTypeState[0];
     } else {
-      this.places.length = 0;
-      this.placesService.getPlaces(this.categoryId, 1, 50).subscribe((data: any) => {
-        this.places = data;
+      delete params.type_id;
+      params.category_id = this.categoryId;
+    }
+
+    if (this.filterToleranceState !== undefined) {
+      this.filterToleranceState.forEach((item: string) => {
+        params[item] = true;
       });
     }
+
+    this.placesService.getPlaces(params).subscribe((data: IPlace[]) => {
+      if (isConcatenation) {
+        this.places = this.places.concat(data);
+        return;
+      }
+      if (this.places !== undefined) { this.places.length = 0; }
+      this.places = data;
+    });
   }
 
-  public setFilterState(filterState): void {
-    this.typesId = filterState;
+  private resetPage(): void {
+    this.page = 1;
+  }
+
+  public updateFilterTypeState(filterState): void {
+    this.filterTypeState = filterState;
+    this.resetPage();
     this.updatePlaces();
+  }
+
+  public updateFilterToleranceState(filterState): void{
+    this.filterToleranceState = filterState;
+    this.resetPage();
+    this.updatePlaces();
+  }
+
+  public updatePaginationState([page, isConcatenation]): void {
+    this.page = page;
+    this.updatePlaces(isConcatenation);
   }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.categoryId = params.categoryId;
+      this.categoryId = params.category_id;
     });
+    this.perPage = this.placesService.getPerPage();
+    this.resetPage();
     this.updatePlaces();
   }
 

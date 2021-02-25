@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PlacesPageViewComponent, DetailsOfPlacePageComponent } from './components';
-import { LayoutModule } from '../../layout';
-import { PlacesPageRoutingModule } from './places-page-routing.module';
-import { FilterByTypeComponent } from './components/filter-by-type/filter-by-type.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { LayoutModule } from '../../layout';
+import { SharedModule } from '../../shared';
+import { PlacesPageViewComponent, DetailsOfPlacePageComponent, FilterByTypeComponent, FilterByToleranceComponent } from './components';
+import { PlacesPageRoutingModule } from './places-page-routing.module';
 
 
 @NgModule({
-  declarations: [PlacesPageViewComponent, DetailsOfPlacePageComponent, DetailsOfPlacePageComponent, FilterByTypeComponent],
+  declarations: [
+    PlacesPageViewComponent,
+    DetailsOfPlacePageComponent,
+    FilterByTypeComponent,
+    FilterByToleranceComponent],
   imports: [
     CommonModule,
     LayoutModule,
+    SharedModule,
     PlacesPageRoutingModule,
     ReactiveFormsModule,
   ]

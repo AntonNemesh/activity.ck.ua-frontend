@@ -4,5 +4,3 @@ export interface IPhotos {
   author_name: string;
   author_link: string;
 }
-
-

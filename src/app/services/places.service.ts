@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiUrlService } from './api-url.service';
+import { IPlace } from '../static/type';
+
+// @ts-ignore
+import * as DATABASE from './../../../api/database.json';
 
 @Injectable({
   providedIn: 'root'
@@ -10,23 +14,111 @@ export class PlacesService {
 
   constructor(private http: HttpClient, private apiUrlService: ApiUrlService) { }
 
-  public getPlaces(category: string, page: number, perPage: number, typeId?: string): Observable<any> {
-    let params;
+  private perPage = 1;
 
-    if (typeId !== undefined) {
-      params = {
-        _page: String(page),
-        _limit: String(perPage),
-        typeId
-      };
-    } else {
-      params = {
-        categoryId: category,
-        _page: String(page),
-        _limit: String(perPage),
-      };
-    }
+  public getPerPage(): number {
+    return this.perPage;
+  }
 
-    return this.http.get(this.apiUrlService.generateApiLink('places'), { params });
+  public amountPages(options): number {
+    let counter = 0;
+    DATABASE.default.places.forEach((item) => {
+      if (options.type_id !== undefined) {
+        if (Object.keys(options).length === 1) {
+          if (item.type_id === options.type_id &&
+            options.accessibility === undefined &&
+            options.dog_friendly === undefined &&
+            options.child_friendly === undefined) { counter++; return; }
+          return;
+        }
+        if (Object.keys(options).length === 2) {
+          if (item.type_id === options.type_id &&
+            item.accessibility === options.accessibility) { counter++; return; }
+
+          if (item.type_id === options.type_id &&
+            item.child_friendly === options.child_friendly) { counter++; return; }
+
+          if (item.type_id === options.type_id &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
+          return;
+        }
+        if (Object.keys(options).length === 3) {
+          if (item.type_id === options.type_id &&
+            item.accessibility === options.accessibility &&
+            item.child_friendly === options.child_friendly) { counter++; return; }
+
+          if (item.type_id === options.type_id &&
+            item.accessibility === options.accessibility &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
+
+          if (item.type_id === options.type_id &&
+            item.child_friendly === options.child_friendly &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
+          return;
+        }
+        if (Object.keys(options).length === 4) {
+          if (item.type_id === options.type_id &&
+            item.accessibility === options.accessibility &&
+            item.child_friendly === options.child_friendly &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
+          return;
+        }
+        return;
+      }
+      if (options.category_id !== undefined) {
+        if (Object.keys(options).length === 1) {
+          if (item.category_id === options.category_id &&
+            options.accessibility === undefined &&
+            options.dog_friendly === undefined &&
+            options.child_friendly === undefined) { counter++; return; }
+          return;
+        }
+        if (Object.keys(options).length === 2) {
+          if (item.category_id === options.category_id &&
+            item.accessibility === options.accessibility) { counter++; return; }
+
+          if (item.category_id === options.category_id &&
+            item.child_friendly === options.child_friendly) { counter++; return; }
+
+          if (item.category_id === options.category_id &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
+          return;
+        }
+        if (Object.keys(options).length === 3) {
+          if (item.category_id === options.category_id &&
+            item.accessibility === options.accessibility &&
+            item.child_friendly === options.child_friendly) { counter++; return; }
+
+          if (item.category_id === options.category_id &&
+            item.accessibility === options.accessibility &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
+
+          if (item.category_id === options.category_id &&
+            item.child_friendly === options.child_friendly &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
+          return;
+        }
+        if (Object.keys(options).length === 4) {
+          if (item.category_id === options.category_id &&
+            item.accessibility === options.accessibility &&
+            item.child_friendly === options.child_friendly &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
+          return;
+        }
+        return;
+      }
+    });
+    return (counter / this.getPerPage() >= 1) ? Math.ceil(counter / this.getPerPage()) : 1;
+  }
+
+  public getPlaces(params): Observable<IPlace[]> {
+    return this.http.get<IPlace[]>(this.apiUrlService.generateApiLink('places'), { params });
+  }
+
+  public getPlaceById(placeId): Observable<IPlace> {
+    const params = {
+      id: placeId,
+    };
+    return this.http.get<IPlace>(this.apiUrlService.generateApiLink('places'), { params });
   }
 }
