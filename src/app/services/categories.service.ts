@@ -9,12 +9,12 @@ import { PLACES_CATEGORIES } from '../static/data';
 export class CategoriesService {
   private categories: IPlacesCategories[] = PLACES_CATEGORIES;
 
-  static getRandomNumbInRange(min, max): number {
+  static getRandomNumbInRange(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   public getRandomCategory(): string {
-    const randomNumb = CategoriesService.getRandomNumbInRange(0, this.categories.length - 1);
+    const randomNumb: number = CategoriesService.getRandomNumbInRange(0, this.categories.length - 1);
     return this.categories[randomNumb].id;
   }
 

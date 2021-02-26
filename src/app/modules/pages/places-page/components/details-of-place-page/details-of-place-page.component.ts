@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Params} from '@angular/router';
 import { PlacesService } from '../../../../../services';
 import { IPlace, IPhotos } from '../../../../../static/type';
 import { map } from 'rxjs/operators';
+import {Observable, Subscription} from 'rxjs';
 
 
 @Component({
@@ -30,8 +31,8 @@ export class DetailsOfPlacePageComponent implements OnInit {
 
   private updatePlace(): void {
     this.placesService.getPlaceById(this.placeId).pipe(
-      map(((detailsOfPlace: IPlace) => (detailsOfPlace[0]))
-      )).subscribe(detailsOfPlace => {
+      map(((detailsOfPlace) => detailsOfPlace[0])
+      )).subscribe((detailsOfPlace) => {
       this.photos = detailsOfPlace.photos;
       this.name = detailsOfPlace.name;
       this.typeId = detailsOfPlace.type_id;

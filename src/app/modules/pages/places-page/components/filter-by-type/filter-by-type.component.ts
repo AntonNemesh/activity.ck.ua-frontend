@@ -10,26 +10,26 @@ import { FormArray, FormControl } from '@angular/forms';
 })
 export class FilterByTypeComponent implements OnInit {
   @Input()
-  categoryId;
-  public formTypes = new FormArray([]);
+  categoryId: string;
+  public formTypes: FormArray = new FormArray([]);
   public selectedTypes: string[];
   public types: IPlacesTypes[];
 
   @Output()
-  filterStateChange = new EventEmitter<string[]>();
+  filterStateChange: EventEmitter<string[]> = new EventEmitter<string[]>();
 
   constructor(private filterByTypeService: FilterByTypeService) { }
 
-  private setTypes(categoriesId): void {
+  private setTypes(): void {
     const types: IPlacesTypes[] = this.filterByTypeService.getTypes(this.categoryId);
-    if (types[0].type_id === categoriesId) { return; }
+    if (!types?.length) { return; }
     this.types = types;
     this.types.forEach(() => { this.formTypes.push(new FormControl(false)); });
   }
 
   public getSelectedTypes(filterState: boolean[]): string[] {
-    const selectedTypes = [];
-    filterState.forEach((item: boolean, index: number) => {
+    const selectedTypes: string[] = [];
+    filterState.forEach((item, index) => {
       if (!item) { return; }
       selectedTypes.push(this.types[index].type_id);
     });
@@ -37,7 +37,7 @@ export class FilterByTypeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setTypes(this.categoryId);
+    this.setTypes();
     this.formTypes.valueChanges.subscribe((value) => {
       this.selectedTypes = this.getSelectedTypes(value);
       this.filterStateChange.emit(this.selectedTypes);

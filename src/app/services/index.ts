@@ -3,6 +3,7 @@ import { PlacesService } from './places.service';
 import { ApiUrlService } from './api-url.service';
 import { FilterByTypeService } from './filter-by-type.service';
 
+// tslint:disable-next-line:typedef
 export const services = [
   CategoriesService,
   PlacesService,

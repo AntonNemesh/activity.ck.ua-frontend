@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PlacesService } from '../../../../services';
+import { IPlaceRequestParams } from '../../../../static/type';
 
 @Component({
   selector: 'app-pagination',
@@ -10,32 +11,32 @@ export class PaginationComponent implements OnInit {
 
   constructor(private placesService: PlacesService) { }
 
-  private filterTypeState;
-  private filterToleranceState;
+  private filterTypeState: string[] = [];
+  private filterToleranceState: string[] = [];
   private page: number;
   private buttonStart: number;
   private buttonEnd: number;
-  private activeButtons: number[];
+  private activeButtons: number[] = [];
 
   public totalPages: number;
   public separatorState: boolean[];
   public isTheLastPage: boolean;
 
   @Input()
-  categoryId;
+  categoryId: string;
 
   @Output()
-  paginationStateChange = new EventEmitter<[number, boolean]>();
+  paginationStateChange: EventEmitter<[number, boolean]> = new EventEmitter<[number, boolean]>();
 
   private updateTotalPages(): void {
-    let options;
-    if (this.filterTypeState !== undefined && this.filterTypeState.length !== 0) {
+    let options: Partial<IPlaceRequestParams>;
+    if (this.filterTypeState?.length) {
       options = { type_id: this.filterTypeState[0] };
     } else {
       options = { category_id: this.categoryId };
     }
-    if (this.filterToleranceState !== undefined && this.filterToleranceState.length !== 0) {
-      this.filterToleranceState.forEach((item: string) => {
+    if (this.filterToleranceState?.length) {
+      this.filterToleranceState.forEach((item) => {
         options[item] = true;
       });
     }
@@ -45,17 +46,16 @@ export class PaginationComponent implements OnInit {
   private resetPage(): void {
     this.page = 1;
     this.isTheLastPage = true;
-    this.activeButtons = [];
   }
 
   private initSeparator(): void {
     this.separatorState = [false, false];
   }
 
-  private setVisibleButtons(buttonStart, buttonEnd, [separator1, separator2]): void {
+  private setVisibleButtons(buttonStart: number, buttonEnd: number, separators: [boolean, boolean]): void {
     this.buttonStart = buttonStart;
     this.buttonEnd = buttonEnd;
-    this.separatorState = [separator1, separator2];
+    this.separatorState = separators;
   }
 
   private updateButtonsView(): void {
@@ -76,8 +76,8 @@ export class PaginationComponent implements OnInit {
     this.setVisibleButtons(this.page - 3, this.page + 3, [true, true]);
   }
 
-  public checkButtonVisibility(page): boolean {
-    let result = true;
+  public checkButtonVisibility(page: number): boolean {
+    let result: boolean = true;
     if (page === 1 ||
         page === this.totalPages ||
         page < this.buttonStart ||
@@ -85,7 +85,7 @@ export class PaginationComponent implements OnInit {
     return result;
   }
 
-  public setPage(event, page): void {
+  public setPage(event: Event, page: number): void {
     event.preventDefault();
     this.page = page;
     this.paginationStateChange.emit([this.page, false]);
@@ -93,16 +93,16 @@ export class PaginationComponent implements OnInit {
     this.updateButtonsView();
   }
 
-  public checkState(page): boolean {
+  public checkState(page: number): boolean {
     if (this.activeButtons.length === 0) { return this.page === page; }
-    let result = false;
-    this.activeButtons.forEach((item: number) => {
+    let result: boolean = false;
+    this.activeButtons.forEach((item) => {
       if (item === page) { result = true; }
     });
     return result;
   }
 
-  setNextPage(event): void {
+  setNextPage(event: Event): void {
     event.preventDefault();
     if (this.activeButtons.length === 0) { this.activeButtons.push(this.page); }
     this.activeButtons.push(++this.page);
@@ -111,8 +111,7 @@ export class PaginationComponent implements OnInit {
   }
 
   @Input('filterTypeState')
-  set _filterTypeState(value) {
-    if (value === undefined) { return; }
+  set _filterTypeState(value: string[]) {
     this.filterTypeState = value;
     this.updateTotalPages();
     this.resetPage();
@@ -120,8 +119,7 @@ export class PaginationComponent implements OnInit {
   }
 
   @Input('filterToleranceState')
-  set _filterToleranceState(value) {
-    if (value === undefined) { return; }
+  set _filterToleranceState(value: string[]) {
     this.filterToleranceState = value;
     this.updateTotalPages();
     this.resetPage();

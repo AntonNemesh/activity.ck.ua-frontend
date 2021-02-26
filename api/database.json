@@ -3,7 +3,7 @@
     {
       "id": 1,
       "category_id": "culture",
-      "type_id": "culture",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -80,7 +80,7 @@
     {
       "id": 2,
       "category_id": "children",
-      "type_id": "children",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -234,7 +234,7 @@
     {
       "id": 4,
       "category_id": "todo_something",
-      "type_id": "todo_something",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -388,7 +388,7 @@
     {
       "id": 6,
       "category_id": "history",
-      "type_id": "history",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -465,7 +465,7 @@
     {
       "id": 7,
       "category_id": "unique_things",
-      "type_id": "unique_things",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -619,7 +619,7 @@
     {
       "id": 9,
       "category_id": "inspired_city",
-      "type_id": "inspired_city",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -1004,7 +1004,7 @@
     {
       "id": 14,
       "category_id": "todo_something",
-      "type_id": "todo_something",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -1158,7 +1158,7 @@
     {
       "id": 16,
       "category_id": "history",
-      "type_id": "history",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -1235,7 +1235,7 @@
     {
       "id": 17,
       "category_id": "unique_things",
-      "type_id": "unique_things",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -1389,7 +1389,7 @@
     {
       "id": 19,
       "category_id": "inspired_city",
-      "type_id": "inspired_city",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -1466,7 +1466,7 @@
     {
       "id": 20,
       "category_id": "children",
-      "type_id": "children",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -1543,7 +1543,7 @@
     {
       "id": 21,
       "category_id": "culture",
-      "type_id": "culture",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -1620,7 +1620,7 @@
     {
       "id": 22,
       "category_id": "children",
-      "type_id": "children",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -1774,7 +1774,7 @@
     {
       "id": 24,
       "category_id": "todo_something",
-      "type_id": "todo_something",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -1928,7 +1928,7 @@
     {
       "id": 26,
       "category_id": "history",
-      "type_id": "history",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -2005,7 +2005,7 @@
     {
       "id": 27,
       "category_id": "unique_things",
-      "type_id": "unique_things",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -2159,7 +2159,7 @@
     {
       "id": 29,
       "category_id": "inspired_city",
-      "type_id": "inspired_city",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -2236,7 +2236,7 @@
     {
       "id": 30,
       "category_id": "inspired_city",
-      "type_id": "inspired_city",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -3622,7 +3622,7 @@
     {
       "id": 48,
       "category_id": "extreme",
-      "type_id": "extreme",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -3699,7 +3699,7 @@
     {
       "id": 49,
       "category_id": "extreme",
-      "type_id": "extreme",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -3776,7 +3776,7 @@
     {
       "id": 50,
       "category_id": "extreme",
-      "type_id": "extreme",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -3853,7 +3853,7 @@
     {
       "id": 52,
       "category_id": "extreme",
-      "type_id": "extreme",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -3930,7 +3930,7 @@
     {
       "id": 53,
       "category_id": "extreme",
-      "type_id": "extreme",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -4007,7 +4007,7 @@
     {
       "id": 54,
       "category_id": "extreme",
-      "type_id": "extreme",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
@@ -4084,7 +4084,7 @@
     {
       "id": 55,
       "category_id": "extreme",
-      "type_id": "extreme",
+      "type_id": "",
       "photos": [
         {
           "id": 1,
