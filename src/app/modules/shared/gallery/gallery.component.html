@@ -1,0 +1,17 @@
+<div *ngIf="photos">
+  <div class="gallery" data-setting="setup1">
+    <div class="slider">
+      <ul class="gallery-wrapper images  stage list">
+        <li *ngFor="let photo of photos" class="mySlides fade">
+          <img src="{{photo.photo_url}}" alt="{{photo.author_name}}" class="img">
+          <p>{{photo.author_name}}</p>
+        </li>
+      </ul>
+    </div>
+    <ul class="dots-container list" *ngIf="totalImages !== 1">
+      <li>
+        <button *ngFor="let item of [].constructor(totalImages); let page = index" class="dot-pagination" (click)="getTotalImages()"></button>
+      </li>
+    </ul>
+  </div>
+</div>
