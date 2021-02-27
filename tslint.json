@@ -52,10 +52,6 @@
       "trace"
     ],
     "no-empty": false,
-    "no-inferrable-types": [
-      true,
-      "ignore-params"
-    ],
     "no-non-null-assertion": true,
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
@@ -84,8 +80,15 @@
     },
     "typedef": [
       true,
-      "call-signature"
+      "call-signature",
+      "parameter",
+      "property-declaration",
+      "variable-declaration",
+      "member-variable-declaration",
+      "object-destructuring",
+      "array-destructuring"
     ],
+    "no-trailing-whitespace": false,
     "typedef-whitespace": {
       "options": [
         {

@@ -11,10 +11,10 @@ import { FormArray, FormControl } from '@angular/forms';
 export class FilterByToleranceComponent implements OnInit {
   public toleranceFilter: IToleranceFilter[] = TOLERANCE_FILTER;
   public selectedFilter: string[];
-  public toleranceFilterArray = new FormArray([]);
+  public toleranceFilterArray: FormArray = new FormArray([]);
 
   @Output()
-  toleranceStateChange = new EventEmitter<string[]>();
+  toleranceStateChange: EventEmitter<string[]> = new EventEmitter<string[]>();
 
   constructor() {
   }
@@ -26,8 +26,8 @@ export class FilterByToleranceComponent implements OnInit {
   }
 
   getToleranceFilterState(filterState: boolean[]): string[] {
-    const selectedFilter = [];
-    filterState.forEach((item: boolean, index: number) => {
+    const selectedFilter: string[] = [];
+    filterState.forEach((item, index) => {
       if (!item) { return; }
       selectedFilter.push(this.toleranceFilter[index].filter_id);
     });

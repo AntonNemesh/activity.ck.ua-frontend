@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PlacesService } from '../../../../../services';
 import { IPlace } from '../../../../../static/type';
+import { PlacesRequestParamsHelper } from '../../../../../helpers';
 
 @Component({
   selector: 'app-places-page-view',
@@ -9,44 +10,34 @@ import { IPlace } from '../../../../../static/type';
   styleUrls: ['./places-page-view.component.css']
 })
 export class PlacesPageViewComponent implements OnInit {
-  public categoryId: string;
-  public places: IPlace[];
-  public filterTypeState: string[];
-  public filterToleranceState: string[];
-
-  private perPage: number;
+  private limit: number;
   private page: number;
+
+  public categoryId: string;
+  public places: IPlace[] = [];
+  public filterTypeState: string[] = [];
+  public filterToleranceState: string[] = [];
 
   constructor(private route: ActivatedRoute, private placesService: PlacesService) { }
 
-  private updatePlaces(isConcatenation?): void {
-    const params = {
-      _page: this.page,
-      _limit: this.perPage,
-      category_id: undefined,
-      type_id: undefined,
-    };
+  private updatePlaces(isConcatenation?: boolean): void {
 
-    if (this.filterTypeState !== undefined && this.filterTypeState.length !== 0) {
-      delete params.category_id;
-      params.type_id = this.filterTypeState[0];
-    } else {
-      delete params.type_id;
-      params.category_id = this.categoryId;
-    }
+    const options: PlacesRequestParamsHelper = new PlacesRequestParamsHelper(
+      {
+      page: this.page,
+      limit: this.limit,
+      categoryId: this.categoryId,
+      filterTypeState: this.filterTypeState,
+      filterToleranceState: this.filterToleranceState,
+      }
+    );
 
-    if (this.filterToleranceState !== undefined) {
-      this.filterToleranceState.forEach((item: string) => {
-        params[item] = true;
-      });
-    }
-
-    this.placesService.getPlaces(params).subscribe((data: IPlace[]) => {
+    this.placesService.getPlaces(options).subscribe((data) => {
       if (isConcatenation) {
         this.places = this.places.concat(data);
         return;
       }
-      if (this.places !== undefined) { this.places.length = 0; }
+      if (this.places?.length) { this.places.length = 0; }
       this.places = data;
     });
   }
@@ -55,19 +46,19 @@ export class PlacesPageViewComponent implements OnInit {
     this.page = 1;
   }
 
-  public updateFilterTypeState(filterState): void {
+  public updateFilterTypeState(filterState: string[]): void {
     this.filterTypeState = filterState;
     this.resetPage();
     this.updatePlaces();
   }
 
-  public updateFilterToleranceState(filterState): void{
+  public updateFilterToleranceState(filterState: string[]): void{
     this.filterToleranceState = filterState;
     this.resetPage();
     this.updatePlaces();
   }
 
-  public updatePaginationState([page, isConcatenation]): void {
+  public updatePaginationState([page, isConcatenation]: [number, boolean]): void {
     this.page = page;
     this.updatePlaces(isConcatenation);
   }
@@ -76,7 +67,7 @@ export class PlacesPageViewComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.categoryId = params.category_id;
     });
-    this.perPage = this.placesService.getPerPage();
+    this.limit = this.placesService.getLimit();
     this.resetPage();
     this.updatePlaces();
   }
