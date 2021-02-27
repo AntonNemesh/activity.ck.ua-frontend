@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiUrlService } from './api-url.service';
 import { IPlace, IPlaceRequestParams } from '../static/type';
 import { PlacesRequestParamsHelper } from '../helpers';
+import { map } from 'rxjs/operators';
 import DATABASE from './../../../api/database.json';
 
 @Injectable({
@@ -125,6 +126,8 @@ export class PlacesService {
     let params: HttpParams = new HttpParams();
     params = params.set('id', placeId);
 
-    return this.http.get<IPlace>(this.apiUrlService.generateApiLink('places'), { params });
+    return this.http.get<IPlace>(this.apiUrlService.generateApiLink('places'), { params }).pipe(
+      map((detailsOfPlace) => detailsOfPlace[0])
+    );
   }
 }

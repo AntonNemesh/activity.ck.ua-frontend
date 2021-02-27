@@ -1,18 +1,18 @@
 <app-layout>
   <h2>Детальна сторінка <span>{{placeId}}</span></h2>
-  <p>{{name}}</p>
-  <div class="gallery">
-    <img *ngFor="let photo of photos" alt="{{photo.author_name}}" src="{{photo.photo_url}}">
+  <div *ngIf="place">
+    <p>{{place.name}}</p>
+    <app-gallery [photos]="place.photos"></app-gallery>
+    <p>{{place.category_id}}</p>
+    <p>{{place.type_id}}</p>
+    <p>{{place.phone}}</p>
+    <p>{{place.address}}</p>
+    <p>{{place.website}}</p>
+    <p>Графік роботи: {{place.work_time}}</p>
+    <p>Доступність: {{place.accessibility}}</p>
+    <p>Місце дружнє до дітей: {{place.child_friendly}}</p>
+    <p>Місце дружнє до тварин: {{place.dog_friendly}}</p>
+    <p>Детальна інформація: {{place.description}}</p>
+    <p>Рейтинг: {{place.rating}}</p>
   </div>
-  <p>{{categoryId}}</p>
-  <p>{{typeId}}</p>
-  <p>{{phone}}</p>
-  <p>{{address}}</p>
-   <p>{{website}}</p>
-  <p>Графік роботи: {{workTime}}</p>
-  <p>Доступність: {{accessibility}}</p>
-  <p>Місце дружнє до дітей: {{childFriendly}}</p>
-  <p>Місце дружнє до тварин: {{dogFriendly}}</p>
-  <p>Детальна інформація: {{description}}</p>
-  <p>Рейтинг: {{rating}}</p>
 </app-layout>

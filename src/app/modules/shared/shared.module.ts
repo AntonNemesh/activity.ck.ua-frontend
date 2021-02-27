@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PaginationComponent, LoadingComponent } from './components';
+import { PaginationComponent, LoadingComponent, GalleryComponent } from './components';
 
 
 
 @NgModule({
-  declarations: [LoadingComponent, PaginationComponent],
+  declarations: [LoadingComponent, PaginationComponent, GalleryComponent],
   exports: [
     LoadingComponent,
     PaginationComponent,
+    GalleryComponent,
   ],
   imports: [
     CommonModule,
