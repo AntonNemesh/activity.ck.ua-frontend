@@ -16,7 +16,7 @@ export class PaginationComponent implements OnInit {
   private page: number;
   private buttonStart: number;
   private buttonEnd: number;
-  private activeButtons: number[] = [];
+  private activeButtons: number[];
 
   public totalPages: number;
   public separatorState: boolean[];
@@ -46,6 +46,7 @@ export class PaginationComponent implements OnInit {
   private resetPage(): void {
     this.page = 1;
     this.isTheLastPage = true;
+    this.activeButtons = [];
   }
 
   private initSeparator(): void {
