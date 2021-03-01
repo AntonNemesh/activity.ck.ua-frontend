@@ -1,3 +1,10 @@
 <div class="gallery">
-  <img *ngFor="let photo of photos" alt="{{photo.author_name}}" src="{{photo.photo_url}}">
+  <img *ngFor="let photo of photos" alt="{{photo.author_name}}" src="{{photo.photo_url}}" class="img hide" [class.selected]="photo == selectedPhoto">
+  <a class="prev" (click)="getNextPhoto()"><</a>
+  <a class="next">></a>
 </div>
+<ul class="dots-container list" *ngIf="totalImages !== 1">
+  <li>
+    <button *ngFor="let item of [].constructor(totalImages); let index = index" class="dot-pagination" (click)="getCurrentPhoto($event, index)"></button>
+  </li>
+</ul>
