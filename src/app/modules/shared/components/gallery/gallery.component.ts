@@ -9,7 +9,7 @@ import {interval, Observable} from 'rxjs';
 })
 export class GalleryComponent implements OnInit {
   public selectedPhotoIndex: number = 0;
-  public interval: Observable<number> = interval(3000);
+  public interval: any = interval(3000);
 
   @Input()
   photos: IPhotos[];
@@ -22,9 +22,7 @@ export class GalleryComponent implements OnInit {
   })
 
   public getCurrentPhoto(index: number): void {
-    this.subscription().unsubscribe();
     this.selectedPhotoIndex = index;
-    this.subscription();
   }
 
   public checkState(id: number): boolean {
