@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {IPhotos} from '../../../../static/type';
-import {interval} from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { IPhotos } from '../../../../static/type';
+import {interval, Observable} from 'rxjs';
 
 @Component({
   selector: 'app-gallery',
@@ -8,40 +8,33 @@ import {interval} from 'rxjs';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-  public totalImages: number;
-  public selectedDot: number;
-  public selectedPhoto: IPhotos;
-  public interval: any = interval(5000);
-
-  constructor() {
-  }
+  public selectedPhotoIndex: number = 0;
+  public interval: Observable<number> = interval(3000);
 
   @Input()
   photos: IPhotos[];
 
-  public getPhoto(index: number): void {
-    this.selectedPhoto = this.photos[index];
+  public subscription: any = () => this.interval.subscribe(() => {
+    ++this.selectedPhotoIndex;
+    if (this.selectedPhotoIndex === this.photos.length) {
+      this.selectedPhotoIndex = 0;
+    }
+  })
+
+  public getCurrentPhoto(index: number): void {
+    this.subscription().unsubscribe();
+    this.selectedPhotoIndex = index;
+    this.subscription();
   }
 
-  public getCurrentPhoto(event: Event, index: number): void {
-    this.selectedDot = index;
-    this.getPhoto(this.selectedDot);
-  }
-
-  public getNextPhoto(): void {
-
-  }
-
-  public rotatePhotos(index: number): void {
-    this.selectedPhoto = this.photos[index];
-    this.photos.forEach(item => {
-      this.interval.subscribe(this.selectedPhoto = item, console.log('interval', this.selectedPhoto));
-    });
+  public checkState(id: number): boolean {
+    let result: boolean = false;
+    if (this.selectedPhotoIndex === id) { result = true; }
+    return result;
   }
 
   ngOnInit(): void {
-    this.totalImages = this.photos.length;
-    this.rotatePhotos(0);
+    this.subscription();
   }
 
 }
