@@ -3,11 +3,11 @@ import { CategoriesService } from '../../../../../services';
 import { IPlacesCategories } from '../../../../../static/type';
 
 @Component({
-  selector: 'app-category-section',
-  templateUrl: './category-section.component.html',
-  styleUrls: ['./category-section.component.css']
+  selector: 'app-section-category',
+  templateUrl: './section-category.component.html',
+  styleUrls: ['./section-category.component.css']
 })
-export class CategorySectionComponent implements OnInit {
+export class SectionCategoryComponent implements OnInit {
   public randomCategory: string;
 
   constructor(private categoryService: CategoriesService) { }

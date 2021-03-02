@@ -1,3 +1,3 @@
-export { HomePageModule } from './home-page';
-export { PlacesPageModule } from './places-page';
+export { PageHomeModule } from './page-home';
+export { PagePlacesModule } from './page-places';
 

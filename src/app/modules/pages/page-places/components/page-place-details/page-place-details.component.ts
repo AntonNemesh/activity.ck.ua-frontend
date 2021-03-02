@@ -5,11 +5,11 @@ import { IPlace } from '../../../../../static/type';
 
 
 @Component({
-  selector: 'app-details-of-place-page',
-  templateUrl: './details-of-place-page.component.html',
-  styleUrls: ['./details-of-place-page.component.css']
+  selector: 'app-page-place-details',
+  templateUrl: './page-place-details.component.html',
+  styleUrls: ['./page-place-details.component.css']
 })
-export class DetailsOfPlacePageComponent implements OnInit {
+export class PagePlaceDetailsComponent implements OnInit {
   public placeId: string;
   public place: IPlace;
 

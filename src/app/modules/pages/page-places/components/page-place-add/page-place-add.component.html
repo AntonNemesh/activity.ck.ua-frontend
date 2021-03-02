@@ -1,0 +1,37 @@
+<app-layout>
+  <h1>Add new place</h1>
+  <form [formGroup]="addPlaceForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Categories</mat-label>
+      <mat-select formControlName="category_id">
+        <mat-option *ngFor="let category of categories" value="{{category.id}}">
+          {{category.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-radio-group *ngIf="types?.length" formControlName="type_id">
+      <mat-radio-button *ngFor="let type of types" value="{{type.type_id}}">{{type.name}}</mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field class="example-full-width">
+      <mat-label>Name of place</mat-label>
+      <input matInput formControlName="name" placeholder="Mcdonalds">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Description of place</mat-label>
+      <input matInput formControlName="description" placeholder="Mcdonalds - это крупнейшая в мире сеть ресторанов быстрого питания">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Place address</mat-label>
+      <input matInput formControlName="address" placeholder="вулиця Смілянська, 31, Черкаси, Черкаська область, 18000">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Place phone</mat-label>
+      <input matInput formControlName="phone" placeholder="380504639120">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Website</mat-label>
+      <input matInput formControlName="website" placeholder="https://www.mcdonalds.com/">
+    </mat-form-field>
+    <button mat-raised-button type="submit" [disabled]="!addPlaceForm.valid">Submit</button>
+  </form>
+</app-layout>
