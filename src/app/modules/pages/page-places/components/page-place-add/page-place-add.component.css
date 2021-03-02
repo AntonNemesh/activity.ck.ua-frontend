@@ -1,0 +1,20 @@
+mat-radio-group{
+  display: block;
+  padding: 0 0 20px 0;
+}
+
+form {
+  max-width: 480px;
+}
+
+mat-form-field,
+mat-radio-group,
+mat-radio-button {
+  display: block;
+}
+
+mat-radio-button {
+  padding-bottom: 5px;
+}
+
+

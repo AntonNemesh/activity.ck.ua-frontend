@@ -1,5 +1,6 @@
 <app-layout>
   <h2>Places {{categoryId}}</h2>
+  <a routerLink="/add_place">Додати локацію</a>
   <app-filter-by-type (filterStateChange)="updateFilterTypeState($event)"
                       [categoryId]="categoryId"></app-filter-by-type>
   <app-filter-by-tolerance (toleranceStateChange)="updateFilterToleranceState($event)"></app-filter-by-tolerance>

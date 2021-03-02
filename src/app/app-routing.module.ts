@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomePageViewComponent } from './modules/pages/home-page/components';
+import { PageHomeViewComponent } from './modules/pages/page-home/components';
+import { PagePlaceAddComponent } from './modules/pages/page-places/components';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomePageViewComponent },
-  { path: 'places/:category_id', loadChildren: () => import('./modules/pages/places-page').then(m => m.PlacesPageModule) },
+  { path: 'home', component: PageHomeViewComponent },
+  { path: 'places/:category_id', loadChildren: () => import('./modules/pages/page-places').then(m => m.PagePlacesModule) },
+  { path: 'add_place', component: PagePlaceAddComponent },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 

@@ -1,5 +1,6 @@
 body {
   background-color: white;
+  padding: 20px;
 }
 
 .button {
@@ -31,4 +32,8 @@ body {
 
 .filter {
   padding-top: 15px;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background: none;
 }

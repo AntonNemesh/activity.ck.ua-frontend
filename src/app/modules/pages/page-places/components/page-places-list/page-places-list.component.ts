@@ -5,11 +5,11 @@ import { IPlace } from '../../../../../static/type';
 import { PlacesRequestParamsHelper } from '../../../../../helpers';
 
 @Component({
-  selector: 'app-places-page-view',
-  templateUrl: './places-page-view.component.html',
-  styleUrls: ['./places-page-view.component.css']
+  selector: 'app-page-places-list',
+  templateUrl: './page-places-list.component.html',
+  styleUrls: ['./page-places-list.component.css']
 })
-export class PlacesPageViewComponent implements OnInit {
+export class PagePlacesListComponent implements OnInit {
   private limit: number;
   private page: number;
 

@@ -111,6 +111,10 @@ export class PlacesService {
     return (counter / this.getLimit() >= 1) ? Math.ceil(counter / this.getLimit()) : 1;
   }
 
+  public savePlace(placeData: any): Observable<any> {
+    return this.http.post(this.apiUrlService.generateApiLink('places'), placeData);
+  }
+
   public getPlaces(options: PlacesRequestParamsHelper): Observable<IPlace[]> {
     let params: HttpParams = new HttpParams();
     const placeRequestParams: Partial<IPlaceRequestParams> = options.toJSON();
