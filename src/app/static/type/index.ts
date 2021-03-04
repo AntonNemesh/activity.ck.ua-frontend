@@ -7,4 +7,5 @@ export { IPlaceRequestParams } from './place-request-params.interface';
 export { IToleranceFilterState } from './tolerance-filter-state.interface';
 export { IPlacesRequestParamsHelper } from './place-request-params.interface';
 export { IEnvironment } from './enviroment.interface';
+export { IOrganization } from './organization.interface';
 

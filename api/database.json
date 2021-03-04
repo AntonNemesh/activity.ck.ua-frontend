@@ -4316,5 +4316,63 @@
       "like": 21,
       "dis_like": 0
     }
+  ],
+  "organizations": [
+    {
+      "id": 1,
+      "name": "Федерація Альпинизму і Скелелазіння",
+      "phone": "+38060654256652",
+      "email": "info@fais.ck.ua",
+      "approved": true
+    },
+    {
+      "id": 2,
+      "name": "Федерація Плавання",
+      "phone": "+38060654256652",
+      "email": "info@fais.ck.ua",
+      "approved": true
+    },
+    {
+      "id": 3,
+      "name": "Федерація стрільби з луку",
+      "phone": "+38060654256652",
+      "email": "info@fais.ck.ua",
+      "approved": true
+    },
+    {
+      "id": 4,
+      "name": "Федерація кайтингу",
+      "phone": "+38060654256652",
+      "email": "info@fais.ck.ua",
+      "approved": true
+    },
+    {
+      "id": 5,
+      "name": "Федерація легкої атлетики",
+      "phone": "+38060654256652",
+      "email": "info@fais.ck.ua",
+      "approved": true
+    },
+    {
+      "id": 6,
+      "name": "Федерація важкої атлетики",
+      "phone": "+38060654256652",
+      "email": "info@fais.ck.ua",
+      "approved": false
+    },
+    {
+      "id": 7,
+      "name": "Федерація великого тенісу",
+      "phone": "+38060654256652",
+      "email": "info@fais.ck.ua",
+      "approved": false
+    },
+    {
+      "id": 8,
+      "name": "Федерація футболу",
+      "phone": "+38060654256652",
+      "email": "info@fais.ck.ua",
+      "approved": false
+    }
   ]
 }

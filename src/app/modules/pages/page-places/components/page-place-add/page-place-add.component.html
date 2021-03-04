@@ -1,6 +1,47 @@
 <app-layout>
   <h1>Add new place</h1>
   <form [formGroup]="addPlaceForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width">
+      <mat-label>Зареєстровані організації</mat-label>
+      <input type="text"
+             placeholder="Виберіть організацію"
+             aria-label="Number"
+             matInput
+             formControlName="organization_id"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let organization of filteredApprovedOrganizations | async" [value]="organization">
+          {{organization}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <div class="new-organization" formGroupName="organization" *ngIf="isNewOrganization">
+      <h2>Створити нову організацію</h2>
+      <mat-form-field class="example-full-width">
+        <mat-label>Запропоновані організації</mat-label>
+        <input type="text"
+               placeholder="Виберіть організацію"
+               aria-label="Number"
+               matInput
+               formControlName="name"
+               [matAutocomplete]="auto2">
+        <mat-autocomplete #auto2="matAutocomplete">
+          <mat-option *ngFor="let organization of filteredProposedOrganizations | async" [value]="organization">
+            {{organization}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <div *ngIf="isProposedOrganization">
+        <mat-form-field class="example-full-width">
+          <mat-label>Телефон</mat-label>
+          <input matInput formControlName="phone" placeholder="+380933333333">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Пошта</mat-label>
+          <input matInput formControlName="email" placeholder="contact@organization.com">
+        </mat-form-field>
+      </div>
+    </div>
     <mat-form-field appearance="fill">
       <mat-label>Categories</mat-label>
       <mat-select formControlName="category_id">
@@ -9,9 +50,12 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-radio-group *ngIf="types?.length" formControlName="type_id">
-      <mat-radio-button *ngFor="let type of types" value="{{type.type_id}}">{{type.name}}</mat-radio-button>
-    </mat-radio-group>
+    <div *ngIf="types?.length" class="new-organization">
+      <h2>Обрати тип</h2>
+      <mat-radio-group  formControlName="type_id">
+        <mat-radio-button *ngFor="let type of types" value="{{type.type_id}}">{{type.name}}</mat-radio-button>
+      </mat-radio-group>
+    </div>
     <mat-form-field class="example-full-width">
       <mat-label>Name of place</mat-label>
       <input matInput formControlName="name" placeholder="Mcdonalds">
