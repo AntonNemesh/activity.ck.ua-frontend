@@ -9,8 +9,9 @@ export class FilterByTypeService {
   public types: IPlacesTypes[] = PLACES_TYPES;
 
   constructor() { }
-  public getTypes(categoryId: string): IPlacesTypes[] {
+  public getTypes(categoryId: number): IPlacesTypes[] {
     const types: IPlacesTypes[] = [];
+
     this.types.forEach((type) => {
       if (type.category_id !== categoryId) { return; }
       types.push(type);

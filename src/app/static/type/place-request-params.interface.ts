@@ -1,7 +1,7 @@
 export interface IPlaceRequestParams {
   _page: number;
   _limit: number;
-  category_id: string;
+  category_id: number;
   type_id: string;
   accessibility: boolean;
   child_friendly: boolean;
@@ -11,7 +11,7 @@ export interface IPlaceRequestParams {
 export interface IPlacesRequestParamsHelper {
   page: number;
   limit: number;
-  categoryId: string;
+  categoryId: number;
   filterTypeState: string[];
   filterToleranceState: string[];
 }

@@ -3,7 +3,7 @@ import { IPlaceRequestParams, IPlacesRequestParamsHelper, IToleranceFilterState 
 export class PlacesRequestParamsHelper {
   private readonly page: number;
   private readonly limit: number;
-  private readonly categoryId: string;
+  private readonly categoryId: number;
   private typeId: string;
   public filterToleranceState: Partial<IToleranceFilterState> = {};
 

@@ -13,7 +13,7 @@ export class CategoriesService {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  public getRandomCategory(): string {
+  public getRandomCategory(): number {
     const randomNumb: number = CategoriesService.getRandomNumbInRange(0, this.categories.length - 1);
     return this.categories[randomNumb].id;
   }

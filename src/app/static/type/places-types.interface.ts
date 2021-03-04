@@ -1,5 +1,5 @@
 export interface IPlacesTypes {
-  category_id: string;
+  category_id: number;
   type_id: string;
   name: string;
 }

@@ -23,7 +23,7 @@ export class PaginationComponent implements OnInit {
   public isTheLastPage: boolean;
 
   @Input()
-  categoryId: string;
+  categoryId: number;
 
   @Output()
   paginationStateChange: EventEmitter<[number, boolean]> = new EventEmitter<[number, boolean]>();
@@ -40,7 +40,7 @@ export class PaginationComponent implements OnInit {
         options[item] = true;
       });
     }
-    this.totalPages = this.placesService.amountPages(options);
+    // this.totalPages = this.placesService.amountPages(options);
   }
 
   private resetPage(): void {

@@ -1,14 +1,14 @@
 import { IPlacesCategories } from '../type';
 
 export const PLACES_CATEGORIES: IPlacesCategories[] = [
-  {id: 'children', name: 'розваги з дітьми'},
-  {id: 'recreation', name: 'активний відпочинок'},
-  {id: 'extreme', name: 'гострі відчуття'},
-  {id: 'todo_something', name: 'зробити руками'},
-  {id: 'culture', name: 'культурне натхнення'},
-  {id: 'history', name: 'історичні враження'},
-  {id: 'unique_things', name: 'унікальні речі'},
-  {id: 'sleeping', name: 'затишну ночівлю'},
-  {id: 'inspired_city', name: 'натхнення містом'},
-  {id: 'gastronomic_adventures', name: 'гастрономічні пригоди'},
+  {id: 1, name: 'розваги з дітьми'},
+  {id: 2, name: 'активний відпочинок'},
+  {id: 3, name: 'гострі відчуття'},
+  {id: 4, name: 'зробити руками'},
+  {id: 5, name: 'культурне натхнення'},
+  {id: 6, name: 'історичні враження'},
+  {id: 7, name: 'унікальні речі'},
+  {id: 8, name: 'затишну ночівлю'},
+  {id: 9, name: 'натхнення містом'},
+  {id: 10, name: 'гастрономічні пригоди'},
 ];

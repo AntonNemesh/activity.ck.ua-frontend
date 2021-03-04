@@ -10,7 +10,7 @@ import { FormArray, FormControl } from '@angular/forms';
 })
 export class FilterByTypeComponent implements OnInit {
   @Input()
-  categoryId: string;
+  categoryId: number;
   public formTypes: FormArray = new FormArray([]);
   public selectedTypes: string[];
   public types: IPlacesTypes[];

@@ -13,7 +13,7 @@ export class PagePlacesListComponent implements OnInit {
   private limit: number;
   private page: number;
 
-  public categoryId: string;
+  public categoryId: number;
   public places: IPlace[] = [];
   public filterTypeState: string[] = [];
   public filterToleranceState: string[] = [];
@@ -65,7 +65,7 @@ export class PagePlacesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.categoryId = params.category_id;
+      this.categoryId = Number(params.category_id);
     });
     this.limit = this.placesService.getLimit();
     this.resetPage();

@@ -29,7 +29,7 @@ export class PagePlaceAddComponent implements OnInit {
     type_id: new FormControl(''),
   });
 
-  private setTypes(category: string): void {
+  private setTypes(category: number): void {
     this.types.length = 0;
 
     const types: IPlacesTypes[] = this.filterByTypeService.getTypes(category);
@@ -39,14 +39,14 @@ export class PagePlaceAddComponent implements OnInit {
 
   public onSubmit(): void {
     this.placesService.savePlace(this.addPlaceForm.value).subscribe((value) => {
-      this.router.navigateByUrl(`/places/${value.category_id}`);
+      // this.router.navigateByUrl(`/places/${value.category_id}`);
     });
   }
 
   ngOnInit(): void {
     this.categories = this.categoriesService.getCategories();
     this.addPlaceForm.controls.category_id.valueChanges.subscribe((value) => {
-      this.setTypes(value);
+      this.setTypes(Number(value));
     });
   }
 }

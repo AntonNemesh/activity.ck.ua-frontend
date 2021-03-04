@@ -2,7 +2,7 @@ import { IPhotos } from './photos.interface';
 
 export interface IPlace {
   id: number;
-  category_id: string;
+  category_id: number;
   type_id: string;
   photos: IPhotos[];
   name: string;

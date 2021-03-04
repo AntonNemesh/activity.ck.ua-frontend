@@ -2,7 +2,7 @@
   "places": [
     {
       "id": 1,
-      "category_id": "culture",
+      "category_id": 5,
       "type_id": "",
       "photos": [
         {
@@ -79,7 +79,7 @@
     },
     {
       "id": 2,
-      "category_id": "children",
+      "category_id": 1,
       "type_id": "",
       "photos": [
         {
@@ -156,7 +156,7 @@
     },
     {
       "id": 3,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "water",
       "photos": [
         {
@@ -233,7 +233,7 @@
     },
     {
       "id": 4,
-      "category_id": "todo_something",
+      "category_id": 4,
       "type_id": "",
       "photos": [
         {
@@ -310,7 +310,7 @@
     },
     {
       "id": 5,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "water",
       "photos": [
         {
@@ -387,7 +387,7 @@
     },
     {
       "id": 6,
-      "category_id": "history",
+      "category_id": 6,
       "type_id": "",
       "photos": [
         {
@@ -464,7 +464,7 @@
     },
     {
       "id": 7,
-      "category_id": "unique_things",
+      "category_id": 7,
       "type_id": "",
       "photos": [
         {
@@ -541,7 +541,7 @@
     },
     {
       "id": 8,
-      "category_id": "sleeping",
+      "category_id": 8,
       "type_id": "hostels",
       "photos": [
         {
@@ -618,7 +618,7 @@
     },
     {
       "id": 9,
-      "category_id": "inspired_city",
+      "category_id": 9,
       "type_id": "",
       "photos": [
         {
@@ -695,7 +695,7 @@
     },
     {
       "id": 10,
-      "category_id": "gastronomic_adventures",
+      "category_id": 10,
       "type_id": "fastfood",
       "photos": [
         {
@@ -772,7 +772,7 @@
     },
     {
       "id": 11,
-      "category_id": "gastronomic_adventures",
+      "category_id": 10,
       "type_id": "coffee",
       "photos": [
         {
@@ -849,7 +849,7 @@
     },
     {
       "id": 12,
-      "category_id": "gastronomic_adventures",
+      "category_id": 10,
       "type_id": "coffee",
       "photos": [
         {
@@ -926,7 +926,7 @@
     },
     {
       "id": 13,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "water",
       "photos": [
         {
@@ -1003,7 +1003,7 @@
     },
     {
       "id": 14,
-      "category_id": "todo_something",
+      "category_id": 4,
       "type_id": "",
       "photos": [
         {
@@ -1080,7 +1080,7 @@
     },
     {
       "id": 15,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "sport",
       "photos": [
         {
@@ -1157,7 +1157,7 @@
     },
     {
       "id": 16,
-      "category_id": "history",
+      "category_id": 6,
       "type_id": "",
       "photos": [
         {
@@ -1234,7 +1234,7 @@
     },
     {
       "id": 17,
-      "category_id": "unique_things",
+      "category_id": 7,
       "type_id": "",
       "photos": [
         {
@@ -1311,7 +1311,7 @@
     },
     {
       "id": 18,
-      "category_id": "sleeping",
+      "category_id": 8,
       "type_id": "hotels",
       "photos": [
         {
@@ -1388,7 +1388,7 @@
     },
     {
       "id": 19,
-      "category_id": "inspired_city",
+      "category_id": 9,
       "type_id": "",
       "photos": [
         {
@@ -1465,7 +1465,7 @@
     },
     {
       "id": 20,
-      "category_id": "children",
+      "category_id": 1,
       "type_id": "",
       "photos": [
         {
@@ -1542,7 +1542,7 @@
     },
     {
       "id": 21,
-      "category_id": "culture",
+      "category_id": 5,
       "type_id": "",
       "photos": [
         {
@@ -1619,7 +1619,7 @@
     },
     {
       "id": 22,
-      "category_id": "children",
+      "category_id": 1,
       "type_id": "",
       "photos": [
         {
@@ -1696,7 +1696,7 @@
     },
     {
       "id": 23,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "water",
       "photos": [
         {
@@ -1773,7 +1773,7 @@
     },
     {
       "id": 24,
-      "category_id": "todo_something",
+      "category_id": 4,
       "type_id": "",
       "photos": [
         {
@@ -1850,7 +1850,7 @@
     },
     {
       "id": 25,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "gym",
       "photos": [
         {
@@ -1927,7 +1927,7 @@
     },
     {
       "id": 26,
-      "category_id": "history",
+      "category_id": 6,
       "type_id": "",
       "photos": [
         {
@@ -2004,7 +2004,7 @@
     },
     {
       "id": 27,
-      "category_id": "unique_things",
+      "category_id": 7,
       "type_id": "",
       "photos": [
         {
@@ -2081,7 +2081,7 @@
     },
     {
       "id": 28,
-      "category_id": "sleeping",
+      "category_id": 8,
       "type_id": "hostels",
       "photos": [
         {
@@ -2158,7 +2158,7 @@
     },
     {
       "id": 29,
-      "category_id": "inspired_city",
+      "category_id": 9,
       "type_id": "",
       "photos": [
         {
@@ -2235,7 +2235,7 @@
     },
     {
       "id": 30,
-      "category_id": "inspired_city",
+      "category_id": 9,
       "type_id": "",
       "photos": [
         {
@@ -2312,7 +2312,7 @@
     },
     {
       "id": 31,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "water",
       "photos": [
         {
@@ -2389,7 +2389,7 @@
     },
     {
       "id": 32,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "water",
       "photos": [
         {
@@ -2466,7 +2466,7 @@
     },
     {
       "id": 33,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "water",
       "photos": [
         {
@@ -2543,7 +2543,7 @@
     },
     {
       "id": 34,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "gym",
       "photos": [
         {
@@ -2620,7 +2620,7 @@
     },
     {
       "id": 35,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "gym",
       "photos": [
         {
@@ -2697,7 +2697,7 @@
     },
     {
       "id": 36,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "gym",
       "photos": [
         {
@@ -2774,7 +2774,7 @@
     },
     {
       "id": 37,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "gym",
       "photos": [
         {
@@ -2851,7 +2851,7 @@
     },
     {
       "id": 38,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "gym",
       "photos": [
         {
@@ -2928,7 +2928,7 @@
     },
     {
       "id": 39,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "stadium",
       "photos": [
         {
@@ -3005,7 +3005,7 @@
     },
     {
       "id": 40,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "stadium",
       "photos": [
         {
@@ -3082,7 +3082,7 @@
     },
     {
       "id": 41,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "stadium",
       "photos": [
         {
@@ -3159,7 +3159,7 @@
     },
     {
       "id": 42,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "stadium",
       "photos": [
         {
@@ -3236,7 +3236,7 @@
     },
     {
       "id": 43,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "stadium",
       "photos": [
         {
@@ -3313,7 +3313,7 @@
     },
     {
       "id": 44,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "stadium",
       "photos": [
         {
@@ -3390,7 +3390,7 @@
     },
     {
       "id": 45,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "stadium",
       "photos": [
         {
@@ -3467,7 +3467,7 @@
     },
     {
       "id": 46,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "stadium",
       "photos": [
         {
@@ -3544,7 +3544,7 @@
     },
     {
       "id": 47,
-      "category_id": "recreation",
+      "category_id": 2,
       "type_id": "stadium",
       "photos": [
         {
@@ -3621,7 +3621,7 @@
     },
     {
       "id": 48,
-      "category_id": "extreme",
+      "category_id": 3,
       "type_id": "",
       "photos": [
         {
@@ -3698,7 +3698,7 @@
     },
     {
       "id": 49,
-      "category_id": "extreme",
+      "category_id": 3,
       "type_id": "",
       "photos": [
         {
@@ -3775,7 +3775,7 @@
     },
     {
       "id": 50,
-      "category_id": "extreme",
+      "category_id": 3,
       "type_id": "",
       "photos": [
         {
@@ -3852,7 +3852,7 @@
     },
     {
       "id": 52,
-      "category_id": "extreme",
+      "category_id": 3,
       "type_id": "",
       "photos": [
         {
@@ -3929,7 +3929,7 @@
     },
     {
       "id": 53,
-      "category_id": "extreme",
+      "category_id": 3,
       "type_id": "",
       "photos": [
         {
@@ -4006,7 +4006,7 @@
     },
     {
       "id": 54,
-      "category_id": "extreme",
+      "category_id": 3,
       "type_id": "",
       "photos": [
         {
@@ -4083,7 +4083,7 @@
     },
     {
       "id": 55,
-      "category_id": "extreme",
+      "category_id": 3,
       "type_id": "",
       "photos": [
         {
@@ -4157,6 +4157,46 @@
       "child_friendly": false,
       "description": "Історія нашого закладу мистецької освіти створюється щоденною копіткою працею багатьох педагогів-музикантів, талановитих виконавців, які, навчаючи своїх студентів, передають їм не тільки таємниці своєї майстерності, але й невгасимий вогонь творчого горіння, щирість почуттів, самовіддану жертовність у служінні високим мистецьким ідеалам.\n\nДосвідчені викладачі коледжу окриляють юнацькі мрії своїх вихованців, надають їм впевненості, готують їх до великого життя в музиці.\n\nЗмінюються покоління викладачів, але незмінними залишаються традиції, скеровані на виховання високопрофесійних музикантів – викладачів, артистів та керівників оркестрів/хорів/ ансамблів, композиторів, науковців, які результатами своєї діяльності підносять добру славу коледжу до переліку кращих в Україні.\n\nЯкщо у 1961 році Черкаський музичний коледж (на той час – училище) приймав своїх перших вихованців у п’яти класах приміщення дитячої музичної школи № 1 міста, то зараз, маючи відмінну матеріальну базу – велику кількість навчальних аудиторій, Органну та Концертно-репетиційну зали, фонотеку, бібліотеку з читальним залом, лабораторію звукозапису, спеціалізовані кабінети, комп’ютерний клас, їдальню, що розміщуються у будівлі, яка належить до пам’яток архітектури України (архітектор –славетний В.Л. Городецький) та у сучасній прибудові, коледж створює всі умови для успішного навчання студентів.",
       "rating": 4.5
+    },
+    {
+      "name": "ddsv",
+      "description": "dsvsd",
+      "address": "sdvdsv",
+      "phone": "dsvsdvds",
+      "website": "vsdvd",
+      "category_id": "2",
+      "type_id": "gym",
+      "id": 56
+    },
+    {
+      "name": "dfsf",
+      "description": "sdfsd",
+      "address": "fsdf",
+      "phone": "fdsfsdf",
+      "website": "sdfsdf",
+      "category_id": "2",
+      "type_id": "gym",
+      "id": 57
+    },
+    {
+      "name": "dsdfs",
+      "description": "dfsdf",
+      "address": "sdfds",
+      "phone": "fsdf",
+      "website": "sdfsdf",
+      "category_id": "2",
+      "type_id": "water",
+      "id": 58
+    },
+    {
+      "name": "dsf",
+      "description": "dsfs",
+      "address": "sdf",
+      "phone": "sdfsd",
+      "website": "sdf",
+      "category_id": "2",
+      "type_id": "gym",
+      "id": 59
     }
   ],
   "events": [

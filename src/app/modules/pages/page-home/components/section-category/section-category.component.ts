@@ -8,7 +8,7 @@ import { IPlacesCategories } from '../../../../../static/type';
   styleUrls: ['./section-category.component.css']
 })
 export class SectionCategoryComponent implements OnInit {
-  public randomCategory: string;
+  public randomCategory: number;
 
   constructor(private categoryService: CategoriesService) { }
 
