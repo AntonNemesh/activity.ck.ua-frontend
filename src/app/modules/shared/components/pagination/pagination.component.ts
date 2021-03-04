@@ -40,7 +40,7 @@ export class PaginationComponent implements OnInit {
         options[item] = true;
       });
     }
-    // this.totalPages = this.placesService.amountPages(options);
+    this.totalPages = this.placesService.amountPages(options);
   }
 
   private resetPage(): void {

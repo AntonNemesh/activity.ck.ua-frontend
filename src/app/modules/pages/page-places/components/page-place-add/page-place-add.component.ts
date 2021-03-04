@@ -39,7 +39,7 @@ export class PagePlaceAddComponent implements OnInit {
 
   public onSubmit(): void {
     this.placesService.savePlace(this.addPlaceForm.value).subscribe((value) => {
-      // this.router.navigateByUrl(`/places/${value.category_id}`);
+      this.router.navigateByUrl(`/places/${value.category_id}`);
     });
   }
 
