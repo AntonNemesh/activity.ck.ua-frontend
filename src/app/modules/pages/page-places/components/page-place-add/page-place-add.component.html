@@ -31,14 +31,35 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-      <div *ngIf="isProposedOrganization">
-        <mat-form-field class="example-full-width">
-          <mat-label>Телефон</mat-label>
-          <input matInput formControlName="phone" placeholder="+380933333333">
-        </mat-form-field>
+      <div *ngIf="isProposeOrganization">
+        <div formArrayName="phones">
+          <mat-form-field *ngFor="let control of organizationPhones.controls; index as i" class="example-full-width">
+            <mat-label>Телефон</mat-label>
+            <input type="tel" [textMask]="{mask: phoneMask}" matInput [formControl]="organizationPhones.controls[i]" Name="phone" placeholder="+380 (**) *** ** **">
+            <mat-error
+              *ngIf="organizationPhones.controls[i].hasError('pattern') &&
+              !organizationPhones.controls[i].hasError('required')">
+              Будь ласка, введіть дійсний телефон
+            </mat-error>
+            <mat-error
+              *ngIf="organizationPhones.controls[i].hasError('required')">
+              Поле з телефоном має бути заповнене
+            </mat-error>
+          </mat-form-field>
+          <a href="" (click)="addPhone($event)">more phones</a>
+        </div>
         <mat-form-field class="example-full-width">
           <mat-label>Пошта</mat-label>
           <input matInput formControlName="email" placeholder="contact@organization.com">
+          <mat-error
+            *ngIf="proposeOrganization.get('email').hasError('email') &&
+            !proposeOrganization.get('email').hasError('required')">
+            Будь ласка, введіть дійсну адресу електронної пошти
+          </mat-error>
+          <mat-error
+            *ngIf="proposeOrganization.get('email').hasError('required')">
+            Поле з адресою електронної пошти має бути заповнене
+          </mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -68,10 +89,22 @@
       <mat-label>Place address</mat-label>
       <input matInput formControlName="address" placeholder="вулиця Смілянська, 31, Черкаси, Черкаська область, 18000">
     </mat-form-field>
-    <mat-form-field class="example-full-width">
-      <mat-label>Place phone</mat-label>
-      <input matInput formControlName="phone" placeholder="380504639120">
-    </mat-form-field>
+    <div formArrayName="phone">
+      <mat-form-field *ngFor="let control of placePhones.controls; index as i" class="example-full-width">
+        <mat-label>Телефон</mat-label>
+        <input type="tel" [textMask]="{mask: phoneMask}" matInput [formControl]="placePhones.controls[i]" Name="phone" placeholder="+380 (**) *** ** **">
+        <mat-error
+          *ngIf="placePhones.controls[i].hasError('pattern') &&
+              !placePhones.controls[i].hasError('required')">
+          Будь ласка, введіть дійсний телефон
+        </mat-error>
+        <mat-error
+          *ngIf="placePhones.controls[i].hasError('required')">
+          Поле з телефоном має бути заповнене
+        </mat-error>
+      </mat-form-field>
+      <a href="" (click)="addPhone2($event)">more phones</a>
+    </div>
     <mat-form-field class="example-full-width">
       <mat-label>Website</mat-label>
       <input matInput formControlName="website" placeholder="https://www.mcdonalds.com/">

@@ -12,6 +12,7 @@ import {
 } from './components';
 import { PagePlacesRoutingModule } from './page-places-routing.module';
 import { MaterialModule } from '../../material';
+import { TextMaskModule } from 'angular2-text-mask';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MaterialModule } from '../../material';
     SharedModule,
     PagePlacesRoutingModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    TextMaskModule
   ]
 })
 export class PagePlacesModule { }

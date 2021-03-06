@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import { CategoriesService, FilterByTypeService, PlacesService, OrganizationsService } from '../../../../../services';
 import { IOrganization, IPlacesCategories, IPlacesTypes} from '../../../../../static/type';
 import { Router } from '@angular/router';
@@ -18,7 +18,8 @@ export class PagePlaceAddComponent implements OnInit {
   public filteredApprovedOrganizations: Observable<string[]>;
   public filteredProposedOrganizations: Observable<string[]>;
   public isNewOrganization: boolean = false;
-  public isProposedOrganization: boolean = false;
+  public isProposeOrganization: boolean = false;
+  public phoneMask: any = ['+', '3', '8', /[0]/, ' ', '(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, ' ', /\d/, /\d/, ' ', /\d/, /\d/];
 
   constructor(
     private placesService: PlacesService,
@@ -27,15 +28,17 @@ export class PagePlaceAddComponent implements OnInit {
     private router: Router,
     private organizationsService: OrganizationsService) { }
 
-  public organizationGroup: FormGroup = new FormGroup({
+  public proposeOrganization: FormGroup = new FormGroup({
     name: new FormControl(null, Validators.required),
   });
+  public organizationPhones: FormArray = new FormArray([this.phoneFormControl]);
+  public placePhones: FormArray = new FormArray([this.phoneFormControl]);
 
   public addPlaceForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
-    phone: new FormControl('', Validators.required),
+    phone: this.placePhones,
     website: new FormControl('', Validators.required),
     category_id: new FormControl('', Validators.required),
     organization_id: new FormControl(null, Validators.required),
@@ -75,6 +78,13 @@ export class PagePlaceAddComponent implements OnInit {
     return result.filter(option => option.toLowerCase().includes(filterValue));
   }
 
+  public get phoneFormControl(): FormControl {
+    return new FormControl('', [
+      Validators.required,
+      Validators.pattern('^\\+380\\s\\(\\d{2}\\)\\s\\d{3}\\s\\d{2}\\s\\d{2}')
+    ]);
+  }
+
   public buildPost(value: any): any{
     const result: any = Object.assign({organization: {}}, value);
     // console.log('value', value);
@@ -84,8 +94,7 @@ export class PagePlaceAddComponent implements OnInit {
       delete result.organization;
       return result;
     }
-    if  (!value.organization.hasOwnProperty('email')
-      || !value.organization.hasOwnProperty('phone')) {
+    if  (!value.organization.hasOwnProperty('email')) {
       result.organization_id = this.getOrganizationId(value.organization.name);
       delete result.organization;
       return result;
@@ -95,11 +104,21 @@ export class PagePlaceAddComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    // console.log(this.addPlaceForm.value);
+    console.log(this.buildPost(this.addPlaceForm.value));
     // console.log(this.buildPost(this.addPlaceForm.value));
     this.placesService.savePlace(this.buildPost(this.addPlaceForm.value)).subscribe((value) => {
       // this.router.navigateByUrl(`/places/${value.category_id}`);
     });
+  }
+
+  public addPhone(event: Event): void {
+    event.preventDefault();
+    this.organizationPhones.push(this.phoneFormControl);
+  }
+
+  public addPhone2(event: Event): void {
+    event.preventDefault();
+    this.placePhones.push(this.phoneFormControl);
   }
 
   ngOnInit(): void {
@@ -114,30 +133,35 @@ export class PagePlaceAddComponent implements OnInit {
           map((value) => {
             const result: string[] = this.filter(value, true);
             if (!result?.length) {
-              this.addPlaceForm.addControl('organization', this.organizationGroup);
+              this.addPlaceForm.addControl('organization', this.proposeOrganization);
               this.isNewOrganization = true;
             } else {
               this.isNewOrganization = false;
               this.addPlaceForm.removeControl('organization');
-              this.organizationGroup.reset();
+              this.proposeOrganization.reset();
             }
             return result;
           }),
         );
 
-      this.filteredProposedOrganizations = this.organizationGroup.controls.name.valueChanges
+      this.filteredProposedOrganizations = this.proposeOrganization.controls.name.valueChanges
         .pipe(
           startWith(''),
           map((value) => {
             const result: string[] = this.filter(value, false);
             if (!result?.length) {
-              this.organizationGroup.addControl('phone', new FormControl(null, Validators.required));
-              this.organizationGroup.addControl('email', new FormControl(null, Validators.required));
-              this.isProposedOrganization = true;
+              this.proposeOrganization.addControl('phones', this.organizationPhones);
+              this.proposeOrganization.addControl('email', new FormControl(null, [
+                Validators.required,
+                Validators.email
+              ]));
+              this.organizationPhones.clear();
+              this.organizationPhones.push(this.phoneFormControl);
+              this.isProposeOrganization = true;
             } else {
-              this.isProposedOrganization = false;
-              this.organizationGroup.removeControl('phone');
-              this.organizationGroup.removeControl('email');
+              this.isProposeOrganization = false;
+              this.proposeOrganization.removeControl('phones');
+              this.proposeOrganization.removeControl('email');
             }
             return result;
           }),
