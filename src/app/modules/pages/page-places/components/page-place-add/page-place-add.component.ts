@@ -21,6 +21,8 @@ export class PagePlaceAddComponent implements OnInit {
   public isProposeOrganization: boolean = false;
   public phoneMask: any = ['+', '3', '8', /[0]/, ' ', '(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, ' ', /\d/, /\d/, ' ', /\d/, /\d/];
 
+  public week: string[] = [ 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun' ];
+
   constructor(
     private placesService: PlacesService,
     private categoriesService: CategoriesService,
@@ -33,16 +35,25 @@ export class PagePlaceAddComponent implements OnInit {
   });
   public organizationPhones: FormArray = new FormArray([this.phoneFormControl]);
   public placePhones: FormArray = new FormArray([this.phoneFormControl]);
+  public schedulePlace: FormGroup = new FormGroup({});
 
   public addPlaceForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
-    phone: this.placePhones,
     website: new FormControl('', Validators.required),
     category_id: new FormControl('', Validators.required),
     organization_id: new FormControl(null, Validators.required),
+    phone: this.placePhones,
+    schedule: this.schedulePlace,
   });
+
+  private initWeekFormControls(): void {
+    this.week.forEach((day) => {
+      this.schedulePlace.addControl(`${day}_start`, new FormControl(null, Validators.required));
+      this.schedulePlace.addControl(`${day}_end`, new FormControl(null, Validators.required));
+    });
+  }
 
   private setTypes(category: string): void {
     this.types.length = 0;
@@ -78,6 +89,17 @@ export class PagePlaceAddComponent implements OnInit {
     return result.filter(option => option.toLowerCase().includes(filterValue));
   }
 
+  public checkDayOff(day: string): void {
+    if (this.schedulePlace.get(day + '_start').disabled ||
+        this.schedulePlace.get(day + '_end').disabled) {
+      this.schedulePlace.get(day + '_start').enable();
+      this.schedulePlace.get(day + '_end').enable();
+    } else {
+      this.schedulePlace.get(day + '_start').disable();
+      this.schedulePlace.get(day + '_end').disable();
+    }
+  }
+
   public get phoneFormControl(): FormControl {
     return new FormControl('', [
       Validators.required,
@@ -87,8 +109,9 @@ export class PagePlaceAddComponent implements OnInit {
 
   public buildPost(value: any): any{
     const result: any = Object.assign({organization: {}}, value);
-    // console.log('value', value);
-    // console.log('result', result);
+    if (value.hasOwnProperty('schedule')) {
+      value.schedule = this.buildSchedule(value.schedule);
+    }
     if  (!value.hasOwnProperty('organization')) {
       result.organization_id = this.getOrganizationId(value.organization_id);
       delete result.organization;
@@ -104,8 +127,8 @@ export class PagePlaceAddComponent implements OnInit {
   }
 
   public onSubmit(): void {
+    if (this.addPlaceForm.invalid) { return; }
     console.log(this.buildPost(this.addPlaceForm.value));
-    // console.log(this.buildPost(this.addPlaceForm.value));
     this.placesService.savePlace(this.buildPost(this.addPlaceForm.value)).subscribe((value) => {
       // this.router.navigateByUrl(`/places/${value.category_id}`);
     });
@@ -121,7 +144,23 @@ export class PagePlaceAddComponent implements OnInit {
     this.placePhones.push(this.phoneFormControl);
   }
 
+  public buildSchedule(schedule: any): void {
+    const result: any = {};
+    for (const key in schedule) {
+      if (!schedule.hasOwnProperty(key) || schedule[key] === null){ continue; }
+      const day: string = key.slice(0, 3);
+      const limit: string = key.slice(4);
+      if (!result.hasOwnProperty(day)) {
+        result[day] = { [limit]: schedule[key] };
+      } else {
+        result[day][limit] = schedule[key];
+      }
+    }
+    return result;
+  }
+
   ngOnInit(): void {
+    this.initWeekFormControls();
     this.categories = this.categoriesService.getCategories();
 
     this.organizationsService.getOrganizations().subscribe((organizations) => {

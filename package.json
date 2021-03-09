@@ -24,6 +24,7 @@
     "@angular/router": "~11.0.3",
     "angular2-text-mask": "^9.0.0",
     "json-server": "^0.16.3",
+    "ngx-material-timepicker": "^5.5.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

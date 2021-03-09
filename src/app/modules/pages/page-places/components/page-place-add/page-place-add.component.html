@@ -1,5 +1,5 @@
 <app-layout>
-  <h1>Add new place</h1>
+  <h1>Додати нове місце</h1>
   <form [formGroup]="addPlaceForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="example-full-width">
       <mat-label>Зареєстровані організації</mat-label>
@@ -14,6 +14,10 @@
           {{organization}}
         </mat-option>
       </mat-autocomplete>
+      <mat-error
+        *ngIf="addPlaceForm.get('organization_id').hasError('required')">
+        Поле є обов'язковим
+      </mat-error>
     </mat-form-field>
     <div class="new-organization" formGroupName="organization" *ngIf="isNewOrganization">
       <h2>Створити нову організацію</h2>
@@ -30,24 +34,12 @@
             {{organization}}
           </mat-option>
         </mat-autocomplete>
+        <mat-error
+          *ngIf="proposeOrganization.get('name').hasError('required')">
+          Поле є обов'язковим
+        </mat-error>
       </mat-form-field>
       <div *ngIf="isProposeOrganization">
-        <div formArrayName="phones">
-          <mat-form-field *ngFor="let control of organizationPhones.controls; index as i" class="example-full-width">
-            <mat-label>Телефон</mat-label>
-            <input type="tel" [textMask]="{mask: phoneMask}" matInput [formControl]="organizationPhones.controls[i]" Name="phone" placeholder="+380 (**) *** ** **">
-            <mat-error
-              *ngIf="organizationPhones.controls[i].hasError('pattern') &&
-              !organizationPhones.controls[i].hasError('required')">
-              Будь ласка, введіть дійсний телефон
-            </mat-error>
-            <mat-error
-              *ngIf="organizationPhones.controls[i].hasError('required')">
-              Поле з телефоном має бути заповнене
-            </mat-error>
-          </mat-form-field>
-          <a href="" (click)="addPhone($event)">more phones</a>
-        </div>
         <mat-form-field class="example-full-width">
           <mat-label>Пошта</mat-label>
           <input matInput formControlName="email" placeholder="contact@organization.com">
@@ -58,38 +50,76 @@
           </mat-error>
           <mat-error
             *ngIf="proposeOrganization.get('email').hasError('required')">
-            Поле з адресою електронної пошти має бути заповнене
+            Поле є обов'язковим
           </mat-error>
         </mat-form-field>
+        <div class="phones" formArrayName="phones">
+          <mat-form-field *ngFor="let control of organizationPhones.controls; index as i" class="example-full-width">
+            <mat-label>Телефон</mat-label>
+            <input type="tel" [textMask]="{mask: phoneMask}" matInput [formControl]="organizationPhones.controls[i]" Name="phone" placeholder="+380 (**) *** ** **">
+            <mat-error
+              *ngIf="organizationPhones.controls[i].hasError('pattern') &&
+              !organizationPhones.controls[i].hasError('required')">
+              Будь ласка, введіть дійсний телефон
+            </mat-error>
+            <mat-error
+              *ngIf="organizationPhones.controls[i].hasError('required')">
+              Поле є обов'язковим
+            </mat-error>
+          </mat-form-field>
+          <a href="" class="add-phone" mat-mini-fab (click)="addPhone($event)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="18px" height="18px"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM21 6h-3V3h-2v3h-3v2h3v3h2V8h3z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
     <mat-form-field appearance="fill">
-      <mat-label>Categories</mat-label>
+      <mat-label>Категорія</mat-label>
       <mat-select formControlName="category_id">
         <mat-option *ngFor="let category of categories" value="{{category.id}}">
           {{category.name}}
         </mat-option>
       </mat-select>
+      <mat-error
+        *ngIf="addPlaceForm.get('category_id').hasError('required')">
+        Поле є обов'язковим
+      </mat-error>
     </mat-form-field>
     <div *ngIf="types?.length" class="new-organization">
       <h2>Обрати тип</h2>
       <mat-radio-group  formControlName="type_id">
         <mat-radio-button *ngFor="let type of types" value="{{type.type_id}}">{{type.name}}</mat-radio-button>
+        <mat-error
+          *ngIf="addPlaceForm.get('type_id').hasError('required')">
+          Поле є обов'язковим
+        </mat-error>
       </mat-radio-group>
     </div>
     <mat-form-field class="example-full-width">
-      <mat-label>Name of place</mat-label>
+      <mat-label>Назва</mat-label>
       <input matInput formControlName="name" placeholder="Mcdonalds">
+      <mat-error
+        *ngIf="addPlaceForm.get('name').hasError('required')">
+        Поле є обов'язковим
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <mat-label>Description of place</mat-label>
+      <mat-label>Опис</mat-label>
       <input matInput formControlName="description" placeholder="Mcdonalds - это крупнейшая в мире сеть ресторанов быстрого питания">
+      <mat-error
+        *ngIf="addPlaceForm.get('description').hasError('required')">
+        Поле є обов'язковим
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <mat-label>Place address</mat-label>
+      <mat-label>Адреса</mat-label>
       <input matInput formControlName="address" placeholder="вулиця Смілянська, 31, Черкаси, Черкаська область, 18000">
+      <mat-error
+        *ngIf="addPlaceForm.get('address').hasError('required')">
+        Поле є обов'язковим
+      </mat-error>
     </mat-form-field>
-    <div formArrayName="phone">
+    <div formArrayName="phone" class="phones">
       <mat-form-field *ngFor="let control of placePhones.controls; index as i" class="example-full-width">
         <mat-label>Телефон</mat-label>
         <input type="tel" [textMask]="{mask: phoneMask}" matInput [formControl]="placePhones.controls[i]" Name="phone" placeholder="+380 (**) *** ** **">
@@ -100,15 +130,50 @@
         </mat-error>
         <mat-error
           *ngIf="placePhones.controls[i].hasError('required')">
-          Поле з телефоном має бути заповнене
+          Поле є обов'язковим
         </mat-error>
       </mat-form-field>
-      <a href="" (click)="addPhone2($event)">more phones</a>
+      <a href="" class="add-phone" mat-mini-fab (click)="addPhone2($event)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="18px" height="18px"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM21 6h-3V3h-2v3h-3v2h3v3h2V8h3z"/></svg>
+      </a>
     </div>
     <mat-form-field class="example-full-width">
-      <mat-label>Website</mat-label>
+      <mat-label>Сайт</mat-label>
       <input matInput formControlName="website" placeholder="https://www.mcdonalds.com/">
+      <mat-error
+        *ngIf="addPlaceForm.get('website').hasError('required')">
+        Поле є обов'язковим
+      </mat-error>
     </mat-form-field>
-    <button mat-raised-button type="submit" [disabled]="!addPlaceForm.valid">Submit</button>
+    <div formGroupName="schedule">
+      <div class="workTime" *ngFor="let day of week">
+        <h3 class="workTime__title">{{day}}</h3>
+        <mat-form-field class="workTime__field">
+          <mat-label>Відкриття</mat-label>
+          <input matInput formControlName="{{day + '_start'}}" [ngxTimepicker]="day1" [format]="24" [value]="'8:00'" placeholder="HH:MM">
+          <ngx-material-timepicker #day1></ngx-material-timepicker>
+          <mat-error
+            *ngIf="schedulePlace.get(day + '_start').hasError('required')">
+            Поле є обов'язковим
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="workTime__field">
+          <mat-label>Закриття</mat-label>
+          <input matInput formControlName="{{day + '_end'}}" [ngxTimepicker]="day2" [format]="24" [value]="'21:00'" placeholder="HH:MM">
+          <ngx-material-timepicker #day2></ngx-material-timepicker>
+          <mat-error
+            *ngIf="schedulePlace.get(day + '_end').hasError('required')">
+            Поле є обов'язковим
+          </mat-error>
+        </mat-form-field>
+        <section class="example-section">
+          <mat-checkbox class="example-margin" (click)="checkDayOff(day)">Вихідний</mat-checkbox>
+        </section>
+      </div>
+    </div>
+
+
+<!--    <button mat-raised-button type="submit" [disabled]="!addPlaceForm.valid">Submit</button>-->
+    <button mat-raised-button type="submit">Submit</button>
   </form>
 </app-layout>

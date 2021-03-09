@@ -13,6 +13,7 @@ import {
 import { PagePlacesRoutingModule } from './page-places-routing.module';
 import { MaterialModule } from '../../material';
 import { TextMaskModule } from 'angular2-text-mask';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { TextMaskModule } from 'angular2-text-mask';
     PagePlacesRoutingModule,
     ReactiveFormsModule,
     MaterialModule,
-    TextMaskModule
+    TextMaskModule,
+    NgxMaterialTimepickerModule
   ]
 })
 export class PagePlacesModule { }

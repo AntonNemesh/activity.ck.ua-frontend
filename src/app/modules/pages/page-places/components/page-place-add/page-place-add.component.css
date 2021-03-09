@@ -20,3 +20,30 @@ mat-radio-button {
 .new-organization {
   padding-left: 50px;
 }
+
+.phones {
+  position: relative;
+}
+
+.add-phone {
+  position: absolute;
+  right: -50px;
+  bottom: 10px;
+}
+
+.workTime {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.workTime__title {
+  margin: 0;
+  width: 30px;
+  padding-right: 50px;
+}
+
+.workTime__field {
+  width: 80px;
+  padding-right: 10px;
+}
