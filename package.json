@@ -24,6 +24,7 @@
     "@angular/router": "~11.0.3",
     "angular2-text-mask": "^9.0.0",
     "json-server": "^0.16.3",
+    "ngx-google-places-autocomplete": "^2.0.5",
     "ngx-material-timepicker": "^5.5.3",
     "rxjs": "~6.6.0",
     "text-mask-addons": "^3.8.0",

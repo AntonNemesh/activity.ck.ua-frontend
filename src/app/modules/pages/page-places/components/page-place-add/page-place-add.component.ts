@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoriesService, FilterByTypeService, PlacesService, OrganizationsService } from '../../../../../services';
 import {
@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MASK_PHONE, MASK_EMAIL, PATTERN_PHONE, WEEK } from '../../../../../static/data';
+import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 
 @Component({
   selector: 'app-page-place-add',
@@ -64,6 +65,15 @@ export class PagePlaceAddComponent implements OnInit {
     work_time: this.placeWorkTime,
   });
 
+  public googlePlacesOptions: any = {
+    types: [],
+    componentRestrictions: {
+      country: 'UA',
+    },
+  };
+
+  @ViewChild('placesRef') placesRef: GooglePlaceDirective;
+
   private initWeekFormControls(): void {
     this.week.forEach((day) => {
       this.placeWorkTime.addControl(`${day.id}_start`, new FormControl(null, Validators.required));
@@ -74,7 +84,7 @@ export class PagePlaceAddComponent implements OnInit {
   private setTypes(category: string): void {
     this.types.length = 0;
     const types: IPlacesTypes[] = this.filterByTypeService.getTypes(category);
-    if (this.placeForm.controls.type_id) { this.placeForm.removeControl('type_id'); }
+    if (this.placeForm.get('type_id')) { this.placeForm.removeControl('type_id'); }
 
     if (!types?.length) { return; }
     this.placeForm.addControl('type_id', new FormControl('', Validators.required));
@@ -105,9 +115,13 @@ export class PagePlaceAddComponent implements OnInit {
     return result.filter(option => option.toLowerCase().includes(filterValue));
   }
 
+  public handleAddressChange(address: any): void {
+    this.placeForm.get('address').setValue(address.formatted_address);
+  }
+
   public toggleDayOff(day: string): void {
     if (this.placeWorkTime.get(day + '_start').disabled ||
-        this.placeWorkTime.get(day + '_end').disabled) {
+      this.placeWorkTime.get(day + '_end').disabled) {
       this.placeWorkTime.get(day + '_start').enable();
       this.placeWorkTime.get(day + '_end').enable();
     } else {
@@ -189,7 +203,7 @@ export class PagePlaceAddComponent implements OnInit {
     this.organizationsService.getOrganizations().subscribe((organizations) => {
       this.organizations = organizations;
 
-      this.filteredApprovedOrganizations = this.placeForm.controls.organization_id.valueChanges
+      this.filteredApprovedOrganizations = this.placeForm.get('organization_id').valueChanges
         .pipe(
           startWith(''),
           map((value) => {
@@ -206,7 +220,7 @@ export class PagePlaceAddComponent implements OnInit {
           }),
         );
 
-      this.filteredProposedOrganizations = this.proposeOrganization.controls.name.valueChanges
+      this.filteredProposedOrganizations = this.proposeOrganization.get('name').valueChanges
         .pipe(
           startWith(''),
           map((value) => {
@@ -231,7 +245,7 @@ export class PagePlaceAddComponent implements OnInit {
 
     });
 
-    this.placeForm.controls.category_id.valueChanges.subscribe((value) => {
+    this.placeForm.get('category_id').valueChanges.subscribe((value) => {
       this.setTypes(value);
     });
 

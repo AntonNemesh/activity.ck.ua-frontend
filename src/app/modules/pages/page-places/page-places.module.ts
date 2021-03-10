@@ -14,6 +14,7 @@ import { PagePlacesRoutingModule } from './page-places-routing.module';
 import { MaterialModule } from '../../material';
 import { TextMaskModule } from 'angular2-text-mask';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     ReactiveFormsModule,
     MaterialModule,
     TextMaskModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    GooglePlaceModule
   ]
 })
 export class PagePlacesModule { }

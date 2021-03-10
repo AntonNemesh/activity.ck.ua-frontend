@@ -117,7 +117,7 @@
     </mat-form-field>
     <mat-form-field class="example-full-width">
       <mat-label>Адреса</mat-label>
-      <input matInput formControlName="address" placeholder="вулиця Смілянська, 31, Черкаси, Черкаська область, 18000">
+      <input matInput ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" [options]='googlePlacesOptions' formControlName="address" placeholder="вулиця Смілянська, 31, Черкаси, Черкаська область, 18000">
       <mat-error
         *ngIf="placeForm.get('address').hasError('required')">
         Поле є обов'язковим
