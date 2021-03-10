@@ -42,7 +42,7 @@
       <div *ngIf="isProposeOrganization">
         <mat-form-field class="example-full-width">
           <mat-label>Пошта</mat-label>
-          <input matInput formControlName="email" placeholder="contact@organization.com">
+          <input [textMask]="{mask: maskEmail}" matInput formControlName="email" placeholder="example@email.com">
           <mat-error
             *ngIf="proposeOrganization.get('email').hasError('email') &&
             !proposeOrganization.get('email').hasError('required')">
@@ -56,7 +56,7 @@
         <div class="phones" formArrayName="phones">
           <mat-form-field *ngFor="let control of organizationPhones.controls; index as i" class="example-full-width">
             <mat-label>Телефон</mat-label>
-            <input type="tel" [textMask]="{mask: maskPhone}" matInput [formControl]="organizationPhones.controls[i]" Name="phone" placeholder="+380 (**) *** ** **">
+            <input type="tel" [textMask]="{mask: maskPhone}" matInput [formControl]="organizationPhones.controls[i]" Name="phone" placeholder="+380 (66) 555 55 55">
             <button mat-button matSuffix mat-icon-button aria-label="Delete" *ngIf="i !== 0" (click)="deletePhone(i, true)">
               <mat-icon>close</mat-icon>
             </button>
@@ -126,7 +126,7 @@
     <div formArrayName="phones" class="phones">
       <mat-form-field *ngFor="let control of placePhones.controls; index as i" class="example-full-width">
         <mat-label>Телефон</mat-label>
-        <input type="tel" [textMask]="{mask: maskPhone}" matInput [formControl]="placePhones.controls[i]" Name="phone" placeholder="+380 (**) *** ** **">
+        <input type="tel" [textMask]="{mask: maskPhone}" matInput [formControl]="placePhones.controls[i]" Name="phone" placeholder="+380 (66) 555 55 55">
         <button mat-button matSuffix mat-icon-button aria-label="Delete" *ngIf="i !== 0" (click)="deletePhone(i, false)">
           <mat-icon>close</mat-icon>
         </button>
@@ -146,7 +146,7 @@
     </div>
     <mat-form-field class="example-full-width">
       <mat-label>Сайт</mat-label>
-      <input matInput formControlName="website" placeholder="https://www.mcdonalds.com/">
+      <input type="url" matInput formControlName="website" placeholder="https://www.example.com/">
       <mat-error
         *ngIf="placeForm.get('website').hasError('required')">
         Поле є обов'язковим

@@ -4,4 +4,5 @@ export { TOLERANCE_FILTER } from './tolerance-filter';
 export { WEEK } from './week';
 export {
   MASK_PHONE,
+  MASK_EMAIL,
   PATTERN_PHONE } from './masks-patterns';

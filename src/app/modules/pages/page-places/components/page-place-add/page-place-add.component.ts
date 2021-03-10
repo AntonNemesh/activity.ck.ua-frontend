@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoriesService, FilterByTypeService, PlacesService, OrganizationsService } from '../../../../../services';
 import {
+  IMaskEmail,
   IOrganization,
   IPlace,
   IPlaceForm,
@@ -9,12 +10,11 @@ import {
   IPlacesTypes,
   IWeek,
   IWorkTime,
-  IWorkTimeForm
-} from '../../../../../static/type';
+  IWorkTimeForm } from '../../../../../static/type';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { MASK_PHONE, PATTERN_PHONE, WEEK } from '../../../../../static/data';
+import { MASK_PHONE, MASK_EMAIL, PATTERN_PHONE, WEEK } from '../../../../../static/data';
 
 @Component({
   selector: 'app-page-place-add',
@@ -33,6 +33,8 @@ export class PagePlaceAddComponent implements OnInit {
   public isProposeOrganization: boolean = false;
 
   public maskPhone: Array<string|RegExp> = MASK_PHONE;
+  public maskEmail: IMaskEmail = MASK_EMAIL;
+
   public week: IWeek[] = WEEK;
 
   constructor(
