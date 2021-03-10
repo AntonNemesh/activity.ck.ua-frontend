@@ -1,10 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import { CategoriesService, FilterByTypeService, PlacesService, OrganizationsService } from '../../../../../services';
-import { IOrganization, IPlacesCategories, IPlacesTypes} from '../../../../../static/type';
+import {
+  IOrganization,
+  IPlace,
+  IPlaceForm,
+  IPlacesCategories,
+  IPlacesTypes,
+  IWeek,
+  IWorkTime,
+  IWorkTimeForm
+} from '../../../../../static/type';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { MASK_PHONE, PATTERN_PHONE, WEEK } from '../../../../../static/data';
 
 @Component({
   selector: 'app-page-place-add',
@@ -15,13 +25,15 @@ export class PagePlaceAddComponent implements OnInit {
   public categories: IPlacesCategories[];
   public types: IPlacesTypes[] = [];
   public organizations: IOrganization[] = [];
+
   public filteredApprovedOrganizations: Observable<string[]>;
   public filteredProposedOrganizations: Observable<string[]>;
+
   public isNewOrganization: boolean = false;
   public isProposeOrganization: boolean = false;
-  public phoneMask: any = ['+', '3', '8', /[0]/, ' ', '(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, ' ', /\d/, /\d/, ' ', /\d/, /\d/];
 
-  public week: string[] = [ 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun' ];
+  public maskPhone: Array<string|RegExp> = MASK_PHONE;
+  public week: IWeek[] = WEEK;
 
   constructor(
     private placesService: PlacesService,
@@ -33,35 +45,37 @@ export class PagePlaceAddComponent implements OnInit {
   public proposeOrganization: FormGroup = new FormGroup({
     name: new FormControl(null, Validators.required),
   });
+
   public organizationPhones: FormArray = new FormArray([this.phoneFormControl]);
   public placePhones: FormArray = new FormArray([this.phoneFormControl]);
-  public schedulePlace: FormGroup = new FormGroup({});
 
-  public addPlaceForm: FormGroup = new FormGroup({
+  public placeWorkTime: FormGroup = new FormGroup({});
+
+  public placeForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
     website: new FormControl('', Validators.required),
     category_id: new FormControl('', Validators.required),
     organization_id: new FormControl(null, Validators.required),
-    phone: this.placePhones,
-    schedule: this.schedulePlace,
+    phones: this.placePhones,
+    work_time: this.placeWorkTime,
   });
 
   private initWeekFormControls(): void {
     this.week.forEach((day) => {
-      this.schedulePlace.addControl(`${day}_start`, new FormControl(null, Validators.required));
-      this.schedulePlace.addControl(`${day}_end`, new FormControl(null, Validators.required));
+      this.placeWorkTime.addControl(`${day.id}_start`, new FormControl(null, Validators.required));
+      this.placeWorkTime.addControl(`${day.id}_end`, new FormControl(null, Validators.required));
     });
   }
 
   private setTypes(category: string): void {
     this.types.length = 0;
     const types: IPlacesTypes[] = this.filterByTypeService.getTypes(category);
-    if (this.addPlaceForm.controls.type_id) { this.addPlaceForm.removeControl('type_id'); }
+    if (this.placeForm.controls.type_id) { this.placeForm.removeControl('type_id'); }
 
     if (!types?.length) { return; }
-    this.addPlaceForm.addControl('type_id', new FormControl('', Validators.required));
+    this.placeForm.addControl('type_id', new FormControl('', Validators.required));
     this.types = types;
   }
 
@@ -89,28 +103,43 @@ export class PagePlaceAddComponent implements OnInit {
     return result.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  public checkDayOff(day: string): void {
-    if (this.schedulePlace.get(day + '_start').disabled ||
-        this.schedulePlace.get(day + '_end').disabled) {
-      this.schedulePlace.get(day + '_start').enable();
-      this.schedulePlace.get(day + '_end').enable();
+  public toggleDayOff(day: string): void {
+    if (this.placeWorkTime.get(day + '_start').disabled ||
+        this.placeWorkTime.get(day + '_end').disabled) {
+      this.placeWorkTime.get(day + '_start').enable();
+      this.placeWorkTime.get(day + '_end').enable();
     } else {
-      this.schedulePlace.get(day + '_start').disable();
-      this.schedulePlace.get(day + '_end').disable();
+      this.placeWorkTime.get(day + '_start').disable();
+      this.placeWorkTime.get(day + '_end').disable();
     }
   }
 
   public get phoneFormControl(): FormControl {
     return new FormControl('', [
       Validators.required,
-      Validators.pattern('^\\+380\\s\\(\\d{2}\\)\\s\\d{3}\\s\\d{2}\\s\\d{2}')
+      Validators.pattern(PATTERN_PHONE)
     ]);
   }
 
-  public buildPost(value: any): any{
-    const result: any = Object.assign({organization: {}}, value);
-    if (value.hasOwnProperty('schedule')) {
-      value.schedule = this.buildSchedule(value.schedule);
+  public buildWorkTime(workTime: IWorkTimeForm): IWorkTime {
+    const result: IWorkTime = {};
+    for (const key in workTime) {
+      if (!workTime.hasOwnProperty(key) || workTime[key] === null) { continue; }
+      const day: string = key.slice(0, 3);
+      const limit: string = key.slice(4);
+      if (!result.hasOwnProperty(day)) {
+        result[day] = { [limit]: workTime[key] };
+      } else {
+        result[day][limit] = workTime[key];
+      }
+    }
+    return result;
+  }
+
+  public buildRequest(value: IPlaceForm): IPlace {
+    const result: IPlace = Object.assign(value);
+    if (value.hasOwnProperty('work_time')) {
+      result.work_time = this.buildWorkTime(value.work_time);
     }
     if  (!value.hasOwnProperty('organization')) {
       result.organization_id = this.getOrganizationId(value.organization_id);
@@ -127,36 +156,28 @@ export class PagePlaceAddComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    if (this.addPlaceForm.invalid) { return; }
-    console.log(this.buildPost(this.addPlaceForm.value));
-    this.placesService.savePlace(this.buildPost(this.addPlaceForm.value)).subscribe((value) => {
+    if (this.placeForm.invalid) { return; }
+    const request: IPlace = this.buildRequest(this.placeForm.value);
+    this.placesService.savePlace(request).subscribe((value) => {
       // this.router.navigateByUrl(`/places/${value.category_id}`);
     });
   }
 
-  public addPhone(event: Event): void {
+  public addPhone(event: Event, isOrganization: boolean): void {
     event.preventDefault();
-    this.organizationPhones.push(this.phoneFormControl);
-  }
-
-  public addPhone2(event: Event): void {
-    event.preventDefault();
-    this.placePhones.push(this.phoneFormControl);
-  }
-
-  public buildSchedule(schedule: any): void {
-    const result: any = {};
-    for (const key in schedule) {
-      if (!schedule.hasOwnProperty(key) || schedule[key] === null){ continue; }
-      const day: string = key.slice(0, 3);
-      const limit: string = key.slice(4);
-      if (!result.hasOwnProperty(day)) {
-        result[day] = { [limit]: schedule[key] };
-      } else {
-        result[day][limit] = schedule[key];
-      }
+    if (isOrganization) {
+      this.organizationPhones.push(this.phoneFormControl);
+    } else {
+      this.placePhones.push(this.phoneFormControl);
     }
-    return result;
+  }
+
+  public deletePhone(index: number, isOrganization: boolean): void {
+    if (isOrganization) {
+      this.organizationPhones.removeAt(index);
+    } else {
+      this.placePhones.removeAt(index);
+    }
   }
 
   ngOnInit(): void {
@@ -166,17 +187,17 @@ export class PagePlaceAddComponent implements OnInit {
     this.organizationsService.getOrganizations().subscribe((organizations) => {
       this.organizations = organizations;
 
-      this.filteredApprovedOrganizations = this.addPlaceForm.controls.organization_id.valueChanges
+      this.filteredApprovedOrganizations = this.placeForm.controls.organization_id.valueChanges
         .pipe(
           startWith(''),
           map((value) => {
             const result: string[] = this.filter(value, true);
             if (!result?.length) {
-              this.addPlaceForm.addControl('organization', this.proposeOrganization);
+              this.placeForm.addControl('organization', this.proposeOrganization);
               this.isNewOrganization = true;
             } else {
               this.isNewOrganization = false;
-              this.addPlaceForm.removeControl('organization');
+              this.placeForm.removeControl('organization');
               this.proposeOrganization.reset();
             }
             return result;
@@ -208,7 +229,7 @@ export class PagePlaceAddComponent implements OnInit {
 
     });
 
-    this.addPlaceForm.controls.category_id.valueChanges.subscribe((value) => {
+    this.placeForm.controls.category_id.valueChanges.subscribe((value) => {
       this.setTypes(value);
     });
 

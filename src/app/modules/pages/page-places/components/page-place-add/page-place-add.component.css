@@ -17,12 +17,20 @@ mat-radio-button {
   padding-bottom: 5px;
 }
 
-.new-organization {
-  padding-left: 50px;
+mat-form-field {
+  padding-bottom: 10px;
+}
+
+.padding-left {
+  padding: 0 0 0 50px;
 }
 
 .phones {
   position: relative;
+}
+
+.phones .mat-form-field-wrapper {
+  padding-bottom: 0;
 }
 
 .add-phone {
@@ -35,15 +43,24 @@ mat-radio-button {
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding-bottom: 10px;
 }
 
 .workTime__title {
   margin: 0;
-  width: 30px;
-  padding-right: 50px;
+  width: 86px;
+  padding-right: 20px;
 }
 
 .workTime__field {
-  width: 80px;
-  padding-right: 10px;
+  width: 110px;
+  padding: 0 10px 0 0;
+}
+
+.gray {
+  color: rgb(133, 133, 133);
+}
+
+.small {
+  font-size: 75%;
 }
