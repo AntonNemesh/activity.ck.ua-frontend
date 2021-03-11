@@ -8,13 +8,15 @@ import {
   IPlaceForm,
   IPlacesCategories,
   IPlacesTypes,
+  IToleranceFilter,
   IWeek,
   IWorkTime,
-  IWorkTimeForm } from '../../../../../static/type';
+  IWorkTimeForm
+} from '../../../../../static/type';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { MASK_PHONE, MASK_EMAIL, PATTERN_PHONE, WEEK } from '../../../../../static/data';
+import { MASK_PHONE, MASK_EMAIL, PATTERN_PHONE, WEEK, TOLERANCE_FILTER } from '../../../../../static/data';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 
 @Component({
@@ -37,6 +39,7 @@ export class PagePlaceAddComponent implements OnInit {
   public maskEmail: IMaskEmail = MASK_EMAIL;
 
   public week: IWeek[] = WEEK;
+  public toleranceFilter: IToleranceFilter[] = TOLERANCE_FILTER;
 
   constructor(
     private placesService: PlacesService,
@@ -74,10 +77,13 @@ export class PagePlaceAddComponent implements OnInit {
 
   @ViewChild('placesRef') placesRef: GooglePlaceDirective;
 
-  private initWeekFormControls(): void {
+  private initFormControls(): void {
     this.week.forEach((day) => {
       this.placeWorkTime.addControl(`${day.id}_start`, new FormControl(null, Validators.required));
       this.placeWorkTime.addControl(`${day.id}_end`, new FormControl(null, Validators.required));
+    });
+    this.toleranceFilter.forEach((item) => {
+      this.placeForm.addControl(item.filter_id, new FormControl(false, Validators.required));
     });
   }
 
@@ -175,7 +181,7 @@ export class PagePlaceAddComponent implements OnInit {
     if (this.placeForm.invalid) { return; }
     const request: IPlace = this.buildRequest(this.placeForm.value);
     this.placesService.savePlace(request).subscribe((value) => {
-      // this.router.navigateByUrl(`/places/${value.category_id}`);
+      this.router.navigateByUrl(`/places/${value.category_id}`);
     });
   }
 
@@ -197,7 +203,7 @@ export class PagePlaceAddComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initWeekFormControls();
+    this.initFormControls();
     this.categories = this.categoriesService.getCategories();
 
     this.organizationsService.getOrganizations().subscribe((organizations) => {

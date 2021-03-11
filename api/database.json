@@ -67,10 +67,35 @@
         }
       ],
       "name": "Черкаський драматичний театр імені Т. Г. Шевченка",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": true,
@@ -144,10 +169,34 @@
         }
       ],
       "name": "Quest Park",
-      "phones": "+380968480378",
+      "phones": [
+        "+380 (96) 848 03 78",
+        "+380 (63) 333 03 80"
+      ],
       "address": "вулиця Гоголя, 453",
       "website": "https://www.questpark.com.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": false,
       "dog_friendly": true,
       "child_friendly": true,
@@ -221,10 +270,35 @@
         }
       ],
       "name": "Локація #3",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -298,10 +372,34 @@
         }
       ],
       "name": "Локація #4",
-      "phones": "+380968480378",
+      "phones": [
+        "+380 (96) 848 03 78",
+        "+380 (63) 333 03 80"
+      ],
       "address": "вулиця Гоголя, 453",
       "website": "https://www.questpark.com.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": true,
@@ -375,10 +473,35 @@
         }
       ],
       "name": "Локація #5",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": true,
       "child_friendly": false,
@@ -452,10 +575,34 @@
         }
       ],
       "name": "Локація #6",
-      "phones": "+380968480378",
+      "phones": [
+        "+380 (96) 848 03 78",
+        "+380 (63) 333 03 80"
+      ],
       "address": "вулиця Гоголя, 453",
       "website": "https://www.questpark.com.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": false,
       "dog_friendly": false,
       "child_friendly": true,
@@ -529,10 +676,35 @@
         }
       ],
       "name": "Локація #7",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": true,
       "child_friendly": true,
@@ -606,10 +778,34 @@
         }
       ],
       "name": "Локація #8",
-      "phones": "+380968480378",
+      "phones": [
+        "+380 (96) 848 03 78",
+        "+380 (63) 333 03 80"
+      ],
       "address": "вулиця Гоголя, 453",
       "website": "https://www.questpark.com.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": false,
       "dog_friendly": true,
       "child_friendly": true,
@@ -683,10 +879,35 @@
         }
       ],
       "name": "Локація #9",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": true,
       "child_friendly": true,
@@ -760,10 +981,34 @@
         }
       ],
       "name": "Локація #10",
-      "phones": "+380968480378",
+      "phones": [
+        "+380 (96) 848 03 78",
+        "+380 (63) 333 03 80"
+      ],
       "address": "вулиця Гоголя, 453",
       "website": "https://www.questpark.com.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": true,
@@ -837,10 +1082,35 @@
         }
       ],
       "name": "Локація #11",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": true,
       "child_friendly": true,
@@ -914,10 +1184,34 @@
         }
       ],
       "name": "Локація #12",
-      "phones": "+380968480378",
+      "phones": [
+        "+380 (96) 848 03 78",
+        "+380 (63) 333 03 80"
+      ],
       "address": "вулиця Гоголя, 453",
       "website": "https://www.questpark.com.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": true,
@@ -991,10 +1285,35 @@
         }
       ],
       "name": "Локація #13",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -1068,10 +1387,34 @@
         }
       ],
       "name": "Локація #14",
-      "phones": "+380968480378",
+      "phones": [
+        "+380 (96) 848 03 78",
+        "+380 (63) 333 03 80"
+      ],
       "address": "вулиця Гоголя, 453",
       "website": "https://www.questpark.com.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": true,
       "child_friendly": true,
@@ -1145,10 +1488,35 @@
         }
       ],
       "name": "Локація #15",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -1222,10 +1590,34 @@
         }
       ],
       "name": "Локація #16",
-      "phones": "+380968480378",
+      "phones": [
+        "+380 (96) 848 03 78",
+        "+380 (63) 333 03 80"
+      ],
       "address": "вулиця Гоголя, 453",
       "website": "https://www.questpark.com.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": true,
       "child_friendly": true,
@@ -1299,10 +1691,35 @@
         }
       ],
       "name": "Локація #17",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": true,
@@ -1376,10 +1793,34 @@
         }
       ],
       "name": "Локація #18",
-      "phones": "+380968480378",
+      "phones": [
+        "+380 (96) 848 03 78",
+        "+380 (63) 333 03 80"
+      ],
       "address": "вулиця Гоголя, 453",
       "website": "https://www.questpark.com.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": false,
       "dog_friendly": false,
       "child_friendly": false,
@@ -1453,10 +1894,35 @@
         }
       ],
       "name": "Локація #19",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": true,
       "child_friendly": true,
@@ -1530,10 +1996,34 @@
         }
       ],
       "name": "Локація #20",
-      "phones": "+380968480378",
+      "phones": [
+        "+380 (96) 848 03 78",
+        "+380 (63) 333 03 80"
+      ],
       "address": "вулиця Гоголя, 453",
       "website": "https://www.questpark.com.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": false,
       "dog_friendly": false,
       "child_friendly": true,
@@ -1607,10 +2097,35 @@
         }
       ],
       "name": "Локація #21",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": true,
@@ -1684,10 +2199,34 @@
         }
       ],
       "name": "Локація #22",
-      "phones": "+380968480378",
+      "phones": [
+        "+380 (96) 848 03 78",
+        "+380 (63) 333 03 80"
+      ],
       "address": "вулиця Гоголя, 453",
       "website": "https://www.questpark.com.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": false,
       "dog_friendly": true,
       "child_friendly": true,
@@ -1761,10 +2300,35 @@
         }
       ],
       "name": "Локація #23",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -1838,10 +2402,34 @@
         }
       ],
       "name": "Локація #24",
-      "phones": "+380968480378",
+      "phones": [
+        "+380 (96) 848 03 78",
+        "+380 (63) 333 03 80"
+      ],
       "address": "вулиця Гоголя, 453",
       "website": "https://www.questpark.com.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": false,
       "dog_friendly": false,
       "child_friendly": false,
@@ -1915,10 +2503,35 @@
         }
       ],
       "name": "Локація #25",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -1992,10 +2605,34 @@
         }
       ],
       "name": "Локація #26",
-      "phones": "+380968480378",
+      "phones": [
+        "+380 (96) 848 03 78",
+        "+380 (63) 333 03 80"
+      ],
       "address": "вулиця Гоголя, 453",
       "website": "https://www.questpark.com.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": false,
       "dog_friendly": false,
       "child_friendly": false,
@@ -2069,10 +2706,35 @@
         }
       ],
       "name": "Локація #27",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -2146,10 +2808,34 @@
         }
       ],
       "name": "Локація #28",
-      "phones": "+380968480378",
+      "phones": [
+        "+380 (96) 848 03 78",
+        "+380 (63) 333 03 80"
+      ],
       "address": "вулиця Гоголя, 453",
       "website": "https://www.questpark.com.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": false,
       "dog_friendly": true,
       "child_friendly": false,
@@ -2223,10 +2909,35 @@
         }
       ],
       "name": "Локація #29",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": true,
       "child_friendly": true,
@@ -2300,10 +3011,35 @@
         }
       ],
       "name": "Локація #30",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": true,
@@ -2377,10 +3113,35 @@
         }
       ],
       "name": "Локація #31",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -2454,10 +3215,35 @@
         }
       ],
       "name": "Локація #32",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": false,
       "dog_friendly": false,
       "child_friendly": false,
@@ -2531,10 +3317,35 @@
         }
       ],
       "name": "Локація #33",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": false,
       "dog_friendly": false,
       "child_friendly": false,
@@ -2608,10 +3419,35 @@
         }
       ],
       "name": "Локація #34",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": false,
       "dog_friendly": false,
       "child_friendly": false,
@@ -2685,10 +3521,35 @@
         }
       ],
       "name": "Локація #35",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": false,
       "dog_friendly": false,
       "child_friendly": false,
@@ -2762,10 +3623,35 @@
         }
       ],
       "name": "Локація #36",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": false,
       "dog_friendly": false,
       "child_friendly": false,
@@ -2839,10 +3725,35 @@
         }
       ],
       "name": "Локація #37",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -2916,10 +3827,35 @@
         }
       ],
       "name": "Локація #38",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": false,
       "dog_friendly": false,
       "child_friendly": false,
@@ -2993,13 +3929,38 @@
         }
       ],
       "name": "Локація #39",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
-      "accessibility": true,
-      "dog_friendly": true,
-      "child_friendly": true,
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
+      "accessibility": false,
+      "dog_friendly": false,
+      "child_friendly": false,
       "description": "Історія нашого закладу мистецької освіти створюється щоденною копіткою працею багатьох педагогів-музикантів, талановитих виконавців, які, навчаючи своїх студентів, передають їм не тільки таємниці своєї майстерності, але й невгасимий вогонь творчого горіння, щирість почуттів, самовіддану жертовність у служінні високим мистецьким ідеалам.\n\nДосвідчені викладачі коледжу окриляють юнацькі мрії своїх вихованців, надають їм впевненості, готують їх до великого життя в музиці.\n\nЗмінюються покоління викладачів, але незмінними залишаються традиції, скеровані на виховання високопрофесійних музикантів – викладачів, артистів та керівників оркестрів/хорів/ ансамблів, композиторів, науковців, які результатами своєї діяльності підносять добру славу коледжу до переліку кращих в Україні.\n\nЯкщо у 1961 році Черкаський музичний коледж (на той час – училище) приймав своїх перших вихованців у п’яти класах приміщення дитячої музичної школи № 1 міста, то зараз, маючи відмінну матеріальну базу – велику кількість навчальних аудиторій, Органну та Концертно-репетиційну зали, фонотеку, бібліотеку з читальним залом, лабораторію звукозапису, спеціалізовані кабінети, комп’ютерний клас, їдальню, що розміщуються у будівлі, яка належить до пам’яток архітектури України (архітектор –славетний В.Л. Городецький) та у сучасній прибудові, коледж створює всі умови для успішного навчання студентів.",
       "rating": 4.5
     },
@@ -3070,10 +4031,35 @@
         }
       ],
       "name": "Локація #40",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -3147,10 +4133,35 @@
         }
       ],
       "name": "Локація #41",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -3224,10 +4235,35 @@
         }
       ],
       "name": "Локація #42",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -3301,10 +4337,35 @@
         }
       ],
       "name": "Локація #43",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -3378,10 +4439,35 @@
         }
       ],
       "name": "Локація #44",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -3455,10 +4541,35 @@
         }
       ],
       "name": "Локація #45",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -3532,10 +4643,35 @@
         }
       ],
       "name": "Локація #46",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -3609,10 +4745,35 @@
         }
       ],
       "name": "Локація #47",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -3686,10 +4847,35 @@
         }
       ],
       "name": "Локація #48",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -3763,10 +4949,35 @@
         }
       ],
       "name": "Локація #49",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -3840,10 +5051,35 @@
         }
       ],
       "name": "Локація #50",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -3917,10 +5153,35 @@
         }
       ],
       "name": "Локація #52",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -3994,10 +5255,35 @@
         }
       ],
       "name": "Локація #53",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -4071,10 +5357,35 @@
         }
       ],
       "name": "Локація #54",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,
@@ -4148,10 +5459,35 @@
         }
       ],
       "name": "Локація #55",
-      "phones": "+380472360720",
+      "phones": [
+        "+380 (66) 998 77 88",
+        "+380 (93) 556 45 46",
+        "+380 (50) 625 66 55"
+      ],
       "address": "бульвар Шевченка, 234",
       "website": "https://theatre-shevchenko.ck.ua/",
-      "work_time": "10:00–21:00",
+      "work_time": {
+        "mon": {
+          "start": "07:10",
+          "end": "20:00"
+        },
+        "tue": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "wed": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "thu": {
+          "start": "07:10",
+          "end": "18:00"
+        },
+        "fri": {
+          "start": "07:10",
+          "end": "16:00"
+        }
+      },
       "accessibility": true,
       "dog_friendly": false,
       "child_friendly": false,

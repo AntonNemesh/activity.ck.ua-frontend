@@ -64,3 +64,16 @@ mat-form-field {
 .small {
   font-size: 75%;
 }
+
+.tolerance section {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.tolerance mat-checkbox {
+  padding-right: 27px;
+}
+
+.tolerance mat-checkbox:last-of-type {
+  padding: 0;
+}

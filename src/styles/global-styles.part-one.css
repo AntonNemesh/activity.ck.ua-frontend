@@ -3,6 +3,10 @@ body {
   padding: 20px;
 }
 
+main {
+  padding: 40px 0;
+}
+
 .button {
   position: relative;
   display: inline-block;

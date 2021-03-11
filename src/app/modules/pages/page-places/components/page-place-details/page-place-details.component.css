@@ -6,3 +6,8 @@ h2 > span {
   width: 120px;
   padding: 10px;
 }
+
+b {
+  font-weight: 500;
+  font-size: 15px;
+}

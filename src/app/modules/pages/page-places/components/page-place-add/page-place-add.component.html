@@ -4,7 +4,7 @@
     <mat-form-field class="example-full-width">
       <mat-label>Зареєстровані організації</mat-label>
       <input type="text"
-             placeholder="Виберіть організацію"
+             placeholder="Оберіть організацію"
              aria-label="Number"
              matInput
              formControlName="organization_id"
@@ -20,11 +20,11 @@
       </mat-error>
     </mat-form-field>
     <div class="padding-left" formGroupName="organization" *ngIf="isNewOrganization">
-      <h2>Створити нову організацію</h2>
+<!--      <mat-label>Створити нову організацію</mat-label>-->
       <mat-form-field class="example-full-width">
-        <mat-label>Запропоновані організації</mat-label>
+        <mat-label>Запропонувати організацію</mat-label>
         <input type="text"
-               placeholder="Виберіть організацію"
+               placeholder="Оберіть організацію або запропонуйте нову"
                aria-label="Number"
                matInput
                formControlName="name"
@@ -109,7 +109,7 @@
     </mat-form-field>
     <mat-form-field class="example-full-width">
       <mat-label>Опис</mat-label>
-      <input matInput formControlName="description" placeholder="Mcdonalds - это крупнейшая в мире сеть ресторанов быстрого питания">
+      <textarea matInput formControlName="description" placeholder="Mcdonalds - это крупнейшая в мире сеть ресторанов быстрого питания"></textarea>
       <mat-error
         *ngIf="placeForm.get('description').hasError('required')">
         Поле є обов'язковим
@@ -179,7 +179,13 @@
         </section>
       </div>
     </div>
+    <div class="tolerance">
+      <mat-label class="gray">Толерантність:</mat-label>
+      <section class="padding-left">
+        <mat-checkbox *ngFor="let item of toleranceFilter" formControlName="{{item.filter_id}}">{{item.name}}</mat-checkbox>
+      </section>
+    </div>
 <!--    <button mat-raised-button type="submit" [disabled]="!placeForm.valid">Submit</button>-->
-    <button mat-raised-button type="submit">Submit</button>
+    <button mat-raised-button color="accent" type="submit">Submit</button>
   </form>
 </app-layout>

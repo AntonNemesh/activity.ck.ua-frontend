@@ -1,18 +1,34 @@
 <app-layout>
-  <h2>Детальна сторінка <span>{{placeId}}</span></h2>
   <div *ngIf="place">
-    <p>{{place.name}}</p>
-    <app-gallery [photos]="place.photos"></app-gallery>
-    <p>{{place.category_id}}</p>
-    <p>{{place.type_id}}</p>
-    <p>{{place.phones}}</p>
-    <p>{{place.address}}</p>
-    <p>{{place.website}}</p>
-    <p>Графік роботи: {{place.work_time}}</p>
-    <p>Доступність: {{place.accessibility}}</p>
-    <p>Місце дружнє до дітей: {{place.child_friendly}}</p>
-    <p>Місце дружнє до тварин: {{place.dog_friendly}}</p>
-    <p>Детальна інформація: {{place.description}}</p>
-    <p>Рейтинг: {{place.rating}}</p>
+    <p><b>Ідентифікатор місця:</b>  {{placeId}}</p>
+    <p><b>Назва місця:</b>  {{place.name}}</p>
+<!--    <app-gallery [photos]="place.photos"></app-gallery>-->
+    <p><b>Категорія:</b>  {{place.category_id}}</p>
+    <p><b>Тип:</b>  {{place.type_id}}</p>
+    <div>
+    <b>Телефони:</b>
+      <ul *ngIf="place.phones">
+        <li *ngFor="let phone of place.phones">{{phone}}</li>
+      </ul>
+    </div>
+    <p><b>Адреса:</b>  {{place.address}}</p>
+    <p><b>Веб сайт:</b>  {{place.website}}</p>
+    <div>
+      <b>Графік роботи:</b>
+      <ul *ngIf="place.work_time">
+        <li *ngIf="place.work_time.mon"> Понеділок: {{place.work_time.mon.start}} - {{place.work_time.mon.end}}</li>
+        <li *ngIf="place.work_time.tue"> Вівторок: {{place.work_time.tue.start}} - {{place.work_time.tue.end}}</li>
+        <li *ngIf="place.work_time.wed"> Середа: {{place.work_time.wed.start}} - {{place.work_time.wed.end}}</li>
+        <li *ngIf="place.work_time.thu"> Четверг: {{place.work_time.thu.start}} - {{place.work_time.thu.end}}</li>
+        <li *ngIf="place.work_time.fri"> П'ятниця: {{place.work_time.fri.start}} - {{place.work_time.fri.end}}</li>
+        <li *ngIf="place.work_time.sat"> Субота: {{place.work_time.sat.start}} - {{place.work_time.sat.end}}</li>
+        <li *ngIf="place.work_time.sun"> Неділя: {{place.work_time.sun.start}} - {{place.work_time.sun.end}}</li>
+      </ul>
+    </div>
+    <p><b>Доступність:</b>  {{place.accessibility}}</p>
+    <p><b>Місце дружнє до дітей:</b>  {{place.child_friendly}}</p>
+    <p><b>Місце дружнє до тварин:</b>  {{place.dog_friendly}}</p>
+    <p><b>Детальна інформація:</b>  {{place.description}}</p>
+    <p><b>Рейтинг:</b> {{place.rating}}</p>
   </div>
 </app-layout>
