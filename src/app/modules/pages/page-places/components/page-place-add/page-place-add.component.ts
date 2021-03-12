@@ -15,9 +15,10 @@ import {
 } from '../../../../../static/type';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import {finalize, map, startWith} from 'rxjs/operators';
 import { MASK_PHONE, MASK_EMAIL, PATTERN_PHONE, WEEK, TOLERANCE_FILTER } from '../../../../../static/data';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-page-place-add',
@@ -46,7 +47,8 @@ export class PagePlaceAddComponent implements OnInit {
     private categoriesService: CategoriesService,
     private filterByTypeService: FilterByTypeService,
     private router: Router,
-    private organizationsService: OrganizationsService) { }
+    private organizationsService: OrganizationsService,
+    private angularFireStorage: AngularFireStorage) { }
 
   public proposeOrganization: FormGroup = new FormGroup({
     name: new FormControl(null, Validators.required),
@@ -64,6 +66,8 @@ export class PagePlaceAddComponent implements OnInit {
     website: new FormControl('', Validators.required),
     category_id: new FormControl('', Validators.required),
     organization_id: new FormControl(null, Validators.required),
+    main_photo: new FormControl('', Validators.required),
+    photos: new FormControl(null),
     phones: this.placePhones,
     work_time: this.placeWorkTime,
   });
@@ -74,6 +78,9 @@ export class PagePlaceAddComponent implements OnInit {
       country: 'UA',
     },
   };
+
+  public photosUrl: any = [];
+  public coverPhoto: number = 0;
 
   @ViewChild('placesRef') placesRef: GooglePlaceDirective;
 
@@ -160,6 +167,10 @@ export class PagePlaceAddComponent implements OnInit {
 
   public buildRequest(value: IPlaceForm): IPlace {
     const result: IPlace = Object.assign(value);
+    result.photos = [];
+    if (this.photosUrl?.length) {
+      result.photos = this.photosUrl;
+    }
     if (value.hasOwnProperty('work_time')) {
       result.work_time = this.buildWorkTime(value.work_time);
     }
@@ -177,14 +188,6 @@ export class PagePlaceAddComponent implements OnInit {
     return result;
   }
 
-  public onSubmit(): void {
-    if (this.placeForm.invalid) { return; }
-    const request: IPlace = this.buildRequest(this.placeForm.value);
-    this.placesService.savePlace(request).subscribe((value) => {
-      this.router.navigateByUrl(`/places/${value.category_id}`);
-    });
-  }
-
   public addPhone(event: Event, isOrganization: boolean): void {
     event.preventDefault();
     if (isOrganization) {
@@ -200,6 +203,44 @@ export class PagePlaceAddComponent implements OnInit {
     } else {
       this.placePhones.removeAt(index);
     }
+  }
+
+  private uploadFiles(files: any): void {
+    for (const image of files) {
+      const filePath: string = 'images/' + Math.random() + image.name;
+      const fileRef: any = this.angularFireStorage.ref(filePath);
+      this.angularFireStorage.upload(filePath, image).snapshotChanges().pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe((url) => {
+            this.photosUrl.push(url);
+          });
+        }),
+      ).subscribe();
+    }
+  }
+
+  public selectPhotos(event: any): void {
+    if (!event.target.files?.length) { return; }
+    this.uploadFiles(event.target.files);
+  }
+
+  public selectCoverPhoto(index: number): void {
+    this.coverPhoto = index;
+    this.placeForm.get('main_photo').setValue(this.photosUrl[index]);
+  }
+
+  public deletePhotoByIndex(index: number): void {
+    if (index === this.coverPhoto) { this.coverPhoto = 0; }
+    this.angularFireStorage.storage.refFromURL(this.photosUrl[index]).delete();
+    this.photosUrl.splice(index, 1);
+  }
+
+  public onSubmit(): void {
+    if (this.placeForm.invalid) { return; }
+    const request: IPlace = this.buildRequest(this.placeForm.value);
+    this.placesService.savePlace(request).subscribe((value) => {
+      // this.router.navigateByUrl(`/places/${value.category_id}`);
+    });
   }
 
   ngOnInit(): void {

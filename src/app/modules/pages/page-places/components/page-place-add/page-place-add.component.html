@@ -185,6 +185,21 @@
         <mat-checkbox *ngFor="let item of toleranceFilter" formControlName="{{item.filter_id}}">{{item.name}}</mat-checkbox>
       </section>
     </div>
+    <div class="photos-wrapper">
+      <mat-label>Фото</mat-label>
+      <input type="file" multiple formControlName="photos" (change)="selectPhotos($event)"/>
+      <mat-error
+        *ngIf="placeForm.get('photos').hasError('required')">
+        Поле є обов'язковим
+      </mat-error>
+      <ul *ngIf="photosUrl?.length" class="photos">
+        <li class="photo-item" *ngFor="let photoUrl of photosUrl; index as i">
+          <img [class.cover-photo]="coverPhoto === i"  [src]="photoUrl" (click)="selectCoverPhoto(i)">
+          <mat-icon class="photo-delete" (click)="deletePhotoByIndex(i)">close</mat-icon>
+        </li>
+      </ul>
+    </div>
+
 <!--    <button mat-raised-button type="submit" [disabled]="!placeForm.valid">Submit</button>-->
     <button mat-raised-button color="accent" type="submit">Submit</button>
   </form>

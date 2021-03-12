@@ -15,6 +15,8 @@ import { MaterialModule } from '../../material';
 import { TextMaskModule } from 'angular2-text-mask';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire';
 
 
 @NgModule({
@@ -34,7 +36,17 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
     MaterialModule,
     TextMaskModule,
     NgxMaterialTimepickerModule,
-    GooglePlaceModule
+    GooglePlaceModule,
+    AngularFireModule.initializeApp({
+      apiKey: 'AIzaSyCe9dsRGYXGhw_vC-Kf6ifq5dijYaRCWf8',
+      authDomain: 'activityckua.firebaseapp.com',
+      projectId: 'activityckua',
+      storageBucket: 'activityckua.appspot.com',
+      messagingSenderId: '122915073098',
+      appId: '1:122915073098:web:9dc08801630bdaf7794ab3',
+      measurementId: 'G-EHNQ1JJ8YB'
+    }),
+    AngularFireStorageModule
   ]
 })
 export class PagePlacesModule { }
