@@ -37,15 +37,7 @@ import { AngularFireModule } from '@angular/fire';
     TextMaskModule,
     NgxMaterialTimepickerModule,
     GooglePlaceModule,
-    AngularFireModule.initializeApp({
-      apiKey: 'AIzaSyCe9dsRGYXGhw_vC-Kf6ifq5dijYaRCWf8',
-      authDomain: 'activityckua.firebaseapp.com',
-      projectId: 'activityckua',
-      storageBucket: 'activityckua.appspot.com',
-      messagingSenderId: '122915073098',
-      appId: '1:122915073098:web:9dc08801630bdaf7794ab3',
-      measurementId: 'G-EHNQ1JJ8YB'
-    }),
+    AngularFireModule.initializeApp(JSON.parse(ACCESS_CREDENTIALS.FIREBASE_OPTIONS)),
     AngularFireStorageModule
   ]
 })
