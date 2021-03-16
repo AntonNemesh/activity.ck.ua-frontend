@@ -18,7 +18,7 @@ import { Observable } from 'rxjs';
 import {finalize, map, startWith} from 'rxjs/operators';
 import { MASK_PHONE, MASK_EMAIL, PATTERN_PHONE, WEEK, TOLERANCE_FILTER } from '../../../../../static/data';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
-import {AngularFireStorage, AngularFireStorageReference} from '@angular/fire/storage';
+import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/storage';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { validators } from '../../../../../validators';
 
@@ -62,7 +62,6 @@ export class PagePlaceAddComponent implements OnInit {
 
   public placeWorkTime: FormGroup = new FormGroup({});
 
-  public fileNames: string = '';
   public hasErrorPhotosRequired: boolean = false;
 
   public placeForm: FormGroup = new FormGroup({
@@ -134,15 +133,15 @@ export class PagePlaceAddComponent implements OnInit {
     return result.filter(option => option.toLowerCase().includes(filterValue));
   }
 
+  private updateErrorPhotosRequired(): void {
+    this.hasErrorPhotosRequired = this.photosUrl.length === 0;
+  }
+
   private convertToFile(url: string, filename: string, mimeType: string): any {
     return (fetch(url)
         .then((res) => res.arrayBuffer())
         .then((buf) => new File([buf], filename, { type: mimeType }))
     );
-  }
-
-  private updateErrorPhotosRequired(): void {
-    this.hasErrorPhotosRequired = this.photosUrl.length === 0;
   }
 
   private uploadFiles(images: any): void {
