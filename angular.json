@@ -38,6 +38,10 @@
             "customWebpackConfig": {
               "path": "./custom-webpack.config.js"
             },
+            "allowedCommonJsDependencies": [
+              "angular2-text-mask",
+              "ngx-google-places-autocomplete"
+            ],
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",

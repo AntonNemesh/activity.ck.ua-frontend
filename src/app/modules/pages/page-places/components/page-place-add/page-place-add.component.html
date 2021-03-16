@@ -187,10 +187,14 @@
     </div>
     <div class="photos-wrapper">
       <mat-label>Фото</mat-label>
-      <input type="file" multiple formControlName="photos" (change)="selectPhotos($event)"/>
+      <input type="file" formControlName="photos" (change)="selectPhoto($event)"/>
       <mat-error
-        *ngIf="placeForm.get('photos').hasError('required')">
+        *ngIf="hasErrorPhotosRequired">
         Поле є обов'язковим
+      </mat-error>
+      <mat-error
+        *ngIf="placeForm.get('photos').hasError('fileType')">
+        Дозволено завантажувати тільки .jpeg .jpg формати
       </mat-error>
       <ul *ngIf="photosUrl?.length" class="photos">
         <li class="photo-item" *ngFor="let photoUrl of photosUrl; index as i">
