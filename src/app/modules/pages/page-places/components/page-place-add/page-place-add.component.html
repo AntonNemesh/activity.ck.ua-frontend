@@ -187,7 +187,7 @@
     </div>
     <div class="photos-wrapper">
       <mat-label>Фото</mat-label>
-      <input type="file" formControlName="photos" (change)="selectPhoto($event)"/>
+      <input type="file" multiple formControlName="photos" (change)="selectPhoto($event)"/>
       <mat-error
         *ngIf="hasErrorPhotosRequired">
         Поле є обов'язковим
