@@ -15,12 +15,12 @@ import {
 } from '../../../../../static/type';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import {  map, startWith } from 'rxjs/operators';
+import { finalize, map, startWith } from 'rxjs/operators';
 import { MASK_PHONE, MASK_EMAIL, PATTERN_PHONE, WEEK, TOLERANCE_FILTER } from '../../../../../static/data';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/storage';
-import { NgxImageCompressService } from 'ngx-image-compress';
 import { validators } from '../../../../../validators';
+import imageCompression from 'browser-image-compression';
 
 @Component({
   selector: 'app-page-place-add',
@@ -50,8 +50,7 @@ export class PagePlaceAddComponent implements OnInit {
     private filterByTypeService: FilterByTypeService,
     private router: Router,
     private organizationsService: OrganizationsService,
-    private angularFireStorage: AngularFireStorage,
-    private imageCompressService: NgxImageCompressService) { }
+    private angularFireStorage: AngularFireStorage) { }
 
   public proposeOrganization: FormGroup = new FormGroup({
     name: new FormControl(null, Validators.required),
@@ -137,60 +136,55 @@ export class PagePlaceAddComponent implements OnInit {
     this.hasErrorPhotosRequired = this.photosUrl.length === 0;
   }
 
-  private convertToFile(url: string, filename: string, mimeType: string): any {
-    return (fetch(url)
-        .then((res) => res.arrayBuffer())
-        .then((buf) => new File([buf], filename, { type: mimeType }))
-    );
-  }
-
   private async compressFile(image: File): Promise<File> {
-    const fileReader: FileReader = new FileReader();
-    const filePath: string = 'images/' + Math.random() + image.name;
-    const fileRef: AngularFireStorageReference = this.angularFireStorage.ref(filePath);
-    let fileB64: string|ArrayBuffer;
-
-    fileReader.readAsDataURL(image);
-    fileReader.onload = () => { fileB64 = fileReader.result; };
-
+    const options: any = {
+      maxSizeMB: 0.5,
+      maxWidthOrHeight: 1280,
+      useWebWorker: true,
+    };
     try {
-      const orientation: any = await this.imageCompressService.getOrientation(image);
-      const compressedFileB64: any = await this.imageCompressService.compressFile(fileB64 as string, orientation, 100, 30);
-      return await this.convertToFile(compressedFileB64, image.name, image.type);
+      const compressedFile: any = await imageCompression(image, options);
+      console.log(
+        `%c Original: ${this.formatBytes(image.size)}` +
+        '%c =>' +
+        `%c Compressed: ${this.formatBytes(compressedFile.size)}`,
+        'color:blue;', 'color:black;', 'color:green;'
+      );
+      return compressedFile;
     } catch (error) {
       console.log(error);
     }
   }
 
-  private async uploadFiles(images: any): Promise<any> {
-    let counter: number = 0;
-    for await (const image of images) {
-      console.log(++counter);
+  public async uploadFiles(event: any): Promise<any> {
+    let uploadFilesCounter: number = 0;
 
+    const images: File[] = event.target.files;
+    this.placeForm.get('photos').setValue(images, { emitModelToViewChange: false });
+
+    if (!images?.length || this.placeForm.get('photos').invalid) {
+      this.hasErrorPhotosRequired = false;
+      return;
+    }
+
+    for (const image of images) {
+      console.log(++uploadFilesCounter);
       try {
         const compressedFile: File = await this.compressFile(image);
-        if (!compressedFile) { return; }
-        console.log(compressedFile);
-      } catch (error) {
-        console.log(error);
-      }
 
-      // console.log(
-      //   `%c Original: ${this.formatBytes(image.size)}` +
-      //   '%c =>' +
-      //   `%c Compressed: ${this.formatBytes(compressedFile.size)}`,
-      //   'color:blue;', 'color:black;', 'color:green;'
-      // );
+        const filePath: string = 'images/' + Math.random() + image.name;
+        const fileRef: AngularFireStorageReference = this.angularFireStorage.ref(filePath);
 
-      // this.angularFireStorage.upload(filePath, compressedFile).snapshotChanges().pipe(
-      //   finalize(() => {
-      //     fileRef.getDownloadURL().subscribe((url) => {
-      //       this.photosUrl.push(url);
-      //       this.placeForm.get('main_photo').setValue(this.photosUrl[this.coverPhoto]);
-      //       this.updateErrorPhotosRequired();
-      //     });
-      //   }),
-      // ).subscribe();
+        this.angularFireStorage.upload(filePath, compressedFile).snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe((url) => {
+              this.photosUrl.push(url);
+              this.placeForm.get('main_photo').setValue(this.photosUrl[this.coverPhoto]);
+              this.updateErrorPhotosRequired();
+            });
+          }),
+        ).subscribe();
+      } catch (error) { console.log(error); }
     }
   }
 
@@ -278,15 +272,6 @@ export class PagePlaceAddComponent implements OnInit {
     } else {
       this.placePhones.removeAt(index);
     }
-  }
-
-  public selectPhoto(event: any): void {
-    this.placeForm.get('photos').setValue(event.target.files, { emitModelToViewChange: false });
-    if (!event.target.files?.length || this.placeForm.get('photos').invalid) {
-      this.hasErrorPhotosRequired = false;
-      return;
-    }
-    this.uploadFiles(event.target.files);
   }
 
   public selectCoverPhoto(index: number): void {

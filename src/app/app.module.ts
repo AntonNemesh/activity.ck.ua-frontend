@@ -7,7 +7,6 @@ import { modules } from './modules';
 import { services } from './services';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxImageCompressService } from 'ngx-image-compress';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import { NgxImageCompressService } from 'ngx-image-compress';
     ...modules,
   ],
   providers: [
-    NgxImageCompressService,
     ...services,
   ],
   bootstrap: [AppComponent]
