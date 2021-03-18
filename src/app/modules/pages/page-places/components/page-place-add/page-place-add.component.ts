@@ -1,6 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { CategoriesService, FilterByTypeService, PlacesService, OrganizationsService } from '../../../../../services';
+import {
+  CategoriesService,
+  FilterByTypeService,
+  PlacesService,
+  OrganizationsService,
+  LoaderService
+} from '../../../../../services';
 import {
   IMaskEmail,
   IOrganization,
@@ -14,12 +20,12 @@ import {
   IWorkTimeForm
 } from '../../../../../static/type';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import { finalize, map, startWith } from 'rxjs/operators';
 import { MASK_PHONE, MASK_EMAIL, PATTERN_PHONE, WEEK, TOLERANCE_FILTER } from '../../../../../static/data';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/storage';
-import { validators } from '../../../../../validators';
+import { FilesValidator } from '../../../../../validators';
 import imageCompression from 'browser-image-compression';
 
 @Component({
@@ -50,7 +56,8 @@ export class PagePlaceAddComponent implements OnInit {
     private filterByTypeService: FilterByTypeService,
     private router: Router,
     private organizationsService: OrganizationsService,
-    private angularFireStorage: AngularFireStorage) { }
+    private angularFireStorage: AngularFireStorage,
+    private loaderService: LoaderService) { }
 
   public proposeOrganization: FormGroup = new FormGroup({
     name: new FormControl(null, Validators.required),
@@ -71,7 +78,7 @@ export class PagePlaceAddComponent implements OnInit {
     category_id: new FormControl('', Validators.required),
     organization_id: new FormControl(null, Validators.required),
     main_photo: new FormControl('', Validators.required),
-    photos: new FormControl(null, [Validators.required, validators.fileType(['jpeg', 'jpg'])]),
+    photos: new FormControl(null, Validators.required),
     phones: this.placePhones,
     work_time: this.placeWorkTime,
   });
@@ -85,6 +92,12 @@ export class PagePlaceAddComponent implements OnInit {
 
   public photosUrl: any = [];
   public coverPhoto: number = 0;
+
+  public messagesWarningOfType: string[];
+  public messagesWarningOfSize: string[];
+
+  public loaderVisible: Subject<boolean> = this.loaderService.loaderVisible;
+  public contentVisible: Subject<boolean> = this.loaderService.contentVisible;
 
   @ViewChild('placesRef') placesRef: GooglePlaceDirective;
 
@@ -136,7 +149,11 @@ export class PagePlaceAddComponent implements OnInit {
     this.hasErrorPhotosRequired = this.photosUrl.length === 0;
   }
 
-  private async compressFile(image: File): Promise<File> {
+  public showImage(event: any): void {
+    event.target.classList.remove('hidden');
+  }
+
+  public async compressFile(image: File): Promise<File> {
     const options: any = {
       maxSizeMB: 0.5,
       maxWidthOrHeight: 1280,
@@ -145,9 +162,9 @@ export class PagePlaceAddComponent implements OnInit {
     try {
       const compressedFile: any = await imageCompression(image, options);
       console.log(
-        `%c Original: ${this.formatBytes(image.size)}` +
+        `%c Original: ${FilesValidator.formatBytes(image.size)}` +
         '%c =>' +
-        `%c Compressed: ${this.formatBytes(compressedFile.size)}`,
+        `%c Compressed: ${FilesValidator.formatBytes(compressedFile.size)}`,
         'color:blue;', 'color:black;', 'color:green;'
       );
       return compressedFile;
@@ -160,16 +177,32 @@ export class PagePlaceAddComponent implements OnInit {
     let uploadFilesCounter: number = 0;
 
     const images: File[] = event.target.files;
-    this.placeForm.get('photos').setValue(images, { emitModelToViewChange: false });
+
+    FilesValidator.resetMessageWarning();
 
     if (!images?.length || this.placeForm.get('photos').invalid) {
       this.hasErrorPhotosRequired = false;
       return;
     }
 
+    this.loaderService.hide();
     for (const image of images) {
-      console.log(++uploadFilesCounter);
       try {
+        const imgValidator: FilesValidator = new FilesValidator(image);
+
+        if (imgValidator.checkTypeOfFile()) {
+          FilesValidator.setMessageWarning('type', `"${image.name}"`);
+          this.messagesWarningOfType = FilesValidator.getMessageWarning('type');
+          continue;
+        }
+
+        if (imgValidator.checkSizeOfFile()) {
+          FilesValidator.setMessageWarning('size', `"${image.name}" - ${FilesValidator.formatBytes(image.size)}`);
+          this.messagesWarningOfSize = FilesValidator.getMessageWarning('size');
+          continue;
+        }
+
+        console.log(++uploadFilesCounter);
         const compressedFile: File = await this.compressFile(image);
 
         const filePath: string = 'images/' + Math.random() + image.name;
@@ -186,15 +219,7 @@ export class PagePlaceAddComponent implements OnInit {
         ).subscribe();
       } catch (error) { console.log(error); }
     }
-  }
-
-  public formatBytes(bytes: number, decimals: number = 2): string {
-    if (bytes === 0) { return '0 Bytes'; }
-    const k: number = 1024;
-    const dm: number = decimals < 0 ? 0 : decimals;
-    const sizes: string[] = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-    const i: number = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+    this.loaderService.show();
   }
 
   public handleAddressChange(address: any): void {
@@ -283,6 +308,7 @@ export class PagePlaceAddComponent implements OnInit {
     this.angularFireStorage.storage.refFromURL(this.photosUrl[index]).delete();
     this.photosUrl.splice(index, 1);
     this.coverPhoto = 0;
+    FilesValidator.resetMessageWarning();
     if (!this.photosUrl?.length) {
       this.placeForm.get('photos').setValue(null);
       this.placeForm.get('main_photo').setValue(null);
