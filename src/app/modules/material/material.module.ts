@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -23,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatAutocompleteModule,
     MatCheckboxModule,
     MatIconModule,
+    MatProgressSpinnerModule,
   ],
   imports: [
     CommonModule

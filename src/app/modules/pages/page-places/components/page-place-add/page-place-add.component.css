@@ -99,6 +99,10 @@ mat-form-field {
   margin: 10px;
 }
 
+.photos-wrapper mat-spinner {
+  margin: 50px auto;
+}
+
 .photos img:hover,
 .photos .photo-delete:hover {
   cursor: pointer;
@@ -115,4 +119,19 @@ mat-form-field {
 .cover-photo {
   border: 4px solid deepskyblue;
   box-sizing: border-box;
+}
+
+.photos-warning mat-error {
+  color: #ff6400;
+}
+
+.photos-warning ul {
+  list-style: none;
+  margin-block-start: .2em;
+  margin-block-end: .2em;
+  padding-inline-start: 40px;
+}
+
+.hidden {
+  display: none;
 }
