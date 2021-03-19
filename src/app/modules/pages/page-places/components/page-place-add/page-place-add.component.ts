@@ -90,11 +90,15 @@ export class PagePlaceAddComponent implements OnInit {
     },
   };
 
+  public photos: any[] = [];
+  public photosB64: string[] = [];
   public photosUrl: any = [];
-  public coverPhoto: number = 0;
+  public photoCover: number = 0;
+  public photosLimit: number = 5;
 
   public messagesWarningOfType: string[];
   public messagesWarningOfSize: string[];
+  public messagesWarningOfAmount: boolean = false;
 
   public loaderVisible: Subject<boolean> = this.loaderService.loaderVisible;
   public contentVisible: Subject<boolean> = this.loaderService.contentVisible;
@@ -146,11 +150,31 @@ export class PagePlaceAddComponent implements OnInit {
   }
 
   private updateErrorPhotosRequired(): void {
-    this.hasErrorPhotosRequired = this.photosUrl.length === 0;
+    this.hasErrorPhotosRequired = this.photos.length === 0;
   }
 
-  public showImage(event: any): void {
-    event.target.classList.remove('hidden');
+  private async uploadFiles(): Promise<any> {
+    let uploadFilesCounter: number = 0;
+
+    for (const photo of this.photos) {
+      try {
+        console.log(`upload: ${++uploadFilesCounter}`);
+
+        const filePath: string = 'images/' + Math.random() + photo.name;
+        const fileRef: AngularFireStorageReference = this.angularFireStorage.ref(filePath);
+
+        this.angularFireStorage.upload(filePath, photo).snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe((url) => {
+              this.photosUrl.push(url);
+              this.placeForm.get('main_photo').setValue(this.photosUrl[this.photoCover]);
+              this.updateErrorPhotosRequired();
+            });
+          }),
+        ).subscribe();
+      } catch (error) { console.log(error); }
+    }
+    this.loaderService.show();
   }
 
   public async compressFile(image: File): Promise<File> {
@@ -173,8 +197,8 @@ export class PagePlaceAddComponent implements OnInit {
     }
   }
 
-  public async uploadFiles(event: any): Promise<any> {
-    let uploadFilesCounter: number = 0;
+  public async selectFiles(event: any): Promise<any> {
+    let selectFilesCounter: number = 0;
 
     const images: File[] = event.target.files;
 
@@ -185,7 +209,15 @@ export class PagePlaceAddComponent implements OnInit {
       return;
     }
 
-    this.loaderService.hide();
+    console.log('');
+    if (this.photos.length + images.length > this.photosLimit) {
+      this.loaderService.hide();
+      this.messagesWarningOfAmount = true;
+      console.log('ERR', this.photos.length, images.length);
+      return;
+    }
+
+    this.loaderService.show();
     for (const image of images) {
       try {
         const imgValidator: FilesValidator = new FilesValidator(image);
@@ -202,24 +234,25 @@ export class PagePlaceAddComponent implements OnInit {
           continue;
         }
 
-        console.log(++uploadFilesCounter);
+        console.log(`select: ${++selectFilesCounter}`);
+
         const compressedFile: File = await this.compressFile(image);
+        const compressedFileB64: string = await imageCompression.getDataUrlFromFile(compressedFile);
 
-        const filePath: string = 'images/' + Math.random() + image.name;
-        const fileRef: AngularFireStorageReference = this.angularFireStorage.ref(filePath);
+        if (!compressedFile || !compressedFileB64) { continue; }
 
-        this.angularFireStorage.upload(filePath, compressedFile).snapshotChanges().pipe(
-          finalize(() => {
-            fileRef.getDownloadURL().subscribe((url) => {
-              this.photosUrl.push(url);
-              this.placeForm.get('main_photo').setValue(this.photosUrl[this.coverPhoto]);
-              this.updateErrorPhotosRequired();
-            });
-          }),
-        ).subscribe();
+        this.photos.push(compressedFile);
+        this.photosB64.push(compressedFileB64);
+
+
       } catch (error) { console.log(error); }
     }
-    this.loaderService.show();
+    this.messagesWarningOfAmount = false;
+    console.log('AFTER', this.photos.length, images.length);
+
+    this.updateErrorPhotosRequired();
+
+    setTimeout(() => { this.loaderService.hide(); }, 500);
   }
 
   public handleAddressChange(address: any): void {
@@ -300,26 +333,27 @@ export class PagePlaceAddComponent implements OnInit {
   }
 
   public selectCoverPhoto(index: number): void {
-    this.coverPhoto = index;
-    this.placeForm.get('main_photo').setValue(this.photosUrl[index]);
+    this.photoCover = index;
   }
 
   public deletePhotoByIndex(index: number): void {
-    this.angularFireStorage.storage.refFromURL(this.photosUrl[index]).delete();
-    this.photosUrl.splice(index, 1);
-    this.coverPhoto = 0;
+    this.photos.splice(index, 1);
+    this.photosB64.splice(index, 1);
+    this.photoCover = 0;
+    this.messagesWarningOfAmount = false;
     FilesValidator.resetMessageWarning();
+    this.updateErrorPhotosRequired();
     if (!this.photosUrl?.length) {
       this.placeForm.get('photos').setValue(null);
       this.placeForm.get('main_photo').setValue(null);
     }
-    this.updateErrorPhotosRequired();
   }
 
   public onSubmit(): void {
     this.updateErrorPhotosRequired();
     if (this.placeForm.invalid) {
       console.log('invalid', this.placeForm);
+      this.loaderService.hide();
       return;
     }
     console.log('valid', this.placeForm);
