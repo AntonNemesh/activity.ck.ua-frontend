@@ -206,18 +206,20 @@ export class PagePlaceAddComponent implements OnInit {
 
     if (!images?.length || this.placeForm.get('photos').invalid) {
       this.hasErrorPhotosRequired = false;
+      this.messagesWarningOfAmount = false;
       return;
     }
+    this.loaderService.show();
 
     console.log('');
     if (this.photos.length + images.length > this.photosLimit) {
-      this.loaderService.hide();
+      setTimeout(() => { this.loaderService.hide(); }, 500);
       this.messagesWarningOfAmount = true;
+      this.hasErrorPhotosRequired = false;
       console.log('ERR', this.photos.length, images.length);
       return;
     }
 
-    this.loaderService.show();
     for (const image of images) {
       try {
         const imgValidator: FilesValidator = new FilesValidator(image);
@@ -354,6 +356,7 @@ export class PagePlaceAddComponent implements OnInit {
     if (this.placeForm.invalid) {
       console.log('invalid', this.placeForm);
       this.loaderService.hide();
+      this.messagesWarningOfAmount = false;
       return;
     }
     console.log('valid', this.placeForm);
