@@ -98,7 +98,7 @@ export class PagePlaceAddComponent implements OnInit {
 
   public messagesWarningOfType: string[];
   public messagesWarningOfSize: string[];
-  public messagesWarningOfAmount: boolean = false;
+  public messagesWarningOfAmount: string[];
 
   public loaderVisible: Subject<boolean> = this.loaderService.loaderVisible;
   public contentVisible: Subject<boolean> = this.loaderService.contentVisible;
@@ -174,7 +174,6 @@ export class PagePlaceAddComponent implements OnInit {
         ).subscribe();
       } catch (error) { console.log(error); }
     }
-    this.loaderService.show();
   }
 
   public async compressFile(image: File): Promise<File> {
@@ -199,40 +198,33 @@ export class PagePlaceAddComponent implements OnInit {
 
   public async selectFiles(event: any): Promise<any> {
     let selectFilesCounter: number = 0;
-
     const images: File[] = event.target.files;
+    FilesValidator.resetFilesWarning();
 
-    FilesValidator.resetMessageWarning();
+    if (!images?.length || this.placeForm.get('photos').invalid) { return; }
 
-    if (!images?.length || this.placeForm.get('photos').invalid) {
-      this.hasErrorPhotosRequired = false;
-      this.messagesWarningOfAmount = false;
-      return;
-    }
+    this.hasErrorPhotosRequired = false;
     this.loaderService.show();
-
-    console.log('');
-    if (this.photos.length + images.length > this.photosLimit) {
-      setTimeout(() => { this.loaderService.hide(); }, 500);
-      this.messagesWarningOfAmount = true;
-      this.hasErrorPhotosRequired = false;
-      console.log('ERR', this.photos.length, images.length);
-      return;
-    }
 
     for (const image of images) {
       try {
         const imgValidator: FilesValidator = new FilesValidator(image);
 
         if (imgValidator.checkTypeOfFile()) {
-          FilesValidator.setMessageWarning('type', `"${image.name}"`);
-          this.messagesWarningOfType = FilesValidator.getMessageWarning('type');
+          FilesValidator.setFileWarning('type', `"${image.name}"`);
+          this.messagesWarningOfType = FilesValidator.getFilesWarning('type');
           continue;
         }
 
         if (imgValidator.checkSizeOfFile()) {
-          FilesValidator.setMessageWarning('size', `"${image.name}" - ${FilesValidator.formatBytes(image.size)}`);
-          this.messagesWarningOfSize = FilesValidator.getMessageWarning('size');
+          FilesValidator.setFileWarning('size', `"${image.name}" - ${FilesValidator.formatBytes(image.size)}`);
+          this.messagesWarningOfSize = FilesValidator.getFilesWarning('size');
+          continue;
+        }
+
+        if (this.photos.length >= this.photosLimit) {
+          FilesValidator.setFileWarning('amount', `"${image.name}"`);
+          this.messagesWarningOfAmount = FilesValidator.getFilesWarning('amount');
           continue;
         }
 
@@ -246,14 +238,9 @@ export class PagePlaceAddComponent implements OnInit {
         this.photos.push(compressedFile);
         this.photosB64.push(compressedFileB64);
 
-
       } catch (error) { console.log(error); }
     }
-    this.messagesWarningOfAmount = false;
-    console.log('AFTER', this.photos.length, images.length);
-
-    this.updateErrorPhotosRequired();
-
+    if (this.photos?.length) { this.updateErrorPhotosRequired(); }
     setTimeout(() => { this.loaderService.hide(); }, 500);
   }
 
@@ -342,8 +329,7 @@ export class PagePlaceAddComponent implements OnInit {
     this.photos.splice(index, 1);
     this.photosB64.splice(index, 1);
     this.photoCover = 0;
-    this.messagesWarningOfAmount = false;
-    FilesValidator.resetMessageWarning();
+    FilesValidator.resetFilesWarning();
     this.updateErrorPhotosRequired();
     if (!this.photosUrl?.length) {
       this.placeForm.get('photos').setValue(null);
@@ -355,8 +341,6 @@ export class PagePlaceAddComponent implements OnInit {
     this.updateErrorPhotosRequired();
     if (this.placeForm.invalid) {
       console.log('invalid', this.placeForm);
-      this.loaderService.hide();
-      this.messagesWarningOfAmount = false;
       return;
     }
     console.log('valid', this.placeForm);

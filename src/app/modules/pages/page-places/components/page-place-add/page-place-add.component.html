@@ -186,39 +186,15 @@
       </section>
     </div>
     <div class="photos-wrapper">
-      <a mat-raised-button type="button" (click)="fileInput.click()">
+      <a class="add-photos" mat-raised-button type="button" (click)="fileInput.click()">
         <mat-label>Додати фотографії</mat-label>
         <input #fileInput type="file" multiple formControlName="photos" (change)="selectFiles($event)" style="display:none;" />
       </a>
+      <span [class.orange]="photos.length === photosLimit"
+            class="access-files mat-h4 mat-subheading-1">
+        Дозволено файлів до завантаження: {{photosLimit - photos.length}}
+      </span>
       <div *ngIf="contentVisible | async">
-        <mat-error *ngIf="hasErrorPhotosRequired">
-          Поле є обов'язковим
-        </mat-error>
-        <mat-error *ngIf="messagesWarningOfAmount">
-          Загальна кількість файлів не має перевищувати {{photosLimit}}-ти!
-        </mat-error>
-        <div class="photos-warning" *ngIf="!hasErrorPhotosRequired && messagesWarningOfType?.length">
-          <mat-error>
-            Тип деяких із запропонованих файлів не є "jpeg", "jpg".<br>
-            Відхилено запит на завантаження файлів:
-          </mat-error>
-          <ul>
-            <li *ngFor="let filename of messagesWarningOfType">
-              <mat-error>{{filename}}</mat-error>
-            </li>
-          </ul>
-        </div>
-        <div class="photos-warning" *ngIf="!hasErrorPhotosRequired && messagesWarningOfSize?.length">
-          <mat-error>
-            Розмір деяких із запропонованих файлів більше 1 MB.<br>
-            Відхилено запит на завантаження файлів:
-          </mat-error>
-          <ul>
-            <li *ngFor="let filesize of messagesWarningOfSize">
-              <mat-error>{{filesize}}</mat-error>
-            </li>
-          </ul>
-        </div>
         <ul class="photos">
           <li class="photo-item" *ngFor="let photoB64 of photosB64; index as i">
             <img [class.cover-photo]="photoCover === i"
@@ -226,6 +202,39 @@
             <mat-icon class="photo-delete" (click)="deletePhotoByIndex(i)">close</mat-icon>
           </li>
         </ul>
+        <mat-error *ngIf="hasErrorPhotosRequired">
+          Поле є обов'язковим
+        </mat-error>
+        <div class="photos-warning orange" *ngIf="!hasErrorPhotosRequired && messagesWarningOfType?.length">
+          <mat-error>
+            Відхилено запит на завантаження {{messagesWarningOfType?.length}} файлу(ів), з типом не "jpeg", "jpg":
+          </mat-error>
+          <ul>
+            <li *ngFor="let filename of messagesWarningOfType">
+              <mat-error>{{filename}}</mat-error>
+            </li>
+          </ul>
+        </div>
+        <div class="photos-warning orange" *ngIf="!hasErrorPhotosRequired && messagesWarningOfSize?.length">
+          <mat-error>
+            Відхилено запит на завантаження {{messagesWarningOfSize?.length}} файлу(ів), розміром більше 1 MB:
+          </mat-error>
+          <ul>
+            <li *ngFor="let filesize of messagesWarningOfSize">
+              <mat-error>{{filesize}}</mat-error>
+            </li>
+          </ul>
+        </div>
+        <div class="photos-warning orange" *ngIf="!hasErrorPhotosRequired && messagesWarningOfAmount?.length">
+          <mat-error>
+            Відхилено запит на завантаження {{messagesWarningOfAmount?.length}} файлу(ів). Дозволено не більше {{photosLimit}}:
+          </mat-error>
+          <ul>
+            <li *ngFor="let filename of messagesWarningOfAmount">
+              <mat-error>{{filename}}</mat-error>
+            </li>
+          </ul>
+        </div>
       </div>
       <mat-spinner *ngIf="loaderVisible | async"></mat-spinner>
     </div>

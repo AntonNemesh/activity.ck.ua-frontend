@@ -4,23 +4,24 @@ export class FilesValidator {
     this.image = image;
   }
 
-  static messagesWarning: any = {
+  static filesWarning: any = {
     type: [],
-    size: []
+    size: [],
+    amount: []
   };
 
-  static setMessageWarning(type: string, value: string|number): void {
-    this.messagesWarning[type].push(value);
+  static setFileWarning(type: string, value: string): void {
+    this.filesWarning[type].push(value);
   }
 
-  static getMessageWarning(type: string): string[] {
-    return this.messagesWarning[type];
+  static getFilesWarning(type: string): string[] {
+    return this.filesWarning[type];
   }
 
-  static resetMessageWarning(): void {
-    for (const key in this.messagesWarning) {
-      if (!this.messagesWarning.hasOwnProperty(key)) { continue; }
-      this.messagesWarning[key].length = 0;
+  static resetFilesWarning(): void {
+    for (const key in this.filesWarning) {
+      if (!this.filesWarning.hasOwnProperty(key)) { continue; }
+      this.filesWarning[key].length = 0;
     }
   }
 
