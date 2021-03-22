@@ -27,6 +27,7 @@ import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/storage';
 import { FilesValidator } from '../../../../../validators';
 import imageCompression from 'browser-image-compression';
+import {MatStepper} from '@angular/material/stepper';
 
 @Component({
   selector: 'app-page-place-add',
@@ -59,28 +60,48 @@ export class PagePlaceAddComponent implements OnInit {
     private angularFireStorage: AngularFireStorage,
     private loaderService: LoaderService) { }
 
+  public organizationPhones: FormArray = new FormArray([this.phoneFormControl]);
+
+  public placePhones: FormArray = new FormArray([this.phoneFormControl]);
+
   public proposeOrganization: FormGroup = new FormGroup({
     name: new FormControl(null, Validators.required),
   });
 
-  public organizationPhones: FormArray = new FormArray([this.phoneFormControl]);
-  public placePhones: FormArray = new FormArray([this.phoneFormControl]);
+  public workTimeGroup: FormGroup = new FormGroup({});
 
-  public placeWorkTime: FormGroup = new FormGroup({});
+  public organizationGroup: FormGroup = new FormGroup({
+    organization_id: new FormControl(null, Validators.required),
+  });
 
-  public hasErrorPhotosRequired: boolean = false;
+  public categoryGroup: FormGroup = new FormGroup({
+    category_id: new FormControl('', Validators.required),
+  });
 
-  public placeForm: FormGroup = new FormGroup({
+  public mainGroup: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
     website: new FormControl('', Validators.required),
-    category_id: new FormControl('', Validators.required),
-    organization_id: new FormControl(null, Validators.required),
+    phones: this.placePhones,
+  });
+
+  public toleranceGroup: FormGroup = new FormGroup({});
+
+  public photosGroup: FormGroup = new FormGroup({
     main_photo: new FormControl('', Validators.required),
     photos: new FormControl(null, Validators.required),
-    phones: this.placePhones,
-    work_time: this.placeWorkTime,
+  });
+
+  public hasErrorPhotosRequired: boolean = false;
+
+  public placeForm: FormGroup = new FormGroup({
+    photos_group: this.photosGroup,
+    main_group: this.mainGroup,
+    tolerance_group: this.toleranceGroup,
+    category_group: this.categoryGroup,
+    organization_group: this.organizationGroup,
+    work_time_group: this.workTimeGroup,
   });
 
   public googlePlacesOptions: any = {
@@ -107,21 +128,25 @@ export class PagePlaceAddComponent implements OnInit {
 
   private initFormControls(): void {
     this.week.forEach((day) => {
-      this.placeWorkTime.addControl(`${day.id}_start`, new FormControl(null, Validators.required));
-      this.placeWorkTime.addControl(`${day.id}_end`, new FormControl(null, Validators.required));
+      this.workTimeGroup.addControl(`${day.id}_start`, new FormControl(null, Validators.required));
+      this.workTimeGroup.addControl(`${day.id}_end`, new FormControl(null, Validators.required));
     });
     this.toleranceFilter.forEach((item) => {
-      this.placeForm.addControl(item.filter_id, new FormControl(false, Validators.required));
+      this.toleranceGroup.addControl(item.filter_id, new FormControl(false, Validators.required));
     });
   }
 
   private setTypes(category: string): void {
     this.types.length = 0;
     const types: IPlacesTypes[] = this.filterByTypeService.getTypes(category);
-    if (this.placeForm.get('type_id')) { this.placeForm.removeControl('type_id'); }
+    if (this.categoryGroup.get('type_id')) {
+      this.categoryGroup.removeControl('type_id');
+      console.log('removed type_id', this.categoryGroup.status);
+    }
 
     if (!types?.length) { return; }
-    this.placeForm.addControl('type_id', new FormControl('', Validators.required));
+    this.categoryGroup.addControl('type_id', new FormControl('', Validators.required));
+    console.log('added type_id', this.categoryGroup.status);
     this.types = types;
   }
 
@@ -149,10 +174,6 @@ export class PagePlaceAddComponent implements OnInit {
     return result.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  private updateErrorPhotosRequired(): void {
-    this.hasErrorPhotosRequired = this.photos.length === 0;
-  }
-
   private async uploadFiles(): Promise<any> {
     let uploadFilesCounter: number = 0;
 
@@ -167,13 +188,17 @@ export class PagePlaceAddComponent implements OnInit {
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.photosUrl.push(url);
-              this.placeForm.get('main_photo').setValue(this.photosUrl[this.photoCover]);
+              this.photosGroup.get('main_photo').setValue(this.photosUrl[this.photoCover]);
               this.updateErrorPhotosRequired();
             });
           }),
         ).subscribe();
       } catch (error) { console.log(error); }
     }
+  }
+
+  public updateErrorPhotosRequired(): void {
+    this.hasErrorPhotosRequired = this.photos.length === 0;
   }
 
   public async compressFile(image: File): Promise<File> {
@@ -201,7 +226,7 @@ export class PagePlaceAddComponent implements OnInit {
     const images: File[] = event.target.files;
     FilesValidator.resetFilesWarning();
 
-    if (!images?.length || this.placeForm.get('photos').invalid) { return; }
+    if (!images?.length || this.photosGroup.get('photos').invalid) { return; }
 
     this.hasErrorPhotosRequired = false;
     this.loaderService.show();
@@ -241,21 +266,34 @@ export class PagePlaceAddComponent implements OnInit {
       } catch (error) { console.log(error); }
     }
     if (this.photos?.length) { this.updateErrorPhotosRequired(); }
+    this.photosGroup.get('photos').setValue(' ', { emitModelToViewChange: false });
+    this.photosGroup.get('main_photo').setValue(' ');
     setTimeout(() => { this.loaderService.hide(); }, 500);
   }
 
+  public superReset(stepper: MatStepper): void {
+    if (this.mainGroup) { this.mainGroup.reset(); }
+    if (this.organizationGroup) { this.organizationGroup.reset(); }
+    if (this.workTimeGroup) { this.workTimeGroup.reset(); }
+    if (this.toleranceGroup) { this.toleranceGroup.reset(); }
+    if (this.categoryGroup) { this.categoryGroup.reset(); }
+    if (this.photosGroup) { this.photosGroup.reset(); }
+    if (this.placeForm) { this.placeForm.reset(); }
+    if (stepper) { stepper.reset(); }
+  }
+
   public handleAddressChange(address: any): void {
-    this.placeForm.get('address').setValue(address.formatted_address);
+    this.mainGroup.get('address').setValue(address.formatted_address);
   }
 
   public toggleDayOff(day: string): void {
-    if (this.placeWorkTime.get(day + '_start').disabled ||
-      this.placeWorkTime.get(day + '_end').disabled) {
-      this.placeWorkTime.get(day + '_start').enable();
-      this.placeWorkTime.get(day + '_end').enable();
+    if (this.workTimeGroup.get(day + '_start').disabled ||
+      this.workTimeGroup.get(day + '_end').disabled) {
+      this.workTimeGroup.get(day + '_start').enable();
+      this.workTimeGroup.get(day + '_end').enable();
     } else {
-      this.placeWorkTime.get(day + '_start').disable();
-      this.placeWorkTime.get(day + '_end').disable();
+      this.workTimeGroup.get(day + '_start').disable();
+      this.workTimeGroup.get(day + '_end').disable();
     }
   }
 
@@ -281,26 +319,42 @@ export class PagePlaceAddComponent implements OnInit {
     return result;
   }
 
-  public buildRequest(value: IPlaceForm): IPlace {
-    const result: IPlace = Object.assign(value);
+  public buildRequest(value: any): any {
+    const result: any = new Object({});
+
+    if (value.hasOwnProperty('main_group')) {
+      result.name = value.main_group.name;
+      result.description = value.main_group.description;
+      result.address = value.main_group.address;
+      result.website = value.main_group.website;
+      result.phones = value.main_group.phones;
+    }
+
+    if (value.hasOwnProperty('tolerance_group')) {
+      result.accessibility = value.tolerance_group.accessibility;
+      result.child_friendly = value.tolerance_group.child_friendly;
+      result.dog_friendly = value.tolerance_group.dog_friendly;
+    }
+
     result.photos = [];
     if (this.photosUrl?.length) {
       result.photos = this.photosUrl;
     }
-    if (value.hasOwnProperty('work_time')) {
-      result.work_time = this.buildWorkTime(value.work_time);
+
+    if (value.hasOwnProperty('work_time_group')) {
+      result.work_time = this.buildWorkTime(value.work_time_group);
     }
-    if  (!value.hasOwnProperty('organization')) {
-      result.organization_id = this.getOrganizationId(value.organization_id);
-      delete result.organization;
+
+    if (value.organization_group.hasOwnProperty('organization')) {
+      if (value.organization_group.organization.hasOwnProperty('email')) {
+        result.organization = value.organization_group.organization;
+        return result;
+      }
+      result.organization_id = this.getOrganizationId(value.organization_group.organization.name);
       return result;
     }
-    if  (!value.organization.hasOwnProperty('email')) {
-      result.organization_id = this.getOrganizationId(value.organization.name);
-      delete result.organization;
-      return result;
-    }
-    delete result.organization_id;
+
+    result.organization_id = this.getOrganizationId(value.organization_group.organization_id);
     return result;
   }
 
@@ -332,8 +386,8 @@ export class PagePlaceAddComponent implements OnInit {
     FilesValidator.resetFilesWarning();
     this.updateErrorPhotosRequired();
     if (!this.photosUrl?.length) {
-      this.placeForm.get('photos').setValue(null);
-      this.placeForm.get('main_photo').setValue(null);
+      this.photosGroup.get('photos').setValue(null);
+      this.photosGroup.get('main_photo').setValue(null);
     }
   }
 
@@ -357,17 +411,17 @@ export class PagePlaceAddComponent implements OnInit {
     this.organizationsService.getOrganizations().subscribe((organizations) => {
       this.organizations = organizations;
 
-      this.filteredApprovedOrganizations = this.placeForm.get('organization_id').valueChanges
+      this.filteredApprovedOrganizations = this.organizationGroup.get('organization_id').valueChanges
         .pipe(
           startWith(''),
           map((value) => {
             const result: string[] = this.filter(value, true);
             if (!result?.length) {
-              this.placeForm.addControl('organization', this.proposeOrganization);
+              this.organizationGroup.addControl('organization', this.proposeOrganization);
               this.isNewOrganization = true;
             } else {
               this.isNewOrganization = false;
-              this.placeForm.removeControl('organization');
+              this.organizationGroup.removeControl('organization');
               this.proposeOrganization.reset();
             }
             return result;
@@ -399,7 +453,7 @@ export class PagePlaceAddComponent implements OnInit {
 
     });
 
-    this.placeForm.get('category_id').valueChanges.subscribe((value) => {
+    this.categoryGroup.get('category_id').valueChanges.subscribe((value) => {
       this.setTypes(value);
     });
 
