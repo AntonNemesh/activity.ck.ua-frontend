@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaginationComponent, LoadingComponent, GalleryComponent } from './components';
+import {MatCarouselModule} from '@ngmodule/material-carousel';
 
 
 
@@ -12,8 +13,9 @@ import { PaginationComponent, LoadingComponent, GalleryComponent } from './compo
     PaginationComponent,
     GalleryComponent,
   ],
-  imports: [
-    CommonModule,
-  ]
+    imports: [
+        CommonModule,
+        MatCarouselModule,
+    ]
 })
 export class SharedModule { }

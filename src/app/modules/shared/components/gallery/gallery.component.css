@@ -1,44 +1,4 @@
-.gallery {
-  max-width: 1400px;
+.carousel-wrapper {
   margin: 0 auto;
-  position: relative;
-}
-
-.list {
-  list-style: none;
-}
-
-.img {
-  width: 100%;
-  max-height: 700px;
-}
-
-.dots-container {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-
-.dot,
-.dot-pagination {
-  cursor: pointer;
-  width: 13px;
-  height: 13px;
-  margin: 0 2px;
-  background-color: #b8b4b4;
-  border-radius: 50%;
-  transition: background-color 0.6s ease;
-  border: none;
-}
-
-.active {
-  background-color: #717171;
-}
-
-.hide {
-  display: none;
-}
-
-.selected {
-  display: block;
+  max-width: 1400px;
 }

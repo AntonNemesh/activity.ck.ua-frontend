@@ -1,8 +1,28 @@
-<div class="gallery">
-  <img  alt="{{photos[selectedPhotoIndex].author_name}}" src="{{photos[selectedPhotoIndex].photo_url}}" class="img">
+<div class="carousel-wrapper">
+  <mat-carousel
+    timings="250ms ease-in"
+    [autoplay]="true"
+    interval="2000"
+    color="accent"
+    maxWidth="auto"
+    proportion="50"
+
+    [loop]="true"
+    [hideArrows]="false"
+    [hideIndicators]="false"
+    [useKeyboard]="true"
+    [useMouseWheel]="false"
+    orientation="ltr"
+  >
+    <mat-carousel-slide
+      #matCarouselSlide
+      *ngFor="let slide of photos; let i = index"
+      [image]="photos[i].photo_url"
+      overlayColor="#00000040"
+      [hideOverlay]="false"
+    >
+    </mat-carousel-slide>
+  </mat-carousel>
 </div>
-<ul class="dots-container list" *ngIf="photos.length !== 1">
-  <li>
-    <button *ngFor="let item of photos; index as index" class="dot-pagination" (click)="getCurrentPhoto(index)" [class.active]="checkState(index)"></button>
-  </li>
-</ul>
+
+
