@@ -111,7 +111,7 @@ export class PlacesService {
   //   return (counter / this.getLimit() >= 1) ? Math.ceil(counter / this.getLimit()) : 1;
   // }
 
-  public savePlace(placeData: IPlace): Observable<IPlace> {
+  public savePlace(placeData: Partial<IPlace>): Observable<IPlace> {
     return this.http.post<IPlace>(this.apiUrlService.generateApiLink('places'), placeData);
   }
 

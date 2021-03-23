@@ -3,10 +3,6 @@ mat-radio-group{
   padding: 0 0 20px 0;
 }
 
-form {
-  max-width: 640px;
-}
-
 mat-form-field,
 mat-radio-group,
 mat-radio-button {

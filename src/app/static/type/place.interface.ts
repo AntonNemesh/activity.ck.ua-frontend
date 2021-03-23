@@ -16,15 +16,49 @@ export interface IPlaceBase {
   dog_friendly: boolean;
   child_friendly: boolean;
   description: string;
-  rating: number;
+  rating?: number;
 }
 
-export interface IPlace extends IPlaceBase{
+export interface IPlace extends IPlaceBase {
   organization_id?: number;
   work_time: IWorkTime;
 }
 
-export interface IPlaceForm extends IPlaceBase{
-  organization_id?: string;
-  work_time: IWorkTimeForm;
+export interface IPlaceForm {
+  photos_group: IPhotosGroup;
+  work_time_group: IWorkTimeForm;
+  organization_group: IOrganizationGroup;
+  tolerance_group: IToleranceGroup;
+  main_group: IMainGroup;
+  category_group: ICategoryGroup;
 }
+
+export interface IPhotosGroup {
+  main_photo: string;
+  photos: string;
+}
+
+export interface IOrganizationGroup {
+  organization_id: string;
+  organization?: IProposeOrganization;
+}
+
+export interface IToleranceGroup {
+  accessibility: boolean;
+  child_friendly: boolean;
+  dog_friendly: boolean;
+}
+
+export interface IMainGroup {
+  name: string;
+  description: string;
+  address: string;
+  website: string;
+  phones: string[];
+}
+
+export interface ICategoryGroup {
+  category_id: string;
+  type_id?: string;
+}
+

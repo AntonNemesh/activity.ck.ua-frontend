@@ -4,8 +4,7 @@ import {
   CategoriesService,
   FilterByTypeService,
   PlacesService,
-  OrganizationsService,
-  LoaderService
+  OrganizationsService
 } from '../../../../../services';
 import {
   IMaskEmail,
@@ -27,7 +26,7 @@ import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/storage';
 import { FilesValidator } from '../../../../../validators';
 import imageCompression from 'browser-image-compression';
-import {MatStepper} from '@angular/material/stepper';
+import { LoaderHelper } from '../../../../../helpers';
 
 @Component({
   selector: 'app-page-place-add',
@@ -57,8 +56,7 @@ export class PagePlaceAddComponent implements OnInit {
     private filterByTypeService: FilterByTypeService,
     private router: Router,
     private organizationsService: OrganizationsService,
-    private angularFireStorage: AngularFireStorage,
-    private loaderService: LoaderService) { }
+    private angularFireStorage: AngularFireStorage) { }
 
   public organizationPhones: FormArray = new FormArray([this.phoneFormControl]);
 
@@ -121,8 +119,14 @@ export class PagePlaceAddComponent implements OnInit {
   public messagesWarningOfSize: string[];
   public messagesWarningOfAmount: string[];
 
-  public loaderVisible: Subject<boolean> = this.loaderService.loaderVisible;
-  public contentVisible: Subject<boolean> = this.loaderService.contentVisible;
+  public photosLoader: LoaderHelper = new LoaderHelper();
+  public formLoader: LoaderHelper = new LoaderHelper();
+
+  public photosLoaderVisible: Subject<boolean> = this.photosLoader.getLoaderState();
+  public photosContentVisible: Subject<boolean> = this.photosLoader.getContentState();
+
+  public formLoaderVisible: Subject<boolean> = this.formLoader.getLoaderState();
+  public formContentVisible: Subject<boolean> = this.formLoader.getContentState();
 
   @ViewChild('placesRef') placesRef: GooglePlaceDirective;
 
@@ -141,12 +145,9 @@ export class PagePlaceAddComponent implements OnInit {
     const types: IPlacesTypes[] = this.filterByTypeService.getTypes(category);
     if (this.categoryGroup.get('type_id')) {
       this.categoryGroup.removeControl('type_id');
-      console.log('removed type_id', this.categoryGroup.status);
     }
-
     if (!types?.length) { return; }
     this.categoryGroup.addControl('type_id', new FormControl('', Validators.required));
-    console.log('added type_id', this.categoryGroup.status);
     this.types = types;
   }
 
@@ -197,6 +198,33 @@ export class PagePlaceAddComponent implements OnInit {
     }
   }
 
+  private autocompleteData(): void {
+    this.organizationGroup.get('organization_id').setValue('Федерація Альпинизму і Скелелазіння');
+    this.categoryGroup.get('category_id').setValue('recreation');
+    this.categoryGroup.get('type_id').setValue('water');
+    this.mainGroup.get('name').setValue('Імя організіції');
+    this.mainGroup.get('description').setValue('Опис організіції');
+    this.mainGroup.get('address').setValue('бул. Шевченко, 244, Черкассы, Черкасская область, 18000');
+    this.mainGroup.get('website').setValue('http://fakesite.com');
+    this.placePhones.controls[0].setValue('+380 (93) 256 65 45');
+    this.toleranceGroup.get('child_friendly').setValue(true);
+    this.workTimeGroup.get('mon_start').setValue('8:00');
+    this.workTimeGroup.get('mon_end').setValue('17:00');
+    this.workTimeGroup.get('tue_start').setValue('8:00');
+    this.workTimeGroup.get('tue_end').setValue('17:00');
+    this.workTimeGroup.get('wed_start').setValue('8:00');
+    this.workTimeGroup.get('wed_end').setValue('17:00');
+    this.workTimeGroup.get('thu_start').setValue('8:00');
+    this.workTimeGroup.get('thu_end').setValue('17:00');
+    this.workTimeGroup.get('fri_start').setValue('8:00');
+    this.workTimeGroup.get('fri_end').setValue('17:00');
+    this.workTimeGroup.get('sat_start').setValue('8:00');
+    this.workTimeGroup.get('sat_end').setValue('17:00');
+    this.workTimeGroup.get('sun_start').setValue('8:00');
+    this.workTimeGroup.get('sun_end').setValue('17:00');
+    this.photosGroup.get('main_photo').setValue('aa');
+  }
+
   public updateErrorPhotosRequired(): void {
     this.hasErrorPhotosRequired = this.photos.length === 0;
   }
@@ -229,7 +257,7 @@ export class PagePlaceAddComponent implements OnInit {
     if (!images?.length || this.photosGroup.get('photos').invalid) { return; }
 
     this.hasErrorPhotosRequired = false;
-    this.loaderService.show();
+    this.photosLoader.show();
 
     for (const image of images) {
       try {
@@ -266,20 +294,9 @@ export class PagePlaceAddComponent implements OnInit {
       } catch (error) { console.log(error); }
     }
     if (this.photos?.length) { this.updateErrorPhotosRequired(); }
-    this.photosGroup.get('photos').setValue(' ', { emitModelToViewChange: false });
-    this.photosGroup.get('main_photo').setValue(' ');
-    setTimeout(() => { this.loaderService.hide(); }, 500);
-  }
-
-  public superReset(stepper: MatStepper): void {
-    if (this.mainGroup) { this.mainGroup.reset(); }
-    if (this.organizationGroup) { this.organizationGroup.reset(); }
-    if (this.workTimeGroup) { this.workTimeGroup.reset(); }
-    if (this.toleranceGroup) { this.toleranceGroup.reset(); }
-    if (this.categoryGroup) { this.categoryGroup.reset(); }
-    if (this.photosGroup) { this.photosGroup.reset(); }
-    if (this.placeForm) { this.placeForm.reset(); }
-    if (stepper) { stepper.reset(); }
+    this.photosGroup.get('photos').setValue('aa', { emitModelToViewChange: false });
+    this.photosGroup.get('main_photo').setValue('aa');
+    setTimeout(() => { this.photosLoader.hide(); }, 500);
   }
 
   public handleAddressChange(address: any): void {
@@ -319,8 +336,8 @@ export class PagePlaceAddComponent implements OnInit {
     return result;
   }
 
-  public buildRequest(value: any): any {
-    const result: any = new Object({});
+  public buildRequest(value: IPlaceForm): Partial<IPlace> {
+    const result: Partial<IPlace> = new Object({});
 
     if (value.hasOwnProperty('main_group')) {
       result.name = value.main_group.name;
@@ -328,6 +345,15 @@ export class PagePlaceAddComponent implements OnInit {
       result.address = value.main_group.address;
       result.website = value.main_group.website;
       result.phones = value.main_group.phones;
+    }
+
+    if (value.category_group.hasOwnProperty('category_id')) {
+      result.category_id = value.category_group.category_id;
+
+    }
+
+    if (value.category_group.hasOwnProperty('type_id')) {
+      result.type_id = value.category_group.type_id;
     }
 
     if (value.hasOwnProperty('tolerance_group')) {
@@ -398,7 +424,7 @@ export class PagePlaceAddComponent implements OnInit {
       return;
     }
     console.log('valid', this.placeForm);
-    const request: IPlace = this.buildRequest(this.placeForm.value);
+    const request: Partial<IPlace> = this.buildRequest(this.placeForm.value);
     this.placesService.savePlace(request).subscribe((value) => {
       // this.router.navigateByUrl(`/places/${value.category_id}`);
     });
@@ -457,5 +483,7 @@ export class PagePlaceAddComponent implements OnInit {
       this.setTypes(value);
     });
 
+    this.autocompleteData();
+    console.log(this.photosLoader);
   }
 }

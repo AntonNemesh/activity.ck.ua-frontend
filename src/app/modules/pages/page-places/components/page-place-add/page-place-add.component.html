@@ -1,7 +1,7 @@
 <app-layout>
   <h1>Додати нове місце</h1>
+  <form *ngIf="formContentVisible | async" [formGroup]="placeForm" (ngSubmit)="onSubmit()">
     <mat-vertical-stepper [linear]="true" #stepper>
-    <form [formGroup]="placeForm" (ngSubmit)="onSubmit()">
       <mat-step [stepControl]="organizationGroup">
         <form formGroupName="organization_group">
           <ng-template matStepLabel>Організація</ng-template>
@@ -238,7 +238,7 @@
                   class="access-files mat-h4 mat-subheading-1">
               Дозволено файлів до завантаження: {{photosLimit - photos.length}}
             </span>
-            <div *ngIf="contentVisible | async">
+            <div *ngIf="photosContentVisible | async">
               <ul class="photos">
                 <li class="photo-item" *ngFor="let photoB64 of photosB64; index as i">
                   <img [class.cover-photo]="photoCover === i"
@@ -280,7 +280,7 @@
                 </ul>
               </div>
             </div>
-            <mat-spinner *ngIf="loaderVisible | async"></mat-spinner>
+            <mat-spinner *ngIf="photosLoaderVisible | async"></mat-spinner>
           </div>
           <div>
             <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
@@ -293,12 +293,11 @@
         <p>You are now done.</p>
         <div>
           <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
-          <button type="submit" mat-raised-button color="accent" >Запропонувати місце</button>
           <!--&lt;!&ndash;    <button mat-raised-button type="submit" [disabled]="!placeForm.valid">Submit</button>&ndash;&gt;-->
-          <button type="button" mat-raised-button (click)="superReset(stepper)">Онулити форму</button>
+          <button type="submit" mat-raised-button color="accent" >Запропонувати місце</button>
         </div>
       </mat-step>
-    </form>
     </mat-vertical-stepper>
-
+  </form>
+  <mat-spinner *ngIf="formLoaderVisible | async"></mat-spinner>
 </app-layout>

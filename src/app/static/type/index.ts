@@ -1,6 +1,17 @@
 export { IPlacesCategories } from './places-categories.interface';
 export { IPlacesTypes } from './places-types.interface';
-export { IPlace, IPlaceForm } from './place.interface';
+
+export {
+  IPlace,
+  IPlaceForm,
+  ICategoryGroup,
+  IToleranceGroup,
+  IPlaceBase,
+  IMainGroup,
+  IOrganizationGroup,
+  IPhotosGroup
+} from './place.interface';
+
 export { IPhotos } from './photos.interface';
 export { IToleranceFilter } from './tolerance-filter.interface';
 export { IPlaceRequestParams } from './place-request-params.interface';
