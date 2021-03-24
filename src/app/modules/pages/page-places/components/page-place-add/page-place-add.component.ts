@@ -20,7 +20,7 @@ import {
 } from '../../../../../static/type';
 import { Router } from '@angular/router';
 import { Observable, Subject} from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import {finalize, map, startWith} from 'rxjs/operators';
 import { MASK_PHONE, MASK_EMAIL, PATTERN_PHONE, WEEK, TOLERANCE_FILTER } from '../../../../../static/data';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { FilesValidator } from '../../../../../validators';
@@ -41,6 +41,7 @@ export class PagePlaceAddComponent implements OnInit {
 
   public isNewOrganization: boolean = false;
   public isProposeOrganization: boolean = false;
+  public isSavedPlace: boolean = false;
 
   public maskPhone: Array<string|RegExp> = MASK_PHONE;
   public maskEmail: IMaskEmail = MASK_EMAIL;
@@ -246,11 +247,12 @@ export class PagePlaceAddComponent implements OnInit {
         this.photos.push(compressedFile);
         this.photosB64.push(compressedFileB64);
 
+        if (this.photosGroup.get('main_photo').value === null) {
+            this.photosGroup.get('main_photo').setValue('a');
+        }
       } catch (error) { console.log(error); }
     }
     if (this.photos?.length) { this.updateErrorPhotosRequired(); }
-    this.photosGroup.get('photos').setValue('aa', { emitModelToViewChange: false });
-    this.photosGroup.get('main_photo').setValue('aa');
     setTimeout(() => { this.photosLoader.hide(); }, 500);
   }
 
@@ -311,7 +313,6 @@ export class PagePlaceAddComponent implements OnInit {
       result.main_photo = value.photos_group.main_photo;
     }
 
-
     if (value.hasOwnProperty('tolerance_group')) {
       result.accessibility = value.tolerance_group.accessibility;
       result.child_friendly = value.tolerance_group.child_friendly;
@@ -370,7 +371,7 @@ export class PagePlaceAddComponent implements OnInit {
     this.photoCover = 0;
     FilesValidator.resetFilesWarning();
     this.updateErrorPhotosRequired();
-    if (!this.photosUrl?.length) {
+    if (!this.photos?.length) {
       this.photosGroup.get('photos').setValue(null);
       this.photosGroup.get('main_photo').setValue(null);
     }
@@ -382,14 +383,18 @@ export class PagePlaceAddComponent implements OnInit {
       console.log('invalid', this.placeForm);
       return;
     }
-    this.filesService.upload(this.photos).subscribe((urls) => {
+    this.formLoader.show();
+    this.filesService.upload(this.photos).pipe(
+      finalize(() => {
+        this.isSavedPlace = true;
+        this.formLoader.hide();
+      })
+    ).subscribe((urls) => {
       urls.forEach((url) => { this.photosUrl.push(url); });
       this.photosGroup.get('main_photo').setValue(this.photosUrl[this.photoCover]);
       this.updateErrorPhotosRequired();
       const request: Partial<IPlace> = this.buildRequest(this.placeForm.value);
-      this.placesService.savePlace(request).subscribe((value2) => {
-        // this.router.navigateByUrl(`/places/${value.category_id}`);
-      });
+      this.placesService.savePlace(request).subscribe();
     });
   }
 
