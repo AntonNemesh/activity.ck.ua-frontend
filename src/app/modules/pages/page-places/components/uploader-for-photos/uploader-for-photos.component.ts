@@ -1,8 +1,7 @@
-import { Component, EventEmitter, forwardRef, HostListener, Input, OnInit, Output } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { FilesValidator } from '../../../../../validators';
-import { CategoriesService, FilesService, FilterByTypeService, OrganizationsService, PlacesService } from '../../../../../services';
-import { Router } from '@angular/router';
+import { FilesService } from '../../../../../services';
 import { LoaderHelper } from '../../../../../helpers';
 import { Subject } from 'rxjs';
 
@@ -11,23 +10,10 @@ import { Subject } from 'rxjs';
   selector: 'app-uploader-for-photos',
   templateUrl: './uploader-for-photos.component.html',
   styleUrls: ['./uploader-for-photos.component.css'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => UploaderForPhotosComponent),
-      multi: true
-    }
-  ]
 })
-export class UploaderForPhotosComponent implements OnInit, ControlValueAccessor {
+export class UploaderForPhotosComponent implements OnInit {
 
-  constructor(
-    private placesService: PlacesService,
-    private categoriesService: CategoriesService,
-    private filterByTypeService: FilterByTypeService,
-    private router: Router,
-    private organizationsService: OrganizationsService,
-    private filesService: FilesService) { }
+  constructor(private filesService: FilesService) { }
 
   @Input('photosGroupValidation')
   set _photosGroupValidation(value: boolean) {
@@ -60,7 +46,6 @@ export class UploaderForPhotosComponent implements OnInit, ControlValueAccessor 
     const images: File[] = event.target.files;
     FilesValidator.resetFilesWarning();
 
-    // if (!images?.length || this.photosGroup.get('photos').invalid) { return; }
     if (!images?.length) { return; }
 
     this.hasErrorPhotosRequired = false;
@@ -132,10 +117,6 @@ export class UploaderForPhotosComponent implements OnInit, ControlValueAccessor 
   public updateErrorPhotosRequired(): void {
     this.hasErrorPhotosRequired = this.photos.length === 0;
   }
-
-  public writeValue(): void { }
-  public registerOnChange(): void { }
-  public registerOnTouched(): void { }
 
   ngOnInit(): void {
     this.hasErrorPhotosRequired = false;
