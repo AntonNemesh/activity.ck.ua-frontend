@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiUrlService } from './api-url.service';
-import { IPlace, IPlaceRequestParams } from '../static/type';
+import {IOrganization, IPlace, IPlaceForm, IPlaceRequestParams, IWorkTime, IWorkTimeForm} from '../static/type';
 import { PlacesRequestParamsHelper } from '../helpers';
 import { map } from 'rxjs/operators';
+import { OrganizationsService } from './organizations.service';
 // import DATABASE from './../../../api/database.json';
 
 @Injectable({
@@ -12,7 +13,10 @@ import { map } from 'rxjs/operators';
 })
 export class PlacesService {
 
-  constructor(private http: HttpClient, private apiUrlService: ApiUrlService) { }
+  constructor(
+    private http: HttpClient,
+    private apiUrlService: ApiUrlService,
+    private organizationsService: OrganizationsService) { }
 
   private limit: number = 5;
 
@@ -110,6 +114,72 @@ export class PlacesService {
   //   });
   //   return (counter / this.getLimit() >= 1) ? Math.ceil(counter / this.getLimit()) : 1;
   // }
+
+  public buildWorkTime(workTime: IWorkTimeForm): IWorkTime {
+    const result: IWorkTime = {};
+    for (const key in workTime) {
+      if (!workTime.hasOwnProperty(key) || workTime[key] === null) { continue; }
+      const day: string = key.slice(0, 3);
+      const limit: string = key.slice(4);
+      if (!result.hasOwnProperty(day)) {
+        result[day] = { [limit]: workTime[key] };
+      } else {
+        result[day][limit] = workTime[key];
+      }
+    }
+    return result;
+  }
+
+  public buildRequest(dataForm: IPlaceForm, linksToPhotos: string[], organizations: IOrganization[]): Partial<IPlace> {
+    const result: Partial<IPlace> = new Object({});
+
+    if (dataForm.hasOwnProperty('main_group')) {
+      result.name = dataForm.main_group.name;
+      result.description = dataForm.main_group.description;
+      result.address = dataForm.main_group.address;
+      result.website = dataForm.main_group.website;
+      result.phones = dataForm.main_group.phones;
+    }
+
+    result.photos = [];
+    if (linksToPhotos?.length) {
+      result.photos = linksToPhotos;
+    }
+
+    if (dataForm.hasOwnProperty('photos_group')) {
+      result.main_photo = dataForm.photos_group.main_photo;
+    }
+
+    if (dataForm.hasOwnProperty('tolerance_group')) {
+      result.accessibility = dataForm.tolerance_group.accessibility;
+      result.child_friendly = dataForm.tolerance_group.child_friendly;
+      result.dog_friendly = dataForm.tolerance_group.dog_friendly;
+    }
+
+    if (dataForm.hasOwnProperty('work_time_group')) {
+      result.work_time = this.buildWorkTime(dataForm.work_time_group);
+    }
+
+    if (dataForm.category_group.hasOwnProperty('category_id')) {
+      result.category_id = dataForm.category_group.category_id;
+    }
+
+    if (dataForm.category_group.hasOwnProperty('type_id')) {
+      result.type_id = dataForm.category_group.type_id;
+    }
+
+    if (dataForm.organization_group.hasOwnProperty('organization')) {
+      if (dataForm.organization_group.organization.hasOwnProperty('email')) {
+        result.organization = dataForm.organization_group.organization;
+        return result;
+      }
+      result.organization_id = this.organizationsService.getOrganizationId(organizations, dataForm.organization_group.organization.name);
+      return result;
+    }
+
+    result.organization_id = this.organizationsService.getOrganizationId(organizations, dataForm.organization_group.organization_id);
+    return result;
+  }
 
   public savePlace(placeData: Partial<IPlace>): Observable<IPlace> {
     return this.http.post<IPlace>(this.apiUrlService.generateApiLink('places'), placeData);

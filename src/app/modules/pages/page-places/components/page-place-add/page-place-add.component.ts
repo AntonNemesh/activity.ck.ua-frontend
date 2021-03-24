@@ -150,27 +150,10 @@ export class PagePlaceAddComponent implements OnInit {
     this.types = types;
   }
 
-  private getOrganizationId(value: string): number {
-    let result: number = -1;
-    this.organizations.forEach((item) => {
-      if (item.name === value) { result = item.id; }
-    });
-    return result;
-  }
-
-  private getOrganizationsNames(isApproved: boolean): string[] {
-    const result: string[] = [];
-    this.organizations.forEach((item) => {
-      if (item.approved !== isApproved) { return; }
-      result.push(item.name);
-    });
-    return result;
-  }
-
   private filter(value: string, isApproved: boolean): string[] {
     if (value === null) { return; }
     const filterValue: string = value.toLowerCase();
-    const result: string[] = this.getOrganizationsNames(isApproved);
+    const result: string[] = this.organizationsService.getOrganizationsNames(this.organizations, isApproved);
     return result.filter(option => option.toLowerCase().includes(filterValue));
   }
 
@@ -278,72 +261,6 @@ export class PagePlaceAddComponent implements OnInit {
     ]);
   }
 
-  public buildWorkTime(workTime: IWorkTimeForm): IWorkTime {
-    const result: IWorkTime = {};
-    for (const key in workTime) {
-      if (!workTime.hasOwnProperty(key) || workTime[key] === null) { continue; }
-      const day: string = key.slice(0, 3);
-      const limit: string = key.slice(4);
-      if (!result.hasOwnProperty(day)) {
-        result[day] = { [limit]: workTime[key] };
-      } else {
-        result[day][limit] = workTime[key];
-      }
-    }
-    return result;
-  }
-
-  public buildRequest(value: IPlaceForm): Partial<IPlace> {
-    const result: Partial<IPlace> = new Object({});
-
-    if (value.hasOwnProperty('main_group')) {
-      result.name = value.main_group.name;
-      result.description = value.main_group.description;
-      result.address = value.main_group.address;
-      result.website = value.main_group.website;
-      result.phones = value.main_group.phones;
-    }
-
-    result.photos = [];
-    if (this.photosUrl?.length) {
-      result.photos = this.photosUrl;
-    }
-
-    if (value.hasOwnProperty('photos_group')) {
-      result.main_photo = value.photos_group.main_photo;
-    }
-
-    if (value.hasOwnProperty('tolerance_group')) {
-      result.accessibility = value.tolerance_group.accessibility;
-      result.child_friendly = value.tolerance_group.child_friendly;
-      result.dog_friendly = value.tolerance_group.dog_friendly;
-    }
-
-    if (value.hasOwnProperty('work_time_group')) {
-      result.work_time = this.buildWorkTime(value.work_time_group);
-    }
-
-    if (value.category_group.hasOwnProperty('category_id')) {
-      result.category_id = value.category_group.category_id;
-    }
-
-    if (value.category_group.hasOwnProperty('type_id')) {
-      result.type_id = value.category_group.type_id;
-    }
-
-    if (value.organization_group.hasOwnProperty('organization')) {
-      if (value.organization_group.organization.hasOwnProperty('email')) {
-        result.organization = value.organization_group.organization;
-        return result;
-      }
-      result.organization_id = this.getOrganizationId(value.organization_group.organization.name);
-      return result;
-    }
-
-    result.organization_id = this.getOrganizationId(value.organization_group.organization_id);
-    return result;
-  }
-
   public addPhone(event: Event, isOrganization: boolean): void {
     event.preventDefault();
     if (isOrganization) {
@@ -393,7 +310,7 @@ export class PagePlaceAddComponent implements OnInit {
       urls.forEach((url) => { this.photosUrl.push(url); });
       this.photosGroup.get('main_photo').setValue(this.photosUrl[this.photoCover]);
       this.updateErrorPhotosRequired();
-      const request: Partial<IPlace> = this.buildRequest(this.placeForm.value);
+      const request: Partial<IPlace> = this.placesService.buildRequest(this.placeForm.value, this.photosUrl, this.organizations);
       this.placesService.savePlace(request).subscribe();
     });
   }

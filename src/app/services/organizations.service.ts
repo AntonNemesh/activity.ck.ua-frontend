@@ -14,4 +14,21 @@ export class OrganizationsService {
   public getOrganizations(): Observable<IOrganization[]> {
     return this.http.get<IOrganization[]>(this.apiUrlService.generateApiLink('organizations'), {});
   }
+
+  public getOrganizationId(organizations: IOrganization[], name: string): number {
+    let result: number = -1;
+    organizations.forEach((item) => {
+      if (item.name === name) { result = item.id; }
+    });
+    return result;
+  }
+
+  public getOrganizationsNames(organizations: IOrganization[], isApproved: boolean): string[] {
+    const result: string[] = [];
+    organizations.forEach((item) => {
+      if (item.approved !== isApproved) { return; }
+      result.push(item.name);
+    });
+    return result;
+  }
 }
