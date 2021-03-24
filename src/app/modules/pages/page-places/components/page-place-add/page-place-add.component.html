@@ -229,62 +229,19 @@
         <mat-step [stepControl]="photosGroup">
           <form formGroupName="photos_group">
             <ng-template matStepLabel>Фотографії</ng-template>
-            <div class="photos-wrapper">
-              <button type="button" class="add-photos" mat-raised-button (click)="fileInput.click()">
-                <mat-label>Додати фотографії</mat-label>
-                <input #fileInput type="file" multiple formControlName="photos" (change)="selectFiles($event)" style="display:none;" />
-              </button>
-              <span [class.orange]="photos.length === photosLimit"
-                    class="access-files mat-h4 mat-subheading-1">
-              Дозволено файлів до завантаження: {{photosLimit - photos.length}}
-            </span>
-              <div *ngIf="photosContentVisible | async">
-                <ul class="photos">
-                  <li class="photo-item" *ngFor="let photoB64 of photosB64; index as i">
-                    <img [class.cover-photo]="photoCover === i"
-                         [src]="photoB64" (click)="selectCoverPhoto(i)">
-                    <mat-icon class="photo-delete" (click)="deletePhotoByIndex(i)">close</mat-icon>
-                  </li>
-                </ul>
-                <mat-error *ngIf="hasErrorPhotosRequired">
-                  Поле є обов'язковим
-                </mat-error>
-                <div class="photos-warning orange" *ngIf="!hasErrorPhotosRequired && messagesWarningOfType?.length">
-                  <mat-error>
-                    Відхилено запит на завантаження {{messagesWarningOfType?.length}} файлу(ів), з типом не "jpeg", "jpg":
-                  </mat-error>
-                  <ul>
-                    <li *ngFor="let filename of messagesWarningOfType">
-                      <mat-error>{{filename}}</mat-error>
-                    </li>
-                  </ul>
-                </div>
-                <div class="photos-warning orange" *ngIf="!hasErrorPhotosRequired && messagesWarningOfSize?.length">
-                  <mat-error>
-                    Відхилено запит на завантаження {{messagesWarningOfSize?.length}} файлу(ів), розміром більше 1 MB:
-                  </mat-error>
-                  <ul>
-                    <li *ngFor="let filesize of messagesWarningOfSize">
-                      <mat-error>{{filesize}}</mat-error>
-                    </li>
-                  </ul>
-                </div>
-                <div class="photos-warning orange" *ngIf="!hasErrorPhotosRequired && messagesWarningOfAmount?.length">
-                  <mat-error>
-                    Відхилено запит на завантаження {{messagesWarningOfAmount?.length}} файлу(ів). Дозволено не більше {{photosLimit}}:
-                  </mat-error>
-                  <ul>
-                    <li *ngFor="let filename of messagesWarningOfAmount">
-                      <mat-error>{{filename}}</mat-error>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <mat-spinner *ngIf="photosLoaderVisible | async"></mat-spinner>
-            </div>
+            <!--            <app-input-for-photos-->
+            <!--              [hasErrorPhotosRequired2]="hasErrorPhotosRequired"-->
+            <!--              (photosGroupState)="updatePhotosGroupState($event)"-->
+            <!--              formControlName="photos"></app-input-for-photos>-->
+            <app-uploader-for-photos
+              [photosGroupValidation]="photosGroupValidation"
+              (photosGroupValue)="setPhotosGroupValue($event)"
+              (photosState)="setPhotos($event)"
+              (photoCoverState)="setPhotoCover($event)"
+              formControlName="photos"></app-uploader-for-photos>
             <div>
               <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
-              <button type="button" color="primary" mat-raised-button matStepperNext (click)="updateErrorPhotosRequired()">Наступний крок</button>
+              <button type="button" color="primary" mat-raised-button matStepperNext (click)="updatePhotosGroupValidation()">Наступний крок</button>
             </div>
           </form>
         </mat-step>

@@ -10,20 +10,16 @@ import {
   IMaskEmail,
   IOrganization,
   IPlace,
-  IPlaceForm,
   IPlacesCategories,
   IPlacesTypes,
   IToleranceFilter,
-  IWeek,
-  IWorkTime,
-  IWorkTimeForm
+  IWeek
 } from '../../../../../static/type';
 import { Router } from '@angular/router';
-import { Observable, Subject} from 'rxjs';
-import {finalize, map, startWith} from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { finalize, map, startWith } from 'rxjs/operators';
 import { MASK_PHONE, MASK_EMAIL, PATTERN_PHONE, WEEK, TOLERANCE_FILTER } from '../../../../../static/data';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
-import { FilesValidator } from '../../../../../validators';
 import { LoaderHelper } from '../../../../../helpers';
 
 @Component({
@@ -90,8 +86,6 @@ export class PagePlaceAddComponent implements OnInit {
     photos: new FormControl(null, Validators.required),
   });
 
-  public hasErrorPhotosRequired: boolean = false;
-
   public placeForm: FormGroup = new FormGroup({
     photos_group: this.photosGroup,
     main_group: this.mainGroup,
@@ -108,22 +102,13 @@ export class PagePlaceAddComponent implements OnInit {
     },
   };
 
+  public photosGroupValidation: boolean = false;
+
   public photos: any[] = [];
-  public photosB64: string[] = [];
   public photosUrl: any = [];
   public photoCover: number = 0;
-  public photosLimit: number = 5;
 
-  public messagesWarningOfType: string[];
-  public messagesWarningOfSize: string[];
-  public messagesWarningOfAmount: string[];
-
-  public photosLoader: LoaderHelper = new LoaderHelper();
   public formLoader: LoaderHelper = new LoaderHelper();
-
-  public photosLoaderVisible: Subject<boolean> = this.photosLoader.getLoaderState();
-  public photosContentVisible: Subject<boolean> = this.photosLoader.getContentState();
-
   public formLoaderVisible: Subject<boolean> = this.formLoader.getLoaderState();
   public formContentVisible: Subject<boolean> = this.formLoader.getContentState();
 
@@ -184,60 +169,10 @@ export class PagePlaceAddComponent implements OnInit {
     this.photosGroup.get('main_photo').setValue('aa');
   }
 
-  public updateErrorPhotosRequired(): void {
-    this.hasErrorPhotosRequired = this.photos.length === 0;
-  }
-
-  public async selectFiles(event: any): Promise<any> {
-    let selectFilesCounter: number = 0;
-    const images: File[] = event.target.files;
-    FilesValidator.resetFilesWarning();
-
-    if (!images?.length || this.photosGroup.get('photos').invalid) { return; }
-
-    this.hasErrorPhotosRequired = false;
-    this.photosLoader.show();
-
-    for (const image of images) {
-      try {
-        const imgValidator: FilesValidator = new FilesValidator(image);
-
-        if (imgValidator.checkTypeOfFile()) {
-          FilesValidator.setFileWarning('type', `"${image.name}"`);
-          this.messagesWarningOfType = FilesValidator.getFilesWarning('type');
-          continue;
-        }
-
-        if (imgValidator.checkSizeOfFile()) {
-          FilesValidator.setFileWarning('size', `"${image.name}" - ${FilesValidator.formatBytes(image.size)}`);
-          this.messagesWarningOfSize = FilesValidator.getFilesWarning('size');
-          continue;
-        }
-
-        if (this.photos.length >= this.photosLimit) {
-          FilesValidator.setFileWarning('amount', `"${image.name}"`);
-          this.messagesWarningOfAmount = FilesValidator.getFilesWarning('amount');
-          continue;
-        }
-
-        console.log(`select: ${++selectFilesCounter}`);
-
-        const compressedFile: File = await this.filesService.compress(image);
-        const compressedFileB64: string = await this.filesService.getBase64(compressedFile);
-
-        if (!compressedFile || !compressedFileB64) { continue; }
-
-        this.photos.push(compressedFile);
-        this.photosB64.push(compressedFileB64);
-
-        if (this.photosGroup.get('main_photo').value === null) {
-            this.photosGroup.get('main_photo').setValue('a');
-        }
-      } catch (error) { console.log(error); }
-    }
-    if (this.photos?.length) { this.updateErrorPhotosRequired(); }
-    setTimeout(() => { this.photosLoader.hide(); }, 500);
-  }
+  // public updateErrorPhotosRequired(): void {
+  //   console.log(this.photos.length);
+  //   this.hasErrorPhotosRequired = this.photos.length === 0;
+  // }
 
   public handleAddressChange(address: any): void {
     this.mainGroup.get('address').setValue(address.formatted_address);
@@ -278,24 +213,26 @@ export class PagePlaceAddComponent implements OnInit {
     }
   }
 
-  public selectCoverPhoto(index: number): void {
+  public setPhotosGroupValue(photosGroupState: string|null): void {
+    // console.log('updatePhotosGroupState', photosGroupState, this.photosGroup);
+    this.photosGroup.get('photos').setValue(photosGroupState, { emitModelToViewChange: false });
+    this.photosGroup.get('main_photo').setValue(photosGroupState);
+  }
+
+  public setPhotos(photos: File[]): void {
+    this.photos = photos;
+  }
+
+  public setPhotoCover(index: number): void {
     this.photoCover = index;
   }
 
-  public deletePhotoByIndex(index: number): void {
-    this.photos.splice(index, 1);
-    this.photosB64.splice(index, 1);
-    this.photoCover = 0;
-    FilesValidator.resetFilesWarning();
-    this.updateErrorPhotosRequired();
-    if (!this.photos?.length) {
-      this.photosGroup.get('photos').setValue(null);
-      this.photosGroup.get('main_photo').setValue(null);
-    }
+  public updatePhotosGroupValidation(): void {
+    this.photosGroupValidation = !this.photosGroupValidation;
   }
 
   public onSubmit(): void {
-    this.updateErrorPhotosRequired();
+    // this.updateErrorPhotosRequired();
     if (this.placeForm.invalid) {
       console.log('invalid', this.placeForm);
       return;
@@ -309,7 +246,7 @@ export class PagePlaceAddComponent implements OnInit {
     ).subscribe((urls) => {
       urls.forEach((url) => { this.photosUrl.push(url); });
       this.photosGroup.get('main_photo').setValue(this.photosUrl[this.photoCover]);
-      this.updateErrorPhotosRequired();
+      // this.updateErrorPhotosRequired();
       const request: Partial<IPlace> = this.placesService.buildRequest(this.placeForm.value, this.photosUrl, this.organizations);
       this.placesService.savePlace(request).subscribe();
     });
@@ -361,7 +298,6 @@ export class PagePlaceAddComponent implements OnInit {
             return result;
           }),
         );
-
     });
 
     this.categoryGroup.get('category_id').valueChanges.subscribe((value) => {

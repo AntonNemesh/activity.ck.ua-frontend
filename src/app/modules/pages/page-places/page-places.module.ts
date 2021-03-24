@@ -9,6 +9,7 @@ import {
   PagePlaceAddComponent,
   FilterByTypeComponent,
   FilterByToleranceComponent,
+  UploaderForPhotosComponent,
 } from './components';
 import { PagePlacesRoutingModule } from './page-places-routing.module';
 import { MaterialModule } from '../../material';
@@ -26,6 +27,7 @@ import { AngularFireModule } from '@angular/fire';
     PagePlaceAddComponent,
     FilterByTypeComponent,
     FilterByToleranceComponent,
+    UploaderForPhotosComponent,
   ],
   imports: [
     CommonModule,

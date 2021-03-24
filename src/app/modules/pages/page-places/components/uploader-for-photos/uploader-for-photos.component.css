@@ -1,0 +1,61 @@
+.photos-wrapper {
+  padding-bottom: 20px;
+}
+
+.add-photos {
+  margin-right: 15px;
+}
+
+.photos {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+.photo-item {
+  position: relative;
+}
+
+.photos img {
+  width: 140px;
+  height: 140px;
+  margin: 10px;
+}
+
+.photos-wrapper mat-spinner {
+  margin: 50px auto;
+}
+
+.photos img:hover,
+.photos .photo-delete:hover {
+  cursor: pointer;
+}
+
+.photos .photo-delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #ffd740;
+}
+
+.cover-photo {
+  border: 4px solid deepskyblue;
+  box-sizing: border-box;
+}
+
+.photos-warning {
+  padding-bottom: 15px;
+}
+
+.orange,
+.orange mat-error {
+  color: #ffac00;
+}
+
+.photos-warning ul {
+  list-style: none;
+  margin-block-start: .2em;
+  margin-block-end: .2em;
+  padding-inline-start: 40px;
+}

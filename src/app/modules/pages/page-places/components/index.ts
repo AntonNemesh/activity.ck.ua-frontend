@@ -3,3 +3,4 @@ export { PagePlaceDetailsComponent } from './page-place-details/page-place-detai
 export { PagePlaceAddComponent } from './page-place-add/page-place-add.component';
 export { FilterByTypeComponent } from './filter-by-type/filter-by-type.component';
 export { FilterByToleranceComponent } from './filter-by-tolerance/filter-by-tolerance.component';
+export { UploaderForPhotosComponent } from './uploader-for-photos/uploader-for-photos.component';
