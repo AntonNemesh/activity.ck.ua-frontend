@@ -28,6 +28,14 @@ import { LoaderHelper } from '../../../../../helpers';
   styleUrls: ['./page-place-add.component.css']
 })
 export class PagePlaceAddComponent implements OnInit {
+  constructor(
+    private placesService: PlacesService,
+    private categoriesService: CategoriesService,
+    private filterByTypeService: FilterByTypeService,
+    private router: Router,
+    private organizationsService: OrganizationsService,
+    private filesService: FilesService) { }
+
   public categories: IPlacesCategories[];
   public types: IPlacesTypes[] = [];
   public organizations: IOrganization[] = [];
@@ -45,31 +53,14 @@ export class PagePlaceAddComponent implements OnInit {
   public week: IWeek[] = WEEK;
   public toleranceFilter: IToleranceFilter[] = TOLERANCE_FILTER;
 
-  constructor(
-    private placesService: PlacesService,
-    private categoriesService: CategoriesService,
-    private filterByTypeService: FilterByTypeService,
-    private router: Router,
-    private organizationsService: OrganizationsService,
-    private filesService: FilesService) { }
-
   public organizationPhones: FormArray = new FormArray([this.phoneFormControl]);
-
   public placePhones: FormArray = new FormArray([this.phoneFormControl]);
 
-  public proposeOrganization: FormGroup = new FormGroup({
-    name: new FormControl(null, Validators.required),
-  });
-
+  public proposeOrganization: FormGroup = new FormGroup({ name: new FormControl(null, Validators.required), });
+  public organizationGroup: FormGroup = new FormGroup({ organization_id: new FormControl(null, Validators.required) });
+  public categoryGroup: FormGroup = new FormGroup({ category_id: new FormControl('', Validators.required), });
+  public toleranceGroup: FormGroup = new FormGroup({});
   public workTimeGroup: FormGroup = new FormGroup({});
-
-  public organizationGroup: FormGroup = new FormGroup({
-    organization_id: new FormControl(null, Validators.required),
-  });
-
-  public categoryGroup: FormGroup = new FormGroup({
-    category_id: new FormControl('', Validators.required),
-  });
 
   public mainGroup: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -78,8 +69,6 @@ export class PagePlaceAddComponent implements OnInit {
     website: new FormControl('', Validators.required),
     phones: this.placePhones,
   });
-
-  public toleranceGroup: FormGroup = new FormGroup({});
 
   public photosGroup: FormGroup = new FormGroup({
     main_photo: new FormControl('', Validators.required),

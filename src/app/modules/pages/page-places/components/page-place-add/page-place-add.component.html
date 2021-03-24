@@ -238,7 +238,8 @@
               (photosGroupValue)="setPhotosGroupValue($event)"
               (photosState)="setPhotos($event)"
               (photoCoverState)="setPhotoCover($event)"
-              formControlName="photos"></app-uploader-for-photos>
+              formControlName="photos">
+            </app-uploader-for-photos>
             <div>
               <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
               <button type="button" color="primary" mat-raised-button matStepperNext (click)="updatePhotosGroupValidation()">Наступний крок</button>
