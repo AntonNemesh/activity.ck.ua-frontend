@@ -8,6 +8,7 @@ export interface IPlaceBase {
   category_id: string;
   type_id: string;
   photos: IPhotos[];
+  main_photo: string;
   name: string;
   phones: string[];
   address: string;

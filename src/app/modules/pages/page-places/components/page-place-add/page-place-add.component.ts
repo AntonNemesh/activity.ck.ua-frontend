@@ -4,7 +4,7 @@ import {
   CategoriesService,
   FilterByTypeService,
   PlacesService,
-  OrganizationsService
+  OrganizationsService, FilesService
 } from '../../../../../services';
 import {
   IMaskEmail,
@@ -19,13 +19,11 @@ import {
   IWorkTimeForm
 } from '../../../../../static/type';
 import { Router } from '@angular/router';
-import {Observable, Subject} from 'rxjs';
-import { finalize, map, startWith } from 'rxjs/operators';
+import { Observable, Subject} from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 import { MASK_PHONE, MASK_EMAIL, PATTERN_PHONE, WEEK, TOLERANCE_FILTER } from '../../../../../static/data';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
-import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/storage';
 import { FilesValidator } from '../../../../../validators';
-import imageCompression from 'browser-image-compression';
 import { LoaderHelper } from '../../../../../helpers';
 
 @Component({
@@ -56,7 +54,7 @@ export class PagePlaceAddComponent implements OnInit {
     private filterByTypeService: FilterByTypeService,
     private router: Router,
     private organizationsService: OrganizationsService,
-    private angularFireStorage: AngularFireStorage) { }
+    private filesService: FilesService) { }
 
   public organizationPhones: FormArray = new FormArray([this.phoneFormControl]);
 
@@ -175,29 +173,6 @@ export class PagePlaceAddComponent implements OnInit {
     return result.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  private async uploadFiles(): Promise<any> {
-    let uploadFilesCounter: number = 0;
-
-    for (const photo of this.photos) {
-      try {
-        console.log(`upload: ${++uploadFilesCounter}`);
-
-        const filePath: string = 'images/' + Math.random() + photo.name;
-        const fileRef: AngularFireStorageReference = this.angularFireStorage.ref(filePath);
-
-        this.angularFireStorage.upload(filePath, photo).snapshotChanges().pipe(
-          finalize(() => {
-            fileRef.getDownloadURL().subscribe((url) => {
-              this.photosUrl.push(url);
-              this.photosGroup.get('main_photo').setValue(this.photosUrl[this.photoCover]);
-              this.updateErrorPhotosRequired();
-            });
-          }),
-        ).subscribe();
-      } catch (error) { console.log(error); }
-    }
-  }
-
   private autocompleteData(): void {
     this.organizationGroup.get('organization_id').setValue('Федерація Альпинизму і Скелелазіння');
     this.categoryGroup.get('category_id').setValue('recreation');
@@ -227,26 +202,6 @@ export class PagePlaceAddComponent implements OnInit {
 
   public updateErrorPhotosRequired(): void {
     this.hasErrorPhotosRequired = this.photos.length === 0;
-  }
-
-  public async compressFile(image: File): Promise<File> {
-    const options: any = {
-      maxSizeMB: 0.5,
-      maxWidthOrHeight: 1280,
-      useWebWorker: true,
-    };
-    try {
-      const compressedFile: any = await imageCompression(image, options);
-      console.log(
-        `%c Original: ${FilesValidator.formatBytes(image.size)}` +
-        '%c =>' +
-        `%c Compressed: ${FilesValidator.formatBytes(compressedFile.size)}`,
-        'color:blue;', 'color:black;', 'color:green;'
-      );
-      return compressedFile;
-    } catch (error) {
-      console.log(error);
-    }
   }
 
   public async selectFiles(event: any): Promise<any> {
@@ -283,8 +238,8 @@ export class PagePlaceAddComponent implements OnInit {
 
         console.log(`select: ${++selectFilesCounter}`);
 
-        const compressedFile: File = await this.compressFile(image);
-        const compressedFileB64: string = await imageCompression.getDataUrlFromFile(compressedFile);
+        const compressedFile: File = await this.filesService.compress(image);
+        const compressedFileB64: string = await this.filesService.getBase64(compressedFile);
 
         if (!compressedFile || !compressedFileB64) { continue; }
 
@@ -347,14 +302,15 @@ export class PagePlaceAddComponent implements OnInit {
       result.phones = value.main_group.phones;
     }
 
-    if (value.category_group.hasOwnProperty('category_id')) {
-      result.category_id = value.category_group.category_id;
-
+    result.photos = [];
+    if (this.photosUrl?.length) {
+      result.photos = this.photosUrl;
     }
 
-    if (value.category_group.hasOwnProperty('type_id')) {
-      result.type_id = value.category_group.type_id;
+    if (value.hasOwnProperty('photos_group')) {
+      result.main_photo = value.photos_group.main_photo;
     }
+
 
     if (value.hasOwnProperty('tolerance_group')) {
       result.accessibility = value.tolerance_group.accessibility;
@@ -362,13 +318,16 @@ export class PagePlaceAddComponent implements OnInit {
       result.dog_friendly = value.tolerance_group.dog_friendly;
     }
 
-    result.photos = [];
-    if (this.photosUrl?.length) {
-      result.photos = this.photosUrl;
-    }
-
     if (value.hasOwnProperty('work_time_group')) {
       result.work_time = this.buildWorkTime(value.work_time_group);
+    }
+
+    if (value.category_group.hasOwnProperty('category_id')) {
+      result.category_id = value.category_group.category_id;
+    }
+
+    if (value.category_group.hasOwnProperty('type_id')) {
+      result.type_id = value.category_group.type_id;
     }
 
     if (value.organization_group.hasOwnProperty('organization')) {
@@ -423,10 +382,14 @@ export class PagePlaceAddComponent implements OnInit {
       console.log('invalid', this.placeForm);
       return;
     }
-    console.log('valid', this.placeForm);
-    const request: Partial<IPlace> = this.buildRequest(this.placeForm.value);
-    this.placesService.savePlace(request).subscribe((value) => {
-      // this.router.navigateByUrl(`/places/${value.category_id}`);
+    this.filesService.upload(this.photos).subscribe((urls) => {
+      urls.forEach((url) => { this.photosUrl.push(url); });
+      this.photosGroup.get('main_photo').setValue(this.photosUrl[this.photoCover]);
+      this.updateErrorPhotosRequired();
+      const request: Partial<IPlace> = this.buildRequest(this.placeForm.value);
+      this.placesService.savePlace(request).subscribe((value2) => {
+        // this.router.navigateByUrl(`/places/${value.category_id}`);
+      });
     });
   }
 
@@ -484,6 +447,5 @@ export class PagePlaceAddComponent implements OnInit {
     });
 
     this.autocompleteData();
-    console.log(this.photosLoader);
   }
 }
