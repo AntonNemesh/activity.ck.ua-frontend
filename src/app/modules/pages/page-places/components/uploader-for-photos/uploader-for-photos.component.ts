@@ -20,8 +20,6 @@ export class UploaderForPhotosComponent implements OnInit {
     this.updateErrorPhotosRequired();
   }
 
-  public photosInput: FormControl = new FormControl('');
-
   public hasErrorPhotosRequired: boolean;
 
   public photos: any[] = [];

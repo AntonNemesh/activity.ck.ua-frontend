@@ -1,7 +1,7 @@
 <div class="photos-wrapper">
     <button type="button" class="add-photos" mat-raised-button (click)="fileInput.click()">
       <mat-label>Додати фотографії</mat-label>
-      <input #fileInput type="file" multiple [formControl]="photosInput" (change)="selectFiles($event)" style="display:none;" />
+      <input #fileInput type="file" multiple (change)="selectFiles($event)" style="display:none;" />
     </button>
     <span [class.orange]="photos.length === photosLimit"
         class="access-files mat-h4 mat-subheading-1">
