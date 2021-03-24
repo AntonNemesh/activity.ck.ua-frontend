@@ -1,13 +1,11 @@
 import { Component, EventEmitter, forwardRef, HostListener, Input, OnInit, Output } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { FilesValidator } from '../../../../../validators';
 import { CategoriesService, FilesService, FilterByTypeService, OrganizationsService, PlacesService } from '../../../../../services';
 import { Router } from '@angular/router';
 import { LoaderHelper } from '../../../../../helpers';
 import { Subject } from 'rxjs';
 
-type EmitTextChange = (value: string) => void;
-type MarkAsTouched = () => void;
 
 @Component({
   selector: 'app-uploader-for-photos',
@@ -38,10 +36,7 @@ export class UploaderForPhotosComponent implements OnInit, ControlValueAccessor 
 
   public photosInput: FormControl = new FormControl('');
 
-  public emitTextChange!: EmitTextChange;
-  public markAsTouched!: MarkAsTouched;
-
-  public ngControl: NgControl;
+  public hasErrorPhotosRequired: boolean;
 
   public photos: any[] = [];
   public photosB64: string[] = [];
@@ -53,20 +48,12 @@ export class UploaderForPhotosComponent implements OnInit, ControlValueAccessor 
   public messagesWarningOfAmount: string[];
 
   public photosLoader: LoaderHelper = new LoaderHelper();
-
   public photosLoaderVisible: Subject<boolean> = this.photosLoader.getLoaderState();
   public photosContentVisible: Subject<boolean> = this.photosLoader.getContentState();
 
-  public hasErrorPhotosRequired: boolean;
-
-  @Output()
-  photosGroupValue: EventEmitter<string|null> = new EventEmitter<string|null>();
-
-  @Output()
-  photosState: EventEmitter<File[]> = new EventEmitter<File[]>();
-
-  @Output()
-  photoCoverState: EventEmitter<number> = new EventEmitter<number>();
+  @Output() photosGroupValue: EventEmitter<string|null> = new EventEmitter<string|null>();
+  @Output() photosState: EventEmitter<File[]> = new EventEmitter<File[]>();
+  @Output() photoCoverState: EventEmitter<number> = new EventEmitter<number>();
 
   public async selectFiles(event: any): Promise<any> {
     let selectFilesCounter: number = 0;
@@ -146,29 +133,11 @@ export class UploaderForPhotosComponent implements OnInit, ControlValueAccessor 
     this.hasErrorPhotosRequired = this.photos.length === 0;
   }
 
-  public writeValue(text: string): void {
-    this.photosInput.setValue(text);
-  }
-
-  public get isTouched(): boolean {
-    return this.ngControl.control.touched;
-  }
-
-  public registerOnChange(emitTextChange: EmitTextChange): void {
-    this.emitTextChange = emitTextChange;
-  }
-
-  public registerOnTouched(onFieldFocusOut: MarkAsTouched): void {
-    this.markAsTouched = onFieldFocusOut;
-  }
-
-  @HostListener('click')
-  private onFieldFocusOut(): void {
-    this.markAsTouched();
-  }
+  public writeValue(): void { }
+  public registerOnChange(): void { }
+  public registerOnTouched(): void { }
 
   ngOnInit(): void {
     this.hasErrorPhotosRequired = false;
   }
-
 }

@@ -229,10 +229,6 @@
         <mat-step [stepControl]="photosGroup">
           <form formGroupName="photos_group">
             <ng-template matStepLabel>Фотографії</ng-template>
-            <!--            <app-input-for-photos-->
-            <!--              [hasErrorPhotosRequired2]="hasErrorPhotosRequired"-->
-            <!--              (photosGroupState)="updatePhotosGroupState($event)"-->
-            <!--              formControlName="photos"></app-input-for-photos>-->
             <app-uploader-for-photos
               [photosGroupValidation]="photosGroupValidation"
               (photosGroupValue)="setPhotosGroupValue($event)"

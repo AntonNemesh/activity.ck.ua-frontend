@@ -158,11 +158,6 @@ export class PagePlaceAddComponent implements OnInit {
     this.photosGroup.get('main_photo').setValue('aa');
   }
 
-  // public updateErrorPhotosRequired(): void {
-  //   console.log(this.photos.length);
-  //   this.hasErrorPhotosRequired = this.photos.length === 0;
-  // }
-
   public handleAddressChange(address: any): void {
     this.mainGroup.get('address').setValue(address.formatted_address);
   }
@@ -203,7 +198,6 @@ export class PagePlaceAddComponent implements OnInit {
   }
 
   public setPhotosGroupValue(photosGroupState: string|null): void {
-    // console.log('updatePhotosGroupState', photosGroupState, this.photosGroup);
     this.photosGroup.get('photos').setValue(photosGroupState, { emitModelToViewChange: false });
     this.photosGroup.get('main_photo').setValue(photosGroupState);
   }
@@ -221,7 +215,6 @@ export class PagePlaceAddComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    // this.updateErrorPhotosRequired();
     if (this.placeForm.invalid) {
       console.log('invalid', this.placeForm);
       return;
@@ -235,7 +228,6 @@ export class PagePlaceAddComponent implements OnInit {
     ).subscribe((urls) => {
       urls.forEach((url) => { this.photosUrl.push(url); });
       this.photosGroup.get('main_photo').setValue(this.photosUrl[this.photoCover]);
-      // this.updateErrorPhotosRequired();
       const request: Partial<IPlace> = this.placesService.buildRequest(this.placeForm.value, this.photosUrl, this.organizations);
       this.placesService.savePlace(request).subscribe();
     });
