@@ -144,7 +144,7 @@ export class PagePlaceAddComponent implements OnInit {
     this.categoryGroup.get('category_id').setValue('recreation');
     this.categoryGroup.get('type_id').setValue('water');
     this.mainGroup.get('name').setValue('Імя організіції');
-    this.mainGroup.get('description').setValue('Опис організіції');
+    this.mainGroup.get('description').setValue('Опис організіціїОпис організіціїОпис організіціїОпис організіції');
     this.mainGroup.get('address').setValue('бул. Шевченко, 244, Черкассы, Черкасская область, 18000');
     this.mainGroup.get('website').setValue('http://fakesite.com');
     this.placePhones.controls[0].setValue('+380 (93) 256 65 45');
@@ -236,6 +236,7 @@ export class PagePlaceAddComponent implements OnInit {
     ).subscribe((urls) => {
       urls.forEach((url) => { this.photosUrl.push(url); });
       this.photosGroup.get('main_photo').setValue(this.photosUrl[this.photoCover]);
+      console.log(this.placesService.buildRequest(this.placeForm.value, this.photosUrl, this.organizations));
       const request: Partial<IPlace> = this.placesService.buildRequest(this.placeForm.value, this.photosUrl, this.organizations);
       this.placesService.savePlace(request).subscribe();
     });

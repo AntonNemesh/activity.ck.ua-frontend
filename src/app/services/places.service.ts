@@ -141,65 +141,88 @@ export class PlacesService {
   public buildPhotos(photosUrls: string[]): IPhotos[] {
     const result: IPhotos[] = [];
     photosUrls.forEach((photoUrl) => {
-      const photoObject: IPhotos = {
-        photo_url: photoUrl,
-        author_name: '',
-        author_link: ''
+      const photoObject: any = {
+        url: photoUrl,
+        author_name: 'author_name',
+        author_link: 'http://author_link'
       };
       result.push(photoObject);
     });
     return result;
   }
 
-  public buildRequest(dataForm: IPlaceForm, linksToPhotos: string[], organizations: IOrganization[]): Partial<IPlace> {
-    const result: Partial<IPlace> = new Object({});
+  public buildPhones(phones: string[]): string[] {
+    const result: string[] = [];
+    phones.forEach((phone) => {
+      const phoneResult: string = ((phone.split('(').join('')).split(')').join('')).split(' ').join('');
+      result.push(phoneResult);
+    });
+    return result;
+  }
+
+  public buildRequest(dataForm: IPlaceForm, linksToPhotos: string[], organizations: IOrganization[]): any {
+    const result: any = {};
+    const place: any = {};
+    // let organization: any = {};
+    let photos: any = [];
 
     if (dataForm.hasOwnProperty('main_group')) {
-      result.name = dataForm.main_group.name;
-      result.description = dataForm.main_group.description;
-      result.address = dataForm.main_group.address;
-      result.website = dataForm.main_group.website;
-      result.phones = dataForm.main_group.phones;
+      place.name = dataForm.main_group.name;
+      place.description = dataForm.main_group.description;
+      place.address = dataForm.main_group.address;
+      place.website = dataForm.main_group.website;
+      place.phones = this.buildPhones(dataForm.main_group.phones);
     }
 
-    result.photos = [];
     if (linksToPhotos?.length) {
-      result.photos = this.buildPhotos(linksToPhotos);
+      photos = this.buildPhotos(linksToPhotos);
     }
 
     if (dataForm.hasOwnProperty('photos_group')) {
-      result.main_photo = dataForm.photos_group.main_photo;
+      place.main_photo = dataForm.photos_group.main_photo;
     }
 
     if (dataForm.hasOwnProperty('tolerance_group')) {
-      result.accessibility = dataForm.tolerance_group.accessibility;
-      result.child_friendly = dataForm.tolerance_group.child_friendly;
-      result.dog_friendly = dataForm.tolerance_group.dog_friendly;
+      place.accessibility = dataForm.tolerance_group.accessibility;
+      place.child_friendly = dataForm.tolerance_group.child_friendly;
+      place.dog_friendly = dataForm.tolerance_group.dog_friendly;
     }
 
     if (dataForm.hasOwnProperty('work_time_group')) {
-      result.work_time = this.buildWorkTime(dataForm.work_time_group);
+      place.work_time = this.buildWorkTime(dataForm.work_time_group);
     }
 
     if (dataForm.category_group.hasOwnProperty('category_id')) {
-      result.category_id = dataForm.category_group.category_id;
+      place.category_id = dataForm.category_group.category_id;
     }
 
-    result.type_id = '';
+    place.type_id = '';
     if (dataForm.category_group.hasOwnProperty('type_id')) {
-      result.type_id = dataForm.category_group.type_id;
+      place.type_id = dataForm.category_group.type_id;
     }
+
+    result.place = place;
+    result.photos = photos;
 
     if (dataForm.organization_group.hasOwnProperty('organization')) {
       if (dataForm.organization_group.organization.hasOwnProperty('email')) {
-        result.organization = dataForm.organization_group.organization;
+        // result.organization = dataForm.organization_group.organization;
+        result.organization = {
+          id: 1,
+          name: 'Федерація Альпинизму і Скелелазіння',
+          phones: '+38060654256652',
+          email: 'info@fais.ck.ua',
+          approved: true
+        };
         return result;
       }
-      result.organization_id = this.organizationsService.getOrganizationId(organizations, dataForm.organization_group.organization.name);
+      // result.organization_id = this.organizationsService.getOrganizationId(organizations, dataForm.organization_group.organization.name);
+      result.organization_id = 2;
       return result;
     }
 
-    result.organization_id = this.organizationsService.getOrganizationId(organizations, dataForm.organization_group.organization_id);
+    // result.organization_id = this.organizationsService.getOrganizationId(organizations, dataForm.organization_group.organization_id);
+    result.organization_id = 1;
     return result;
   }
 
