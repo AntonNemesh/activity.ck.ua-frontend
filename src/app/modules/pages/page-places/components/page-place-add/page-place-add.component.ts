@@ -116,12 +116,20 @@ export class PagePlaceAddComponent implements OnInit {
   private setTypes(category: string): void {
     this.types.length = 0;
     const types: IPlacesTypes[] = this.filterByTypeService.getTypes(category);
-    if (this.categoryGroup.get('type_id')) {
+
+    if (this.categoryGroup.get('type_id') && !types?.length) {
       this.categoryGroup.removeControl('type_id');
     }
+
     if (!types?.length) { return; }
-    this.categoryGroup.addControl('type_id', new FormControl('', Validators.required));
     this.types = types;
+
+    if (this.categoryGroup.get('type_id')) {
+      this.categoryGroup.get('type_id').setValue(null);
+    } else {
+      this.categoryGroup.addControl('type_id', new FormControl('', Validators.required));
+    }
+
   }
 
   private filter(value: string, isApproved: boolean): string[] {

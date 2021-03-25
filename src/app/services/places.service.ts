@@ -2,7 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiUrlService } from './api-url.service';
-import {IOrganization, IPlace, IPlaceForm, IPlaceRequestParams, IWorkTime, IWorkTimeForm} from '../static/type';
+import {
+  IOrganization,
+  IPhotos,
+  IPlace,
+  IPlaceForm,
+  IPlaceRequestParams,
+  IWorkTime,
+  IWorkTimeForm
+} from '../static/type';
 import { PlacesRequestParamsHelper } from '../helpers';
 import { map } from 'rxjs/operators';
 import { OrganizationsService } from './organizations.service';
@@ -130,6 +138,19 @@ export class PlacesService {
     return result;
   }
 
+  public buildPhotos(photosUrls: string[]): IPhotos[] {
+    const result: IPhotos[] = [];
+    photosUrls.forEach((photoUrl) => {
+      const photoObject: IPhotos = {
+        photo_url: photoUrl,
+        author_name: '',
+        author_link: ''
+      };
+      result.push(photoObject);
+    });
+    return result;
+  }
+
   public buildRequest(dataForm: IPlaceForm, linksToPhotos: string[], organizations: IOrganization[]): Partial<IPlace> {
     const result: Partial<IPlace> = new Object({});
 
@@ -143,7 +164,7 @@ export class PlacesService {
 
     result.photos = [];
     if (linksToPhotos?.length) {
-      result.photos = linksToPhotos;
+      result.photos = this.buildPhotos(linksToPhotos);
     }
 
     if (dataForm.hasOwnProperty('photos_group')) {
@@ -164,6 +185,7 @@ export class PlacesService {
       result.category_id = dataForm.category_group.category_id;
     }
 
+    result.type_id = '';
     if (dataForm.category_group.hasOwnProperty('type_id')) {
       result.type_id = dataForm.category_group.type_id;
     }

@@ -7,7 +7,7 @@ export interface IPlaceBase {
   organization?: IProposeOrganization;
   category_id: string;
   type_id: string;
-  photos: string[];
+  photos: IPhotos[];
   main_photo: string;
   name: string;
   phones: string[];
