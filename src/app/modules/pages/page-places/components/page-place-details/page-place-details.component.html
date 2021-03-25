@@ -1,10 +1,15 @@
 <app-layout>
   <div *ngIf="place">
     <p><b>Ідентифікатор місця:</b>  {{placeId}}</p>
-    <p><b>Назва місця:</b>  {{place.name}}</p>
+    <p><b>Ідентифікатор категорії місця:</b>  {{place.category_id}}</p>
+    <p><b>Ідентифікатор типу місця:</b>  {{place.type_id || 'відсутній'}}</p>
+    <p><b>Ідентифікатор організації:</b>  {{place.organization_id}}</p>
+    <br><br>
     <app-gallery [photos]="place.photos"></app-gallery>
-    <p><b>Категорія:</b>  {{place.category_id}}</p>
-    <p><b>Тип:</b>  {{place.type_id}}</p>
+    <br><br>
+    <p><b>Назва місця:</b>  {{place.name}}</p>
+
+
     <div>
     <b>Телефони:</b>
       <ul *ngIf="place.phones">
@@ -29,6 +34,6 @@
     <p><b>Місце дружнє до дітей:</b>  {{place.child_friendly}}</p>
     <p><b>Місце дружнє до тварин:</b>  {{place.dog_friendly}}</p>
     <p><b>Детальна інформація:</b>  {{place.description}}</p>
-    <p><b>Рейтинг:</b> {{place.rating}}</p>
+    <p><b>Рейтинг:</b> {{place.rating || 'відсутній'}}</p>
   </div>
 </app-layout>

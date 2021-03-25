@@ -5,7 +5,12 @@
                       [categoryId]="categoryId"></app-filter-by-type>
   <app-filter-by-tolerance (toleranceStateChange)="updateFilterToleranceState($event)"></app-filter-by-tolerance>
   <ul>
-    <li *ngFor="let place of places"><a routerLink="{{place.id}}">{{place.name}}</a></li>
+    <li *ngFor="let place of places">
+      <a routerLink="{{place.id}}">
+        <img src="{{place.main_photo}}">
+        <span>{{place.name}}</span>
+      </a>
+    </li>
   </ul>
   <app-pagination (paginationStateChange)="updatePaginationState($event)"
                   [filterTypeState]="filterTypeState"

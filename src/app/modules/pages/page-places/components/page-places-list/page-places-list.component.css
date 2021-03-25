@@ -1,3 +1,22 @@
 ul {
+  list-style: none;
   min-height: 430px;
+}
+
+li {
+  padding-bottom: 10px;
+}
+
+li a {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+img {
+  max-width: 150px;
+}
+
+span {
+  margin-left: 20px;
 }
