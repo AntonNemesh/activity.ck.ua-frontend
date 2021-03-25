@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IPhotos } from '../../../../static/type';
-import { PlacesService } from '../../../../services';
+import {MatCarousel, MatCarouselComponent} from '@ngmodule/material-carousel';
+import {interval, Observable} from 'rxjs';
 
 @Component({
   selector: 'app-gallery',
@@ -8,12 +9,12 @@ import { PlacesService } from '../../../../services';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-  constructor(private placesService: PlacesService) { }
 
   @Input()
   photos: IPhotos[];
 
-  ngOnInit(): void {
-    console.log(this.photos.length);
-  }
+  ngOnInit()
+    :
+    void {}
+
 }
