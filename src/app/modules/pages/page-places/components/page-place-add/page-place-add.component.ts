@@ -244,8 +244,15 @@ export class PagePlaceAddComponent implements OnInit {
       this.photosGroup.get('main_photo').setValue(this.photosUrl[this.photoCover]);
       const request: Partial<IPlace> = this.placesService.buildRequest(this.placeForm.value, this.photosUrl, this.organizations);
       this.placesService.savePlace(request).subscribe(
-        (data) => { this.httpErrorResponse = false; console.log('success', data); },
-        (error) => { this.httpErrorResponse = true; console.log('oops', error); }
+        (data) => {
+          this.httpErrorResponse = false;
+          console.log('success', data);
+          },
+        (error) => {
+          this.httpErrorResponse = true;
+          this.filesService.delete(this.photosUrl);
+          console.log('oops', error);
+        }
       );
     });
   }

@@ -44,7 +44,7 @@ export class FilesService {
       try {
         console.log(`upload: ${++uploadFilesCounter}`);
 
-        const filePath: string = 'images/' + Math.random() + photo.name;
+        const filePath: string = 'images/' + Date.now() + photo.name;
         const fileRef: AngularFireStorageReference = this.angularFireStorage.ref(filePath);
 
         streams.push(this.angularFireStorage.upload(filePath, photo).snapshotChanges().pipe(
@@ -56,5 +56,11 @@ export class FilesService {
       } catch (error) { console.log(error); }
     }
     return forkJoin(streams);
+  }
+
+  public delete(urls: string[]): void {
+    urls.forEach((url) => {
+      this.angularFireStorage.storage.refFromURL(url).delete();
+    });
   }
 }
