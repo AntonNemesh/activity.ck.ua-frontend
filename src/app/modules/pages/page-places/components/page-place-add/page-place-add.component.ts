@@ -46,6 +46,7 @@ export class PagePlaceAddComponent implements OnInit {
   public isNewOrganization: boolean = false;
   public isProposeOrganization: boolean = false;
   public isSavedPlace: boolean = false;
+  public httpErrorResponse: boolean = false;
 
   public maskPhone: Array<string|RegExp> = MASK_PHONE;
   public maskEmail: IMaskEmail = MASK_EMAIL;
@@ -241,9 +242,11 @@ export class PagePlaceAddComponent implements OnInit {
     ).subscribe((urls) => {
       urls.forEach((url) => { this.photosUrl.push(url); });
       this.photosGroup.get('main_photo').setValue(this.photosUrl[this.photoCover]);
-      console.log(this.placesService.buildRequest(this.placeForm.value, this.photosUrl, this.organizations));
       const request: Partial<IPlace> = this.placesService.buildRequest(this.placeForm.value, this.photosUrl, this.organizations);
-      this.placesService.savePlace(request).subscribe();
+      this.placesService.savePlace(request).subscribe(
+        (data) => { this.httpErrorResponse = false; console.log('success', data); },
+        (error) => { this.httpErrorResponse = true; console.log('oops', error); }
+      );
     });
   }
 

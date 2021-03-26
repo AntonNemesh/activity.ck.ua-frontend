@@ -73,7 +73,7 @@
                       Поле є обов'язковим
                     </mat-error>
                   </mat-form-field>
-                  <button class="add-phone" mat-button matSuffix mat-icon-button aria-label="Add" (click)="addPhone($event, true)">
+                  <button *ngIf="organizationPhones.controls?.length < 5" class="add-phone" mat-button matSuffix mat-icon-button aria-label="Add" (click)="addPhone($event, true)">
                     <mat-icon>add</mat-icon>
                   </button>
                 </div>
@@ -159,7 +159,7 @@
                   Поле є обов'язковим
                 </mat-error>
               </mat-form-field>
-              <button class="add-phone" mat-button matSuffix mat-icon-button aria-label="Add" (click)="addPhone($event, false)">
+              <button *ngIf="placePhones.controls?.length < 5" class="add-phone" mat-button matSuffix mat-icon-button aria-label="Add" (click)="addPhone($event, false)">
                 <mat-icon>add</mat-icon>
               </button>
             </div>
@@ -252,9 +252,13 @@
       </mat-vertical-stepper>
     </form>
     <div *ngIf="isSavedPlace">
-      <p class="mat-subheading-2">
+      <p *ngIf="!httpErrorResponse" class="mat-subheading-2 green">
         Запропоноване вами місце успішно додано в обробку!<br>
         Місце стане доступним після того, як пройде модерацію.
+      </p>
+      <p *ngIf="httpErrorResponse" class="mat-subheading-2 red">
+        Запропоноване вами місце не завантажене, через збій з сервером.<br>
+        Повторіть будь ласка спробу через декілька хвилин.
       </p>
       <a routerLink="">Повернутися на голову сторінку</a>
     </div>

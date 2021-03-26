@@ -214,8 +214,8 @@ export class PlacesService {
     return result;
   }
 
-  public savePlace(placeData: Partial<IPlace>): Observable<IPlace> {
-    return this.http.post<IPlace>(this.apiUrlService.generateApiLink('places'), placeData);
+  public savePlace(placeData: Partial<IPlace>): Observable<any> {
+    return this.http.post<any>(this.apiUrlService.generateApiLink('places'), placeData);
   }
 
   public getPlaces(options: PlacesRequestParamsHelper): Observable<IPlace[]> {
