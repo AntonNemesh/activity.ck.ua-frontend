@@ -8,7 +8,7 @@ import {
 } from '../../../../../services';
 import {
   IMaskEmail,
-  IOrganization,
+  IOrganizations,
   IPlace,
   IPlacesCategories,
   IPlacesTypes,
@@ -38,7 +38,7 @@ export class PagePlaceAddComponent implements OnInit {
 
   public categories: IPlacesCategories[];
   public types: IPlacesTypes[] = [];
-  public organizations: IOrganization[] = [];
+  public organizations: IOrganizations;
 
   public filteredApprovedOrganizations: Observable<string[]>;
   public filteredProposedOrganizations: Observable<string[]>;
@@ -94,7 +94,7 @@ export class PagePlaceAddComponent implements OnInit {
   public photosGroupValidation: boolean = false;
 
   public photos: any[] = [];
-  public photosUrl: any = [];
+  public photosUrl: string[] = [];
   public photoCover: number = 0;
 
   public formLoader: LoaderHelper = new LoaderHelper();
@@ -135,12 +135,17 @@ export class PagePlaceAddComponent implements OnInit {
   private filter(value: string, isApproved: boolean): string[] {
     if (value === null) { return; }
     const filterValue: string = value.toLowerCase();
-    const result: string[] = this.organizationsService.getOrganizationsNames(this.organizations, isApproved);
+    let result: string[];
+    if (isApproved) {
+      result = this.organizationsService.getOrganizationsNames(this.organizations.approvedOrganizations);
+    } else {
+      result = this.organizationsService.getOrganizationsNames(this.organizations.proposedOrganizations);
+    }
     return result.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   private autocompleteData(): void {
-    this.organizationGroup.get('organization_id').setValue('Федерація Альпинизму і Скелелазіння');
+    this.organizationGroup.get('organization_id').setValue('Федерація альпінізму і скелелазіння');
     this.categoryGroup.get('category_id').setValue('recreation');
     this.categoryGroup.get('type_id').setValue('water');
     this.mainGroup.get('name').setValue('Імя організіції');

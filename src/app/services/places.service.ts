@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiUrlService } from './api-url.service';
 import {
-  IOrganization,
+  IOrganizations,
   IPhotos,
   IPlace,
   IPlaceForm,
@@ -138,33 +138,24 @@ export class PlacesService {
     return result;
   }
 
-  public buildPhotos(photosUrls: string[]): IPhotos[] {
+  public buildPhotos(urls: string[]): IPhotos[] {
     const result: IPhotos[] = [];
-    photosUrls.forEach((photoUrl) => {
-      const photoObject: any = {
-        url: photoUrl,
-        author_name: 'author_name',
-        author_link: 'http://author_link'
-      };
-      result.push(photoObject);
-    });
+    urls.forEach((url) => { result.push({url}); });
     return result;
   }
 
   public buildPhones(phones: string[]): string[] {
     const result: string[] = [];
     phones.forEach((phone) => {
-      const phoneResult: string = ((phone.split('(').join('')).split(')').join('')).split(' ').join('');
-      result.push(phoneResult);
+      result.push(phone.replace(/[^0-9+]/g, ''));
     });
     return result;
   }
 
-  public buildRequest(dataForm: IPlaceForm, linksToPhotos: string[], organizations: IOrganization[]): any {
+  public buildRequest(dataForm: IPlaceForm, linksToPhotos: string[], organizations: IOrganizations): any {
     const result: any = {};
     const place: any = {};
-    // let organization: any = {};
-    let photos: any = [];
+    let photos: IPhotos[] = [];
 
     if (dataForm.hasOwnProperty('main_group')) {
       place.name = dataForm.main_group.name;
@@ -196,7 +187,6 @@ export class PlacesService {
       place.category_id = dataForm.category_group.category_id;
     }
 
-    place.type_id = '';
     if (dataForm.category_group.hasOwnProperty('type_id')) {
       place.type_id = dataForm.category_group.type_id;
     }
@@ -206,23 +196,21 @@ export class PlacesService {
 
     if (dataForm.organization_group.hasOwnProperty('organization')) {
       if (dataForm.organization_group.organization.hasOwnProperty('email')) {
-        // result.organization = dataForm.organization_group.organization;
-        result.organization = {
-          id: 1,
-          name: 'Федерація Альпинизму і Скелелазіння',
-          phones: '+38060654256652',
-          email: 'info@fais.ck.ua',
-          approved: true
-        };
+        result.organization = dataForm.organization_group.organization;
+        result.organization.phones = this.buildPhones(dataForm.organization_group.organization.phones);
         return result;
       }
-      // result.organization_id = this.organizationsService.getOrganizationId(organizations, dataForm.organization_group.organization.name);
-      result.organization_id = 2;
+      result.organization_id = this.organizationsService.getOrganizationId(
+        organizations.proposedOrganizations,
+        dataForm.organization_group.organization.name
+      );
       return result;
     }
 
-    // result.organization_id = this.organizationsService.getOrganizationId(organizations, dataForm.organization_group.organization_id);
-    result.organization_id = 1;
+    result.organization_id = this.organizationsService.getOrganizationId(
+      organizations.approvedOrganizations,
+      dataForm.organization_group.organization_id
+    );
     return result;
   }
 

@@ -18,6 +18,6 @@ export { IPlaceRequestParams } from './place-request-params.interface';
 export { IToleranceFilterState } from './tolerance-filter-state.interface';
 export { IPlacesRequestParamsHelper } from './place-request-params.interface';
 export { IEnvironment } from './enviroment.interface';
-export { IOrganization, IProposeOrganization } from './organization.interface';
+export { IOrganizations, IOrganization } from './organization.interface';
 export { IMaskEmail } from './masks-patterns.interface';
 export { IWeek, IWorkTimeForm, IWorkTime, IWorkDay } from './week.interface';
