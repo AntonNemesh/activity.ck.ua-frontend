@@ -14,9 +14,11 @@ export class PagePlacesListComponent implements OnInit {
   private page: number;
 
   public categoryId: string;
-  public places: IPlace[] = [];
+  public places: Partial<IPlace[]>;
   public filterTypeState: string[] = [];
   public filterToleranceState: string[] = [];
+
+  public totalPages: number;
 
   constructor(private route: ActivatedRoute, private placesService: PlacesService) { }
 
@@ -33,12 +35,13 @@ export class PagePlacesListComponent implements OnInit {
     );
 
     this.placesService.getPlaces(options).subscribe((data) => {
+      this.totalPages = data._totalPages;
       if (isConcatenation) {
-        this.places = this.places.concat(data);
+        this.places = this.places.concat(data.places);
         return;
       }
       if (this.places?.length) { this.places.length = 0; }
-      this.places = data;
+      this.places = data.places;
     });
   }
 

@@ -9,7 +9,8 @@ export {
   IPlaceBase,
   IMainGroup,
   IOrganizationGroup,
-  IPhotosGroup
+  IPhotosGroup,
+  IPlaceResponse
 } from './place.interface';
 
 export { IPhotos } from './photos.interface';

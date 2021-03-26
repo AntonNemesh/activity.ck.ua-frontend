@@ -25,6 +25,12 @@ export interface IPlace extends IPlaceBase {
   work_time: IWorkTime;
 }
 
+export interface IPlaceResponse {
+  _total: number;
+  _totalPages: number;
+  places: IPlace[];
+}
+
 export interface IPlaceForm {
   photos_group: IPhotosGroup;
   work_time_group: IWorkTimeForm;
