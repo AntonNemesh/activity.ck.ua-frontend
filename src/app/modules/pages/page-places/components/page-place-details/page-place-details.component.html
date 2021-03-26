@@ -1,17 +1,15 @@
 <app-layout>
   <div *ngIf="place">
     <p><b>Ідентифікатор місця:</b>  {{placeId}}</p>
-    <p><b>Ідентифікатор категорії місця:</b>  {{place.category_id}}</p>
+    <p><b>Ідентифікатор категорії місця:</b>  {{place.category_id || 'відсутній'}}</p>
     <p><b>Ідентифікатор типу місця:</b>  {{place.type_id || 'відсутній'}}</p>
     <p><b>Ідентифікатор організації:</b>  {{place.organization_id}}</p>
     <br><br>
     <app-gallery [photos]="place.photos"></app-gallery>
     <br><br>
     <p><b>Назва місця:</b>  {{place.name}}</p>
-
-
     <div>
-    <b>Телефони:</b>
+      <b>Телефони:</b>
       <ul *ngIf="place.phones">
         <li *ngFor="let phone of place.phones">{{phone}}</li>
       </ul>

@@ -10,6 +10,7 @@ export {
   IMainGroup,
   IOrganizationGroup,
   IPhotosGroup,
+  IPlacesResponse,
   IPlaceResponse
 } from './place.interface';
 

@@ -25,10 +25,14 @@ export interface IPlace extends IPlaceBase {
   work_time: IWorkTime;
 }
 
-export interface IPlaceResponse {
+export interface IPlacesResponse {
   _total: number;
   _totalPages: number;
   places: IPlace[];
+}
+
+export interface IPlaceResponse {
+  place: IPlace;
 }
 
 export interface IPlaceForm {

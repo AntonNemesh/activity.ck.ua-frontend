@@ -7,7 +7,9 @@ import {
   IPhotos,
   IPlace,
   IPlaceForm,
-  IPlaceRequestParams, IPlaceResponse,
+  IPlaceRequestParams,
+  IPlacesResponse,
+  IPlaceResponse,
   IWorkTime,
   IWorkTimeForm
 } from '../static/type';
@@ -126,7 +128,7 @@ export class PlacesService {
     return this.http.post<any>(this.apiUrlService.generateApiLink('places'), placeData);
   }
 
-  public getPlaces(options: PlacesRequestParamsHelper): Observable<IPlaceResponse> {
+  public getPlaces(options: PlacesRequestParamsHelper): Observable<IPlacesResponse> {
     let params: HttpParams = new HttpParams();
     const placeRequestParams: Partial<IPlaceRequestParams> = options.toJSON();
 
@@ -134,12 +136,12 @@ export class PlacesService {
       if (!placeRequestParams.hasOwnProperty(key)){ continue; }
       params = params.set(key, placeRequestParams[key]);
     }
-    return this.http.get<IPlaceResponse>(this.apiUrlService.generateApiLink('places'), { params });
+    return this.http.get<IPlacesResponse>(this.apiUrlService.generateApiLink('places'), { params });
   }
 
   public getPlaceById(placeId: string): Observable<IPlace> {
-    return this.http.get<IPlace>(this.apiUrlService.generateApiLink(`places/${placeId}`)).pipe(
-      map((detailsOfPlace) => detailsOfPlace[0])
+    return this.http.get<IPlaceResponse>(this.apiUrlService.generateApiLink(`places/${placeId}`)).pipe(
+      map((response) => response.place)
     );
   }
 }
