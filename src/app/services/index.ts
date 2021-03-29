@@ -4,6 +4,7 @@ import { ApiUrlService } from './api-url.service';
 import { FilterByTypeService } from './filter-by-type.service';
 import { OrganizationsService } from './organizations.service';
 import { FilesService } from './files.service';
+import { EventsService } from './events.service';
 
 // tslint:disable-next-line:typedef
 export const services = [
@@ -12,7 +13,8 @@ export const services = [
   ApiUrlService,
   FilterByTypeService,
   OrganizationsService,
-  FilesService
+  FilesService,
+  EventsService
 ];
 
 export * from './categories.service';
@@ -21,3 +23,4 @@ export * from './api-url.service';
 export * from './filter-by-type.service';
 export * from './organizations.service';
 export * from './files.service';
+export * from './events.service';

@@ -9,7 +9,7 @@ export {
   IPlaceBase,
   IMainGroup,
   IOrganizationGroup,
-  IPhotosGroup
+  IPhotosGroup,
 } from './place.interface';
 
 export { IPhotos } from './photos.interface';
@@ -21,3 +21,4 @@ export { IEnvironment } from './enviroment.interface';
 export { IOrganization, IProposeOrganization } from './organization.interface';
 export { IMaskEmail } from './masks-patterns.interface';
 export { IWeek, IWorkTimeForm, IWorkTime, IWorkDay } from './week.interface';
+export { IEvent } from './events.interface';

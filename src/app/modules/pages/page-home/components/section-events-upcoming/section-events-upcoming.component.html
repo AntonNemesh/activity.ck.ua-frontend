@@ -1,0 +1,7 @@
+<h1>Найближчі події</h1>
+<ul class="events-wrapper"*ngIf="upcomingEvents">
+  <li class="event" *ngFor="let event of upcomingEvents">
+    <img class="event__photo" src="{{event.main_photo}}">
+    <p class="event__title">{{event.name}}</p>
+  </li>
+</ul>
