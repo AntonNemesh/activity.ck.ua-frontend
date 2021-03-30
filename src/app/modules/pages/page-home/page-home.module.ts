@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { PageHomeViewComponent, SectionCategoryComponent, SectionEventsUpcomingComponent } from './components';
 import { LayoutModule } from '../../layout';
 import { RouterModule } from '@angular/router';
+import { MaterialModule } from '../../material';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     LayoutModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    MaterialModule
   ]
 })
 export class PageHomeModule { }

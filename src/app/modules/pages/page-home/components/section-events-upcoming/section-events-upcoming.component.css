@@ -18,3 +18,11 @@
 .event__title {
 
 }
+
+.datepicker-wrapper {
+  text-align: right;
+}
+
+.hidden {
+  display: none;
+}

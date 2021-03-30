@@ -11,10 +11,13 @@ export class EventsService {
 
   constructor(private http: HttpClient, private apiUrlService: ApiUrlService) { }
 
-  getEventsByDate(): Observable<IEvent[]> {
+  getEventsFromDate(date: number, page: number = 1, limit: number = 6): Observable<IEvent[]> {
     let params: HttpParams = new HttpParams();
-    params = params.set('_page', '1');
-    params = params.set('_limit', '6');
+
+    params = params.set('time_start', date.toString());
+    params = params.set('_page', page.toString());
+    params = params.set('_limit', limit.toString());
+
     return this.http.get<IEvent[]>(this.apiUrlService.generateApiLink('events'), { params });
   }
 }

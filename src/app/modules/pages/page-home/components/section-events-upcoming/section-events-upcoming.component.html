@@ -1,7 +1,22 @@
 <h1>Найближчі події</h1>
-<ul class="events-wrapper"*ngIf="upcomingEvents">
-  <li class="event" *ngFor="let event of upcomingEvents">
-    <img class="event__photo" src="{{event.main_photo}}">
-    <p class="event__title">{{event.name}}</p>
-  </li>
-</ul>
+<div class="datepicker-wrapper">
+  <mat-form-field appearance="fill" style="width: 1px; visibility: hidden">
+    <input matInput [matDatepicker]="picker" [formControl]="dateInput">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-label>{{dateUrkFormat}}</mat-label>
+  <button class="btn__datepicker" mat-button matSuffix mat-icon-button aria-label="Calendar" (click)="picker.open()">
+    <mat-icon>events</mat-icon>
+  </button>
+</div>
+<div [class.hidden]="eventsLoaderVisible">
+  <ul class="events-wrapper" *ngIf="events?.length">
+    <li class="event" *ngFor="let event of events">
+      <img class="event__photo" src="{{event.main_photo}}" (load)="onLoad()">
+      <p class="event__title">{{event.name}}</p>
+    </li>
+  </ul>
+  <p *ngIf="!events?.length">Нічого не знайдено!</p>
+</div>
+<mat-spinner [class.hidden]="!eventsLoaderVisible"></mat-spinner>

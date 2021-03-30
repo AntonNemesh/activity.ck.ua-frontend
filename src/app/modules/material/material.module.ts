@@ -11,6 +11,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -27,6 +29,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatIconModule,
     MatProgressSpinnerModule,
     MatStepperModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   imports: [
     CommonModule
