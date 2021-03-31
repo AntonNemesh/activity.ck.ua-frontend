@@ -1,5 +1,5 @@
 <div class="pagination__more">
-  <a href="" *ngIf="isTheLastPage || isTotalPagesRepeat" (click)="setNextPage($event)">Показати ще...</a>
+  <a href="" *ngIf="isTheLastPage" (click)="setNextPage($event)">Показати ще...</a>
 </div>
 <div class="pagination__numb">
   <a href="" *ngIf="totalPages > 1" (click)="setPage($event, 1)" class="button" [class.active]="checkState(1)">{{1}}</a>

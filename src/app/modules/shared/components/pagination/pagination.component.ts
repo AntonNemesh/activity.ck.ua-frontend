@@ -19,14 +19,12 @@ export class PaginationComponent implements OnInit {
 
   public separatorState: boolean[];
   public isTheLastPage: boolean;
-  public isTotalPagesRepeat: boolean = false;
   public totalPages: number;
 
   @Input() categoryId: string;
 
   @Input('totalPages')
   set _totalPages(value: number) {
-    this.isTotalPagesRepeat = this.totalPages === value;
     this.totalPages = value;
     this.updateButtonsView();
   }
@@ -48,7 +46,7 @@ export class PaginationComponent implements OnInit {
 
   private resetPage(): void {
     this.page = 1;
-    this.isTheLastPage = true;
+    this.isTheLastPage = this.totalPages !== this.page;
     this.activeButtons = [];
   }
 
