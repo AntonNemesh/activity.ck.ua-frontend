@@ -14,11 +14,14 @@
   <div *ngIf="eventsContentVisibility | async">
     <ul class="events-list" *ngIf="events?.length">
       <li class="event" *ngFor="let event of events">
-        <img class="event__photo" src="{{event.main_photo}}">
-        <p class="event__title">{{event.name}}</p>
+        <a routerLink="/events/{{event.id}}">
+          <img class="event__photo" src="{{event.main_photo}}">
+          <p class="event__title">{{event.name}}</p>
+        </a>
       </li>
     </ul>
     <p class="mat-h3" *ngIf="!events?.length">Нічого не знайдено!</p>
+    <a routerLink="/events">Більше подій</a>
   </div>
   <mat-spinner class="loader" *ngIf="eventsLoaderVisibility | async"></mat-spinner>
 </div>

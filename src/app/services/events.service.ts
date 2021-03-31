@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IEvent } from '../static/type';
+import {IEvent, IPlace} from '../static/type';
 import { ApiUrlService } from './api-url.service';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,9 @@ export class EventsService {
     params = params.set('_limit', limit.toString());
 
     return this.http.get<IEvent[]>(this.apiUrlService.generateApiLink('events'), { params });
+  }
+
+  public getEventById(eventId: string): Observable<IEvent> {
+    return this.http.get<IEvent>(this.apiUrlService.generateApiLink(`events/${eventId}`));
   }
 }
