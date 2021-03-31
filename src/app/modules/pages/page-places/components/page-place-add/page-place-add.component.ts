@@ -98,8 +98,8 @@ export class PagePlaceAddComponent implements OnInit {
   public photoCover: number = 0;
 
   public formLoader: LoaderHelper = new LoaderHelper();
-  public formLoaderVisible: Subject<boolean> = this.formLoader.getLoaderState();
-  public formContentVisible: Subject<boolean> = this.formLoader.getContentState();
+  public formLoaderVisible: Observable<boolean> = this.formLoader.isVisibleLoader$;
+  public formContentVisible: Observable<boolean> = this.formLoader.isVisibleContent$;
 
   @ViewChild('placesRef') placesRef: GooglePlaceDirective;
 

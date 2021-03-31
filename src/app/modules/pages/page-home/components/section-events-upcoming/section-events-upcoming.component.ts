@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { EventsService } from '../../../../../services';
 import { IEvent } from '../../../../../static/type';
-import { switchMap } from 'rxjs/operators';
+import { debounceTime, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { LoaderHelper } from '../../../../../helpers';
 
 @Component({
   selector: 'app-section-events-upcoming',
@@ -20,7 +21,9 @@ export class SectionEventsUpcomingComponent implements OnInit {
   public dateUrkFormat: string;
   public numbOfLoadedImages: number;
 
-  public eventsLoaderVisible: boolean;
+  public eventsLoader: LoaderHelper = new LoaderHelper();
+  public eventsLoaderVisible: Observable<boolean> = this.eventsLoader.isVisibleLoader$;
+  public eventsContentVisible: Observable<boolean> = this.eventsLoader.isVisibleContent$;
 
   public getDateUkrFormat(dateString: Date): string {
     const date: Date = new Date(dateString);
@@ -28,34 +31,27 @@ export class SectionEventsUpcomingComponent implements OnInit {
     return date.toLocaleString('uk-UK', options);
   }
 
-  public onLoad(): void {
-    if (this.numbOfLoadedImages === this.events.length - 1) {
-      this.numbOfLoadedImages = 0;
-      setTimeout(() => { this.eventsLoaderVisible = false; }, 500);
-      return;
-    }
-    this.numbOfLoadedImages++;
-  }
-
   ngOnInit(): void {
-    this.eventsLoaderVisible = true;
+    this.eventsLoader.show();
     this.numbOfLoadedImages = 0;
     this.dateToday.setHours(0, 0, 0, 0);
     this.dateUrkFormat = this.getDateUkrFormat(this.dateToday);
     this.eventsFromDate = this.dateInput.valueChanges.pipe(
       switchMap((date) => {
-        this.eventsLoaderVisible = true;
+        this.eventsLoader.show();
         this.dateUrkFormat = this.getDateUkrFormat(date);
         return this.eventsService.getEventsFromDate(date.getTime());
       })
     );
-    this.eventsFromDate.subscribe((events) => {
+    this.eventsFromDate.pipe(debounceTime(500)).subscribe((events) => {
       this.events = events;
-      if (this.events?.length) { return; }
-      setTimeout(() => { this.eventsLoaderVisible = false; }, 500);
+      this.eventsLoader.hide();
     });
     this.eventsService.getEventsFromDate(this.dateToday.getTime()).subscribe(
-(events) => { this.events = events; }
+(events) => {
+        this.events = events;
+        this.eventsLoader.hide();
+      }
     );
   }
 }

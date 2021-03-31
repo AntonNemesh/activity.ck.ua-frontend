@@ -10,13 +10,13 @@
     <mat-icon>events</mat-icon>
   </button>
 </div>
-<div [class.hidden]="eventsLoaderVisible">
+<div *ngIf="eventsContentVisible | async">
   <ul class="events-wrapper" *ngIf="events?.length">
     <li class="event" *ngFor="let event of events">
-      <img class="event__photo" src="{{event.main_photo}}" (load)="onLoad()">
+      <img class="event__photo" src="{{event.main_photo}}">
       <p class="event__title">{{event.name}}</p>
     </li>
   </ul>
   <p *ngIf="!events?.length">Нічого не знайдено!</p>
 </div>
-<mat-spinner [class.hidden]="!eventsLoaderVisible"></mat-spinner>
+<mat-spinner *ngIf="eventsLoaderVisible | async"></mat-spinner>

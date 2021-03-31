@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { FilesValidator } from '../../../../../validators';
 import { FilesService } from '../../../../../services';
 import { LoaderHelper } from '../../../../../helpers';
-import { Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -32,8 +31,8 @@ export class UploaderForPhotosComponent implements OnInit {
   public messagesWarningOfAmount: string[];
 
   public photosLoader: LoaderHelper = new LoaderHelper();
-  public photosLoaderVisible: Subject<boolean> = this.photosLoader.getLoaderState();
-  public photosContentVisible: Subject<boolean> = this.photosLoader.getContentState();
+  public photosLoaderVisible: Observable<boolean> = this.photosLoader.isVisibleLoader$;
+  public photosContentVisible: Observable<boolean> = this.photosLoader.isVisibleContent$;
 
   @Output() photosGroupValue: EventEmitter<string|null> = new EventEmitter<string|null>();
   @Output() photosState: EventEmitter<File[]> = new EventEmitter<File[]>();

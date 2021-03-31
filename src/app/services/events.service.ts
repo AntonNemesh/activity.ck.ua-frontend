@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {IEvent, IPlaceRequestParams} from '../static/type';
+import { IEvent } from '../static/type';
 import { ApiUrlService } from './api-url.service';
 
 @Injectable({
