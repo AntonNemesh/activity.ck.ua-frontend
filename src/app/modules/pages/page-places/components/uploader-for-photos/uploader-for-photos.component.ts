@@ -31,8 +31,8 @@ export class UploaderForPhotosComponent implements OnInit {
   public messagesWarningOfAmount: string[];
 
   public photosLoader: LoaderHelper = new LoaderHelper();
-  public photosLoaderVisible: Observable<boolean> = this.photosLoader.isVisibleLoader$;
-  public photosContentVisible: Observable<boolean> = this.photosLoader.isVisibleContent$;
+  public photosLoaderVisibility: Observable<boolean> = this.photosLoader.isVisibleLoader$;
+  public photosContentVisibility: Observable<boolean> = this.photosLoader.isVisibleContent$;
 
   @Output() photosGroupValue: EventEmitter<string|null> = new EventEmitter<string|null>();
   @Output() photosState: EventEmitter<File[]> = new EventEmitter<File[]>();

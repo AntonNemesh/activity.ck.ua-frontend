@@ -22,8 +22,8 @@ export class SectionEventsUpcomingComponent implements OnInit {
   public numbOfLoadedImages: number;
 
   public eventsLoader: LoaderHelper = new LoaderHelper();
-  public eventsLoaderVisible: Observable<boolean> = this.eventsLoader.isVisibleLoader$;
-  public eventsContentVisible: Observable<boolean> = this.eventsLoader.isVisibleContent$;
+  public eventsLoaderVisibility: Observable<boolean> = this.eventsLoader.isVisibleLoader$;
+  public eventsContentVisibility: Observable<boolean> = this.eventsLoader.isVisibleContent$;
 
   public getDateUkrFormat(dateString: Date): string {
     const date: Date = new Date(dateString);

@@ -7,7 +7,7 @@
         class="access-files mat-h4 mat-subheading-1">
         Дозволено файлів до завантаження: {{photosLimit - photos.length}}
     </span>
-  <div *ngIf="photosContentVisible | async">
+  <div *ngIf="photosContentVisibility | async">
     <ul class="photos">
       <li class="photo-item" *ngFor="let photoB64 of photosB64; index as i">
         <img [class.cover-photo]="photoCover === i"
@@ -49,5 +49,5 @@
       </ul>
     </div>
   </div>
-  <mat-spinner *ngIf="photosLoaderVisible | async"></mat-spinner>
+  <mat-spinner *ngIf="photosLoaderVisibility | async"></mat-spinner>
 </div>
