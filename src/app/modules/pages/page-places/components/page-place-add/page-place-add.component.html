@@ -1,5 +1,5 @@
 <app-layout>
-  <div *ngIf="formContentVisible | async">
+  <div *ngIf="formContentVisibility | async">
     <form *ngIf="!isSavedPlace" [formGroup]="placeForm" (ngSubmit)="onSubmit()">
       <mat-vertical-stepper [linear]="true" #stepper>
         <mat-step [stepControl]="organizationGroup">
@@ -259,5 +259,5 @@
       <a routerLink="">Повернутися на голову сторінку</a>
     </div>
   </div>
-  <mat-spinner *ngIf="formLoaderVisible | async"></mat-spinner>
+  <mat-spinner *ngIf="formLoaderVisibility | async"></mat-spinner>
 </app-layout>

@@ -5654,8 +5654,18 @@
   "events": [
     {
       "id": 1,
-      "organization_id": 6,
+      "name": "Любовні історії Черкащини",
+      "address": "Черкаський Обласний Краєзнавчий Музей",
+      "phones": ["+380932806565"],
+      "website": "http://fakesite.com.ua",
       "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+      "description": "Авторська екскурсія \"Любовні історії Черкащини\"\nВ експозиціях краєзнавчого музею є багато цікавого про природу, історію, культуру рідного краю. Запрошуємо відвідувачів до музейних мандрів Черкащиною, яка має чимало місць, пов'язаних з відомими людьми, що тут народились, жили, приїздили та почути їх любовні історії, зазирнувши у шпаринку часу.\nЕкскурсію проводить завідувач відділу Чиж Л.С. з дотриманням усіх протиепідеміологічних рекомендацій.",
+      "accessibility": true,
+      "dog_friendly": false,
+      "child_friendly": true,
+      "program": "программа супер мероприятия",
+      "time_start": 1617224400000,
+      "time_end": 1617224400000,
       "photos": [
         {
           "id": 1,
@@ -5718,24 +5728,25 @@
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         }
       ],
-      "name": "Любовні історії Черкащини",
-      "location": "Черкаський Обласний Краєзнавчий Музей",
-      "date": "14.02.2021",
-      "time": "12:00",
-      "organizer": "Черкаський Обласний Краєзнавчий Музей",
-      "id_organizer": 1,
-      "telephones": "",
-      "website": "",
-      "price": 0,
-      "description": "Авторська екскурсія \"Любовні історії Черкащини\"\nВ експозиціях краєзнавчого музею є багато цікавого про природу, історію, культуру рідного краю. Запрошуємо відвідувачів до музейних мандрів Черкащиною, яка має чимало місць, пов'язаних з відомими людьми, що тут народились, жили, приїздили та почути їх любовні історії, зазирнувши у шпаринку часу.\nЕкскурсію проводить завідувач відділу Чиж Л.С. з дотриманням усіх протиепідеміологічних рекомендацій.",
-      "program": "11:00 - start, 15:00 - end",
-      "like": 45,
-      "dis_like": 2
+      "organization_id": 6,
+      "user_id": 11,
+      "place_id": 5,
+      "price": 0
     },
     {
       "id": 2,
-      "organization_id": 6,
-      "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+      "name": "Артпроєкт «КвітиКоти»",
+      "address": "Черкаський Художній Музей",
+      "phones": ["+380932806565"],
+      "website": "http://fakesite.com.ua",
+      "main_photo": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
+      "description": "Коти і квіти, квіти і коти – беззаперечні лідери у сентиментальних меседжах. Саме в такому поєднанні вони з’являться у лютневому артпроєкті Черкаського художнього музею «КвітиКоти».\nЦією виставкою ми вирішили зробити подарунок своїм відвідувачам, які скучили за красою і позитивними емоціями за період локдауну.",
+      "accessibility": true,
+      "dog_friendly": false,
+      "child_friendly": true,
+      "program": "программа супер мероприятия",
+      "time_start": 1617397200000,
+      "time_end": 1617397200000,
       "photos": [
         {
           "id": 1,
@@ -5798,19 +5809,577 @@
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         }
       ],
-      "name": "Артпроєкт «КвітиКоти»",
-      "location": "Черкаський Художній Музей",
-      "date": "10.03.2021",
-      "time": "16:00",
-      "organizer": "Черкаський Художній Музей",
-      "id_organizer": 2,
-      "telephones": "",
-      "website": "",
-      "price": 45,
+      "organization_id": 6,
+      "user_id": 15,
+      "place_id": 5,
+      "price": 45
+    },
+    {
+      "id": 3,
+      "name": "Кулінарний батл",
+      "address": "Черкаський Обласний Краєзнавчий Музей",
+      "phones": ["+380932806565"],
+      "website": "http://fakesite.com.ua",
+      "main_photo": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
+      "description": "Авторська екскурсія \"Любовні історії Черкащини\"\nВ експозиціях краєзнавчого музею є багато цікавого про природу, історію, культуру рідного краю. Запрошуємо відвідувачів до музейних мандрів Черкащиною, яка має чимало місць, пов'язаних з відомими людьми, що тут народились, жили, приїздили та почути їх любовні історії, зазирнувши у шпаринку часу.\nЕкскурсію проводить завідувач відділу Чиж Л.С. з дотриманням усіх протиепідеміологічних рекомендацій.",
+      "accessibility": true,
+      "dog_friendly": false,
+      "child_friendly": true,
+      "program": "программа супер мероприятия",
+      "time_start": 1617397200000,
+      "time_end": 1617397200000,
+      "photos": [
+        {
+          "id": 1,
+          "photo_url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 2,
+          "photo_url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 3,
+          "photo_url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 4,
+          "photo_url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 5,
+          "photo_url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 6,
+          "photo_url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 7,
+          "photo_url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 8,
+          "photo_url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 9,
+          "photo_url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 10,
+          "photo_url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        }
+      ],
+      "organization_id": 6,
+      "user_id": 11,
+      "place_id": 5,
+      "price": 0
+    },
+    {
+      "id": 4,
+      "name": "Співаємо разом",
+      "address": "Черкаський Обласний Краєзнавчий Музей",
+      "phones": ["+380932806565"],
+      "website": "http://fakesite.com.ua",
+      "main_photo": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
+      "description": "Авторська екскурсія \"Любовні історії Черкащини\"\nВ експозиціях краєзнавчого музею є багато цікавого про природу, історію, культуру рідного краю. Запрошуємо відвідувачів до музейних мандрів Черкащиною, яка має чимало місць, пов'язаних з відомими людьми, що тут народились, жили, приїздили та почути їх любовні історії, зазирнувши у шпаринку часу.\nЕкскурсію проводить завідувач відділу Чиж Л.С. з дотриманням усіх протиепідеміологічних рекомендацій.",
+      "accessibility": true,
+      "dog_friendly": false,
+      "child_friendly": true,
+      "program": "программа супер мероприятия",
+      "time_start": 1617310800000,
+      "time_end": 1617310800000,
+      "photos": [
+        {
+          "id": 1,
+          "photo_url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 2,
+          "photo_url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 3,
+          "photo_url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 4,
+          "photo_url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 5,
+          "photo_url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 6,
+          "photo_url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 7,
+          "photo_url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 8,
+          "photo_url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 9,
+          "photo_url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 10,
+          "photo_url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        }
+      ],
+      "organization_id": 6,
+      "user_id": 11,
+      "place_id": 5,
+      "price": 0
+    },
+    {
+      "id": 5,
+      "name": "Трипільсіькі зорі",
+      "address": "Черкаський Художній Музей",
+      "phones": ["+380932806565"],
+      "website": "http://fakesite.com.ua",
+      "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
       "description": "Коти і квіти, квіти і коти – беззаперечні лідери у сентиментальних меседжах. Саме в такому поєднанні вони з’являться у лютневому артпроєкті Черкаського художнього музею «КвітиКоти».\nЦією виставкою ми вирішили зробити подарунок своїм відвідувачам, які скучили за красою і позитивними емоціями за період локдауну.",
-      "program": "16:00 - start, 18:00 - end",
-      "like": 21,
-      "dis_like": 0
+      "accessibility": true,
+      "dog_friendly": false,
+      "child_friendly": true,
+      "program": "программа супер мероприятия",
+      "time_start": 1617310800000,
+      "time_end": 1617310800000,
+      "photos": [
+        {
+          "id": 1,
+          "photo_url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 2,
+          "photo_url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 3,
+          "photo_url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 4,
+          "photo_url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 5,
+          "photo_url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 6,
+          "photo_url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 7,
+          "photo_url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 8,
+          "photo_url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 9,
+          "photo_url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 10,
+          "photo_url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        }
+      ],
+      "organization_id": 6,
+      "user_id": 15,
+      "place_id": 5,
+      "price": 45
+    },
+    {
+      "id": 6,
+      "name": "Таланти Черкащини",
+      "address": "Черкаський Обласний Краєзнавчий Музей",
+      "phones": ["+380932806565"],
+      "website": "http://fakesite.com.ua",
+      "main_photo": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
+      "description": "Авторська екскурсія \"Любовні історії Черкащини\"\nВ експозиціях краєзнавчого музею є багато цікавого про природу, історію, культуру рідного краю. Запрошуємо відвідувачів до музейних мандрів Черкащиною, яка має чимало місць, пов'язаних з відомими людьми, що тут народились, жили, приїздили та почути їх любовні історії, зазирнувши у шпаринку часу.\nЕкскурсію проводить завідувач відділу Чиж Л.С. з дотриманням усіх протиепідеміологічних рекомендацій.",
+      "accessibility": true,
+      "dog_friendly": false,
+      "child_friendly": true,
+      "program": "программа супер мероприятия",
+      "time_start": 1617310800000,
+      "time_end": 1617310800000,
+      "photos": [
+        {
+          "id": 1,
+          "photo_url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 2,
+          "photo_url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 3,
+          "photo_url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 4,
+          "photo_url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 5,
+          "photo_url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 6,
+          "photo_url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 7,
+          "photo_url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 8,
+          "photo_url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 9,
+          "photo_url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 10,
+          "photo_url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        }
+      ],
+      "organization_id": 6,
+      "user_id": 11,
+      "place_id": 5,
+      "price": 0
+    },
+    {
+      "id": 7,
+      "name": "Вечір живої музики",
+      "address": "Черкаський Обласний Краєзнавчий Музей",
+      "phones": ["+380932806565"],
+      "website": "http://fakesite.com.ua",
+      "main_photo": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
+      "description": "Авторська екскурсія \"Любовні історії Черкащини\"\nВ експозиціях краєзнавчого музею є багато цікавого про природу, історію, культуру рідного краю. Запрошуємо відвідувачів до музейних мандрів Черкащиною, яка має чимало місць, пов'язаних з відомими людьми, що тут народились, жили, приїздили та почути їх любовні історії, зазирнувши у шпаринку часу.\nЕкскурсію проводить завідувач відділу Чиж Л.С. з дотриманням усіх протиепідеміологічних рекомендацій.",
+      "accessibility": true,
+      "dog_friendly": false,
+      "child_friendly": true,
+      "program": "программа супер мероприятия",
+      "time_start": 1617310800000,
+      "time_end": 1617310800000,
+      "photos": [
+        {
+          "id": 1,
+          "photo_url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 2,
+          "photo_url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 3,
+          "photo_url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 4,
+          "photo_url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 5,
+          "photo_url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 6,
+          "photo_url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 7,
+          "photo_url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 8,
+          "photo_url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 9,
+          "photo_url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 10,
+          "photo_url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        }
+      ],
+      "organization_id": 6,
+      "user_id": 11,
+      "place_id": 5,
+      "price": 0
+    },
+    {
+      "id": 8,
+      "name": "Черкаські вертикалі",
+      "address": "Черкаський Художній Музей",
+      "phones": ["+380932806565"],
+      "website": "http://fakesite.com.ua",
+      "main_photo": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
+      "description": "Коти і квіти, квіти і коти – беззаперечні лідери у сентиментальних меседжах. Саме в такому поєднанні вони з’являться у лютневому артпроєкті Черкаського художнього музею «КвітиКоти».\nЦією виставкою ми вирішили зробити подарунок своїм відвідувачам, які скучили за красою і позитивними емоціями за період локдауну.",
+      "accessibility": true,
+      "dog_friendly": false,
+      "child_friendly": true,
+      "program": "программа супер мероприятия",
+      "time_start": 1617310800000,
+      "time_end": 1617310800000,
+      "photos": [
+        {
+          "id": 1,
+          "photo_url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 2,
+          "photo_url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 3,
+          "photo_url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 4,
+          "photo_url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 5,
+          "photo_url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 6,
+          "photo_url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 7,
+          "photo_url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 8,
+          "photo_url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 9,
+          "photo_url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 10,
+          "photo_url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        }
+      ],
+      "organization_id": 6,
+      "user_id": 15,
+      "place_id": 5,
+      "price": 45
+    },
+    {
+      "id": 9,
+      "name": "Ярмарок їжї",
+      "address": "Черкаський Обласний Краєзнавчий Музей",
+      "phones": ["+380932806565"],
+      "website": "http://fakesite.com.ua",
+      "main_photo": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
+      "description": "Авторська екскурсія \"Любовні історії Черкащини\"\nВ експозиціях краєзнавчого музею є багато цікавого про природу, історію, культуру рідного краю. Запрошуємо відвідувачів до музейних мандрів Черкащиною, яка має чимало місць, пов'язаних з відомими людьми, що тут народились, жили, приїздили та почути їх любовні історії, зазирнувши у шпаринку часу.\nЕкскурсію проводить завідувач відділу Чиж Л.С. з дотриманням усіх протиепідеміологічних рекомендацій.",
+      "accessibility": true,
+      "dog_friendly": false,
+      "child_friendly": true,
+      "program": "программа супер мероприятия",
+      "time_start": 1617310800000,
+      "time_end": 1617310800000,
+      "photos": [
+        {
+          "id": 1,
+          "photo_url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 2,
+          "photo_url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 3,
+          "photo_url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 4,
+          "photo_url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 5,
+          "photo_url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 6,
+          "photo_url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 7,
+          "photo_url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 8,
+          "photo_url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 9,
+          "photo_url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        },
+        {
+          "id": 10,
+          "photo_url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
+          "author_name": "Vasiliev Serhiy",
+          "author_link": "https://www.facebook.com/official.typical.cherkassy/"
+        }
+      ],
+      "organization_id": 6,
+      "user_id": 11,
+      "place_id": 5,
+      "price": 0
     }
   ],
   "organizations": [

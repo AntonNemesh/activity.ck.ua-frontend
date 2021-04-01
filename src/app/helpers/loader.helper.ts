@@ -1,30 +1,32 @@
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { distinctUntilChanged, map } from 'rxjs/operators';
 
 export class LoaderHelper {
-  private readonly loaderVisible: BehaviorSubject<boolean>;
-  private readonly contentVisible: BehaviorSubject<boolean>;
+  private readonly loaderState: BehaviorSubject<boolean>;
 
   constructor() {
-    this.loaderVisible = new BehaviorSubject<boolean>(false);
-    this.contentVisible = new BehaviorSubject<boolean>(true);
+    this.loaderState = new BehaviorSubject<boolean>(false);
   }
 
-  public getLoaderState(): BehaviorSubject<boolean> {
-    return this.loaderVisible;
+  public show(): void {
+    this.loaderState.next(true);
   }
 
-  public getContentState(): BehaviorSubject<boolean> {
-    return this.contentVisible;
+  public hide(): void {
+    this.loaderState.next(false);
   }
 
-  show(): void {
-    this.loaderVisible.next(true);
-    this.contentVisible.next(false);
+  public get isVisibleLoader$(): Observable<boolean> {
+    return this.loaderState.asObservable().pipe(
+      distinctUntilChanged()
+    );
   }
 
-  hide(): void {
-    this.loaderVisible.next(false);
-    this.contentVisible.next(true);
+  public get isVisibleContent$(): Observable<boolean> {
+    return this.loaderState.asObservable().pipe(
+      map(state => !state),
+      distinctUntilChanged()
+    );
   }
 
 }

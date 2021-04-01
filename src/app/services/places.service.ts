@@ -14,7 +14,7 @@ import {
 import { PlacesRequestParamsHelper } from '../helpers';
 import { map } from 'rxjs/operators';
 import { OrganizationsService } from './organizations.service';
-// import DATABASE from './../../../api/database.json';
+import DATABASE from './../../../api/database.json';
 
 @Injectable({
   providedIn: 'root'
@@ -32,96 +32,96 @@ export class PlacesService {
     return this.limit;
   }
 
-  // public amountPages(options: Partial<IPlaceRequestParams>): number {
-  //   let counter: number = 0;
-  //   DATABASE.places.forEach((item) => {
-  //     if (options.type_id !== undefined) {
-  //       if (Object.keys(options).length === 1) {
-  //         if (item.type_id === options.type_id &&
-  //           options.accessibility === undefined &&
-  //           options.dog_friendly === undefined &&
-  //           options.child_friendly === undefined) { counter++; return; }
-  //         return;
-  //       }
-  //       if (Object.keys(options).length === 2) {
-  //         if (item.type_id === options.type_id &&
-  //           item.accessibility === options.accessibility) { counter++; return; }
-  //
-  //         if (item.type_id === options.type_id &&
-  //           item.child_friendly === options.child_friendly) { counter++; return; }
-  //
-  //         if (item.type_id === options.type_id &&
-  //           item.dog_friendly === options.dog_friendly) { counter++; return; }
-  //         return;
-  //       }
-  //       if (Object.keys(options).length === 3) {
-  //         if (item.type_id === options.type_id &&
-  //           item.accessibility === options.accessibility &&
-  //           item.child_friendly === options.child_friendly) { counter++; return; }
-  //
-  //         if (item.type_id === options.type_id &&
-  //           item.accessibility === options.accessibility &&
-  //           item.dog_friendly === options.dog_friendly) { counter++; return; }
-  //
-  //         if (item.type_id === options.type_id &&
-  //           item.child_friendly === options.child_friendly &&
-  //           item.dog_friendly === options.dog_friendly) { counter++; return; }
-  //         return;
-  //       }
-  //       if (Object.keys(options).length === 4) {
-  //         if (item.type_id === options.type_id &&
-  //           item.accessibility === options.accessibility &&
-  //           item.child_friendly === options.child_friendly &&
-  //           item.dog_friendly === options.dog_friendly) { counter++; return; }
-  //         return;
-  //       }
-  //       return;
-  //     }
-  //     if (options.category_id !== undefined) {
-  //       if (Object.keys(options).length === 1) {
-  //         if (item.category_id === options.category_id &&
-  //           options.accessibility === undefined &&
-  //           options.dog_friendly === undefined &&
-  //           options.child_friendly === undefined) { counter++; return; }
-  //         return;
-  //       }
-  //       if (Object.keys(options).length === 2) {
-  //         if (item.category_id === options.category_id &&
-  //           item.accessibility === options.accessibility) { counter++; return; }
-  //
-  //         if (item.category_id === options.category_id &&
-  //           item.child_friendly === options.child_friendly) { counter++; return; }
-  //
-  //         if (item.category_id === options.category_id &&
-  //           item.dog_friendly === options.dog_friendly) { counter++; return; }
-  //         return;
-  //       }
-  //       if (Object.keys(options).length === 3) {
-  //         if (item.category_id === options.category_id &&
-  //           item.accessibility === options.accessibility &&
-  //           item.child_friendly === options.child_friendly) { counter++; return; }
-  //
-  //         if (item.category_id === options.category_id &&
-  //           item.accessibility === options.accessibility &&
-  //           item.dog_friendly === options.dog_friendly) { counter++; return; }
-  //
-  //         if (item.category_id === options.category_id &&
-  //           item.child_friendly === options.child_friendly &&
-  //           item.dog_friendly === options.dog_friendly) { counter++; return; }
-  //         return;
-  //       }
-  //       if (Object.keys(options).length === 4) {
-  //         if (item.category_id === options.category_id &&
-  //           item.accessibility === options.accessibility &&
-  //           item.child_friendly === options.child_friendly &&
-  //           item.dog_friendly === options.dog_friendly) { counter++; return; }
-  //         return;
-  //       }
-  //       return;
-  //     }
-  //   });
-  //   return (counter / this.getLimit() >= 1) ? Math.ceil(counter / this.getLimit()) : 1;
-  // }
+  public amountPages(options: Partial<IPlaceRequestParams>): number {
+    let counter: number = 0;
+    DATABASE.places.forEach((item) => {
+      if (options.type_id !== undefined) {
+        if (Object.keys(options).length === 1) {
+          if (item.type_id === options.type_id &&
+            options.accessibility === undefined &&
+            options.dog_friendly === undefined &&
+            options.child_friendly === undefined) { counter++; return; }
+          return;
+        }
+        if (Object.keys(options).length === 2) {
+          if (item.type_id === options.type_id &&
+            item.accessibility === options.accessibility) { counter++; return; }
+
+          if (item.type_id === options.type_id &&
+            item.child_friendly === options.child_friendly) { counter++; return; }
+
+          if (item.type_id === options.type_id &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
+          return;
+        }
+        if (Object.keys(options).length === 3) {
+          if (item.type_id === options.type_id &&
+            item.accessibility === options.accessibility &&
+            item.child_friendly === options.child_friendly) { counter++; return; }
+
+          if (item.type_id === options.type_id &&
+            item.accessibility === options.accessibility &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
+
+          if (item.type_id === options.type_id &&
+            item.child_friendly === options.child_friendly &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
+          return;
+        }
+        if (Object.keys(options).length === 4) {
+          if (item.type_id === options.type_id &&
+            item.accessibility === options.accessibility &&
+            item.child_friendly === options.child_friendly &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
+          return;
+        }
+        return;
+      }
+      if (options.category_id !== undefined) {
+        if (Object.keys(options).length === 1) {
+          if (item.category_id === options.category_id &&
+            options.accessibility === undefined &&
+            options.dog_friendly === undefined &&
+            options.child_friendly === undefined) { counter++; return; }
+          return;
+        }
+        if (Object.keys(options).length === 2) {
+          if (item.category_id === options.category_id &&
+            item.accessibility === options.accessibility) { counter++; return; }
+
+          if (item.category_id === options.category_id &&
+            item.child_friendly === options.child_friendly) { counter++; return; }
+
+          if (item.category_id === options.category_id &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
+          return;
+        }
+        if (Object.keys(options).length === 3) {
+          if (item.category_id === options.category_id &&
+            item.accessibility === options.accessibility &&
+            item.child_friendly === options.child_friendly) { counter++; return; }
+
+          if (item.category_id === options.category_id &&
+            item.accessibility === options.accessibility &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
+
+          if (item.category_id === options.category_id &&
+            item.child_friendly === options.child_friendly &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
+          return;
+        }
+        if (Object.keys(options).length === 4) {
+          if (item.category_id === options.category_id &&
+            item.accessibility === options.accessibility &&
+            item.child_friendly === options.child_friendly &&
+            item.dog_friendly === options.dog_friendly) { counter++; return; }
+          return;
+        }
+        return;
+      }
+    });
+    return (counter / this.getLimit() >= 1) ? Math.ceil(counter / this.getLimit()) : 1;
+  }
 
   public buildWorkTime(workTime: IWorkTimeForm): IWorkTime {
     const result: IWorkTime = {};
