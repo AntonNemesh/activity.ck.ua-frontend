@@ -5649,6 +5649,65 @@
       "type_id": "",
       "organization_id": 3,
       "id": 56
+    },
+    {
+      "name": "Імя організіції",
+      "description": "Опис організіції",
+      "address": "бул. Шевченко, 244, Черкассы, Черкасская область, 18000",
+      "website": "http://fakesite.com",
+      "phones": [
+        "+380 (93) 256 65 45"
+      ],
+      "photos": [
+        {
+          "photo_url": "https://firebasestorage.googleapis.com/v0/b/activityckua.appspot.com/o/images%2F0.5468288066230211bridge_night.jpg?alt=media&token=9fe2ec88-ba6d-4fe2-8c66-f3b8fc5a34d1",
+          "author_name": "",
+          "author_link": ""
+        },
+        {
+          "photo_url": "https://firebasestorage.googleapis.com/v0/b/activityckua.appspot.com/o/images%2F0.9965994992442981cawxbu-vwYI.jpg?alt=media&token=c9b670a5-10d3-472d-a141-ae4357cbbb21",
+          "author_name": "",
+          "author_link": ""
+        }
+      ],
+      "main_photo": "https://firebasestorage.googleapis.com/v0/b/activityckua.appspot.com/o/images%2F0.5468288066230211bridge_night.jpg?alt=media&token=9fe2ec88-ba6d-4fe2-8c66-f3b8fc5a34d1",
+      "accessibility": false,
+      "child_friendly": true,
+      "dog_friendly": false,
+      "work_time": {
+        "mon": {
+          "start": "8:00",
+          "end": "17:00"
+        },
+        "tue": {
+          "start": "8:00",
+          "end": "17:00"
+        },
+        "wed": {
+          "start": "8:00",
+          "end": "17:00"
+        },
+        "thu": {
+          "start": "8:00",
+          "end": "17:00"
+        },
+        "fri": {
+          "start": "8:00",
+          "end": "17:00"
+        },
+        "sat": {
+          "start": "8:00",
+          "end": "17:00"
+        },
+        "sun": {
+          "start": "8:00",
+          "end": "17:00"
+        }
+      },
+      "category_id": "recreation",
+      "type_id": "water",
+      "organization_id": 1,
+      "id": 57
     }
   ],
   "events": [
@@ -5656,7 +5715,9 @@
       "id": 1,
       "name": "Любовні історії Черкащини",
       "address": "Черкаський Обласний Краєзнавчий Музей",
-      "phones": ["+380932806565"],
+      "phones": [
+        "+380932806565"
+      ],
       "website": "http://fakesite.com.ua",
       "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
       "description": "Авторська екскурсія \"Любовні історії Черкащини\"\nВ експозиціях краєзнавчого музею є багато цікавого про природу, історію, культуру рідного краю. Запрошуємо відвідувачів до музейних мандрів Черкащиною, яка має чимало місць, пов'язаних з відомими людьми, що тут народились, жили, приїздили та почути їх любовні історії, зазирнувши у шпаринку часу.\nЕкскурсію проводить завідувач відділу Чиж Л.С. з дотриманням усіх протиепідеміологічних рекомендацій.",
@@ -5737,7 +5798,9 @@
       "id": 2,
       "name": "Артпроєкт «КвітиКоти»",
       "address": "Черкаський Художній Музей",
-      "phones": ["+380932806565"],
+      "phones": [
+        "+380932806565"
+      ],
       "website": "http://fakesite.com.ua",
       "main_photo": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
       "description": "Коти і квіти, квіти і коти – беззаперечні лідери у сентиментальних меседжах. Саме в такому поєднанні вони з’являться у лютневому артпроєкті Черкаського художнього музею «КвітиКоти».\nЦією виставкою ми вирішили зробити подарунок своїм відвідувачам, які скучили за красою і позитивними емоціями за період локдауну.",
@@ -5818,7 +5881,9 @@
       "id": 3,
       "name": "Кулінарний батл",
       "address": "Черкаський Обласний Краєзнавчий Музей",
-      "phones": ["+380932806565"],
+      "phones": [
+        "+380932806565"
+      ],
       "website": "http://fakesite.com.ua",
       "main_photo": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
       "description": "Авторська екскурсія \"Любовні історії Черкащини\"\nВ експозиціях краєзнавчого музею є багато цікавого про природу, історію, культуру рідного краю. Запрошуємо відвідувачів до музейних мандрів Черкащиною, яка має чимало місць, пов'язаних з відомими людьми, що тут народились, жили, приїздили та почути їх любовні історії, зазирнувши у шпаринку часу.\nЕкскурсію проводить завідувач відділу Чиж Л.С. з дотриманням усіх протиепідеміологічних рекомендацій.",
@@ -5899,7 +5964,9 @@
       "id": 4,
       "name": "Співаємо разом",
       "address": "Черкаський Обласний Краєзнавчий Музей",
-      "phones": ["+380932806565"],
+      "phones": [
+        "+380932806565"
+      ],
       "website": "http://fakesite.com.ua",
       "main_photo": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
       "description": "Авторська екскурсія \"Любовні історії Черкащини\"\nВ експозиціях краєзнавчого музею є багато цікавого про природу, історію, культуру рідного краю. Запрошуємо відвідувачів до музейних мандрів Черкащиною, яка має чимало місць, пов'язаних з відомими людьми, що тут народились, жили, приїздили та почути їх любовні історії, зазирнувши у шпаринку часу.\nЕкскурсію проводить завідувач відділу Чиж Л.С. з дотриманням усіх протиепідеміологічних рекомендацій.",
@@ -5980,7 +6047,9 @@
       "id": 5,
       "name": "Трипільсіькі зорі",
       "address": "Черкаський Художній Музей",
-      "phones": ["+380932806565"],
+      "phones": [
+        "+380932806565"
+      ],
       "website": "http://fakesite.com.ua",
       "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
       "description": "Коти і квіти, квіти і коти – беззаперечні лідери у сентиментальних меседжах. Саме в такому поєднанні вони з’являться у лютневому артпроєкті Черкаського художнього музею «КвітиКоти».\nЦією виставкою ми вирішили зробити подарунок своїм відвідувачам, які скучили за красою і позитивними емоціями за період локдауну.",
@@ -6061,7 +6130,9 @@
       "id": 6,
       "name": "Таланти Черкащини",
       "address": "Черкаський Обласний Краєзнавчий Музей",
-      "phones": ["+380932806565"],
+      "phones": [
+        "+380932806565"
+      ],
       "website": "http://fakesite.com.ua",
       "main_photo": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
       "description": "Авторська екскурсія \"Любовні історії Черкащини\"\nВ експозиціях краєзнавчого музею є багато цікавого про природу, історію, культуру рідного краю. Запрошуємо відвідувачів до музейних мандрів Черкащиною, яка має чимало місць, пов'язаних з відомими людьми, що тут народились, жили, приїздили та почути їх любовні історії, зазирнувши у шпаринку часу.\nЕкскурсію проводить завідувач відділу Чиж Л.С. з дотриманням усіх протиепідеміологічних рекомендацій.",
@@ -6142,7 +6213,9 @@
       "id": 7,
       "name": "Вечір живої музики",
       "address": "Черкаський Обласний Краєзнавчий Музей",
-      "phones": ["+380932806565"],
+      "phones": [
+        "+380932806565"
+      ],
       "website": "http://fakesite.com.ua",
       "main_photo": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
       "description": "Авторська екскурсія \"Любовні історії Черкащини\"\nВ експозиціях краєзнавчого музею є багато цікавого про природу, історію, культуру рідного краю. Запрошуємо відвідувачів до музейних мандрів Черкащиною, яка має чимало місць, пов'язаних з відомими людьми, що тут народились, жили, приїздили та почути їх любовні історії, зазирнувши у шпаринку часу.\nЕкскурсію проводить завідувач відділу Чиж Л.С. з дотриманням усіх протиепідеміологічних рекомендацій.",
@@ -6223,7 +6296,9 @@
       "id": 8,
       "name": "Черкаські вертикалі",
       "address": "Черкаський Художній Музей",
-      "phones": ["+380932806565"],
+      "phones": [
+        "+380932806565"
+      ],
       "website": "http://fakesite.com.ua",
       "main_photo": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
       "description": "Коти і квіти, квіти і коти – беззаперечні лідери у сентиментальних меседжах. Саме в такому поєднанні вони з’являться у лютневому артпроєкті Черкаського художнього музею «КвітиКоти».\nЦією виставкою ми вирішили зробити подарунок своїм відвідувачам, які скучили за красою і позитивними емоціями за період локдауну.",
@@ -6304,7 +6379,9 @@
       "id": 9,
       "name": "Ярмарок їжї",
       "address": "Черкаський Обласний Краєзнавчий Музей",
-      "phones": ["+380932806565"],
+      "phones": [
+        "+380932806565"
+      ],
       "website": "http://fakesite.com.ua",
       "main_photo": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
       "description": "Авторська екскурсія \"Любовні історії Черкащини\"\nВ експозиціях краєзнавчого музею є багато цікавого про природу, історію, культуру рідного краю. Запрошуємо відвідувачів до музейних мандрів Черкащиною, яка має чимало місць, пов'язаних з відомими людьми, що тут народились, жили, приїздили та почути їх любовні історії, зазирнувши у шпаринку часу.\nЕкскурсію проводить завідувач відділу Чиж Л.С. з дотриманням усіх протиепідеміологічних рекомендацій.",
@@ -6438,6 +6515,186 @@
       "phones": "+38060654256652",
       "email": "info@fais.ck.ua",
       "approved": false
+    }
+  ],
+  "user": {
+    "name": "Бартолом'ю Сімпсон",
+    "avatar": "https://bipbap.ru/wp-content/uploads/2018/07/BsAiRmTpsons9.png"
+  },
+  "user-activity": {
+    "visited_places": [
+      {
+        "id": 20,
+        "category_id": "children",
+        "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+        "name": "Локація #20"
+      },
+      {
+        "id": 21,
+        "category_id": "culture",
+        "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+        "name": "Локація #21"
+      },
+      {
+        "id": 22,
+        "category_id": "children",
+        "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+        "name": "Локація #22"
+      }
+    ],
+    "favorites_places": [
+      {
+        "id": 42,
+        "category_id": "recreation",
+        "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+        "name": "Локація #42"
+      },
+      {
+        "id": 43,
+        "category_id": "recreation",
+        "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+        "name": "Локація #43"
+      }
+    ],
+    "user_places": [
+      {
+        "id": 14,
+        "category_id": "todo_something",
+        "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+        "name": "Локація #14"
+      },
+      {
+        "id": 15,
+        "category_id": "recreation",
+        "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+        "name": "Локація #15"
+      }
+    ],
+    "user_events": [
+      {
+        "id": 1,
+        "name": "Любовні історії Черкащини",
+        "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Артпроєкт «КвітиКоти»",
+        "main_photo": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg"
+      }
+    ],
+    "scheduled_events": [
+      {
+        "id": 5,
+        "name": "Трипільсіькі зорі",
+        "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg"
+      },
+      {
+        "id": 6,
+        "name": "Таланти Черкащини",
+        "main_photo": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg"
+      },
+      {
+        "id": 7,
+        "name": "Вечір живої музики",
+        "main_photo": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg"
+      },
+      {
+        "id": 8,
+        "name": "Черкаські вертикалі",
+        "main_photo": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg"
+      },
+      {
+        "id": 9,
+        "name": "Ярмарок їжї",
+        "main_photo": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg"
+      }
+    ]
+  },
+  "user-activity-visited_places": [
+    {
+      "id": 20,
+      "category_id": "children",
+      "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+      "name": "Локація #20"
+    },
+    {
+      "id": 21,
+      "category_id": "culture",
+      "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+      "name": "Локація #21"
+    },
+    {
+      "id": 22,
+      "category_id": "children",
+      "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+      "name": "Локація #22"
+    }
+  ],
+  "user-activity-favorites_places": [
+    {
+      "id": 42,
+      "category_id": "recreation",
+      "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+      "name": "Локація #42"
+    },
+    {
+      "id": 43,
+      "category_id": "recreation",
+      "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+      "name": "Локація #43"
+    }
+  ],
+  "user-activity-user_places": [
+    {
+      "id": 14,
+      "category_id": "todo_something",
+      "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+      "name": "Локація #14"
+    },
+    {
+      "id": 15,
+      "category_id": "recreation",
+      "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+      "name": "Локація #15"
+    }
+  ],
+  "user-activity-user_events": [
+    {
+      "id": 1,
+      "name": "Любовні історії Черкащини",
+      "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Артпроєкт «КвітиКоти»",
+      "main_photo": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg"
+    }
+  ],
+  "user-activity-scheduled_events": [
+    {
+      "id": 5,
+      "name": "Трипільсіькі зорі",
+      "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Таланти Черкащини",
+      "main_photo": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Вечір живої музики",
+      "main_photo": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Черкаські вертикалі",
+      "main_photo": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Ярмарок їжї",
+      "main_photo": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg"
     }
   ]
 }

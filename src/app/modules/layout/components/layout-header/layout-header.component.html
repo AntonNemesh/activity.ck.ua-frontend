@@ -1,4 +1,9 @@
 <header>
-  <h1>Header</h1>
-  <a class="button" routerLink="">Home</a>
+  <a class="logo" routerLink="">
+    <img src="/assets/logo.jpg" alt="">
+  </a>
+  <a class="user" *ngIf="user" routerLink="/user">
+    <img class="user__avatar" src="{{user.avatar}}" alt="{{user.name}}">
+    <span class="user__name">{{user.name}}</span>
+  </a>
 </header>

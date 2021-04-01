@@ -1,19 +1,18 @@
-<app-layout>
-  <h2>Places {{categoryId}}</h2>
-  <a routerLink="/add_place">Додати локацію</a>
-  <app-filter-by-type (filterStateChange)="updateFilterTypeState($event)"
-                      [categoryId]="categoryId"></app-filter-by-type>
-  <app-filter-by-tolerance (toleranceStateChange)="updateFilterToleranceState($event)"></app-filter-by-tolerance>
-  <ul>
-    <li *ngFor="let place of places">
-      <a routerLink="{{place.id}}">
-        <img src="{{place.main_photo}}">
-        <span>{{place.name}}</span>
-      </a>
-    </li>
-  </ul>
-  <app-pagination (paginationStateChange)="updatePaginationState($event)"
-                  [filterTypeState]="filterTypeState"
-                  [filterToleranceState]="filterToleranceState"
-                  [categoryId]="categoryId"></app-pagination>
-</app-layout>
+<h2>Places {{categoryId}}</h2>
+<a routerLink="/add_place">Додати локацію</a>
+<app-filter-by-type (filterStateChange)="updateFilterTypeState($event)"
+                    [categoryId]="categoryId"></app-filter-by-type>
+<app-filter-by-tolerance (toleranceStateChange)="updateFilterToleranceState($event)"></app-filter-by-tolerance>
+<ul>
+  <li *ngFor="let place of places">
+    <a routerLink="{{place.id}}">
+      <img src="{{place.main_photo}}">
+      <span>{{place.name}}</span>
+    </a>
+  </li>
+</ul>
+<app-pagination (paginationStateChange)="updatePaginationState($event)"
+                [filterTypeState]="filterTypeState"
+                [filterToleranceState]="filterToleranceState"
+                [categoryId]="categoryId">
+</app-pagination>

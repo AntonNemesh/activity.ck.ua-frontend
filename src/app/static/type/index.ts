@@ -22,3 +22,5 @@ export { IOrganization, IProposeOrganization } from './organization.interface';
 export { IMaskEmail } from './masks-patterns.interface';
 export { IWeek, IWorkTimeForm, IWorkTime, IWorkDay } from './week.interface';
 export { IEvent } from './events.interface';
+export { IUser } from './user.interface';
+export { IUserActivity } from './user.interface';
