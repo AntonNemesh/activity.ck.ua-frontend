@@ -1,5 +1,70 @@
-<h1>Що шукаєш?</h1>
-<ul>
-  <li *ngFor="let category of categories"><a routerLink="/places/{{category.id}}">{{ category.name }}</a></li>
-  <li><a routerLink="/places/{{randomCategory}}">готовий експерементувати</a></li>
-</ul>
+<section class="video__section">
+  <div class="video__overlay">
+    <div class="container video__text">
+      <h1 class="video__headline">
+        ЧЕРКАСИ -
+      </h1>
+      <h2 class="video__headline video__desc">
+        Місто, де хочеться жити
+      </h2>
+      <a routerLink="/places/{{randomCategory}}" class="video__btn link">
+        Хочу експерементувати</a>
+    </div>
+
+  </div>
+    <video loop="" muted="" autoplay="" class="video__wrapper">
+      <source src="../../../../../../assets/video.mp4" type="video/mp4" class="video">
+    </video>
+</section>
+<section class="categories-wrapper">
+    <div class="categories container">
+
+  <h1 class="categories__title">Що шукаєш?</h1>
+  <ul class="categories__list list">
+    <li *ngFor="let category of categories" class="categories__item">
+      var 1
+
+      <div class="test-wrapper">
+        <div class="test-ov">
+          <div class="content">
+           <span>
+             {{ category.name }}
+          </span>
+          </div>
+        </div>
+        <img src="../../../../../../assets/14_DSC_8580_1.jpg" class="first"/>
+      </div>
+
+      <a routerLink="/places/{{category.id}}" class="categories__link link categories__l">
+        {{ category.name }}
+      </a>
+      <p class="categories_count">кількість вражень</p>
+
+      <!--var2-->
+      <!--      <div class="categories-img-wrapper">-->
+      <!--        <div class="categories__overlay"></div>-->
+      <!--        <div class="categories-img">-->
+      <!--          <img src="../../../../../../assets/14_DSC_8580.jpg" class=""/>-->
+      <!--        </div>-->
+      <!--      </div>-->
+      <!--      <a routerLink="/places/{{category.id}}" class="categories__link link">-->
+      <!--        {{ category.name }}-->
+      <!--      </a>-->
+      <!--      <p class="categories_count">кількість вражень</p>-->
+      <!--var 3-->
+<!--      <div class="cat-img-wrapper">-->
+<!--        <div class="cat__overlay"></div>-->
+<!--        <div class="cat-img">-->
+<!--          <img src="../../../../../../assets/14_DSC_8580.jpg" class="cat-img"/>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <a routerLink="/places/{{category.id}}" class="categories__link link cat__link">-->
+<!--        {{ category.name }}-->
+<!--      </a>-->
+<!--      <p class="categories_count">кількість вражень</p>-->
+      <!--      -->
+    </li>
+  </ul>
+    </div>
+</section>
