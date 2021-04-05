@@ -8,6 +8,7 @@
         Дозволено файлів до завантаження: {{photosLimit - photos.length}}
     </span>
   <div *ngIf="photosContentVisible | async">
+    <mat-label class="cover-photo__label" *ngIf="photosB64?.length > 1" >Натиснувши на одну із фотографій, оберіть обкладинку місця.</mat-label>
     <ul class="photos">
       <li class="photo-item" *ngFor="let photoB64 of photosB64; index as i">
         <img [class.cover-photo]="photoCover === i"
