@@ -17,53 +17,25 @@
     </video>
 </section>
 <section class="categories-wrapper">
-    <div class="categories container">
-
-  <h1 class="categories__title">Що шукаєш?</h1>
-  <ul class="categories__list list">
-    <li *ngFor="let category of categories" class="categories__item">
-      var 1
-
-      <div class="test-wrapper">
-        <div class="test-ov">
-          <div class="content">
-           <span>
-             {{ category.name }}
-          </span>
-          </div>
+  <div class="categories container">
+    <h1 class="categories__title">Що шукаєш?</h1>
+    <ul class="categories__list list">
+      <li *ngFor="let category of categories" class="categories__item">
+        <div class="photo-wrapper">
+          <div class="photo-overlay">
+            <div class="content">
+              <span>
+                {{ category.name }}
+              </span>
+            </div>
         </div>
-        <img src="../../../../../../assets/14_DSC_8580_1.jpg" class="first"/>
+        <img src="../../../../../../assets/14_DSC_8580_1.jpg" class="img"/>
       </div>
 
       <a routerLink="/places/{{category.id}}" class="categories__link link categories__l">
         {{ category.name }}
       </a>
       <p class="categories_count">кількість вражень</p>
-
-      <!--var2-->
-      <!--      <div class="categories-img-wrapper">-->
-      <!--        <div class="categories__overlay"></div>-->
-      <!--        <div class="categories-img">-->
-      <!--          <img src="../../../../../../assets/14_DSC_8580.jpg" class=""/>-->
-      <!--        </div>-->
-      <!--      </div>-->
-      <!--      <a routerLink="/places/{{category.id}}" class="categories__link link">-->
-      <!--        {{ category.name }}-->
-      <!--      </a>-->
-      <!--      <p class="categories_count">кількість вражень</p>-->
-      <!--var 3-->
-<!--      <div class="cat-img-wrapper">-->
-<!--        <div class="cat__overlay"></div>-->
-<!--        <div class="cat-img">-->
-<!--          <img src="../../../../../../assets/14_DSC_8580.jpg" class="cat-img"/>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <a routerLink="/places/{{category.id}}" class="categories__link link cat__link">-->
-<!--        {{ category.name }}-->
-<!--      </a>-->
-<!--      <p class="categories_count">кількість вражень</p>-->
-      <!--      -->
     </li>
   </ul>
     </div>
