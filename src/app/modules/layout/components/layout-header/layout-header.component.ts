@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../../../services';
+import { UsersService } from '../../../../services';
 import { IUser } from '../../../../static/type';
 
 @Component({
@@ -8,20 +8,18 @@ import { IUser } from '../../../../static/type';
   styleUrls: ['./layout-header.component.css']
 })
 export class LayoutHeaderComponent implements OnInit {
-  constructor(private userService: UserService) { }
+  constructor(private usersService: UsersService) { }
 
   public user: IUser;
 
   private updateInfo(): void {
-    this.userService.getUserInfo().subscribe((user) => {
+    this.usersService.getUserInfo().subscribe((user) => {
       this.user = user;
     });
   }
 
   ngOnInit(): void {
-    if (!this.user) {
-      this.updateInfo();
-    }
+    if (!this.user) { this.updateInfo(); }
   }
 
 }

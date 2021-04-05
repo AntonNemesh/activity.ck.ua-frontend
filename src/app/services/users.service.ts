@@ -7,15 +7,15 @@ import { IUser, IUserActivity } from '../static/type';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UsersService {
 
   constructor(private http: HttpClient, private apiUrlService: ApiUrlService) { }
 
   getUserInfo(): Observable<IUser> {
-    return this.http.get<IUser>(this.apiUrlService.generateApiLink('user'));
+    return this.http.get<IUser>(this.apiUrlService.generateApiLink('users'));
   }
 
   getUserActivity(): Observable<IUserActivity> {
-    return this.http.get<IUserActivity>(this.apiUrlService.generateApiLink('user-activity'));
+    return this.http.get<IUserActivity>(this.apiUrlService.generateApiLink('users-activity'));
   }
 }

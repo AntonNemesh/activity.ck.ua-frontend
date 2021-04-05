@@ -5725,8 +5725,8 @@
       "dog_friendly": false,
       "child_friendly": true,
       "program": "программа супер мероприятия",
-      "time_start": 1617224400000,
-      "time_end": 1617224400000,
+      "start_time": 1617224400000,
+      "end_time": 1617224400000,
       "photos": [
         {
           "id": 1,
@@ -5808,8 +5808,8 @@
       "dog_friendly": false,
       "child_friendly": true,
       "program": "программа супер мероприятия",
-      "time_start": 1617397200000,
-      "time_end": 1617397200000,
+      "start_time": 1617397200000,
+      "end_time": 1617397200000,
       "photos": [
         {
           "id": 1,
@@ -5891,8 +5891,8 @@
       "dog_friendly": false,
       "child_friendly": true,
       "program": "программа супер мероприятия",
-      "time_start": 1617397200000,
-      "time_end": 1617397200000,
+      "start_time": 1617397200000,
+      "end_time": 1617397200000,
       "photos": [
         {
           "id": 1,
@@ -5974,8 +5974,8 @@
       "dog_friendly": false,
       "child_friendly": true,
       "program": "программа супер мероприятия",
-      "time_start": 1617310800000,
-      "time_end": 1617310800000,
+      "start_time": 1617310800000,
+      "end_time": 1617310800000,
       "photos": [
         {
           "id": 1,
@@ -6057,8 +6057,8 @@
       "dog_friendly": false,
       "child_friendly": true,
       "program": "программа супер мероприятия",
-      "time_start": 1617310800000,
-      "time_end": 1617310800000,
+      "start_time": 1617310800000,
+      "end_time": 1617310800000,
       "photos": [
         {
           "id": 1,
@@ -6140,8 +6140,8 @@
       "dog_friendly": false,
       "child_friendly": true,
       "program": "программа супер мероприятия",
-      "time_start": 1617310800000,
-      "time_end": 1617310800000,
+      "start_time": 1617310800000,
+      "end_time": 1617310800000,
       "photos": [
         {
           "id": 1,
@@ -6223,8 +6223,8 @@
       "dog_friendly": false,
       "child_friendly": true,
       "program": "программа супер мероприятия",
-      "time_start": 1617310800000,
-      "time_end": 1617310800000,
+      "start_time": 1617310800000,
+      "end_time": 1617310800000,
       "photos": [
         {
           "id": 1,
@@ -6306,8 +6306,8 @@
       "dog_friendly": false,
       "child_friendly": true,
       "program": "программа супер мероприятия",
-      "time_start": 1617310800000,
-      "time_end": 1617310800000,
+      "start_time": 1617310800000,
+      "end_time": 1617310800000,
       "photos": [
         {
           "id": 1,
@@ -6389,8 +6389,8 @@
       "dog_friendly": false,
       "child_friendly": true,
       "program": "программа супер мероприятия",
-      "time_start": 1617310800000,
-      "time_end": 1617310800000,
+      "start_time": 1617310800000,
+      "end_time": 1617310800000,
       "photos": [
         {
           "id": 1,
@@ -6517,11 +6517,11 @@
       "approved": false
     }
   ],
-  "user": {
+  "users": {
     "name": "Бартолом'ю Сімпсон",
     "avatar": "https://bipbap.ru/wp-content/uploads/2018/07/BsAiRmTpsons9.png"
   },
-  "user-activity": {
+  "users-activity": {
     "visited_places": [
       {
         "id": 20,
@@ -6610,7 +6610,7 @@
       }
     ]
   },
-  "user-activity-visited_places": [
+  "users-activity-visited_places": [
     {
       "id": 20,
       "category_id": "children",
@@ -6630,7 +6630,7 @@
       "name": "Локація #22"
     }
   ],
-  "user-activity-favorites_places": [
+  "users-activity-favorite_places": [
     {
       "id": 42,
       "category_id": "recreation",
@@ -6644,7 +6644,7 @@
       "name": "Локація #43"
     }
   ],
-  "user-activity-user_places": [
+  "users-activity-user_places": [
     {
       "id": 14,
       "category_id": "todo_something",
@@ -6658,7 +6658,7 @@
       "name": "Локація #15"
     }
   ],
-  "user-activity-user_events": [
+  "users-activity-user_events": [
     {
       "id": 1,
       "name": "Любовні історії Черкащини",
@@ -6670,7 +6670,7 @@
       "main_photo": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg"
     }
   ],
-  "user-activity-scheduled_events": [
+  "users-activity-scheduled_events": [
     {
       "id": 5,
       "name": "Трипільсіькі зорі",

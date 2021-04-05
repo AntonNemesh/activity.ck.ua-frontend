@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../../../../../services';
+import {UsersService} from '../../../../../services';
 import {IUserActivity} from '../../../../../static/type';
 
 @Component({
@@ -8,7 +8,7 @@ import {IUserActivity} from '../../../../../static/type';
   styleUrls: ['./page-user-view.component.css']
 })
 export class PageUserViewComponent implements OnInit {
-  constructor(private userService: UserService) { }
+  constructor(private userService: UsersService) { }
   public userActivity: IUserActivity;
 
   ngOnInit(): void {
