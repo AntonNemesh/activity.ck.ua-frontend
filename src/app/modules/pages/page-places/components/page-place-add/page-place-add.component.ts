@@ -36,6 +36,8 @@ export class PagePlaceAddComponent implements OnInit {
     private organizationsService: OrganizationsService,
     private filesService: FilesService) { }
 
+  private isVisibleCheckbox: boolean;
+
   public categories: IPlacesCategories[];
   public types: IPlacesTypes[] = [];
   public organizations: IOrganizations;
@@ -54,21 +56,59 @@ export class PagePlaceAddComponent implements OnInit {
   public week: IWeek[] = WEEK;
   public toleranceFilter: IToleranceFilter[] = TOLERANCE_FILTER;
 
-  public organizationPhones: FormArray = new FormArray([this.phoneFormControl]);
-  public placePhones: FormArray = new FormArray([this.phoneFormControl]);
+  public organizationPhones: FormArray = new FormArray(
+    [this.phoneFormControl]);
 
-  public proposeOrganization: FormGroup = new FormGroup({ name: new FormControl(null, Validators.required), });
-  public organizationGroup: FormGroup = new FormGroup({ organization_id: new FormControl(null, Validators.required) });
-  public categoryGroup: FormGroup = new FormGroup({ category_id: new FormControl('', Validators.required), });
+  public placePhones: FormArray = new FormArray(
+    [this.phoneFormControl]);
+
+  public proposeOrganization: FormGroup = new FormGroup(
+    { name: new FormControl(null,
+      [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(255)
+      ]),
+  });
+
+  public organizationGroup: FormGroup = new FormGroup(
+    { organization_id: new FormControl(null,
+        Validators.required)
+  });
+
+  public categoryGroup: FormGroup = new FormGroup(
+    { category_id: new FormControl('',
+      [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(255)
+      ]),
+  });
+
   public toleranceGroup: FormGroup = new FormGroup({});
   public workTimeGroup: FormGroup = new FormGroup({});
 
-  public mainGroup: FormGroup = new FormGroup({
-    name: new FormControl('', Validators.required),
-    description: new FormControl('', Validators.required),
-    address: new FormControl('', Validators.required),
-    website: new FormControl('', Validators.required),
-    phones: this.placePhones,
+  public mainGroup: FormGroup = new FormGroup(
+    {
+      name: new FormControl('',
+      [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(255)
+      ]),
+      description: new FormControl('',
+      [
+        Validators.required,
+        Validators.minLength(20)
+      ]),
+      address: new FormControl('',
+        [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(255)
+      ]),
+      website: new FormControl('', Validators.required),
+      phones: this.placePhones,
   });
 
   public photosGroup: FormGroup = new FormGroup({
@@ -172,6 +212,18 @@ export class PagePlaceAddComponent implements OnInit {
     this.photosGroup.get('main_photo').setValue('aa');
   }
 
+  private updateCheckboxVisibility(): void {
+    const conditions: boolean[] = [];
+    let counter: number = 0;
+    Object.keys(this.workTimeGroup.controls).forEach(key => {
+      conditions.push(this.workTimeGroup.get(key).status === 'DISABLED');
+    });
+    conditions.forEach((value) => {
+      if (value) { counter++; }
+    });
+    this.isVisibleCheckbox = counter > 11;
+  }
+
   public handleAddressChange(address: any): void {
     this.mainGroup.get('address').setValue(address.formatted_address);
   }
@@ -185,6 +237,14 @@ export class PagePlaceAddComponent implements OnInit {
       this.workTimeGroup.get(day + '_start').disable();
       this.workTimeGroup.get(day + '_end').disable();
     }
+    this.updateCheckboxVisibility();
+  }
+
+  public getCheckboxVisibility(day: string): boolean {
+    if (this.isVisibleCheckbox) {
+      return this.workTimeGroup.get(day + '_start').disabled;
+    }
+    return true;
   }
 
   public get phoneFormControl(): FormControl {
@@ -309,6 +369,6 @@ export class PagePlaceAddComponent implements OnInit {
       this.setTypes(value);
     });
 
-    this.autocompleteData();
+    // this.autocompleteData();
   }
 }
