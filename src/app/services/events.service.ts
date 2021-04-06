@@ -14,12 +14,19 @@ export class EventsService {
 
   getEventsFromDate(date: number, page: number = 1, limit: number = 6): Observable<IEvent[]> {
     let params: HttpParams = new HttpParams();
-
     params = params.set('start_time', date.toString());
     params = params.set('_page', page.toString());
     params = params.set('_limit', limit.toString());
 
     return this.http.get<IEvent[]>(this.apiUrlService.generateApiLink('events'), { params });
+  }
+
+  getEventsNow(page: number = 1, limit: number = 6): Observable<IEvent[]> {
+    let params: HttpParams = new HttpParams();
+    params = params.set('_page', page.toString());
+    params = params.set('_limit', limit.toString());
+
+    return this.http.get<IEvent[]>(this.apiUrlService.generateApiLink('events-now'), { params });
   }
 
   public getEventById(eventId: string): Observable<IEvent> {
