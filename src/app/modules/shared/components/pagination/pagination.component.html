@@ -1,8 +1,8 @@
 <div *ngIf="isArrowPagination">
-  <button *ngIf="page > 1" mat-button matSuffix mat-icon-button (click)="setPrevPage($event)">
+  <button *ngIf="page > 1" mat-button matSuffix mat-icon-button (click)="setPrevPage()">
     <mat-icon>arrow_back</mat-icon>
   </button>
-  <button *ngIf="page < totalPages" mat-button matSuffix mat-icon-button (click)="setNextPage($event)">
+  <button *ngIf="page < totalPages" mat-button matSuffix mat-icon-button (click)="setNextPage()">
     <mat-icon>arrow_forward</mat-icon>
   </button>
 </div>

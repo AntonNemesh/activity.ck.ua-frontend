@@ -23,7 +23,7 @@ export class SectionEventsRightNowComponent implements OnInit {
     });
   }
 
-  public updatePaginationState([page]: [number]): void {
+  public updatePaginationState([page, isConcatenation]: [number, boolean]): void {
     this.page = page;
     this.updateEvents();
   }

@@ -9,17 +9,15 @@ export class PaginationComponent implements OnInit {
 
   constructor() { }
 
-  public page: number;
   private buttonStart: number;
   private buttonEnd: number;
   private activeButtons: number[];
 
-  public filterTypeState: string[] = [];
-  public filterToleranceState: string[] = [];
-
   public separatorState: boolean[];
   public isTheLastPage: boolean;
   public totalPages: number;
+
+  public page: number;
 
   @Input() categoryId: string;
   @Input() isArrowPagination: boolean = false;
@@ -30,17 +28,9 @@ export class PaginationComponent implements OnInit {
     this.updateButtonsView();
   }
 
-  @Input('filterTypeState')
-  set _filterTypeState(value: string[]) {
-    this.filterTypeState = value;
-    this.resetPage();
-  }
-
-  @Input('filterToleranceState')
-  set _filterToleranceState(value: string[]) {
-    this.filterToleranceState = value;
-    this.resetPage();
-  }
+  @Input('filterTypeState') set _filterTypeState(value: string[]) { this.resetPage(); }
+  @Input('filterToleranceState') set _filterToleranceState(value: string[]) { this.resetPage(); }
+  @Input('datePickerState') set _datePickerState(value: Date) { this.resetPage(); }
 
   @Output()
   paginationStateChange: EventEmitter<[number, boolean]> = new EventEmitter<[number, boolean]>();
@@ -115,14 +105,12 @@ export class PaginationComponent implements OnInit {
     this.updateButtonsView();
   }
 
-  setPrevPage(event: Event): void {
-    event.preventDefault();
+  setPrevPage(): void {
     if (this.page <= 1) { return; }
     this.paginationStateChange.emit([--this.page, false]);
   }
 
-  setNextPage(event: Event): void {
-    event.preventDefault();
+  setNextPage(): void {
     if (this.page >= this.totalPages) { return; }
     this.paginationStateChange.emit([++this.page, false]);
   }
@@ -131,6 +119,5 @@ export class PaginationComponent implements OnInit {
     this.resetPage();
     this.initSeparator();
     this.updateButtonsView();
-    console.log(this.totalPages);
   }
 }

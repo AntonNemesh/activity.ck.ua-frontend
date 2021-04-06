@@ -14,7 +14,6 @@ export class PageUserViewComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUserActivity().subscribe((userActivity) => {
       this.userActivity = userActivity;
-      console.log(this.userActivity);
     });
   }
 

@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../../../../../services';
 import { IEvent } from '../../../../../static/type';
-import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
-import { LoaderHelper } from '../../../../../helpers';
-import { debounceTime, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-page-events-list',
@@ -15,15 +12,15 @@ export class PageEventsListComponent implements OnInit {
   constructor(private eventsService: EventsService) { }
 
   public events: IEvent[];
-  public eventsFromDate: Observable<IEvent[]>;
   public dateToday: Date = new Date();
   public dateInput: FormControl = new FormControl('');
   public dateUrkFormat: string;
+  public date: Date = this.dateToday;
   public numbOfLoadedImages: number;
 
-  public eventsLoader: LoaderHelper = new LoaderHelper();
-  public eventsLoaderVisibility: Observable<boolean> = this.eventsLoader.isVisibleLoader$;
-  public eventsContentVisibility: Observable<boolean> = this.eventsLoader.isVisibleContent$;
+  public page: number = 1;
+  public limit: number = 1;
+  public totalPages: number = 5;
 
   public getDateUkrFormat(dateString: Date): string {
     const date: Date = new Date(dateString);
@@ -31,27 +28,34 @@ export class PageEventsListComponent implements OnInit {
     return date.toLocaleString('uk-UK', options);
   }
 
+  public updateEvents(isConcatenation?: boolean): void {
+    this.eventsService.getEventsFromDate(this.date.getTime(), this.page, this.limit).subscribe((events) => {
+      if (isConcatenation) {
+        this.events = this.events.concat(events);
+        return;
+      }
+      if (this.events?.length) { this.events.length = 0; }
+      this.events = events;
+    });
+  }
+
+  public updatePaginationState([page, isConcatenation]: [number, boolean]): void {
+    this.page = page;
+    this.updateEvents(isConcatenation);
+  }
+
   ngOnInit(): void {
-    this.eventsLoader.show();
     this.numbOfLoadedImages = 0;
     this.dateToday.setHours(0, 0, 0, 0);
     this.dateUrkFormat = this.getDateUkrFormat(this.dateToday);
-    this.eventsFromDate = this.dateInput.valueChanges.pipe(
-      switchMap((date) => {
-        this.eventsLoader.show();
-        this.dateUrkFormat = this.getDateUkrFormat(date);
-        return this.eventsService.getEventsFromDate(date.getTime(), 1, 100);
-      })
-    );
-    this.eventsFromDate.pipe(debounceTime(500)).subscribe((events) => {
-      this.events = events;
-      this.eventsLoader.hide();
+
+    this.dateInput.valueChanges.subscribe((date) => {
+      this.dateUrkFormat = this.getDateUkrFormat(date);
+      this.date = date;
+      this.page = 1;
+      this.updateEvents();
     });
-    this.eventsService.getEventsFromDate(this.dateToday.getTime()).subscribe(
-      (events) => {
-        this.events = events;
-        this.eventsLoader.hide();
-      }
-    );
+
+    this.updateEvents();
   }
 }
