@@ -8,4 +8,10 @@
       </a>
     </li>
   </ul>
+  <app-pagination
+    *ngIf="totalPages"
+    [isArrowPagination]="true"
+    (paginationStateChange)="updatePaginationState($event)"
+    [totalPages]="totalPages">
+  </app-pagination>
 </div>

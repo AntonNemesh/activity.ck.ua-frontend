@@ -23,6 +23,11 @@ export class SectionEventsRightNowComponent implements OnInit {
     });
   }
 
+  public updatePaginationState([page]: [number]): void {
+    this.page = page;
+    this.updateEvents();
+  }
+
   ngOnInit(): void {
     this.updateEvents();
   }
