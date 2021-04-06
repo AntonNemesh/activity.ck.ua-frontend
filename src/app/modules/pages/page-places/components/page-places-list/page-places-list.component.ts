@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PlacesService } from '../../../../../services';
+import { CategoriesService, PlacesService } from '../../../../../services';
 import { IPlace } from '../../../../../static/type';
 import { PlacesRequestParamsHelper } from '../../../../../helpers';
 
@@ -14,13 +14,17 @@ export class PagePlacesListComponent implements OnInit {
   private page: number;
 
   public categoryId: string;
+  public categoryName: string;
   public places: Partial<IPlace[]>;
   public filterTypeState: string[] = [];
   public filterToleranceState: string[] = [];
 
   public totalPages: number;
 
-  constructor(private route: ActivatedRoute, private placesService: PlacesService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private placesService: PlacesService,
+    private categoriesService: CategoriesService) { }
 
   private updatePlaces(isConcatenation?: boolean): void {
 
@@ -69,6 +73,7 @@ export class PagePlacesListComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.categoryId = params.category_id;
+      this.categoryName = this.categoriesService.getCategoryNameById(params.category_id);
     });
     this.limit = this.placesService.getLimit();
     this.resetPage();
