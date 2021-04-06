@@ -5,7 +5,7 @@ export interface IUser {
 
 export interface IUserActivity {
   visited_places: IObjectActivity[];
-  favorites_places: IObjectActivity[];
+  favorite_places: IObjectActivity[];
   user_places: IObjectActivity[];
   user_events: IObjectActivity[];
   scheduled_events: IObjectActivity[];
