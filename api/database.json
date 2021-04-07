@@ -5660,12 +5660,12 @@
       ],
       "photos": [
         {
-          "photo_url": "https://firebasestorage.googleapis.com/v0/b/activityckua.appspot.com/o/images%2F0.5468288066230211bridge_night.jpg?alt=media&token=9fe2ec88-ba6d-4fe2-8c66-f3b8fc5a34d1",
+          "url": "https://firebasestorage.googleapis.com/v0/b/activityckua.appspot.com/o/images%2F0.5468288066230211bridge_night.jpg?alt=media&token=9fe2ec88-ba6d-4fe2-8c66-f3b8fc5a34d1",
           "author_name": "",
           "author_link": ""
         },
         {
-          "photo_url": "https://firebasestorage.googleapis.com/v0/b/activityckua.appspot.com/o/images%2F0.9965994992442981cawxbu-vwYI.jpg?alt=media&token=c9b670a5-10d3-472d-a141-ae4357cbbb21",
+          "url": "https://firebasestorage.googleapis.com/v0/b/activityckua.appspot.com/o/images%2F0.9965994992442981cawxbu-vwYI.jpg?alt=media&token=c9b670a5-10d3-472d-a141-ae4357cbbb21",
           "author_name": "",
           "author_link": ""
         }
