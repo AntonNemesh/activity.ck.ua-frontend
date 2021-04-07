@@ -19,13 +19,20 @@
     <div>
       <b>Графік роботи:</b>
       <ul *ngIf="place.work_time">
-        <li *ngIf="place.work_time.mon"> Понеділок: {{place.work_time.mon.start}} - {{place.work_time.mon.end}}</li>
-        <li *ngIf="place.work_time.tue"> Вівторок: {{place.work_time.tue.start}} - {{place.work_time.tue.end}}</li>
-        <li *ngIf="place.work_time.wed"> Середа: {{place.work_time.wed.start}} - {{place.work_time.wed.end}}</li>
-        <li *ngIf="place.work_time.thu"> Четверг: {{place.work_time.thu.start}} - {{place.work_time.thu.end}}</li>
-        <li *ngIf="place.work_time.fri"> П'ятниця: {{place.work_time.fri.start}} - {{place.work_time.fri.end}}</li>
-        <li *ngIf="place.work_time.sat"> Субота: {{place.work_time.sat.start}} - {{place.work_time.sat.end}}</li>
-        <li *ngIf="place.work_time.sun"> Неділя: {{place.work_time.sun.start}} - {{place.work_time.sun.end}}</li>
+        <li  *ngIf="place.work_time.mon"> Понеділок: {{place.work_time.mon.start}} - {{place.work_time.mon.end}}</li>
+        <li *ngIf="!place.work_time.mon"> Понеділок: вихідний</li>
+        <li  *ngIf="place.work_time.tue"> Вівторок: {{place.work_time.tue.start}} - {{place.work_time.tue.end}}</li>
+        <li *ngIf="!place.work_time.tue"> Вівторок: вихідний</li>
+        <li  *ngIf="place.work_time.wed"> Середа: {{place.work_time.wed.start}} - {{place.work_time.wed.end}}</li>
+        <li *ngIf="!place.work_time.wed"> Середа: вихідний</li>
+        <li  *ngIf="place.work_time.thu"> Четверг: {{place.work_time.thu.start}} - {{place.work_time.thu.end}}</li>
+        <li *ngIf="!place.work_time.thu"> Четверг: вихідний</li>
+        <li  *ngIf="place.work_time.fri"> П'ятниця: {{place.work_time.fri.start}} - {{place.work_time.fri.end}}</li>
+        <li *ngIf="!place.work_time.fri"> П'ятниця: вихідний</li>
+        <li  *ngIf="place.work_time.sat"> Субота: {{place.work_time.sat.start}} - {{place.work_time.sat.end}}</li>
+        <li *ngIf="!place.work_time.sat"> Субота: вихідний</li>
+        <li  *ngIf="place.work_time.sun"> Неділя: {{place.work_time.sun.start}} - {{place.work_time.sun.end}}</li>
+        <li *ngIf="!place.work_time.sun"> Неділя: вихідний</li>
       </ul>
     </div>
     <p><b>Доступність:</b>  {{place.accessibility}}</p>
