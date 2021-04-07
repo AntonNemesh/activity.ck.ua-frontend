@@ -41,6 +41,14 @@
                   *ngIf="proposeOrganization.get('name').hasError('required')">
                   Поле є обов'язковим
                 </mat-error>
+                <mat-error
+                  *ngIf="proposeOrganization.get('name').hasError('minlength')">
+                  Кількість симполів має бути більше 2
+                </mat-error>
+                <mat-error
+                  *ngIf="proposeOrganization.get('name').hasError('maxlength')">
+                  Кількість симполів має бути не більше 255
+                </mat-error>
               </mat-form-field>
               <div *ngIf="isProposeOrganization">
                 <mat-form-field class="example-full-width">
@@ -73,7 +81,7 @@
                       Поле є обов'язковим
                     </mat-error>
                   </mat-form-field>
-                  <button class="add-phone" mat-button matSuffix mat-icon-button aria-label="Add" (click)="addPhone($event, true)">
+                  <button *ngIf="organizationPhones.controls?.length < 5" class="add-phone" mat-button matSuffix mat-icon-button aria-label="Add" (click)="addPhone($event, true)">
                     <mat-icon>add</mat-icon>
                   </button>
                 </div>
@@ -97,6 +105,14 @@
               <mat-error
                 *ngIf="categoryGroup.get('category_id').hasError('required')">
                 Поле є обов'язковим
+              </mat-error>
+              <mat-error
+                *ngIf="categoryGroup.get('category_id').hasError('minlength')">
+                Кількість симполів має бути більше 2
+              </mat-error>
+              <mat-error
+                *ngIf="categoryGroup.get('category_id').hasError('maxlength')">
+                Кількість симполів має бути не більше 255
               </mat-error>
             </mat-form-field>
             <div *ngIf="types?.length">
@@ -125,6 +141,14 @@
                 *ngIf="mainGroup.get('name').hasError('required')">
                 Поле є обов'язковим
               </mat-error>
+              <mat-error
+                *ngIf="mainGroup.get('name').hasError('minlength')">
+                Кількість симполів має бути більше 2
+              </mat-error>
+              <mat-error
+                *ngIf="mainGroup.get('name').hasError('maxlength')">
+                Кількість симполів має бути не більше 255
+              </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
               <mat-label>Опис</mat-label>
@@ -133,6 +157,10 @@
                 *ngIf="mainGroup.get('description').hasError('required')">
                 Поле є обов'язковим
               </mat-error>
+              <mat-error
+                *ngIf="mainGroup.get('description').hasError('minlength')">
+                Кількість симполів має бути більше 20
+              </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
               <mat-label>Адреса</mat-label>
@@ -140,6 +168,14 @@
               <mat-error
                 *ngIf="mainGroup.get('address').hasError('required')">
                 Поле є обов'язковим
+              </mat-error>
+              <mat-error
+                *ngIf="mainGroup.get('address').hasError('minlength')">
+                Кількість симполів має бути більше 2
+              </mat-error>
+              <mat-error
+                *ngIf="mainGroup.get('address').hasError('maxlength')">
+                Кількість симполів має бути не більше 255
               </mat-error>
             </mat-form-field>
             <div formArrayName="phones" class="phones">
@@ -159,7 +195,7 @@
                   Поле є обов'язковим
                 </mat-error>
               </mat-form-field>
-              <button class="add-phone" mat-button matSuffix mat-icon-button aria-label="Add" (click)="addPhone($event, false)">
+              <button *ngIf="placePhones.controls?.length < 5" class="add-phone" mat-button matSuffix mat-icon-button aria-label="Add" (click)="addPhone($event, false)">
                 <mat-icon>add</mat-icon>
               </button>
             </div>
@@ -217,7 +253,7 @@
                 </mat-error>
               </mat-form-field>
               <section>
-                <mat-checkbox class="gray" (click)="toggleDayOff(day.id)">Вихідний</mat-checkbox>
+                <mat-checkbox *ngIf="getCheckboxVisibility(day.id)" class="gray" (click)="toggleDayOff(day.id)">Вихідний</mat-checkbox>
               </section>
             </div>
             <div>
@@ -252,9 +288,13 @@
       </mat-vertical-stepper>
     </form>
     <div *ngIf="isSavedPlace">
-      <p class="mat-subheading-2">
+      <p *ngIf="!httpErrorResponse" class="mat-subheading-2 green">
         Запропоноване вами місце успішно додано в обробку!<br>
         Місце стане доступним після того, як пройде модерацію.
+      </p>
+      <p *ngIf="httpErrorResponse" class="mat-subheading-2 red">
+        Запропоноване вами місце не завантажене, через збій з сервером.<br>
+        Повторіть будь ласка спробу через декілька хвилин.
       </p>
       <a routerLink="">Повернутися на голову сторінку</a>
     </div>

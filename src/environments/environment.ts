@@ -6,7 +6,7 @@ import { IEnvironment } from '../app/static/type';
 
 export const environment: IEnvironment = {
   production: false,
-  apiUrl: 'http://localhost:3000'
+  apiUrl: 'http://localhost:3000/api/v1'
 };
 
 /*
