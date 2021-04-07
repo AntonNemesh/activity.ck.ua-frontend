@@ -18,6 +18,7 @@ export class EventsService {
     params = params.set('_page', page.toString());
     params = params.set('_limit', limit.toString());
 
-    return this.http.get<IEvent[]>(this.apiUrlService.generateApiLink('events'), { params });
+    // return this.http.get<IEvent[]>(this.apiUrlService.generateApiLink('events'), { params });
+    return this.http.get<IEvent[]>('http://localhost:3001/events', { params });
   }
 }

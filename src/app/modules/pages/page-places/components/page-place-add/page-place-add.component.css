@@ -75,6 +75,10 @@ mat-form-field {
   padding: 0;
 }
 
+.green {
+  color: #4CAF50;
+}
+
 .red {
   color: #f44336;
 }

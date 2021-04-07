@@ -1,6 +1,5 @@
 <div class="filter">
-  <div *ngFor="let control of formTypes.controls; index as i">
-    <input type="checkbox" [formControl]="formTypes.controls[i]" id="{{types[i].type_id}}"/>
-    <label for="{{types[i].type_id}}">{{types[i].name}}</label>
-  </div>
+  <section class="example-section" *ngFor="let control of formTypes.controls; index as i">
+      <mat-checkbox class="example-margin" [formControl]="formTypes.controls[i]">{{types[i].name}}</mat-checkbox>
+  </section>
 </div>

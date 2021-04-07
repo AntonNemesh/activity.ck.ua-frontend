@@ -21,4 +21,13 @@ export class CategoriesService {
   public getCategories(): IPlacesCategories[] {
     return this.categories;
   }
+
+  public getCategoryNameById(categoryId: string): string {
+    let result: string = '';
+    this.categories.forEach((category) => {
+      if (categoryId !== category.id) { return; }
+      result = category.name;
+    });
+    return result;
+  }
 }
