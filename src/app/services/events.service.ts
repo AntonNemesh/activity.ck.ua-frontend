@@ -18,7 +18,8 @@ export class EventsService {
     params = params.set('_page', page.toString());
     params = params.set('_limit', limit.toString());
 
-    return this.http.get<IEvent[]>(this.apiUrlService.generateApiLink('events'), { params });
+    // return this.http.get<IEvent[]>(this.apiUrlService.generateApiLink('events'), { params });
+    return this.http.get<IEvent[]>('http://localhost:3001/events', { params });
   }
 
   getEventsNow(page: number = 1, limit: number = 6): Observable<IEvent[]> {
@@ -26,10 +27,12 @@ export class EventsService {
     params = params.set('_page', page.toString());
     params = params.set('_limit', limit.toString());
 
-    return this.http.get<IEvent[]>(this.apiUrlService.generateApiLink('events-now'), { params });
+    // return this.http.get<IEvent[]>(this.apiUrlService.generateApiLink('events-now'), { params });
+    return this.http.get<IEvent[]>('http://localhost:3001/events-now', { params });
   }
 
   public getEventById(eventId: string): Observable<IEvent> {
-    return this.http.get<IEvent>(this.apiUrlService.generateApiLink(`events/${eventId}`));
+    // return this.http.get<IEvent>(this.apiUrlService.generateApiLink(`events/${eventId}`));
+    return this.http.get<IEvent>(`http://localhost:3001/events/${eventId}`);
   }
 }

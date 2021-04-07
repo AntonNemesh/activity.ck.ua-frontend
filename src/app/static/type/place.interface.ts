@@ -1,10 +1,10 @@
 import { IPhotos } from './photos.interface';
-import { IProposeOrganization } from './organization.interface';
+import { IOrganization } from './organization.interface';
 import { IWorkTime, IWorkTimeForm } from './week.interface';
 
 export interface IPlaceBase {
   id: number;
-  organization?: IProposeOrganization;
+  organization?: IOrganization;
   category_id: string;
   type_id: string;
   photos: IPhotos[];
@@ -25,6 +25,16 @@ export interface IPlace extends IPlaceBase {
   work_time: IWorkTime;
 }
 
+export interface IPlacesResponse {
+  _total: number;
+  _totalPages: number;
+  places: IPlace[];
+}
+
+export interface IPlaceResponse {
+  place: IPlace;
+}
+
 export interface IPlaceForm {
   photos_group: IPhotosGroup;
   work_time_group: IWorkTimeForm;
@@ -41,7 +51,7 @@ export interface IPhotosGroup {
 
 export interface IOrganizationGroup {
   organization_id: string;
-  organization?: IProposeOrganization;
+  organization?: IOrganization;
 }
 
 export interface IToleranceGroup {
