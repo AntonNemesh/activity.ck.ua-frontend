@@ -5813,61 +5813,61 @@
       "photos": [
         {
           "id": 1,
-          "photo_url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
+          "url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 2,
-          "photo_url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
+          "url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 3,
-          "photo_url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
+          "url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 4,
-          "photo_url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+          "url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 5,
-          "photo_url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
+          "url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 6,
-          "photo_url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
+          "url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 7,
-          "photo_url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
+          "url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 8,
-          "photo_url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
+          "url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 9,
-          "photo_url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
+          "url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 10,
-          "photo_url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
+          "url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         }
@@ -5896,61 +5896,61 @@
       "photos": [
         {
           "id": 1,
-          "photo_url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
+          "url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 2,
-          "photo_url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
+          "url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 3,
-          "photo_url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
+          "url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 4,
-          "photo_url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+          "url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 5,
-          "photo_url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
+          "url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 6,
-          "photo_url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
+          "url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 7,
-          "photo_url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
+          "url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 8,
-          "photo_url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
+          "url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 9,
-          "photo_url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
+          "url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 10,
-          "photo_url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
+          "url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         }
@@ -5979,61 +5979,61 @@
       "photos": [
         {
           "id": 1,
-          "photo_url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
+          "url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 2,
-          "photo_url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
+          "url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 3,
-          "photo_url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
+          "url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 4,
-          "photo_url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+          "url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 5,
-          "photo_url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
+          "url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 6,
-          "photo_url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
+          "url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 7,
-          "photo_url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
+          "url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 8,
-          "photo_url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
+          "url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 9,
-          "photo_url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
+          "url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 10,
-          "photo_url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
+          "url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         }
@@ -6145,61 +6145,61 @@
       "photos": [
         {
           "id": 1,
-          "photo_url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
+          "url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 2,
-          "photo_url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
+          "url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 3,
-          "photo_url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
+          "url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 4,
-          "photo_url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+          "url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 5,
-          "photo_url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
+          "url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 6,
-          "photo_url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
+          "url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 7,
-          "photo_url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
+          "url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 8,
-          "photo_url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
+          "url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 9,
-          "photo_url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
+          "url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 10,
-          "photo_url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
+          "url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         }
@@ -6228,61 +6228,61 @@
       "photos": [
         {
           "id": 1,
-          "photo_url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
+          "url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 2,
-          "photo_url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
+          "url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 3,
-          "photo_url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
+          "url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 4,
-          "photo_url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+          "url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 5,
-          "photo_url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
+          "url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 6,
-          "photo_url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
+          "url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 7,
-          "photo_url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
+          "url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 8,
-          "photo_url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
+          "url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 9,
-          "photo_url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
+          "url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 10,
-          "photo_url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
+          "url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         }
@@ -6311,61 +6311,61 @@
       "photos": [
         {
           "id": 1,
-          "photo_url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
+          "url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 2,
-          "photo_url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
+          "url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 3,
-          "photo_url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
+          "url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 4,
-          "photo_url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+          "url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 5,
-          "photo_url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
+          "url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 6,
-          "photo_url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
+          "url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 7,
-          "photo_url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
+          "url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 8,
-          "photo_url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
+          "url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 9,
-          "photo_url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
+          "url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 10,
-          "photo_url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
+          "url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         }
@@ -6394,61 +6394,61 @@
       "photos": [
         {
           "id": 1,
-          "photo_url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
+          "url": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 2,
-          "photo_url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
+          "url": "https://fakty.com.ua/wp-content/uploads/2017/06/27/5fe7966cb41de269a3577044116e990c-768x432.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 3,
-          "photo_url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
+          "url": "https://s.dou.ua/storage-files/market-cher-2.jpg.png",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 4,
-          "photo_url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
+          "url": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 5,
-          "photo_url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
+          "url": "https://tamtour.com.ua/local/image/273/009/13437-800x600-19-7280-6149-6446.jpeg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 6,
-          "photo_url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
+          "url": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 7,
-          "photo_url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
+          "url": "https://photo.in.ck.ua/article/5b30/9aca/c101/0521/7900/7c90/cherkassy-zanyali-12-mesto-v-reytinge-komfortnosti.12.jpeg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 8,
-          "photo_url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
+          "url": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 9,
-          "photo_url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
+          "url": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         },
         {
           "id": 10,
-          "photo_url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
+          "url": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg",
           "author_name": "Vasiliev Serhiy",
           "author_link": "https://www.facebook.com/official.typical.cherkassy/"
         }
