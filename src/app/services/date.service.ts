@@ -18,6 +18,10 @@ export class DateService {
     return date.toLocaleString('en-US', { weekday: 'short' }).toLowerCase();
   }
 
+  public getUkrNameOfMonth(date: Date): string {
+    return date.toLocaleString('uk-UK', { weekday: 'long' });
+  }
+
   public getWorkState(workTime: IWorkTime): string {
     const date: Date = new Date();
     let weekday: string = this.getShortNameOfMonth(date);
@@ -50,6 +54,6 @@ export class DateService {
       weekday = this.getShortNameOfMonth(date);
     } while (!workTime[weekday]);
 
-    return `Зачинено ${String.fromCharCode(0x0387)} Відчиняється: ${workTime[weekday].start}, ${this.getUkrFormat(date)}`;
+    return `Зачинено ${String.fromCharCode(0x0387)} Відчиняється: ${workTime[weekday].start}, ${this.getUkrNameOfMonth(date)}`;
   }
 }
