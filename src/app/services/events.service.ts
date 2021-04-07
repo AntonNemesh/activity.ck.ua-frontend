@@ -24,6 +24,7 @@ export class EventsService {
   }
 
   public getEventById(eventId: string): Observable<IEvent> {
-    return this.http.get<IEvent>(this.apiUrlService.generateApiLink(`events/${eventId}`));
+    // return this.http.get<IEvent>(this.apiUrlService.generateApiLink(`events/${eventId}`));
+    return this.http.get<IEvent>(`http://localhost:3001/events/${eventId}`);
   }
 }
