@@ -17,7 +17,7 @@ export class PlacesRequestParamsHelper {
 
   private setFilterTypeState(filterTypeState: string[]): void {
     if (!filterTypeState?.length) { return; }
-    this.typeId = filterTypeState[0];
+    this.typeId = filterTypeState.join('-');
   }
 
   private setFilterToleranceState(filterToleranceState: string[]): void {

@@ -3,18 +3,20 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiUrlService } from './api-url.service';
 import {
-  IOrganization,
+  IOrganizations,
   IPhotos,
   IPlace,
   IPlaceForm,
   IPlaceRequestParams,
+  IPlacesResponse,
+  IPlaceResponse,
   IWorkTime,
   IWorkTimeForm
 } from '../static/type';
 import { PlacesRequestParamsHelper } from '../helpers';
 import { map } from 'rxjs/operators';
 import { OrganizationsService } from './organizations.service';
-import DATABASE from './../../../api/database.json';
+
 
 @Injectable({
   providedIn: 'root'
@@ -26,101 +28,10 @@ export class PlacesService {
     private apiUrlService: ApiUrlService,
     private organizationsService: OrganizationsService) { }
 
-  private limit: number = 5;
+  private limit: number = 1;
 
   public getLimit(): number {
     return this.limit;
-  }
-
-  public amountPages(options: Partial<IPlaceRequestParams>): number {
-    let counter: number = 0;
-    DATABASE.places.forEach((item) => {
-      if (options.type_id !== undefined) {
-        if (Object.keys(options).length === 1) {
-          if (item.type_id === options.type_id &&
-            options.accessibility === undefined &&
-            options.dog_friendly === undefined &&
-            options.child_friendly === undefined) { counter++; return; }
-          return;
-        }
-        if (Object.keys(options).length === 2) {
-          if (item.type_id === options.type_id &&
-            item.accessibility === options.accessibility) { counter++; return; }
-
-          if (item.type_id === options.type_id &&
-            item.child_friendly === options.child_friendly) { counter++; return; }
-
-          if (item.type_id === options.type_id &&
-            item.dog_friendly === options.dog_friendly) { counter++; return; }
-          return;
-        }
-        if (Object.keys(options).length === 3) {
-          if (item.type_id === options.type_id &&
-            item.accessibility === options.accessibility &&
-            item.child_friendly === options.child_friendly) { counter++; return; }
-
-          if (item.type_id === options.type_id &&
-            item.accessibility === options.accessibility &&
-            item.dog_friendly === options.dog_friendly) { counter++; return; }
-
-          if (item.type_id === options.type_id &&
-            item.child_friendly === options.child_friendly &&
-            item.dog_friendly === options.dog_friendly) { counter++; return; }
-          return;
-        }
-        if (Object.keys(options).length === 4) {
-          if (item.type_id === options.type_id &&
-            item.accessibility === options.accessibility &&
-            item.child_friendly === options.child_friendly &&
-            item.dog_friendly === options.dog_friendly) { counter++; return; }
-          return;
-        }
-        return;
-      }
-      if (options.category_id !== undefined) {
-        if (Object.keys(options).length === 1) {
-          if (item.category_id === options.category_id &&
-            options.accessibility === undefined &&
-            options.dog_friendly === undefined &&
-            options.child_friendly === undefined) { counter++; return; }
-          return;
-        }
-        if (Object.keys(options).length === 2) {
-          if (item.category_id === options.category_id &&
-            item.accessibility === options.accessibility) { counter++; return; }
-
-          if (item.category_id === options.category_id &&
-            item.child_friendly === options.child_friendly) { counter++; return; }
-
-          if (item.category_id === options.category_id &&
-            item.dog_friendly === options.dog_friendly) { counter++; return; }
-          return;
-        }
-        if (Object.keys(options).length === 3) {
-          if (item.category_id === options.category_id &&
-            item.accessibility === options.accessibility &&
-            item.child_friendly === options.child_friendly) { counter++; return; }
-
-          if (item.category_id === options.category_id &&
-            item.accessibility === options.accessibility &&
-            item.dog_friendly === options.dog_friendly) { counter++; return; }
-
-          if (item.category_id === options.category_id &&
-            item.child_friendly === options.child_friendly &&
-            item.dog_friendly === options.dog_friendly) { counter++; return; }
-          return;
-        }
-        if (Object.keys(options).length === 4) {
-          if (item.category_id === options.category_id &&
-            item.accessibility === options.accessibility &&
-            item.child_friendly === options.child_friendly &&
-            item.dog_friendly === options.dog_friendly) { counter++; return; }
-          return;
-        }
-        return;
-      }
-    });
-    return (counter / this.getLimit() >= 1) ? Math.ceil(counter / this.getLimit()) : 1;
   }
 
   public buildWorkTime(workTime: IWorkTimeForm): IWorkTime {
@@ -138,76 +49,87 @@ export class PlacesService {
     return result;
   }
 
-  public buildPhotos(photosUrls: string[]): IPhotos[] {
+  public buildPhotos(urls: string[]): IPhotos[] {
     const result: IPhotos[] = [];
-    photosUrls.forEach((photoUrl) => {
-      const photoObject: IPhotos = {
-        photo_url: photoUrl,
-        author_name: '',
-        author_link: ''
-      };
-      result.push(photoObject);
+    urls.forEach((url) => { result.push({url}); });
+    return result;
+  }
+
+  public buildPhones(phones: string[]): string[] {
+    const result: string[] = [];
+    phones.forEach((phone) => {
+      result.push(phone.replace(/[^0-9+]/g, ''));
     });
     return result;
   }
 
-  public buildRequest(dataForm: IPlaceForm, linksToPhotos: string[], organizations: IOrganization[]): Partial<IPlace> {
-    const result: Partial<IPlace> = new Object({});
+  public buildRequest(dataForm: IPlaceForm, linksToPhotos: string[], organizations: IOrganizations): any {
+    const result: any = {};
+    const place: any = {};
+    let photos: IPhotos[] = [];
 
     if (dataForm.hasOwnProperty('main_group')) {
-      result.name = dataForm.main_group.name;
-      result.description = dataForm.main_group.description;
-      result.address = dataForm.main_group.address;
-      result.website = dataForm.main_group.website;
-      result.phones = dataForm.main_group.phones;
+      place.name = dataForm.main_group.name;
+      place.description = dataForm.main_group.description;
+      place.address = dataForm.main_group.address;
+      place.website = dataForm.main_group.website;
+      place.phones = this.buildPhones(dataForm.main_group.phones);
     }
 
-    result.photos = [];
     if (linksToPhotos?.length) {
-      result.photos = this.buildPhotos(linksToPhotos);
+      photos = this.buildPhotos(linksToPhotos);
     }
 
     if (dataForm.hasOwnProperty('photos_group')) {
-      result.main_photo = dataForm.photos_group.main_photo;
+      place.main_photo = dataForm.photos_group.main_photo;
     }
 
     if (dataForm.hasOwnProperty('tolerance_group')) {
-      result.accessibility = dataForm.tolerance_group.accessibility;
-      result.child_friendly = dataForm.tolerance_group.child_friendly;
-      result.dog_friendly = dataForm.tolerance_group.dog_friendly;
+      place.accessibility = dataForm.tolerance_group.accessibility;
+      place.child_friendly = dataForm.tolerance_group.child_friendly;
+      place.dog_friendly = dataForm.tolerance_group.dog_friendly;
     }
 
     if (dataForm.hasOwnProperty('work_time_group')) {
-      result.work_time = this.buildWorkTime(dataForm.work_time_group);
+      place.work_time = this.buildWorkTime(dataForm.work_time_group);
     }
 
     if (dataForm.category_group.hasOwnProperty('category_id')) {
-      result.category_id = dataForm.category_group.category_id;
+      place.category_id = dataForm.category_group.category_id;
     }
 
-    result.type_id = '';
     if (dataForm.category_group.hasOwnProperty('type_id')) {
-      result.type_id = dataForm.category_group.type_id;
+      place.type_id = dataForm.category_group.type_id;
     }
+
+    result.place = place;
+    result.photos = photos;
 
     if (dataForm.organization_group.hasOwnProperty('organization')) {
       if (dataForm.organization_group.organization.hasOwnProperty('email')) {
         result.organization = dataForm.organization_group.organization;
+        result.organization.phones = this.buildPhones(dataForm.organization_group.organization.phones);
         return result;
       }
-      result.organization_id = this.organizationsService.getOrganizationId(organizations, dataForm.organization_group.organization.name);
+      result.organization_id = this.organizationsService.getOrganizationId(
+        organizations.proposedOrganizations,
+        dataForm.organization_group.organization.name
+      );
       return result;
     }
 
-    result.organization_id = this.organizationsService.getOrganizationId(organizations, dataForm.organization_group.organization_id);
+    result.organization_id = this.organizationsService.getOrganizationId(
+      organizations.approvedOrganizations,
+      dataForm.organization_group.organization_id
+    );
     return result;
   }
 
-  public savePlace(placeData: Partial<IPlace>): Observable<IPlace> {
-    return this.http.post<IPlace>(this.apiUrlService.generateApiLink('places'), placeData);
+  public savePlace(placeData: Partial<IPlace>): Observable<any> {
+    return this.http.post<any>(this.apiUrlService.generateApiLink('places'), placeData);
   }
 
-  public getPlaces(options: PlacesRequestParamsHelper): Observable<IPlace[]> {
+  public getPlaces(options: PlacesRequestParamsHelper): Observable<IPlacesResponse> {
     let params: HttpParams = new HttpParams();
     const placeRequestParams: Partial<IPlaceRequestParams> = options.toJSON();
 
@@ -215,15 +137,12 @@ export class PlacesService {
       if (!placeRequestParams.hasOwnProperty(key)){ continue; }
       params = params.set(key, placeRequestParams[key]);
     }
-    return this.http.get<IPlace[]>(this.apiUrlService.generateApiLink('places'), { params });
+    return this.http.get<IPlacesResponse>(this.apiUrlService.generateApiLink('places'), { params });
   }
 
   public getPlaceById(placeId: string): Observable<IPlace> {
-    let params: HttpParams = new HttpParams();
-    params = params.set('id', placeId);
-
-    return this.http.get<IPlace>(this.apiUrlService.generateApiLink('places'), { params }).pipe(
-      map((detailsOfPlace) => detailsOfPlace[0])
+    return this.http.get<IPlaceResponse>(this.apiUrlService.generateApiLink(`places/${placeId}`)).pipe(
+      map((response) => response.place)
     );
   }
 }

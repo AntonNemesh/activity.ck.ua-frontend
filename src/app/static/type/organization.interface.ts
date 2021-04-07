@@ -1,13 +1,12 @@
-export interface IOrganization {
-  id: number;
-  name: string;
-  phones: string[];
-  email: string;
-  approved: boolean;
+export interface IOrganizations {
+  approvedOrganizations: IOrganization[];
+  proposedOrganizations: IOrganization[];
 }
 
-export interface IProposeOrganization {
+export interface IOrganization {
+  id?: number;
   name: string;
-  email: string;
-  phones: string[];
+  phones?: string[];
+  email?: string;
+  approved?: boolean;
 }

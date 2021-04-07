@@ -8,7 +8,7 @@ import {
 } from '../../../../../services';
 import {
   IMaskEmail,
-  IOrganization,
+  IOrganizations,
   IPlace,
   IPlacesCategories,
   IPlacesTypes,
@@ -36,9 +36,11 @@ export class PagePlaceAddComponent implements OnInit {
     private organizationsService: OrganizationsService,
     private filesService: FilesService) { }
 
+  private isVisibleCheckbox: boolean;
+
   public categories: IPlacesCategories[];
   public types: IPlacesTypes[] = [];
-  public organizations: IOrganization[] = [];
+  public organizations: IOrganizations;
 
   public filteredApprovedOrganizations: Observable<string[]>;
   public filteredProposedOrganizations: Observable<string[]>;
@@ -46,6 +48,7 @@ export class PagePlaceAddComponent implements OnInit {
   public isNewOrganization: boolean = false;
   public isProposeOrganization: boolean = false;
   public isSavedPlace: boolean = false;
+  public httpErrorResponse: boolean = false;
 
   public maskPhone: Array<string|RegExp> = MASK_PHONE;
   public maskEmail: IMaskEmail = MASK_EMAIL;
@@ -53,21 +56,59 @@ export class PagePlaceAddComponent implements OnInit {
   public week: IWeek[] = WEEK;
   public toleranceFilter: IToleranceFilter[] = TOLERANCE_FILTER;
 
-  public organizationPhones: FormArray = new FormArray([this.phoneFormControl]);
-  public placePhones: FormArray = new FormArray([this.phoneFormControl]);
+  public organizationPhones: FormArray = new FormArray(
+    [this.phoneFormControl]);
 
-  public proposeOrganization: FormGroup = new FormGroup({ name: new FormControl(null, Validators.required), });
-  public organizationGroup: FormGroup = new FormGroup({ organization_id: new FormControl(null, Validators.required) });
-  public categoryGroup: FormGroup = new FormGroup({ category_id: new FormControl('', Validators.required), });
+  public placePhones: FormArray = new FormArray(
+    [this.phoneFormControl]);
+
+  public proposeOrganization: FormGroup = new FormGroup(
+    { name: new FormControl(null,
+      [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(255)
+      ]),
+  });
+
+  public organizationGroup: FormGroup = new FormGroup(
+    { organization_id: new FormControl(null,
+        Validators.required)
+  });
+
+  public categoryGroup: FormGroup = new FormGroup(
+    { category_id: new FormControl('',
+      [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(255)
+      ]),
+  });
+
   public toleranceGroup: FormGroup = new FormGroup({});
   public workTimeGroup: FormGroup = new FormGroup({});
 
-  public mainGroup: FormGroup = new FormGroup({
-    name: new FormControl('', Validators.required),
-    description: new FormControl('', Validators.required),
-    address: new FormControl('', Validators.required),
-    website: new FormControl('', Validators.required),
-    phones: this.placePhones,
+  public mainGroup: FormGroup = new FormGroup(
+    {
+      name: new FormControl('',
+      [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(255)
+      ]),
+      description: new FormControl('',
+      [
+        Validators.required,
+        Validators.minLength(20)
+      ]),
+      address: new FormControl('',
+        [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(255)
+      ]),
+      website: new FormControl('', Validators.required),
+      phones: this.placePhones,
   });
 
   public photosGroup: FormGroup = new FormGroup({
@@ -94,7 +135,7 @@ export class PagePlaceAddComponent implements OnInit {
   public photosGroupValidation: boolean = false;
 
   public photos: any[] = [];
-  public photosUrl: any = [];
+  public photosUrl: string[] = [];
   public photoCover: number = 0;
 
   public formLoader: LoaderHelper = new LoaderHelper();
@@ -135,16 +176,21 @@ export class PagePlaceAddComponent implements OnInit {
   private filter(value: string, isApproved: boolean): string[] {
     if (value === null) { return; }
     const filterValue: string = value.toLowerCase();
-    const result: string[] = this.organizationsService.getOrganizationsNames(this.organizations, isApproved);
+    let result: string[];
+    if (isApproved) {
+      result = this.organizationsService.getOrganizationsNames(this.organizations.approvedOrganizations);
+    } else {
+      result = this.organizationsService.getOrganizationsNames(this.organizations.proposedOrganizations);
+    }
     return result.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   private autocompleteData(): void {
-    this.organizationGroup.get('organization_id').setValue('Федерація Альпинизму і Скелелазіння');
+    this.organizationGroup.get('organization_id').setValue('Федерація альпінізму і скелелазіння');
     this.categoryGroup.get('category_id').setValue('recreation');
     this.categoryGroup.get('type_id').setValue('water');
     this.mainGroup.get('name').setValue('Імя організіції');
-    this.mainGroup.get('description').setValue('Опис організіції');
+    this.mainGroup.get('description').setValue('Опис організіціїОпис організіціїОпис організіціїОпис організіції');
     this.mainGroup.get('address').setValue('бул. Шевченко, 244, Черкассы, Черкасская область, 18000');
     this.mainGroup.get('website').setValue('http://fakesite.com');
     this.placePhones.controls[0].setValue('+380 (93) 256 65 45');
@@ -166,6 +212,18 @@ export class PagePlaceAddComponent implements OnInit {
     this.photosGroup.get('main_photo').setValue('aa');
   }
 
+  private updateCheckboxVisibility(): void {
+    const conditions: boolean[] = [];
+    let counter: number = 0;
+    Object.keys(this.workTimeGroup.controls).forEach(key => {
+      conditions.push(this.workTimeGroup.get(key).status === 'DISABLED');
+    });
+    conditions.forEach((value) => {
+      if (value) { counter++; }
+    });
+    this.isVisibleCheckbox = counter > 11;
+  }
+
   public handleAddressChange(address: any): void {
     this.mainGroup.get('address').setValue(address.formatted_address);
   }
@@ -179,6 +237,14 @@ export class PagePlaceAddComponent implements OnInit {
       this.workTimeGroup.get(day + '_start').disable();
       this.workTimeGroup.get(day + '_end').disable();
     }
+    this.updateCheckboxVisibility();
+  }
+
+  public getCheckboxVisibility(day: string): boolean {
+    if (this.isVisibleCheckbox) {
+      return this.workTimeGroup.get(day + '_start').disabled;
+    }
+    return true;
   }
 
   public get phoneFormControl(): FormControl {
@@ -237,7 +303,17 @@ export class PagePlaceAddComponent implements OnInit {
       urls.forEach((url) => { this.photosUrl.push(url); });
       this.photosGroup.get('main_photo').setValue(this.photosUrl[this.photoCover]);
       const request: Partial<IPlace> = this.placesService.buildRequest(this.placeForm.value, this.photosUrl, this.organizations);
-      this.placesService.savePlace(request).subscribe();
+      this.placesService.savePlace(request).subscribe(
+        (data) => {
+          this.httpErrorResponse = false;
+          console.log('success', data);
+          },
+        (error) => {
+          this.httpErrorResponse = true;
+          this.filesService.delete(this.photosUrl);
+          console.log('oops', error);
+        }
+      );
     });
   }
 
@@ -293,6 +369,6 @@ export class PagePlaceAddComponent implements OnInit {
       this.setTypes(value);
     });
 
-    this.autocompleteData();
+    // this.autocompleteData();
   }
 }
