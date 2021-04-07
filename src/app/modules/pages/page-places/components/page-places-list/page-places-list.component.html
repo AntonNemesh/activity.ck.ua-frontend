@@ -1,32 +1,31 @@
 <app-layout>
+
   <div class="container">
-    <h2>Places {{categoryId}}</h2>
-    <a routerLink="/add_place">Додати локацію</a>
-    <app-filter-by-type (filterStateChange)="updateFilterTypeState($event)"
-                        [categoryId]="categoryId">
-    </app-filter-by-type>
-    <app-filter-by-tolerance (toleranceStateChange)="updateFilterToleranceState($event)"></app-filter-by-tolerance>
-    <ul>
-      <li *ngFor="let place of places">
-        <a routerLink="{{place.id}}">
-          <img src="{{place.main_photo}}" alt="">
-          <p>{{place.name}}</p>
-          <p>{{place.address}}</p>
-<!--          <p>{{place.work_time.mon.start}}</p>-->
-        </a>
-          <a href="tel:{{place.phones}}">{{place.phones}}</a>
-          <a href="{{place.website}}"></a>
 
-
-      </li>
-    </ul>
-    <app-pagination *ngIf="totalPages"
-                    (paginationStateChange)="updatePaginationState($event)"
-                    [filterTypeState]="filterTypeState"
-                    [filterToleranceState]="filterToleranceState"
-                    [totalPages]="totalPages"
-                    [categoryId]="categoryId">
-    </app-pagination>
+  <h2 *ngIf="categoryName">Місце категорії: {{categoryName}}</h2>
+  <a routerLink="/add_place">Додати локацію</a>
+  <app-filter-by-type (filterStateChange)="updateFilterTypeState($event)"
+                      [categoryId]="categoryId">
+  </app-filter-by-type>
+  <app-filter-by-tolerance (toleranceStateChange)="updateFilterToleranceState($event)"></app-filter-by-tolerance>
+  <ul>
+    <li *ngFor="let place of places">
+      <a routerLink="{{place.id}}">
+        <img src="{{place.main_photo}}" alt="">
+        <p>{{place.name}}</p>
+        <p>{{place.address}}</p>
+        <!--          <p>{{place.work_time.mon.start}}</p>-->
+      </a>
+      <a href="tel:{{place.phones}}">{{place.phones}}</a>
+      <a href="{{place.website}}"></a>
+    </li>
+  </ul>
+  <app-pagination *ngIf="totalPages"
+                  (paginationStateChange)="updatePaginationState($event)"
+                  [filterTypeState]="filterTypeState"
+                  [filterToleranceState]="filterToleranceState"
+                  [totalPages]="totalPages"
+                  [categoryId]="categoryId">
+  </app-pagination>
   </div>
-
 </app-layout>
