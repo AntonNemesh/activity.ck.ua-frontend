@@ -19,18 +19,25 @@ export class DateService {
   }
 
   public getWorkState(workTime: IWorkTime): string {
-    let result: string;
     const date: Date = new Date();
     let weekday: string = this.getShortNameOfMonth(date);
+    let condition: boolean = false;
+
     if (workTime[weekday]) {
-      result = `Відчинено ${String.fromCharCode(0x0387)} Зачиняється: ${workTime[weekday].end}`;
-    } else {
-      while (!workTime[weekday]) {
-        date.setDate(date.getDate() + 1);
-        weekday = this.getShortNameOfMonth(date);
-      }
-      result = `Зачинено ${String.fromCharCode(0x0387)} Відчиняється: ${workTime[weekday].start}, ${this.getUkrFormat(date)}`;
+      const endWorkDate: Date = new Date(
+        date.getFullYear(), date.getMonth(), date.getDate(),
+        workTime[weekday].end.split(':')[0], workTime[weekday].end.split(':')[1]
+      );
+      condition = (+endWorkDate - +date) > 0;
     }
-    return result;
+
+    if (condition) { return `Відчинено ${String.fromCharCode(0x0387)} Зачиняється: ${workTime[weekday].end}`; }
+
+    do {
+      date.setDate(date.getDate() + 1);
+      weekday = this.getShortNameOfMonth(date);
+    } while (!workTime[weekday]);
+
+    return `Зачинено ${String.fromCharCode(0x0387)} Відчиняється: ${workTime[weekday].start}, ${this.getUkrFormat(date)}`;
   }
 }
