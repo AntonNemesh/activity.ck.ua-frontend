@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IPhotos } from '../../../../static/type';
-import {MatCarousel, MatCarouselComponent} from '@ngmodule/material-carousel';
-import {interval, Observable} from 'rxjs';
+
 
 @Component({
   selector: 'app-gallery',
@@ -10,11 +9,6 @@ import {interval, Observable} from 'rxjs';
 })
 export class GalleryComponent implements OnInit {
 
-  @Input()
-  photos: IPhotos[];
-
-  ngOnInit()
-    :
-    void {}
-
+  @Input() photos: IPhotos[];
+  ngOnInit(): void {}
 }

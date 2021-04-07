@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --base-href=./",
-    "dbserv": "json-server --watch ./api/database.json",
+    "dbserv": "json-server --watch ./api/database.json --port 3001",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

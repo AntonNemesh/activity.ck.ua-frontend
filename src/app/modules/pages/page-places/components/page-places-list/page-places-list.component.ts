@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PlacesService } from '../../../../../services';
+import { CategoriesService, PlacesService } from '../../../../../services';
 import { IPlace } from '../../../../../static/type';
 import { PlacesRequestParamsHelper } from '../../../../../helpers';
 
@@ -14,11 +14,17 @@ export class PagePlacesListComponent implements OnInit {
   private page: number;
 
   public categoryId: string;
-  public places: IPlace[] = [];
+  public categoryName: string;
+  public places: Partial<IPlace[]>;
   public filterTypeState: string[] = [];
   public filterToleranceState: string[] = [];
 
-  constructor(private route: ActivatedRoute, private placesService: PlacesService) { }
+  public totalPages: number;
+
+  constructor(
+    private route: ActivatedRoute,
+    private placesService: PlacesService,
+    private categoriesService: CategoriesService) { }
 
   private updatePlaces(isConcatenation?: boolean): void {
 
@@ -33,12 +39,13 @@ export class PagePlacesListComponent implements OnInit {
     );
 
     this.placesService.getPlaces(options).subscribe((data) => {
+      this.totalPages = data._totalPages;
       if (isConcatenation) {
-        this.places = this.places.concat(data);
+        this.places = this.places.concat(data.places);
         return;
       }
       if (this.places?.length) { this.places.length = 0; }
-      this.places = data;
+      this.places = data.places;
     });
   }
 
@@ -66,6 +73,7 @@ export class PagePlacesListComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.categoryId = params.category_id;
+      this.categoryName = this.categoriesService.getCategoryNameById(params.category_id);
     });
     this.limit = this.placesService.getLimit();
     this.resetPage();

@@ -40,6 +40,14 @@
                 *ngIf="proposeOrganization.get('name').hasError('required')">
                 Поле є обов'язковим
               </mat-error>
+              <mat-error
+                *ngIf="proposeOrganization.get('name').hasError('minlength')">
+                Кількість симполів має бути більше 2
+              </mat-error>
+              <mat-error
+                *ngIf="proposeOrganization.get('name').hasError('maxlength')">
+                Кількість симполів має бути не більше 255
+              </mat-error>
             </mat-form-field>
             <div *ngIf="isProposeOrganization">
               <mat-form-field class="example-full-width">
@@ -97,6 +105,14 @@
               *ngIf="categoryGroup.get('category_id').hasError('required')">
               Поле є обов'язковим
             </mat-error>
+            <mat-error
+              *ngIf="categoryGroup.get('category_id').hasError('minlength')">
+              Кількість симполів має бути більше 2
+            </mat-error>
+            <mat-error
+              *ngIf="categoryGroup.get('category_id').hasError('maxlength')">
+              Кількість симполів має бути не більше 255
+            </mat-error>
           </mat-form-field>
           <div *ngIf="types?.length">
             <mat-label class="gray">Тип</mat-label>
@@ -124,6 +140,14 @@
               *ngIf="mainGroup.get('name').hasError('required')">
               Поле є обов'язковим
             </mat-error>
+            <mat-error
+              *ngIf="mainGroup.get('name').hasError('minlength')">
+              Кількість симполів має бути більше 2
+            </mat-error>
+            <mat-error
+              *ngIf="mainGroup.get('name').hasError('maxlength')">
+              Кількість симполів має бути не більше 255
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Опис</mat-label>
@@ -132,6 +156,10 @@
               *ngIf="mainGroup.get('description').hasError('required')">
               Поле є обов'язковим
             </mat-error>
+            <mat-error
+              *ngIf="mainGroup.get('description').hasError('minlength')">
+              Кількість симполів має бути більше 20
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Адреса</mat-label>
@@ -139,6 +167,14 @@
             <mat-error
               *ngIf="mainGroup.get('address').hasError('required')">
               Поле є обов'язковим
+            </mat-error>
+            <mat-error
+              *ngIf="mainGroup.get('address').hasError('minlength')">
+              Кількість симполів має бути більше 2
+            </mat-error>
+            <mat-error
+              *ngIf="mainGroup.get('address').hasError('maxlength')">
+              Кількість симполів має бути не більше 255
             </mat-error>
           </mat-form-field>
           <div formArrayName="phones" class="phones">
@@ -180,7 +216,7 @@
         <form formGroupName="tolerance_group">
           <ng-template matStepLabel>Толерантність</ng-template>
           <div class="tolerance">
-<!--              <mat-label class="gray">Толерантність:</mat-label>-->
+            <!--              <mat-label class="gray">Толерантність:</mat-label>-->
             <section class="padding-left">
               <mat-checkbox *ngFor="let item of toleranceFilter" formControlName="{{item.filter_id}}">{{item.name}}</mat-checkbox>
             </section>
@@ -194,7 +230,7 @@
       <mat-step [stepControl]="workTimeGroup">
         <form formGroupName="work_time_group">
           <ng-template matStepLabel>Розклад роботи</ng-template>
-<!--            <mat-label class="gray">Розклад роботи:</mat-label>-->
+          <!--            <mat-label class="gray">Розклад роботи:</mat-label>-->
           <div class="workTime padding-left" *ngFor="let day of week">
             <mat-label class="workTime__title">{{day.name}}</mat-label>
             <mat-form-field class="workTime__field">
@@ -216,7 +252,7 @@
               </mat-error>
             </mat-form-field>
             <section>
-              <mat-checkbox class="gray" (click)="toggleDayOff(day.id)">Вихідний</mat-checkbox>
+              <mat-checkbox *ngIf="getCheckboxVisibility(day.id)" class="gray" (click)="toggleDayOff(day.id)">Вихідний</mat-checkbox>
             </section>
           </div>
           <div>
@@ -259,4 +295,3 @@
   </div>
 </div>
 <mat-spinner *ngIf="formLoaderVisibility | async"></mat-spinner>
-
