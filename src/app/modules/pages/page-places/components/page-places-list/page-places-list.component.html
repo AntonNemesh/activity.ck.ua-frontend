@@ -9,7 +9,10 @@
     <li *ngFor="let place of places">
       <a routerLink="{{place.id}}">
         <img src="{{place.main_photo}}" alt="">
-        <span>{{place.name}}</span>
+        <span>
+          {{place.name}}<br>
+          {{dateService.getWorkState(place.work_time)}}
+        </span>
       </a>
     </li>
   </ul>
