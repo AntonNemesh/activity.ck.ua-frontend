@@ -1,0 +1,47 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.header__link {
+  color: var(--light-color);
+  grid-template: 1fr / 1fr 1fr;
+  display: grid;
+  align-items: center;
+}
+
+.logo-link {
+  font-weight: 600;
+  justify-self: start;
+}
+
+.header__link:focus,
+.header__link:active,
+.header__link:hover {
+  color: var(--bright-color);
+}
+
+.header__logo {
+  width: 80px;
+  height: 80px;
+}
+
+.header__icon {
+  fill: var(--light-color);
+  padding: 7px;
+  width: 35px;
+  height: 35px;
+  border: 2px solid var(--light-color);
+  border-radius: 50%;
+}
+
+.header__auth {
+  justify-self: end;
+}
+
+.header__icon:hover,
+.header__icon:focus,
+.header__icon:active {
+  fill: var(--bright-color);
+}
