@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { EventsService } from '../../../../../services';
-import {IEvent, IEventsResponse} from '../../../../../static/type';
+import { DateService, EventsService } from '../../../../../services';
+import { IEvent, IEventsResponse } from '../../../../../static/type';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { LoaderHelper } from '../../../../../helpers';
@@ -12,7 +12,8 @@ import { LoaderHelper } from '../../../../../helpers';
   styleUrls: ['./section-events-upcoming.component.css']
 })
 export class SectionEventsUpcomingComponent implements OnInit {
-  constructor(private eventsService: EventsService) { }
+
+  constructor(private eventsService: EventsService, private dateService: DateService) { }
 
   public events: IEvent[];
   public eventsFromDate: Observable<IEventsResponse>;
@@ -25,21 +26,15 @@ export class SectionEventsUpcomingComponent implements OnInit {
   public eventsLoaderVisibility: Observable<boolean> = this.eventsLoader.isVisibleLoader$;
   public eventsContentVisibility: Observable<boolean> = this.eventsLoader.isVisibleContent$;
 
-  public getDateUkrFormat(dateString: Date): string {
-    const date: Date = new Date(dateString);
-    const options: any = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    return date.toLocaleString('uk-UK', options);
-  }
-
   ngOnInit(): void {
     this.eventsLoader.show();
     this.numbOfLoadedImages = 0;
     this.dateToday.setHours(0, 0, 0, 0);
-    this.dateUrkFormat = this.getDateUkrFormat(this.dateToday);
+    this.dateUrkFormat = this.dateService.getUkrFormat(this.dateToday);
     this.eventsFromDate = this.dateInput.valueChanges.pipe(
       switchMap((date) => {
         this.eventsLoader.show();
-        this.dateUrkFormat = this.getDateUkrFormat(date);
+        this.dateUrkFormat = this.dateService.getUkrFormat(date);
         return this.eventsService.getEventsFromDate(date.getTime());
       })
     );
