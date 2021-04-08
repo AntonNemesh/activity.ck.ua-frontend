@@ -1,4 +1,4 @@
-<h2 *ngIf="categoryName">Місце категорії: {{categoryName}}</h2>
+<h2 *ngIf="categoryName">Місця категорії: {{categoryName}}</h2>
 <a routerLink="/add_place">Додати локацію</a>
 <app-filter-by-type (filterStateChange)="updateFilterTypeState($event)"
                     [categoryId]="categoryId">
@@ -8,7 +8,10 @@
   <li *ngFor="let place of places">
     <a routerLink="{{place.id}}">
       <img src="{{place.main_photo}}" alt="">
-      <span>{{place.name}}</span>
+      <span>
+        {{place.name}}<br>
+        {{dateService.getWorkState(place.work_time)}}
+      </span>
     </a>
   </li>
 </ul>

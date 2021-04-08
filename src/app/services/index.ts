@@ -6,6 +6,7 @@ import { OrganizationsService } from './organizations.service';
 import { FilesService } from './files.service';
 import { EventsService } from './events.service';
 import { UsersService } from './users.service';
+import { DateService } from './date.service';
 
 // tslint:disable-next-line:typedef
 export const services = [
@@ -16,7 +17,8 @@ export const services = [
   OrganizationsService,
   FilesService,
   EventsService,
-  UsersService
+  UsersService,
+  DateService
 ];
 
 export * from './categories.service';
@@ -27,3 +29,4 @@ export * from './organizations.service';
 export * from './files.service';
 export * from './events.service';
 export * from './users.service';
+export * from './date.service';

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CategoriesService, PlacesService } from '../../../../../services';
+import { CategoriesService, DateService, PlacesService } from '../../../../../services';
 import { IPlace } from '../../../../../static/type';
 import { PlacesRequestParamsHelper } from '../../../../../helpers';
 
@@ -24,7 +24,8 @@ export class PagePlacesListComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private placesService: PlacesService,
-    private categoriesService: CategoriesService) { }
+    private categoriesService: CategoriesService,
+    public dateService: DateService) { }
 
   private updatePlaces(isConcatenation?: boolean): void {
 
