@@ -139,7 +139,7 @@
 
 .categories__list {
   margin-top: 5%;
-  padding-bottom: 7%;
+  padding: 0 10px 7%;
   display: grid;
   column-gap: 30px;
   row-gap: 20px;

@@ -4,7 +4,9 @@
 
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0}
+main {padding: 0}
+
 
 :root {
   --main-text-color: #393939;

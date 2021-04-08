@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+  padding-bottom: 10px;
 }
 
 .header__link {
@@ -37,6 +38,7 @@
 }
 
 .header__auth {
+  padding-right: 10px;
   justify-self: end;
 }
 
