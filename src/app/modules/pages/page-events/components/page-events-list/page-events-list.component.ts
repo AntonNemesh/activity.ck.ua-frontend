@@ -20,7 +20,7 @@ export class PageEventsListComponent implements OnInit {
 
   public page: number = 1;
   public limit: number = 1;
-  public totalPages: number = 5;
+  public totalPages: number;
 
   public getDateUkrFormat(dateString: Date): string {
     const date: Date = new Date(dateString);
@@ -29,13 +29,14 @@ export class PageEventsListComponent implements OnInit {
   }
 
   public updateEvents(isConcatenation?: boolean): void {
-    this.eventsService.getEventsFromDate(this.date.getTime(), this.page, this.limit).subscribe((events) => {
+    this.eventsService.getEventsFromDate(this.date.getTime(), this.page, this.limit).subscribe((data) => {
+      this.totalPages = data._totalPages;
       if (isConcatenation) {
-        this.events = this.events.concat(events);
+        this.events = this.events.concat(data.events);
         return;
       }
       if (this.events?.length) { this.events.length = 0; }
-      this.events = events;
+      this.events = data.events;
     });
   }
 

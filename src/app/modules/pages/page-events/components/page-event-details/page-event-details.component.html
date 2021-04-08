@@ -1,7 +1,7 @@
 <div *ngIf="event">
   <p><b>Ідентифікатор події:</b>  {{eventId}}</p>
   <br><br>
-  <app-gallery [photos]="event.photos"></app-gallery>
+  <app-gallery [photos]="eventPhotos"></app-gallery>
   <br><br>
   <p><b>Назва події:</b>  {{event.name}}</p>
   <div>
@@ -10,10 +10,13 @@
       <li *ngFor="let phone of event.phones">{{phone}}</li>
     </ul>
   </div>
+  <p><b>Опис:</b>  {{event.description}}</p>
   <p><b>Адреса:</b>  {{event.address}}</p>
   <p><b>Веб сайт:</b>  {{event.website}}</p>
-  <p><b>Доступність:</b>  {{event.accessibility}}</p>
-  <p><b>Місце дружнє до дітей:</b>  {{event.child_friendly}}</p>
-  <p><b>Місце дружнє до тварин:</b>  {{event.dog_friendly}}</p>
-  <p><b>Детальна інформація:</b>  {{event.description}}</p>
+  <p><b>Дата початку:</b>  {{event.start_time}}</p>
+  <p><b>Дата кінця:</b>  {{event.end_time}}</p>
+  <p><b>Організатор:</b>  {{event.organizer}}</p>
+  <p><b>Ідентифікатор місця проведення:</b>  {{event.place_id}}</p>
+  <p><b>Ціна:</b>  {{event.price}}</p>
+  <p><b>Програма:</b>  {{event.program}}</p>
 </div>

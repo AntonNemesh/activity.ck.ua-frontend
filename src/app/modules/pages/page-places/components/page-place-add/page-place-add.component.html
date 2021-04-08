@@ -287,9 +287,13 @@
     </mat-vertical-stepper>
   </form>
   <div *ngIf="isSavedPlace">
-    <p class="mat-subheading-2">
+    <p *ngIf="!httpErrorResponse" class="mat-subheading-2 green">
       Запропоноване вами місце успішно додано в обробку!<br>
       Місце стане доступним після того, як пройде модерацію.
+    </p>
+    <p *ngIf="httpErrorResponse" class="mat-subheading-2 red">
+      Запропоноване вами місце не завантажене, через збій з сервером.<br>
+      Повторіть будь ласка спробу через декілька хвилин.
     </p>
     <a routerLink="">Повернутися на голову сторінку</a>
   </div>

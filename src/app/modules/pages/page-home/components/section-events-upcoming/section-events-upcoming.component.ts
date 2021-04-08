@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { EventsService } from '../../../../../services';
-import { IEvent } from '../../../../../static/type';
+import {IEvent, IEventsResponse} from '../../../../../static/type';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { LoaderHelper } from '../../../../../helpers';
@@ -15,7 +15,7 @@ export class SectionEventsUpcomingComponent implements OnInit {
   constructor(private eventsService: EventsService) { }
 
   public events: IEvent[];
-  public eventsFromDate: Observable<IEvent[]>;
+  public eventsFromDate: Observable<IEventsResponse>;
   public dateToday: Date = new Date();
   public dateInput: FormControl = new FormControl('');
   public dateUrkFormat: string;
@@ -43,13 +43,13 @@ export class SectionEventsUpcomingComponent implements OnInit {
         return this.eventsService.getEventsFromDate(date.getTime());
       })
     );
-    this.eventsFromDate.pipe(debounceTime(500)).subscribe((events) => {
-      this.events = events;
+    this.eventsFromDate.pipe(debounceTime(500)).subscribe((data) => {
+      this.events = data.events;
       this.eventsLoader.hide();
     });
     this.eventsService.getEventsFromDate(this.dateToday.getTime()).subscribe(
-(events) => {
-        this.events = events;
+(data) => {
+        this.events = data.events;
         this.eventsLoader.hide();
       }
     );
