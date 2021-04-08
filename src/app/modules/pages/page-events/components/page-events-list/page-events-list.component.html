@@ -1,31 +1,34 @@
-<div class="datepicker-wrapper">
-  <span class="mat-h1">Події</span>
-  <span class="mat-h3">{{dateUrkFormat}}</span>
-  <button class="btn__datepicker" mat-button matSuffix mat-icon-button aria-label="Calendar" (click)="picker.open()">
-    <mat-icon>events</mat-icon>
-  </button>
-  <mat-form-field appearance="fill" style="width: 1px; visibility: hidden">
-    <input matInput [matDatepicker]="picker" [formControl]="dateInput">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+<div class="container">
+  <div class="datepicker-wrapper">
+    <span class="mat-h1">Події</span>
+    <span class="mat-h3">{{dateUrkFormat}}</span>
+    <button class="btn__datepicker" mat-button matSuffix mat-icon-button aria-label="Calendar" (click)="picker.open()">
+      <mat-icon>events</mat-icon>
+    </button>
+    <mat-form-field appearance="fill" style="width: 1px; visibility: hidden">
+      <input matInput [matDatepicker]="picker" [formControl]="dateInput">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="events-wrapper">
+    <ul class="events-list" *ngIf="events?.length">
+      <li class="event" *ngFor="let event of events">
+        <a routerLink="{{event.id}}">
+          <img class="event__photo" src="{{event.main_photo}}">
+          <p class="event__title">
+            {{event.name}}<br>
+            {{dateService.getDateTime(event.start_time)}}
+          </p>
+        </a>
+      </li>
+    </ul>
+    <p class="mat-h3" *ngIf="!events?.length">Нічого не знайдено!</p>
+  </div>
+  <app-pagination *ngIf="totalPages"
+                  (paginationStateChange)="updatePaginationState($event)"
+                  [totalPages]="totalPages"
+                  [datePickerState]="date">
+  </app-pagination>
 </div>
-<div class="events-wrapper">
-  <ul class="events-list" *ngIf="events?.length">
-    <li class="event" *ngFor="let event of events">
-      <a routerLink="{{event.id}}">
-        <img class="event__photo" src="{{event.main_photo}}">
-        <p class="event__title">
-          {{event.name}}<br>
-          {{dateService.getDateTime(event.start_time)}}
-        </p>
-      </a>
-    </li>
-  </ul>
-  <p class="mat-h3" *ngIf="!events?.length">Нічого не знайдено!</p>
-</div>
-<app-pagination *ngIf="totalPages"
-  (paginationStateChange)="updatePaginationState($event)"
-  [totalPages]="totalPages"
-  [datePickerState]="date">
-</app-pagination>
+
