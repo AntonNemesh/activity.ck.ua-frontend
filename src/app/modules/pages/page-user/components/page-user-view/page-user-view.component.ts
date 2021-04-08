@@ -9,7 +9,7 @@ import { IObjectActivity } from '../../../../../static/type/user.interface';
 })
 export class PageUserViewComponent implements OnInit {
 
-  constructor(private userService: UsersService) { }
+  constructor(private usersService: UsersService) { }
 
   public visitedPlaces: IObjectActivity[];
   public favoritePlaces: IObjectActivity[];
@@ -31,35 +31,37 @@ export class PageUserViewComponent implements OnInit {
 
   public limit: number = 1;
 
-  public updateEvents(section: string): void {
+  public updateEvents(section: string = 'all'): void {
     if (section === 'all') {
-      this.userService.getUserActivity(1, this.limit).subscribe(
-        (userActivity) => {
-        this.visitedPlaces = userActivity.visited_places;
-        this.favoritePlaces = userActivity.favorite_places;
-        this.userPlaces = userActivity.user_places;
-        this.userEvents = userActivity.user_events;
-        this.scheduledEvents = userActivity.scheduled_events;
-      });
+      this.usersService.getVisitedPlaces(this.visitedPlacesPage, this.limit).subscribe(
+        (visitedPlaces) => { this.visitedPlaces = visitedPlaces; });
+      this.usersService.getFavoritePlaces(this.favoritePlacesPage, this.limit).subscribe(
+        (favoritePlaces) => { this.favoritePlaces = favoritePlaces; });
+      this.usersService.getCreatedPlaces(this.userPlacesPage, this.limit).subscribe(
+        (userPlaces) => { this.userPlaces = userPlaces; });
+      this.usersService.getCreatedEvents(this.userEventsPage, this.limit).subscribe(
+        (userEvents) => { this.userEvents = userEvents; });
+      this.usersService.getScheduledEvents(this.scheduledEventsPage, this.limit).subscribe(
+        (scheduledEvents) => { this.scheduledEvents = scheduledEvents; });
     }
     if (section === 'visited places') {
-      this.userService.getVisitedPlaces(this.visitedPlacesPage, this.limit).subscribe(
+      this.usersService.getVisitedPlaces(this.visitedPlacesPage, this.limit).subscribe(
         (visitedPlaces) => { this.visitedPlaces = visitedPlaces; });
     }
     if (section === 'favorite places') {
-      this.userService.getFavoritePlaces(this.favoritePlacesPage, this.limit).subscribe(
+      this.usersService.getFavoritePlaces(this.favoritePlacesPage, this.limit).subscribe(
         (favoritePlaces) => { this.favoritePlaces = favoritePlaces; });
     }
-    if (section === 'user places') {
-      this.userService.getUserPlaces(this.userPlacesPage, this.limit).subscribe(
+    if (section === 'created places') {
+      this.usersService.getCreatedPlaces(this.userPlacesPage, this.limit).subscribe(
         (userPlaces) => { this.userPlaces = userPlaces; });
     }
-    if (section === 'user events') {
-      this.userService.getUserEvents(this.userEventsPage, this.limit).subscribe(
+    if (section === 'created events') {
+      this.usersService.getCreatedEvents(this.userEventsPage, this.limit).subscribe(
         (userEvents) => { this.userEvents = userEvents; });
     }
     if (section === 'scheduled events') {
-      this.userService.getScheduledEvents(this.scheduledEventsPage, this.limit).subscribe(
+      this.usersService.getScheduledEvents(this.scheduledEventsPage, this.limit).subscribe(
         (scheduledEvents) => { this.scheduledEvents = scheduledEvents; });
     }
   }
@@ -76,12 +78,12 @@ export class PageUserViewComponent implements OnInit {
 
   public updateUserPlacesPaginationState([page, isConcatenation]: [number, boolean]): void {
     this.userPlacesPage = page;
-    this.updateEvents('user places');
+    this.updateEvents('created places');
   }
 
   public updateUserEventsPaginationState([page, isConcatenation]: [number, boolean]): void {
     this.userEventsPage = page;
-    this.updateEvents('user events');
+    this.updateEvents('created events');
   }
 
   public updateScheduledEventsPaginationState([page, isConcatenation]: [number, boolean]): void {
@@ -90,6 +92,6 @@ export class PageUserViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.updateEvents('all');
+    this.updateEvents();
   }
 }
