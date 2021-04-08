@@ -7266,100 +7266,11 @@
       "approved": false
     }
   ],
-  "users": {
+  "users-myself": {
     "name": "Бартолом'ю Сімпсон",
     "avatar": "https://bipbap.ru/wp-content/uploads/2018/07/BsAiRmTpsons9.png"
   },
-  "users-activity": {
-    "visited_places": [
-      {
-        "id": 20,
-        "category_id": "children",
-        "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
-        "name": "Локація #20"
-      },
-      {
-        "id": 21,
-        "category_id": "culture",
-        "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
-        "name": "Локація #21"
-      },
-      {
-        "id": 22,
-        "category_id": "children",
-        "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
-        "name": "Локація #22"
-      }
-    ],
-    "favorites_places": [
-      {
-        "id": 42,
-        "category_id": "recreation",
-        "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
-        "name": "Локація #42"
-      },
-      {
-        "id": 43,
-        "category_id": "recreation",
-        "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
-        "name": "Локація #43"
-      }
-    ],
-    "user_places": [
-      {
-        "id": 14,
-        "category_id": "todo_something",
-        "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
-        "name": "Локація #14"
-      },
-      {
-        "id": 15,
-        "category_id": "recreation",
-        "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg",
-        "name": "Локація #15"
-      }
-    ],
-    "user_events": [
-      {
-        "id": 1,
-        "name": "Любовні історії Черкащини",
-        "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg"
-      },
-      {
-        "id": 2,
-        "name": "Артпроєкт «КвітиКоти»",
-        "main_photo": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg"
-      }
-    ],
-    "scheduled_events": [
-      {
-        "id": 5,
-        "name": "Трипільсіькі зорі",
-        "main_photo": "https://stingray-market.com.ua/files/uploads/cherkassy.jpg"
-      },
-      {
-        "id": 6,
-        "name": "Таланти Черкащини",
-        "main_photo": "https://dynamo.kiev.ua/media/posts/2020/05/02/stad-cherkassy2.jpg"
-      },
-      {
-        "id": 7,
-        "name": "Вечір живої музики",
-        "main_photo": "https://turborotor.com.ua/img/upload-files/remont%20turbin%20v%20cherkassakh.jpg"
-      },
-      {
-        "id": 8,
-        "name": "Черкаські вертикалі",
-        "main_photo": "https://shorthand-social.imgix.net/prod/story/325G3EqWAn/media/4876d7509c8911e7a61c7318cab86c92/original.jpg"
-      },
-      {
-        "id": 9,
-        "name": "Ярмарок їжї",
-        "main_photo": "http://depotcenter.ua/assets/img/1501694054/covers/cover-1580815034.jpg"
-      }
-    ]
-  },
-  "users-activity-visited_places": [
+  "users-myself-visited_places": [
     {
       "id": 20,
       "category_id": "children",
@@ -7379,7 +7290,7 @@
       "name": "Локація #22"
     }
   ],
-  "users-activity-favorite_places": [
+  "users-myself-favorite_places": [
     {
       "id": 42,
       "category_id": "recreation",
@@ -7393,7 +7304,7 @@
       "name": "Локація #43"
     }
   ],
-  "users-activity-user_places": [
+  "users-myself-created_places": [
     {
       "id": 14,
       "category_id": "todo_something",
@@ -7407,7 +7318,7 @@
       "name": "Локація #15"
     }
   ],
-  "users-activity-user_events": [
+  "users-myself-created_events": [
     {
       "id": 1,
       "name": "Любовні історії Черкащини",
@@ -7419,7 +7330,7 @@
       "main_photo": "https://cfts.org.ua/imglib/_newimage/news/91575/1068.jpg"
     }
   ],
-  "users-activity-scheduled_events": [
+  "users-myself-scheduled_events": [
     {
       "id": 5,
       "name": "Трипільсіькі зорі",

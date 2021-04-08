@@ -13,11 +13,6 @@ export class UsersService {
 
   getUserInfo(): Observable<IUser> {
     // return this.http.get<IUser>(this.apiUrlService.generateApiLink('users'));
-    return this.http.get<IUser>(' http://localhost:3001/users');
-  }
-
-  getUserActivity(): Observable<IUserActivity> {
-    // return this.http.get<IUserActivity>(this.apiUrlService.generateApiLink('users-activity'));
-    return this.http.get<IUserActivity>(' http://localhost:3001/users-activity');
+    return this.http.get<IUser>(' http://localhost:3001/users-myself');
   }
 }
