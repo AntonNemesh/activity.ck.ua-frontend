@@ -34,6 +34,17 @@
       <li *ngIf="!place.work_time.sun"> Неділя: вихідний</li>
     </ul>
   </div>
+  <div *ngIf="events?.length">
+    <b>Найближчі події:</b>
+    <ul class="events-list" >
+      <li class="event" *ngFor="let event of events">
+        <a routerLink="/events/{{event.id}}">
+          <img class="event__photo" src="{{event.main_photo}}" alt="">
+          <p class="event__title">{{event.name}}</p>
+        </a>
+      </li>
+    </ul>
+  </div>
   <p><b>Доступність:</b>  {{place.accessibility}}</p>
   <p><b>Місце дружнє до дітей:</b>  {{place.child_friendly}}</p>
   <p><b>Місце дружнє до тварин:</b>  {{place.dog_friendly}}</p>

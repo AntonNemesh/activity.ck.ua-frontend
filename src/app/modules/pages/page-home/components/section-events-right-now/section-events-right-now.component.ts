@@ -14,12 +14,13 @@ export class SectionEventsRightNowComponent implements OnInit {
   public events: IEvent[];
 
   public page: number = 1;
-  public limit: number = 3;
-  public totalPages: number = 5;
+  public limit: number = 1;
+  public totalPages: number;
 
   public updateEvents(): void {
-    this.eventsService.getEventsNow(this.page, this.limit).subscribe((events) => {
-      this.events = events;
+    this.eventsService.getEventsNow(this.page, this.limit).subscribe((data) => {
+      this.totalPages = data._totalPages;
+      this.events = data.events;
     });
   }
 
