@@ -14,6 +14,12 @@ export class DateService {
     return date.toLocaleString('uk-UK', options);
   }
 
+  public getDateTime(dateString: Date|string): string {
+    const date: Date = new Date(dateString);
+    const options: any = { hour: 'numeric', minute: 'numeric', weekday: 'long', month: 'long', day: 'numeric' };
+    return date.toLocaleString('uk-UK', options);
+  }
+
   public getShortNameOfMonth(date: Date): string {
     return date.toLocaleString('en-US', { weekday: 'short' }).toLowerCase();
   }

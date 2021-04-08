@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EventsService } from '../../../../../services';
+import { DateService, EventsService } from '../../../../../services';
 import { IEvent } from '../../../../../static/type';
 
 @Component({
@@ -9,7 +9,7 @@ import { IEvent } from '../../../../../static/type';
 })
 export class SectionEventsRightNowComponent implements OnInit {
 
-  constructor(private eventsService: EventsService) { }
+  constructor(private eventsService: EventsService, public dateService: DateService) { }
 
   public events: IEvent[];
 

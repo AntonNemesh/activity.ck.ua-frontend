@@ -13,7 +13,7 @@ import { LoaderHelper } from '../../../../../helpers';
 })
 export class SectionEventsUpcomingComponent implements OnInit {
 
-  constructor(private eventsService: EventsService, private dateService: DateService) { }
+  constructor(private eventsService: EventsService, public dateService: DateService) { }
 
   public events: IEvent[];
   public eventsFromDate: Observable<IEventsResponse>;

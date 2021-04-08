@@ -15,7 +15,10 @@
     <li class="event" *ngFor="let event of events">
       <a routerLink="{{event.id}}">
         <img class="event__photo" src="{{event.main_photo}}">
-        <p class="event__title">{{event.name}}</p>
+        <p class="event__title">
+          {{event.name}}<br>
+          {{dateService.getDateTime(event.start_time)}}
+        </p>
       </a>
     </li>
   </ul>

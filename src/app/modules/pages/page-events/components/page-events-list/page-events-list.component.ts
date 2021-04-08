@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EventsService } from '../../../../../services';
+import {DateService, EventsService} from '../../../../../services';
 import { IEvent } from '../../../../../static/type';
 import { FormControl } from '@angular/forms';
 
@@ -9,7 +9,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./page-events-list.component.css']
 })
 export class PageEventsListComponent implements OnInit {
-  constructor(private eventsService: EventsService) { }
+  constructor(private eventsService: EventsService, public dateService: DateService) { }
 
   public events: IEvent[];
   public dateToday: Date = new Date();

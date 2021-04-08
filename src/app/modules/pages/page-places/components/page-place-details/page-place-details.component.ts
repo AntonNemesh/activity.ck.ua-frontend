@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EventsService, PlacesService } from '../../../../../services';
+import {DateService, EventsService, PlacesService} from '../../../../../services';
 import { IEvent, IPlace } from '../../../../../static/type';
 
 
@@ -17,7 +17,8 @@ export class PagePlaceDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private placesService: PlacesService,
-    private eventsService: EventsService) { }
+    private eventsService: EventsService,
+    public dateService: DateService) { }
 
   private page: number = 1;
   private limit: number = 3;
