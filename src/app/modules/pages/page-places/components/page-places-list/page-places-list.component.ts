@@ -17,7 +17,7 @@ export class PagePlacesListComponent implements OnInit {
   public categoryName: string;
   public places: Partial<IPlace[]>;
   public filterTypeState: string[] = [];
-  public filterToleranceState: string[] = [];
+  public filterAvailabilityState: string[] = [];
 
   public totalPages: number;
 
@@ -34,7 +34,7 @@ export class PagePlacesListComponent implements OnInit {
       this.limit,
       this.categoryId,
       this.filterTypeState,
-      this.filterToleranceState
+      this.filterAvailabilityState
     );
 
     this.placesService.getPlaces(options).subscribe((data) => {
@@ -58,8 +58,8 @@ export class PagePlacesListComponent implements OnInit {
     this.updatePlaces();
   }
 
-  public updateFilterToleranceState(filterState: string[]): void{
-    this.filterToleranceState = filterState;
+  public updateFilterAvailabilityState(filterState: string[]): void{
+    this.filterAvailabilityState = filterState;
     this.resetPage();
     this.updatePlaces();
   }

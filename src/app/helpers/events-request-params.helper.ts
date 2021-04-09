@@ -1,28 +1,28 @@
 import {
   IEventRequestParams,
   IEventsRequestParamsHelper,
-  IToleranceFilterState
+  IAvailabilityFilterState
 } from '../static/type';
 
 export class EventsRequestParamsHelper {
   public startTime: number;
   private readonly page: number;
   private readonly limit: number;
-  public filterToleranceState: Partial<IToleranceFilterState> = {};
+  public filterAvailabilityState: Partial<IAvailabilityFilterState> = {};
 
-  constructor(startTime: number, page: number = 1, limit: number = 6, filterToleranceState?: string[]) {
+  constructor(startTime: number, page: number = 1, limit: number = 6, filterAvailabilityState?: string[]) {
     this.startTime = startTime;
     this.page = page;
     this.limit = limit;
-    if (filterToleranceState) {
-      this.setFilterToleranceState(filterToleranceState);
+    if (filterAvailabilityState) {
+      this.setFilterAvailabilityState(filterAvailabilityState);
     }
   }
 
-  private setFilterToleranceState(filterToleranceState: string[]): void {
-    if (!filterToleranceState?.length) { return; }
-    filterToleranceState.forEach((item) => {
-      this.filterToleranceState[item] = true;
+  private setFilterAvailabilityState(filterAvailabilityState: string[]): void {
+    if (!filterAvailabilityState?.length) { return; }
+    filterAvailabilityState.forEach((item) => {
+      this.filterAvailabilityState[item] = true;
     });
   }
 
@@ -33,10 +33,10 @@ export class EventsRequestParamsHelper {
       _limit: this.limit
     };
 
-    if (Object.keys(this.filterToleranceState)?.length) {
-      for (const key in this.filterToleranceState) {
-        if (!this.filterToleranceState.hasOwnProperty(key)){ continue; }
-        params[key] = this.filterToleranceState[key];
+    if (Object.keys(this.filterAvailabilityState)?.length) {
+      for (const key in this.filterAvailabilityState) {
+        if (!this.filterAvailabilityState.hasOwnProperty(key)){ continue; }
+        params[key] = this.filterAvailabilityState[key];
       }
     }
     return params;

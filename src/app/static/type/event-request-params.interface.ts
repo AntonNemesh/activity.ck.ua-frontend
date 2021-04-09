@@ -11,5 +11,5 @@ export interface IEventsRequestParamsHelper {
   startTime: number;
   page: number;
   limit: number;
-  filterToleranceState: string[];
+  filterAvailabilityState: string[];
 }

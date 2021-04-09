@@ -4,7 +4,7 @@ import {
   PaginationComponent,
   LoadingComponent,
   GalleryComponent,
-  FilterByToleranceComponent,
+  filterByAvailabilityComponent,
   FilterByTypeComponent,
   UploaderForPhotosComponent
 } from './components';
@@ -20,7 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoadingComponent,
     PaginationComponent,
     GalleryComponent,
-    FilterByToleranceComponent,
+    filterByAvailabilityComponent,
     FilterByTypeComponent,
     UploaderForPhotosComponent
   ],
@@ -28,7 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoadingComponent,
     PaginationComponent,
     GalleryComponent,
-    FilterByToleranceComponent,
+    filterByAvailabilityComponent,
     FilterByTypeComponent,
     UploaderForPhotosComponent
   ],

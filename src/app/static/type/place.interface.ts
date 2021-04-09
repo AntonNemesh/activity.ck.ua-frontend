@@ -39,7 +39,7 @@ export interface IPlaceForm {
   photos_group: IPhotosGroup;
   work_time_group: IWorkTimeForm;
   organization_group: IOrganizationGroup;
-  tolerance_group: IToleranceGroup;
+  availability_group: IAvailabilityGroup;
   main_group: IMainGroup;
   category_group: ICategoryGroup;
 }
@@ -54,7 +54,7 @@ export interface IOrganizationGroup {
   organization?: IOrganization;
 }
 
-export interface IToleranceGroup {
+export interface IAvailabilityGroup {
   accessibility: boolean;
   child_friendly: boolean;
   dog_friendly: boolean;

@@ -13,5 +13,5 @@ export interface IPlacesRequestParamsHelper {
   limit: number;
   categoryId: string;
   filterTypeState: string[];
-  filterToleranceState: string[];
+  filterAvailabilityState: string[];
 }

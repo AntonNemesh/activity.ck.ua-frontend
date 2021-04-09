@@ -84,10 +84,10 @@ export class PlacesService {
       place.main_photo = dataForm.photos_group.main_photo;
     }
 
-    if (dataForm.hasOwnProperty('tolerance_group')) {
-      place.accessibility = dataForm.tolerance_group.accessibility;
-      place.child_friendly = dataForm.tolerance_group.child_friendly;
-      place.dog_friendly = dataForm.tolerance_group.dog_friendly;
+    if (dataForm.hasOwnProperty('availability_group')) {
+      place.accessibility = dataForm.availability_group.accessibility;
+      place.child_friendly = dataForm.availability_group.child_friendly;
+      place.dog_friendly = dataForm.availability_group.dog_friendly;
     }
 
     if (dataForm.hasOwnProperty('work_time_group')) {

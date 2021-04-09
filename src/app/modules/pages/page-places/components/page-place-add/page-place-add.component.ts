@@ -12,13 +12,13 @@ import {
   IPlace,
   IPlacesCategories,
   IPlacesTypes,
-  IToleranceFilter,
+  IAvailabilityFilter,
   IWeek
 } from '../../../../../static/type';
 import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { finalize, map, startWith } from 'rxjs/operators';
-import { MASK_PHONE, MASK_EMAIL, PATTERN_PHONE, WEEK, TOLERANCE_FILTER } from '../../../../../static/data';
+import { MASK_PHONE, MASK_EMAIL, PATTERN_PHONE, WEEK, AVAILABILITY_FILTER } from '../../../../../static/data';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { LoaderHelper } from '../../../../../helpers';
 
@@ -54,7 +54,7 @@ export class PagePlaceAddComponent implements OnInit {
   public maskEmail: IMaskEmail = MASK_EMAIL;
 
   public week: IWeek[] = WEEK;
-  public toleranceFilter: IToleranceFilter[] = TOLERANCE_FILTER;
+  public availabilityFilter: IAvailabilityFilter[] = AVAILABILITY_FILTER;
 
   public organizationPhones: FormArray = new FormArray(
     [this.phoneFormControl]);
@@ -85,7 +85,7 @@ export class PagePlaceAddComponent implements OnInit {
       ]),
   });
 
-  public toleranceGroup: FormGroup = new FormGroup({});
+  public availabilityGroup: FormGroup = new FormGroup({});
   public workTimeGroup: FormGroup = new FormGroup({});
 
   public mainGroup: FormGroup = new FormGroup(
@@ -119,7 +119,7 @@ export class PagePlaceAddComponent implements OnInit {
   public placeForm: FormGroup = new FormGroup({
     photos_group: this.photosGroup,
     main_group: this.mainGroup,
-    tolerance_group: this.toleranceGroup,
+    availability_group: this.availabilityGroup,
     category_group: this.categoryGroup,
     organization_group: this.organizationGroup,
     work_time_group: this.workTimeGroup,
@@ -149,8 +149,8 @@ export class PagePlaceAddComponent implements OnInit {
       this.workTimeGroup.addControl(`${day.id}_start`, new FormControl(null, Validators.required));
       this.workTimeGroup.addControl(`${day.id}_end`, new FormControl(null, Validators.required));
     });
-    this.toleranceFilter.forEach((item) => {
-      this.toleranceGroup.addControl(item.filter_id, new FormControl(false, Validators.required));
+    this.availabilityFilter.forEach((item) => {
+      this.availabilityGroup.addControl(item.filter_id, new FormControl(false, Validators.required));
     });
   }
 
@@ -194,7 +194,7 @@ export class PagePlaceAddComponent implements OnInit {
     this.mainGroup.get('address').setValue('бул. Шевченко, 244, Черкассы, Черкасская область, 18000');
     this.mainGroup.get('website').setValue('http://fakesite.com');
     this.placePhones.controls[0].setValue('+380 (93) 256 65 45');
-    this.toleranceGroup.get('child_friendly').setValue(true);
+    this.availabilityGroup.get('child_friendly').setValue(true);
     this.workTimeGroup.get('mon_start').setValue('8:00');
     this.workTimeGroup.get('mon_end').setValue('17:00');
     this.workTimeGroup.get('tue_start').setValue('8:00');

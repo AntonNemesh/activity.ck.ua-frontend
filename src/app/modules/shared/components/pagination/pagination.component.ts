@@ -29,7 +29,7 @@ export class PaginationComponent implements OnInit {
   }
 
   @Input('filterTypeState') set _filterTypeState(value: string[]) { this.resetPage(); }
-  @Input('filterToleranceState') set _filterToleranceState(value: string[]) { this.resetPage(); }
+  @Input('filterAvailabilityState') set _filterAvailabilityState(value: string[]) { this.resetPage(); }
   @Input('datePickerState') set _datePickerState(value: Date) { this.resetPage(); }
 
   @Output()

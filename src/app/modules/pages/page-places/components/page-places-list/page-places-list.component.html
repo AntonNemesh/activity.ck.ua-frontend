@@ -6,8 +6,8 @@
         <a routerLink="/add_place" class="filters__link-add link">Додати локацію</a>
       </div>
       <div class="filters__wrapper">
-        <app-filter-by-tolerance (toleranceStateChange)="updateFilterToleranceState($event)">
-        </app-filter-by-tolerance>
+        <app-filter-by-availability (availabilityStateChange)="updateFilterAvailabilityState($event)">
+        </app-filter-by-availability>
         <app-filter-by-type (filterStateChange)="updateFilterTypeState($event)"
                             [categoryId]="categoryId" class="filters__filter-by-type">
         </app-filter-by-type>
@@ -36,7 +36,7 @@
       <app-pagination *ngIf="totalPages"
                       (paginationStateChange)="updatePaginationState($event)"
                       [filterTypeState]="filterTypeState"
-                      [filterToleranceState]="filterToleranceState"
+                      [filterAvailabilityState]="filterAvailabilityState"
                       [totalPages]="totalPages"
                       [categoryId]="categoryId">
       </app-pagination>

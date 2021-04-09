@@ -23,7 +23,7 @@ export class PageEventsListComponent implements OnInit {
   public limit: number = 1;
   public totalPages: number;
 
-  public filterToleranceState: string[];
+  public filterAvailabilityState: string[];
 
   private resetPage(): void {
     this.page = 1;
@@ -40,7 +40,7 @@ export class PageEventsListComponent implements OnInit {
       this.date.getTime(),
       this.page,
       this.limit,
-      this.filterToleranceState
+      this.filterAvailabilityState
     );
 
     this.eventsService.getEventsFromDate(options).subscribe((data) => {
@@ -59,8 +59,8 @@ export class PageEventsListComponent implements OnInit {
     this.updateEvents(isConcatenation);
   }
 
-  public updateFilterToleranceState(filterState: string[]): void{
-    this.filterToleranceState = filterState;
+  public updateFilterAvailabilityState(filterState: string[]): void{
+    this.filterAvailabilityState = filterState;
     this.resetPage();
     this.updateEvents();
   }

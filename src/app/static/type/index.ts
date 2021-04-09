@@ -5,7 +5,7 @@ export {
   IPlace,
   IPlaceForm,
   ICategoryGroup,
-  IToleranceGroup,
+  IAvailabilityGroup,
   IPlaceBase,
   IMainGroup,
   IOrganizationGroup,
@@ -15,9 +15,9 @@ export {
 } from './place.interface';
 
 export { IPhotos } from './photos.interface';
-export { IToleranceFilter } from './tolerance-filter.interface';
+export { IAvailabilityFilter } from './availability-filter.interface';
 export { IPlaceRequestParams } from './place-request-params.interface';
-export { IToleranceFilterState } from './tolerance-filter-state.interface';
+export { IAvailabilityFilterState } from './availability-filter-state.interface';
 export { IPlacesRequestParamsHelper } from './place-request-params.interface';
 export { IEnvironment } from './enviroment.interface';
 export { IOrganizations, IOrganization } from './organization.interface';
