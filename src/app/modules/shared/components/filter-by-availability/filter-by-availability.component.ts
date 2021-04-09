@@ -8,7 +8,7 @@ import { FormArray, FormControl } from '@angular/forms';
   templateUrl: './filter-by-availability.component.html',
   styleUrls: [ './filter-by-availability.component.css' ]
 })
-export class filterByAvailabilityComponent implements OnInit {
+export class FilterByAvailabilityComponent implements OnInit {
   public availabilityFilter: IAvailabilityFilter[] = AVAILABILITY_FILTER;
   public selectedFilter: string[];
   public availabilityFilterArray: FormArray = new FormArray([]);
