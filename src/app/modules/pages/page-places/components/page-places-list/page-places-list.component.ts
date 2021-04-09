@@ -30,13 +30,11 @@ export class PagePlacesListComponent implements OnInit {
   private updatePlaces(isConcatenation?: boolean): void {
 
     const options: PlacesRequestParamsHelper = new PlacesRequestParamsHelper(
-      {
-      page: this.page,
-      limit: this.limit,
-      categoryId: this.categoryId,
-      filterTypeState: this.filterTypeState,
-      filterToleranceState: this.filterToleranceState,
-      }
+      this.page,
+      this.limit,
+      this.categoryId,
+      this.filterTypeState,
+      this.filterToleranceState
     );
 
     this.placesService.getPlaces(options).subscribe((data) => {

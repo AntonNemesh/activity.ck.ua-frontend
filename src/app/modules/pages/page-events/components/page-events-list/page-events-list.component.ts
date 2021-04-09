@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {DateService, EventsService} from '../../../../../services';
+import { DateService, EventsService } from '../../../../../services';
 import { IEvent } from '../../../../../static/type';
 import { FormControl } from '@angular/forms';
+import { EventsRequestParamsHelper } from '../../../../../helpers';
 
 @Component({
   selector: 'app-page-events-list',
@@ -22,6 +23,12 @@ export class PageEventsListComponent implements OnInit {
   public limit: number = 1;
   public totalPages: number;
 
+  public filterToleranceState: string[];
+
+  private resetPage(): void {
+    this.page = 1;
+  }
+
   public getDateUkrFormat(dateString: Date): string {
     const date: Date = new Date(dateString);
     const options: any = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -29,7 +36,14 @@ export class PageEventsListComponent implements OnInit {
   }
 
   public updateEvents(isConcatenation?: boolean): void {
-    this.eventsService.getEventsFromDate(this.date.getTime(), this.page, this.limit).subscribe((data) => {
+    const options: EventsRequestParamsHelper = new EventsRequestParamsHelper(
+      this.date.getTime(),
+      this.page,
+      this.limit,
+      this.filterToleranceState
+    );
+
+    this.eventsService.getEventsFromDate(options).subscribe((data) => {
       this.totalPages = data._totalPages;
       if (isConcatenation) {
         this.events = this.events.concat(data.events);
@@ -45,6 +59,12 @@ export class PageEventsListComponent implements OnInit {
     this.updateEvents(isConcatenation);
   }
 
+  public updateFilterToleranceState(filterState: string[]): void{
+    this.filterToleranceState = filterState;
+    this.resetPage();
+    this.updateEvents();
+  }
+
   ngOnInit(): void {
     this.numbOfLoadedImages = 0;
     this.dateToday.setHours(0, 0, 0, 0);
@@ -53,7 +73,7 @@ export class PageEventsListComponent implements OnInit {
     this.dateInput.valueChanges.subscribe((date) => {
       this.dateUrkFormat = this.getDateUkrFormat(date);
       this.date = date;
-      this.page = 1;
+      this.resetPage();
       this.updateEvents();
     });
 

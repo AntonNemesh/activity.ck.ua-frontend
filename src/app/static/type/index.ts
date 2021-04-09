@@ -26,3 +26,4 @@ export { IWeek, IWorkTimeForm, IWorkTime, IWorkDay } from './week.interface';
 export { IEvent, IEventsResponse, IEventResponse } from './events.interface';
 export { IUser } from './user.interface';
 export { IUserActivity } from './user.interface';
+export { IEventRequestParams, IEventsRequestParamsHelper } from './event-request-params.interface';

@@ -7,7 +7,7 @@ export class PlacesRequestParamsHelper {
   private typeId: string;
   public filterToleranceState: Partial<IToleranceFilterState> = {};
 
-  constructor({page, limit, categoryId, filterTypeState, filterToleranceState}: IPlacesRequestParamsHelper) {
+  constructor(page: number, limit: number, categoryId: string, filterTypeState: string[], filterToleranceState: string[]) {
     this.page = page;
     this.limit = limit;
     this.categoryId = categoryId;

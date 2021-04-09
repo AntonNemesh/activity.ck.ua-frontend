@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FilterByTypeService } from '../../../../../services';
-import { IPlacesTypes } from '../../../../../static/type';
+import { FilterByTypeService } from '../../../../services';
+import { IPlacesTypes } from '../../../../static/type';
 import { FormArray, FormControl } from '@angular/forms';
 
 @Component({

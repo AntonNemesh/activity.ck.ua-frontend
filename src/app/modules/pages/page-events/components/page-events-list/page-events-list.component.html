@@ -1,4 +1,6 @@
 <div class="container">
+  <app-filter-by-tolerance (toleranceStateChange)="updateFilterToleranceState($event)">
+  </app-filter-by-tolerance>
   <div class="datepicker-wrapper">
     <span class="mat-h1">Події</span>
     <span class="mat-h3">{{dateUrkFormat}}</span>
@@ -27,6 +29,7 @@
   </div>
   <app-pagination *ngIf="totalPages"
                   (paginationStateChange)="updatePaginationState($event)"
+                  [filterToleranceState]="filterToleranceState"
                   [totalPages]="totalPages"
                   [datePickerState]="date">
   </app-pagination>

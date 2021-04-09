@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { IToleranceFilter } from '../../../../../static/type';
-import { TOLERANCE_FILTER } from '../../../../../static/data';
+import { IToleranceFilter } from '../../../../static/type';
+import { TOLERANCE_FILTER } from '../../../../static/data';
 import { FormArray, FormControl } from '@angular/forms';
 
 @Component({

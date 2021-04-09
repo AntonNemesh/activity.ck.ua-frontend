@@ -4,7 +4,7 @@ import { DateService, EventsService } from '../../../../../services';
 import { IEvent, IEventsResponse } from '../../../../../static/type';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { LoaderHelper } from '../../../../../helpers';
+import { EventsRequestParamsHelper, LoaderHelper} from '../../../../../helpers';
 
 @Component({
   selector: 'app-section-events-upcoming',
@@ -42,7 +42,8 @@ export class SectionEventsUpcomingComponent implements OnInit {
       this.events = data.events;
       this.eventsLoader.hide();
     });
-    this.eventsService.getEventsFromDate(this.dateToday.getTime()).subscribe(
+    const options: EventsRequestParamsHelper = new EventsRequestParamsHelper(this.dateToday.getTime());
+    this.eventsService.getEventsFromDate(options).subscribe(
 (data) => {
         this.events = data.events;
         this.eventsLoader.hide();

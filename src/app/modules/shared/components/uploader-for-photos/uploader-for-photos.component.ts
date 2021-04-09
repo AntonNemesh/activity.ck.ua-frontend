@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FilesValidator } from '../../../../../validators';
-import { FilesService } from '../../../../../services';
-import { LoaderHelper } from '../../../../../helpers';
+import { FilesValidator } from '../../../../validators';
+import { FilesService } from '../../../../services';
+import { LoaderHelper } from '../../../../helpers';
 import { Observable } from 'rxjs';
 
 
