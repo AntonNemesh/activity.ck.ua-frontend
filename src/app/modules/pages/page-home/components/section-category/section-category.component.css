@@ -3,25 +3,20 @@
   grid-auto-columns: 1fr;
   grid-auto-rows: 1fr;
   justify-items: start;
-  /*margin: var(--section-margin);*/
 }
 
 .video__overlay {
   grid-row: 1;
   grid-column: 1;
   display: grid;
-  grid-template-columns: 1fr;
   align-items: center;
-  justify-items: start;
   background: rgba(0, 0, 0, 0.3);
   width: 100%;
-  height: auto;
-  z-index: 4;
+  z-index: 1;
 }
 
 .video__text {
   width: 100%;
-  display: block;
   padding-left: 40px;
 }
 
@@ -34,7 +29,6 @@
 }
 
 .video__desc {
-  padding: 0 0 15px;
   font-size: 15px;
 }
 
@@ -122,8 +116,9 @@
 /**categories**/
 
 .categories-wrapper {
+  padding: 0 20px;
   background: #E5E5E5;
-  padding-top: 5%;
+  padding-top: 4%;
 }
 
 .categories {
@@ -131,40 +126,47 @@
 }
 
 .categories__title {
-  padding-left: 40px;
   font: var(--text-headline);
   color: var(--main-text-color);
 }
 
 .categories__list {
-  margin-top: 5%;
-  padding: 0 10px 7%;
+  padding: 0 10px 4%;
   display: grid;
   column-gap: 30px;
   row-gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(166px, 1fr));
   grid-auto-rows: 1fr;
+  justify-content: center;
 }
 
-.categories__list li {
-  row-gap: 30px;
-  margin-bottom: 30px;
-}
-
-.categories-item {
+.categories__item-link-wrapper {
+  margin-top: 17%;
+  color: var(--main-text-color);
   display: grid;
   grid-auto-flow: row;
   grid-template: auto 1fr minmax(40px, auto) / 1fr;
 }
 
+.categories__item-link-wrapper :hover .content {
+  margin-bottom: 0;
+}
+
+.categories__item-link-wrapper:hover .categories__link {
+  opacity: 0;
+}
+
+.categories__item-link-wrapper :hover .photo-overlay {
+  opacity: 1;
+}
+
 .categories__link {
-  display: block;
-  padding: 10px 0;
+  color: var(--main-text-color);
+  margin: 10px 0;
   font-weight: 600;
   letter-spacing: .1rem;
   text-transform: uppercase;
   font-family: 'Inter', sans-serif;
-  color: var(--text-font);
 }
 
 .categories__link:hover {
@@ -186,8 +188,6 @@
   grid-row: 1;
   grid-column: 1;
   background: rgba(0, 0, 0, 0.3);
-  width: 100%;
-  height: 200px;
   border-radius: 8px;
 }
 
@@ -200,14 +200,43 @@
   display: grid;
   grid-row: 1;
   grid-column: 1;
-  background: url(../../../../../../assets/14_DSC_8580.jpg);
-  background-size: cover;
-  width: 105%;
+  width: 102%;
   height: 120%;
   border-radius: 8px;
   position: relative;
   /*transition: opacity 1s;*/
 }
+
+.categories__photo-overlay-sleeping {
+  background: url(../../../../../../assets/sleeping.jpg) no-repeat;
+  background-size: cover;
+}
+
+.categories__photo-overlay-gastronomy {
+  background: url(../../../../../../assets/gastronomy.jpg) no-repeat;
+  background-size: cover;
+}
+
+.categories__photo-overlay-recreation {
+  background: url(../../../../../../assets/recreation.jpg) no-repeat;
+  background-size: cover;
+}
+
+.categories__photo-overlay-culture {
+  background: url(../../../../../../assets/culture.jpg) no-repeat;
+  background-size: cover;
+}
+
+.categories__photo-overlay-unique {
+  background: url(../../../../../../assets/unique.jpg) no-repeat;
+  background-size: cover;
+}
+
+.categories__photo-overlay-navigation {
+  background: url(../../../../../../assets/navigation.jpg) no-repeat;
+  background-size: cover;
+}
+
 
 .photo-overlay:before {
   content: '';
@@ -220,34 +249,60 @@
   border-radius: 8px;
   }
 
-
-
 .content {
   position: relative;
   text-transform: capitalize;
   font: var(--text-font);
   align-self: center;
   text-align: center;
-  margin-bottom: -30px;
+  margin-bottom: -100%;
+  transition: margin-bottom 1s;
 }
 
 .content span {
-  margin-top: 25px;
+  margin: 0 auto;
   text-align: center;
   color: #ffffff;
   font: var(--text-headline);
+  max-width: 160px;
+  font-size: 1.4rem;
   font-weight: 600;
 }
 
-.photo-overlay:hover .content {
-  margin-bottom: 0;
+
+@media (min-width: 1201px) {
+  .categories-wrapper {
+    padding: 4% 0 0;
+  }
+}
+.photo-wrapper-test {
+display: grid;
+  grid-template-rows: 1fr;
+  grid-row: 1;
+  grid-column: 1;
 }
 
-.categories__item:hover .categories__link {
-  opacity: 0;
-
+.img-test-col {
+  position: absolute;
+  grid-row: 1;
+  grid-column: 1;
 }
 
-.categories__item:hover .photo-overlay {
-  opacity: 1;
+.photo-overlay-test {
+  position: relative;
+  top:0;
+  left: 0;
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.photo-overlay-test:before {
+  content: '';
+  display: grid;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
 }

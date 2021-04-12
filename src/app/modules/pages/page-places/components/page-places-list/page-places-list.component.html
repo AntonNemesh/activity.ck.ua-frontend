@@ -17,19 +17,38 @@
   <section class="places">
     <div class="container">
       <ul class="places__list">
-        <li *ngFor="let place of places" class="places__item list">
-          <div routerLink="{{place.id}}" class="places__img-wrapper link">
+        <li *ngFor="let place of places" class="list">
+          <div routerLink="{{place.id}}" class="places__item list">
+          <div class="places__img-wrapper link">
             <img src="{{place.main_photo}}" alt="" class="places__prev-photo">
           </div>
           <div class="places__about-info">
             <p class="places__about-info-headline">{{place.name}}</p>
-            <p class="places__about-info-text">{{place.address}}</p>
-            <p class="places__about-info-text">{{dateService.getWorkState(place.work_time)}}</p>
+            <a href="https:/maps.google.com/?q={{place.address}}" class="places__about-info-text places__about-info-link">
+              <svg viewBox="0 0 512 512" class="places__icon">
+                <use xlink:href="../../../../../assets/icons.svg#map"></use>
+              </svg>
+              {{place.address}}</a>
+            <p class="places__about-info-text">
+              <svg viewBox="0 0 512 512" class="places__icon">
+                <use xlink:href="../../../../../assets/icons.svg#clock"></use>
+              </svg>
+              {{dateService.getWorkState(place.work_time)}}
+            </p>
 
-            <a href="tel:{{place.phones}}" class="places__about-info-text link">
+            <a href="tel:{{place.phones}}" class="places__about-info-text places__about-info-link">
+              <svg viewBox="0 0 35 35" class="places__icon">
+                <use xlink:href="../../../../../assets/icons.svg#phone"></use>
+              </svg>
               {{place.phones}}
             </a>
-            <a href="{{place.website}}" class="places__about-info-text link">{{place.website}}</a>
+            <a href="{{place.website}}" class="places__about-info-text places__about-info-link">
+              <svg viewBox="0 0 128 128" class="places__icon">
+                <use xlink:href="../../../../../assets/icons.svg#website"></use>
+              </svg>
+              {{place.website}}
+            </a>
+          </div>
           </div>
         </li>
       </ul>

@@ -50,6 +50,12 @@
 
 .places__item {
   padding: 10px;
+  color: var(--main-text-color);
+  text-decoration: none;
+}
+.places__item:hover {
+  background-color: #fff;
+
 }
 
 .places__img-wrapper {
@@ -67,7 +73,7 @@
 .places__about-info {
   padding-left: 20px;
   display: grid;
-  grid-template: repeat(auto-fill,  minmax(30px, 1fr)) / minmax(50px, 1fr);
+  grid-template: repeat(auto-fit,  minmax(30px, 1fr)) / minmax(50px, 1fr);
   align-items: center;
 }
 
@@ -77,14 +83,25 @@
   text-transform: capitalize;
 }
 
-.icon {
-  width: 35px;
-  fill: var(--light-color);
-}
-
 .places__about-info-text {
+  padding: 12px;
+  width: 100%;
   font: var(--text-font);
   color: var(--main-text-color);
+}
+
+
+.places__about-info-link {
+  text-decoration: none;
+}
+
+.places__about-info-link:hover {
+  text-decoration: underline 2px var(--bright-color);
+  color: var(--bright-color);
+}
+.places__icon {
+  width: 25px;
+  fill: var(--light-color);
 }
 
 @media (min-width: 481px) {
