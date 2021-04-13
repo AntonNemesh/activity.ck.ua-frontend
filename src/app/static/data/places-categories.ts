@@ -5,6 +5,6 @@ export const PLACES_CATEGORIES: IPlacesCategories[] = [
   {id: 'gastronomy', name: 'гастрономічні пригоди'},
   {id: 'recreation', name: 'місце відпочинку'},
   {id: 'culture', name: 'культурне натхнення'},
-  {id: 'unique', name: 'унікальні речі'},
+  {id: 'unique', name: 'унікальність міста'},
   {id: 'navigation', name: 'навігацію містом'},
 ];
