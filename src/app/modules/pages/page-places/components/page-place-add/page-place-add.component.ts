@@ -16,7 +16,7 @@ import {
   IWeek
 } from '../../../../../static/type';
 import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { finalize, map, startWith } from 'rxjs/operators';
 import { MASK_PHONE, MASK_EMAIL, PATTERN_PHONE, WEEK, AVAILABILITY_FILTER } from '../../../../../static/data';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
@@ -329,7 +329,10 @@ export class PagePlaceAddComponent implements OnInit {
           startWith(''),
           map((value) => {
             const result: string[] = this.filter(value, true);
-            if (!result?.length) {
+            if (this.organizationGroup.get('organization_id').pristine) { return result; }
+
+            const organizationId: number = this.organizationsService.getOrganizationId(this.organizations.approvedOrganizations, value);
+            if (organizationId === -1) {
               this.organizationGroup.addControl('organization', this.proposeOrganization);
               this.isNewOrganization = true;
             } else {
@@ -346,7 +349,10 @@ export class PagePlaceAddComponent implements OnInit {
           startWith(''),
           map((value) => {
             const result: string[] = this.filter(value, false);
-            if (!result?.length) {
+            if (this.proposeOrganization.get('name').pristine) { return result; }
+
+            const organizationId: number = this.organizationsService.getOrganizationId(this.organizations.proposedOrganizations, value);
+            if (organizationId === -1) {
               this.proposeOrganization.addControl('phones', this.organizationPhones);
               this.proposeOrganization.addControl('email', new FormControl(null, [
                 Validators.required,
