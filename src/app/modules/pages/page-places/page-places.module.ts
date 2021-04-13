@@ -7,9 +7,6 @@ import {
   PagePlacesListComponent,
   PagePlaceDetailsComponent,
   PagePlaceAddComponent,
-  FilterByTypeComponent,
-  FilterByToleranceComponent,
-  UploaderForPhotosComponent,
 } from './components';
 import { PagePlacesRoutingModule } from './page-places-routing.module';
 import { MaterialModule } from '../../material';
@@ -25,9 +22,6 @@ import { AngularFireModule } from '@angular/fire';
     PagePlacesListComponent,
     PagePlaceDetailsComponent,
     PagePlaceAddComponent,
-    FilterByTypeComponent,
-    FilterByToleranceComponent,
-    UploaderForPhotosComponent,
   ],
   imports: [
     CommonModule,

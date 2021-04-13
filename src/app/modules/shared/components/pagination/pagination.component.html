@@ -1,10 +1,19 @@
-<div class="pagination__more">
-  <a href="" *ngIf="isTheLastPage" (click)="setNextPage($event)">Показати ще...</a>
+<div *ngIf="isArrowPagination">
+  <button *ngIf="page > 1" mat-button matSuffix mat-icon-button (click)="setPrevPage()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <button *ngIf="page < totalPages" mat-button matSuffix mat-icon-button (click)="setNextPage()">
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
 </div>
-<div class="pagination__numb">
-  <a href="" *ngIf="totalPages > 1" (click)="setPage($event, 1)" class="button" [class.active]="checkState(1)">{{1}}</a>
-  <span class="pagination__separator" *ngIf="this.separatorState[0]">...</span>
-  <span *ngFor="let item of [].constructor(totalPages); let page = index">
+<div *ngIf="!isArrowPagination">
+  <div class="pagination__more">
+    <a href="" *ngIf="isTheLastPage" (click)="concatPage($event)">Показати ще...</a>
+  </div>
+  <div class="pagination__numb">
+    <a href="" *ngIf="totalPages > 1" (click)="setPage($event, 1)" class="button" [class.active]="checkState(1)">{{1}}</a>
+    <span class="pagination__separator" *ngIf="this.separatorState[0]">...</span>
+    <span *ngFor="let item of [].constructor(totalPages); let page = index">
     <a href=""
        *ngIf="checkButtonVisibility(page+1)"
        (click)="setPage($event, page+1)"
@@ -12,6 +21,7 @@
        class="button"
     >{{page+1}}</a>
   </span>
-  <span class="pagination__separator" *ngIf="this.separatorState[1]">...</span>
-  <a href="" *ngIf="totalPages !== 1" (click)="setPage($event, totalPages)" class="button" [class.active]="checkState(totalPages)">{{totalPages}}</a>
+    <span class="pagination__separator" *ngIf="this.separatorState[1]">...</span>
+    <a href="" *ngIf="totalPages !== 1" (click)="setPage($event, totalPages)" class="button" [class.active]="checkState(totalPages)">{{totalPages}}</a>
+  </div>
 </div>

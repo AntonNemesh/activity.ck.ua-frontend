@@ -1,22 +1,122 @@
-ul {
-  list-style: none;
-  min-height: 430px;
+.main-wrapper {
+  background-color: #f2f2f2;
+  padding: 50px 10px;
 }
 
-li {
-  padding-bottom: 10px;
+.filters__wrapper {
+  display: grid;
+  grid-template: 1fr/ 1fr 1fr;
 }
 
-li a {
-  font-size: 16px;
-  display: flex;
+.filters {
+  padding: 0 20px;
+}
+
+.filters__headline {
+  margin: 0;
+  font-size: 15px;
+  line-height: 18px;
+  font-weight: 500;
+}
+
+.filters__link-add {
+  padding: 5px;
+  justify-self: end;
+  align-self: center;
+  background-color: #ffffff;
+  color: var(--main-text-color);
+  border: 1px solid var(--main-text-color);
+  border-radius: 8px;
+  transition: background-color 2s;
+}
+
+
+.filters__link-add:hover,
+.filters__link-add:active,
+.filters__link-add:focus {
+  background-color: var(--main-text-color);
+  color: #ffffff;
+}
+
+/*list*/
+
+.places {
+  padding: 50px 20px;
+}
+
+.places__list {
+  padding: 0;
+}
+
+.places__item {
+  padding: 10px;
+}
+
+.places__img-wrapper {
+  max-width: 300px;
+}
+
+.places__prev-photo {
+  margin-bottom: 25px;
+  object-fit: cover;
+  width: 100%;
+  max-height: 250px;
+  border-radius: 8px;
+}
+
+.places__about-info {
+  padding-left: 20px;
+  display: grid;
+  grid-template: repeat(auto-fill,  minmax(30px, 1fr)) / minmax(50px, 1fr);
   align-items: center;
 }
 
-img {
-  max-width: 150px;
+.places__about-info-headline {
+  font: var(--text-headline);
+  font-size: 1.2rem;
+  text-transform: capitalize;
 }
 
-span {
-  margin-left: 20px;
+.icon {
+  width: 35px;
+  fill: var(--light-color);
+}
+
+.places__about-info-text {
+  font: var(--text-font);
+  color: var(--main-text-color);
+}
+
+@media (min-width: 481px) {
+
+  .filters {
+    padding: 0 10px;
+  }
+
+  .filters__headline {
+    font: var(--text-headline);
+    color: var(--main-text-color);
+  }
+
+  .filters__link-add {
+    padding: 10px 25px;
+    font: var(--text-headline);
+    font-size: 1.2rem;
+  }
+
+  .places {
+    padding: 30px 10px;
+  }
+
+  .places__img-wrapper {
+    max-width: 250px;
+  }
+
+  .places__item {
+    padding: 20px;
+    display: grid;
+    grid-template: 1fr/ .3fr 1fr;
+    row-gap: 30px;
+  }
+
 }

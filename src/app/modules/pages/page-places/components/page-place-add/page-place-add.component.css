@@ -62,17 +62,21 @@ mat-form-field {
   font-size: 75%;
 }
 
-.tolerance section {
+.availability section {
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-.tolerance mat-checkbox {
+.availability mat-checkbox {
   padding-right: 27px;
 }
 
-.tolerance mat-checkbox:last-of-type {
+.availability mat-checkbox:last-of-type {
   padding: 0;
+}
+
+.green {
+  color: #4CAF50;
 }
 
 .red {

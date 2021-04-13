@@ -1,29 +1,29 @@
-import { IPlaceRequestParams, IPlacesRequestParamsHelper, IToleranceFilterState } from '../static/type';
+import { IPlaceRequestParams, IPlacesRequestParamsHelper, IAvailabilityFilterState } from '../static/type';
 
 export class PlacesRequestParamsHelper {
   private readonly page: number;
   private readonly limit: number;
   private readonly categoryId: string;
   private typeId: string;
-  public filterToleranceState: Partial<IToleranceFilterState> = {};
+  public filterAvailabilityState: Partial<IAvailabilityFilterState> = {};
 
-  constructor({page, limit, categoryId, filterTypeState, filterToleranceState}: IPlacesRequestParamsHelper) {
+  constructor(page: number, limit: number, categoryId: string, filterTypeState: string[], filterAvailabilityState: string[]) {
     this.page = page;
     this.limit = limit;
     this.categoryId = categoryId;
     this.setFilterTypeState(filterTypeState);
-    this.setFilterToleranceState(filterToleranceState);
+    this.setFilterAvailabilityState(filterAvailabilityState);
   }
 
   private setFilterTypeState(filterTypeState: string[]): void {
     if (!filterTypeState?.length) { return; }
-    this.typeId = filterTypeState[0];
+    this.typeId = filterTypeState.join('-');
   }
 
-  private setFilterToleranceState(filterToleranceState: string[]): void {
-    if (!filterToleranceState?.length) { return; }
-    filterToleranceState.forEach((item) => {
-      this.filterToleranceState[item] = true;
+  private setFilterAvailabilityState(filterAvailabilityState: string[]): void {
+    if (!filterAvailabilityState?.length) { return; }
+    filterAvailabilityState.forEach((item) => {
+      this.filterAvailabilityState[item] = true;
     });
   }
 
@@ -39,10 +39,10 @@ export class PlacesRequestParamsHelper {
       params.category_id = this.categoryId;
     }
 
-    if (Object.keys(this.filterToleranceState)?.length) {
-      for (const key in this.filterToleranceState) {
-        if (!this.filterToleranceState.hasOwnProperty(key)){ continue; }
-        params[key] = this.filterToleranceState[key];
+    if (Object.keys(this.filterAvailabilityState)?.length) {
+      for (const key in this.filterAvailabilityState) {
+        if (!this.filterAvailabilityState.hasOwnProperty(key)){ continue; }
+        params[key] = this.filterAvailabilityState[key];
       }
     }
     return params;

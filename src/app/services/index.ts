@@ -5,6 +5,8 @@ import { FilterByTypeService } from './filter-by-type.service';
 import { OrganizationsService } from './organizations.service';
 import { FilesService } from './files.service';
 import { EventsService } from './events.service';
+import { UsersService } from './users.service';
+import { DateService } from './date.service';
 
 // tslint:disable-next-line:typedef
 export const services = [
@@ -14,7 +16,9 @@ export const services = [
   FilterByTypeService,
   OrganizationsService,
   FilesService,
-  EventsService
+  EventsService,
+  UsersService,
+  DateService
 ];
 
 export * from './categories.service';
@@ -24,3 +28,5 @@ export * from './filter-by-type.service';
 export * from './organizations.service';
 export * from './files.service';
 export * from './events.service';
+export * from './users.service';
+export * from './date.service';

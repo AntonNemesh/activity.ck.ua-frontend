@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../../../../services';
+import { IUser } from '../../../../static/type';
 
 @Component({
   selector: 'app-layout-header',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./layout-header.component.css']
 })
 export class LayoutHeaderComponent implements OnInit {
+  constructor(private usersService: UsersService) { }
 
-  constructor() { }
+  public user: IUser;
+
+  private updateInfo(): void {
+    this.usersService.getUserInfo().subscribe((user) => {
+      this.user = user;
+    });
+  }
 
   ngOnInit(): void {
+    if (!this.user) { this.updateInfo(); }
   }
 
 }

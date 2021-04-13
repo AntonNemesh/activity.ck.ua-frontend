@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PlacesService } from '../../../../../services';
-import { IPlace } from '../../../../../static/type';
+import {DateService, EventsService, PlacesService} from '../../../../../services';
+import { IEvent, IPlace } from '../../../../../static/type';
 
 
 @Component({
@@ -12,12 +12,23 @@ import { IPlace } from '../../../../../static/type';
 export class PagePlaceDetailsComponent implements OnInit {
   public placeId: string;
   public place: IPlace;
+  public events: IEvent[];
 
-  constructor(private route: ActivatedRoute, private placesService: PlacesService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private placesService: PlacesService,
+    private eventsService: EventsService,
+    public dateService: DateService) { }
+
+  private page: number = 1;
+  private limit: number = 3;
 
   getPlace(): void {
     this.placesService.getPlaceById(this.placeId).subscribe((place) => {
       this.place = place;
+    });
+    this.eventsService.getEventsByPlaceId(this.placeId, this.page, this.limit).subscribe((data) => {
+      this.events = data.events;
     });
   }
 

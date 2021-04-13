@@ -5,20 +5,25 @@ export {
   IPlace,
   IPlaceForm,
   ICategoryGroup,
-  IToleranceGroup,
+  IAvailabilityGroup,
   IPlaceBase,
   IMainGroup,
   IOrganizationGroup,
   IPhotosGroup,
+  IPlacesResponse,
+  IPlaceResponse
 } from './place.interface';
 
 export { IPhotos } from './photos.interface';
-export { IToleranceFilter } from './tolerance-filter.interface';
+export { IAvailabilityFilter } from './availability-filter.interface';
 export { IPlaceRequestParams } from './place-request-params.interface';
-export { IToleranceFilterState } from './tolerance-filter-state.interface';
+export { IAvailabilityFilterState } from './availability-filter-state.interface';
 export { IPlacesRequestParamsHelper } from './place-request-params.interface';
 export { IEnvironment } from './enviroment.interface';
-export { IOrganization, IProposeOrganization } from './organization.interface';
+export { IOrganizations, IOrganization } from './organization.interface';
 export { IMaskEmail } from './masks-patterns.interface';
 export { IWeek, IWorkTimeForm, IWorkTime, IWorkDay } from './week.interface';
-export { IEvent } from './events.interface';
+export { IEvent, IEventsResponse, IEventResponse } from './events.interface';
+export { IUser } from './user.interface';
+export { IUserActivity } from './user.interface';
+export { IEventRequestParams, IEventsRequestParamsHelper } from './event-request-params.interface';

@@ -1,6 +1,0 @@
-<div class="filter">
-  <div *ngFor="let control of formTypes.controls; index as i">
-    <input type="checkbox" [formControl]="formTypes.controls[i]" id="{{types[i].type_id}}"/>
-    <label for="{{types[i].type_id}}">{{types[i].name}}</label>
-  </div>
-</div>

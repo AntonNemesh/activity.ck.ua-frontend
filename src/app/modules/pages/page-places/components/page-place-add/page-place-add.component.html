@@ -1,263 +1,303 @@
-<app-layout>
-  <div *ngIf="formContentVisibility | async">
-    <form *ngIf="!isSavedPlace" [formGroup]="placeForm" (ngSubmit)="onSubmit()">
-      <mat-vertical-stepper [linear]="true" #stepper>
-        <mat-step [stepControl]="organizationGroup">
-          <form formGroupName="organization_group">
-            <ng-template matStepLabel>Організація</ng-template>
+<div *ngIf="formContentVisibility | async" class="container">
+  <form *ngIf="!isSavedPlace" [formGroup]="placeForm" (ngSubmit)="onSubmit()">
+    <mat-vertical-stepper [linear]="true" #stepper>
+      <mat-step [stepControl]="organizationGroup">
+        <form formGroupName="organization_group">
+          <ng-template matStepLabel>Організація</ng-template>
+          <mat-form-field class="example-full-width">
+            <mat-label>Зареєстровані організації</mat-label>
+            <input type="text"
+                   placeholder="Оберіть організацію"
+                   aria-label="Number"
+                   matInput
+                   formControlName="organization_id"
+                   [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let organization of filteredApprovedOrganizations | async" [value]="organization">
+                {{organization}}
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error
+              *ngIf="organizationGroup.get('organization_id').hasError('required')">
+              Поле є обов'язковим
+            </mat-error>
+          </mat-form-field>
+          <div class="padding-left" formGroupName="organization" *ngIf="isNewOrganization">
             <mat-form-field class="example-full-width">
-              <mat-label>Зареєстровані організації</mat-label>
+              <mat-label>Запропонувати організацію</mat-label>
               <input type="text"
-                     placeholder="Оберіть організацію"
+                     placeholder="Оберіть організацію або запропонуйте нову"
                      aria-label="Number"
                      matInput
-                     formControlName="organization_id"
-                     [matAutocomplete]="auto">
-              <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let organization of filteredApprovedOrganizations | async" [value]="organization">
+                     formControlName="name"
+                     [matAutocomplete]="auto2">
+              <mat-autocomplete #auto2="matAutocomplete">
+                <mat-option *ngFor="let organization of filteredProposedOrganizations | async" [value]="organization">
                   {{organization}}
                 </mat-option>
               </mat-autocomplete>
               <mat-error
-                *ngIf="organizationGroup.get('organization_id').hasError('required')">
+                *ngIf="proposeOrganization.get('name').hasError('required')">
                 Поле є обов'язковим
               </mat-error>
+              <mat-error
+                *ngIf="proposeOrganization.get('name').hasError('minlength')">
+                Кількість симполів має бути більше 2
+              </mat-error>
+              <mat-error
+                *ngIf="proposeOrganization.get('name').hasError('maxlength')">
+                Кількість симполів має бути не більше 255
+              </mat-error>
             </mat-form-field>
-            <div class="padding-left" formGroupName="organization" *ngIf="isNewOrganization">
+            <div *ngIf="isProposeOrganization">
               <mat-form-field class="example-full-width">
-                <mat-label>Запропонувати організацію</mat-label>
-                <input type="text"
-                       placeholder="Оберіть організацію або запропонуйте нову"
-                       aria-label="Number"
-                       matInput
-                       formControlName="name"
-                       [matAutocomplete]="auto2">
-                <mat-autocomplete #auto2="matAutocomplete">
-                  <mat-option *ngFor="let organization of filteredProposedOrganizations | async" [value]="organization">
-                    {{organization}}
-                  </mat-option>
-                </mat-autocomplete>
+                <mat-label>Пошта</mat-label>
+                <input [textMask]="{mask: maskEmail}" matInput formControlName="email" placeholder="example@email.com">
                 <mat-error
-                  *ngIf="proposeOrganization.get('name').hasError('required')">
+                  *ngIf="proposeOrganization.get('email').hasError('email') &&
+                      !proposeOrganization.get('email').hasError('required')">
+                  Будь ласка, введіть дійсну адресу електронної пошти
+                </mat-error>
+                <mat-error
+                  *ngIf="proposeOrganization.get('email').hasError('required')">
                   Поле є обов'язковим
                 </mat-error>
               </mat-form-field>
-              <div *ngIf="isProposeOrganization">
-                <mat-form-field class="example-full-width">
-                  <mat-label>Пошта</mat-label>
-                  <input [textMask]="{mask: maskEmail}" matInput formControlName="email" placeholder="example@email.com">
+              <div class="phones" formArrayName="phones">
+                <mat-form-field *ngFor="let control of organizationPhones.controls; index as i" class="example-full-width">
+                  <mat-label>Телефон</mat-label>
+                  <input type="tel" [textMask]="{mask: maskPhone}" matInput [formControl]="organizationPhones.controls[i]" Name="phone" placeholder="+380 (66) 555 55 55">
+                  <button mat-button matSuffix mat-icon-button aria-label="Delete" *ngIf="i !== 0" (click)="deletePhone(i, true)">
+                    <mat-icon>close</mat-icon>
+                  </button>
                   <mat-error
-                    *ngIf="proposeOrganization.get('email').hasError('email') &&
-                        !proposeOrganization.get('email').hasError('required')">
-                    Будь ласка, введіть дійсну адресу електронної пошти
+                    *ngIf="organizationPhones.controls[i].hasError('pattern') &&
+                        !organizationPhones.controls[i].hasError('required')">
+                    Будь ласка, введіть дійсний телефон
                   </mat-error>
                   <mat-error
-                    *ngIf="proposeOrganization.get('email').hasError('required')">
+                    *ngIf="organizationPhones.controls[i].hasError('required')">
                     Поле є обов'язковим
                   </mat-error>
                 </mat-form-field>
-                <div class="phones" formArrayName="phones">
-                  <mat-form-field *ngFor="let control of organizationPhones.controls; index as i" class="example-full-width">
-                    <mat-label>Телефон</mat-label>
-                    <input type="tel" [textMask]="{mask: maskPhone}" matInput [formControl]="organizationPhones.controls[i]" Name="phone" placeholder="+380 (66) 555 55 55">
-                    <button mat-button matSuffix mat-icon-button aria-label="Delete" *ngIf="i !== 0" (click)="deletePhone(i, true)">
-                      <mat-icon>close</mat-icon>
-                    </button>
-                    <mat-error
-                      *ngIf="organizationPhones.controls[i].hasError('pattern') &&
-                          !organizationPhones.controls[i].hasError('required')">
-                      Будь ласка, введіть дійсний телефон
-                    </mat-error>
-                    <mat-error
-                      *ngIf="organizationPhones.controls[i].hasError('required')">
-                      Поле є обов'язковим
-                    </mat-error>
-                  </mat-form-field>
-                  <button class="add-phone" mat-button matSuffix mat-icon-button aria-label="Add" (click)="addPhone($event, true)">
-                    <mat-icon>add</mat-icon>
-                  </button>
-                </div>
+                <button class="add-phone" mat-button matSuffix mat-icon-button aria-label="Add" (click)="addPhone($event, true)">
+                  <mat-icon>add</mat-icon>
+                </button>
               </div>
             </div>
-            <div>
-              <button type="button" color="primary" mat-raised-button matStepperNext>Наступний крок</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="categoryGroup">
-          <form formGroupName="category_group">
-            <ng-template matStepLabel>Категорія</ng-template>
-            <mat-form-field appearance="fill">
-              <mat-label>Категорія</mat-label>
-              <mat-select formControlName="category_id">
-                <mat-option *ngFor="let category of categories" value="{{category.id}}">
-                  {{category.name}}
-                </mat-option>
-              </mat-select>
-              <mat-error
-                *ngIf="categoryGroup.get('category_id').hasError('required')">
+          </div>
+          <div>
+            <button type="button" color="primary" mat-raised-button matStepperNext>Наступний крок</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="categoryGroup">
+        <form formGroupName="category_group">
+          <ng-template matStepLabel>Категорія</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>Категорія</mat-label>
+            <mat-select formControlName="category_id">
+              <mat-option *ngFor="let category of categories" value="{{category.id}}">
+                {{category.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="categoryGroup.get('category_id').hasError('required')">
+              Поле є обов'язковим
+            </mat-error>
+            <mat-error
+              *ngIf="categoryGroup.get('category_id').hasError('minlength')">
+              Кількість симполів має бути більше 2
+            </mat-error>
+            <mat-error
+              *ngIf="categoryGroup.get('category_id').hasError('maxlength')">
+              Кількість симполів має бути не більше 255
+            </mat-error>
+          </mat-form-field>
+          <div *ngIf="types?.length">
+            <mat-label class="gray">Тип</mat-label>
+            <mat-radio-group class="padding-left" formControlName="type_id">
+              <mat-radio-button *ngFor="let type of types" value="{{type.type_id}}">{{type.name}}</mat-radio-button>
+              <mat-error class="small"
+                         *ngIf="categoryGroup.get('type_id').hasError('required')">
                 Поле є обов'язковим
               </mat-error>
-            </mat-form-field>
-            <div *ngIf="types?.length">
-              <mat-label class="gray">Тип</mat-label>
-              <mat-radio-group class="padding-left" formControlName="type_id">
-                <mat-radio-button *ngFor="let type of types" value="{{type.type_id}}">{{type.name}}</mat-radio-button>
-                <mat-error class="small"
-                           *ngIf="categoryGroup.get('type_id').hasError('required')">
-                  Поле є обов'язковим
-                </mat-error>
-              </mat-radio-group>
-            </div>
-            <div>
-              <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
-              <button type="button" color="primary" mat-raised-button matStepperNext>Наступний крок</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="mainGroup">
-          <form formGroupName="main_group">
-            <ng-template matStepLabel>Основні</ng-template>
-            <mat-form-field class="example-full-width">
-              <mat-label>Назва</mat-label>
-              <input matInput formControlName="name" placeholder="Mcdonalds">
-              <mat-error
-                *ngIf="mainGroup.get('name').hasError('required')">
-                Поле є обов'язковим
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field class="example-full-width">
-              <mat-label>Опис</mat-label>
-              <textarea matInput formControlName="description" placeholder="Mcdonalds - это крупнейшая в мире сеть ресторанов быстрого питания"></textarea>
-              <mat-error
-                *ngIf="mainGroup.get('description').hasError('required')">
-                Поле є обов'язковим
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field class="example-full-width">
-              <mat-label>Адреса</mat-label>
-              <input matInput ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" [options]='googlePlacesOptions' formControlName="address" placeholder="вулиця Смілянська, 31, Черкаси, Черкаська область, 18000">
-              <mat-error
-                *ngIf="mainGroup.get('address').hasError('required')">
-                Поле є обов'язковим
-              </mat-error>
-            </mat-form-field>
-            <div formArrayName="phones" class="phones">
-              <mat-form-field *ngFor="let control of placePhones.controls; index as i" class="example-full-width">
-                <mat-label>Телефон</mat-label>
-                <input type="tel" [textMask]="{mask: maskPhone}" matInput [formControl]="placePhones.controls[i]" Name="phone" placeholder="+380 (66) 555 55 55">
-                <button mat-button matSuffix mat-icon-button aria-label="Delete" *ngIf="i !== 0" (click)="deletePhone(i, false)">
-                  <mat-icon>close</mat-icon>
-                </button>
-                <mat-error
-                  *ngIf="placePhones.controls[i].hasError('pattern') &&
-                    !placePhones.controls[i].hasError('required')">
-                  Будь ласка, введіть дійсний телефон
-                </mat-error>
-                <mat-error
-                  *ngIf="placePhones.controls[i].hasError('required')">
-                  Поле є обов'язковим
-                </mat-error>
-              </mat-form-field>
-              <button class="add-phone" mat-button matSuffix mat-icon-button aria-label="Add" (click)="addPhone($event, false)">
-                <mat-icon>add</mat-icon>
-              </button>
-            </div>
-            <mat-form-field class="example-full-width">
-              <mat-label>Сайт</mat-label>
-              <input type="url" matInput formControlName="website" placeholder="https://www.example.com/">
-              <mat-error
-                *ngIf="mainGroup.get('website').hasError('required')">
-                Поле є обов'язковим
-              </mat-error>
-            </mat-form-field>
-            <div>
-              <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
-              <button type="button" color="primary" mat-raised-button matStepperNext>Наступний крок</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="toleranceGroup">
-          <form formGroupName="tolerance_group">
-            <ng-template matStepLabel>Толерантність</ng-template>
-            <div class="tolerance">
-<!--              <mat-label class="gray">Толерантність:</mat-label>-->
-              <section class="padding-left">
-                <mat-checkbox *ngFor="let item of toleranceFilter" formControlName="{{item.filter_id}}">{{item.name}}</mat-checkbox>
-              </section>
-            </div>
-            <div>
-              <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
-              <button type="button" color="primary" mat-raised-button matStepperNext>Наступний крок</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="workTimeGroup">
-          <form formGroupName="work_time_group">
-            <ng-template matStepLabel>Розклад роботи</ng-template>
-<!--            <mat-label class="gray">Розклад роботи:</mat-label>-->
-            <div class="workTime padding-left" *ngFor="let day of week">
-              <mat-label class="workTime__title">{{day.name}}</mat-label>
-              <mat-form-field class="workTime__field">
-                <mat-label>Відкриття</mat-label>
-                <input matInput formControlName="{{day.id + '_start'}}" [ngxTimepicker]="open" [format]="24" [value]="'8:00'" placeholder="HH:MM">
-                <ngx-material-timepicker #open></ngx-material-timepicker>
-                <mat-error
-                  *ngIf="workTimeGroup.get(day.id + '_start').hasError('required')">
-                  Поле є обов'язковим
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field class="workTime__field">
-                <mat-label>Закриття</mat-label>
-                <input matInput formControlName="{{day.id + '_end'}}" [ngxTimepicker]="close" [format]="24" [value]="'17:00'" placeholder="HH:MM">
-                <ngx-material-timepicker #close></ngx-material-timepicker>
-                <mat-error
-                  *ngIf="workTimeGroup.get(day.id + '_end').hasError('required')">
-                  Поле є обов'язковим
-                </mat-error>
-              </mat-form-field>
-              <section>
-                <mat-checkbox class="gray" (click)="toggleDayOff(day.id)">Вихідний</mat-checkbox>
-              </section>
-            </div>
-            <div>
-              <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
-              <button type="button" color="primary" mat-raised-button matStepperNext>Наступний крок</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="photosGroup">
-          <form formGroupName="photos_group">
-            <ng-template matStepLabel>Фотографії</ng-template>
-            <app-uploader-for-photos
-              [photosGroupValidation]="photosGroupValidation"
-              (photosGroupValue)="setPhotosGroupValue($event)"
-              (photosState)="setPhotos($event)"
-              (photoCoverState)="setPhotoCover($event)">
-            </app-uploader-for-photos>
-            <div>
-              <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
-              <button type="button" color="primary" mat-raised-button matStepperNext (click)="updatePhotosGroupValidation()">Наступний крок</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step>
-          <ng-template matStepLabel>Відправити </ng-template>
-          <p>Уважно перевірте дані та натисніть на кнопку "Запропонувати місце".</p>
+            </mat-radio-group>
+          </div>
           <div>
             <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
-            <button type="submit" mat-raised-button color="accent" >Запропонувати місце</button>
+            <button type="button" color="primary" mat-raised-button matStepperNext>Наступний крок</button>
           </div>
-        </mat-step>
-      </mat-vertical-stepper>
-    </form>
-    <div *ngIf="isSavedPlace">
-      <p class="mat-subheading-2">
-        Запропоноване вами місце успішно додано в обробку!<br>
-        Місце стане доступним після того, як пройде модерацію.
-      </p>
-      <a routerLink="">Повернутися на голову сторінку</a>
-    </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="mainGroup">
+        <form formGroupName="main_group">
+          <ng-template matStepLabel>Основні</ng-template>
+          <mat-form-field class="example-full-width">
+            <mat-label>Назва</mat-label>
+            <input matInput formControlName="name" placeholder="Mcdonalds">
+            <mat-error
+              *ngIf="mainGroup.get('name').hasError('required')">
+              Поле є обов'язковим
+            </mat-error>
+            <mat-error
+              *ngIf="mainGroup.get('name').hasError('minlength')">
+              Кількість симполів має бути більше 2
+            </mat-error>
+            <mat-error
+              *ngIf="mainGroup.get('name').hasError('maxlength')">
+              Кількість симполів має бути не більше 255
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Опис</mat-label>
+            <textarea matInput formControlName="description" placeholder="Mcdonalds - это крупнейшая в мире сеть ресторанов быстрого питания"></textarea>
+            <mat-error
+              *ngIf="mainGroup.get('description').hasError('required')">
+              Поле є обов'язковим
+            </mat-error>
+            <mat-error
+              *ngIf="mainGroup.get('description').hasError('minlength')">
+              Кількість симполів має бути більше 20
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Адреса</mat-label>
+            <input matInput ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" [options]='googlePlacesOptions' formControlName="address" placeholder="вулиця Смілянська, 31, Черкаси, Черкаська область, 18000">
+            <mat-error
+              *ngIf="mainGroup.get('address').hasError('required')">
+              Поле є обов'язковим
+            </mat-error>
+            <mat-error
+              *ngIf="mainGroup.get('address').hasError('minlength')">
+              Кількість симполів має бути більше 2
+            </mat-error>
+            <mat-error
+              *ngIf="mainGroup.get('address').hasError('maxlength')">
+              Кількість симполів має бути не більше 255
+            </mat-error>
+          </mat-form-field>
+          <div formArrayName="phones" class="phones">
+            <mat-form-field *ngFor="let control of placePhones.controls; index as i" class="example-full-width">
+              <mat-label>Телефон</mat-label>
+              <input type="tel" [textMask]="{mask: maskPhone}" matInput [formControl]="placePhones.controls[i]" Name="phone" placeholder="+380 (66) 555 55 55">
+              <button mat-button matSuffix mat-icon-button aria-label="Delete" *ngIf="i !== 0" (click)="deletePhone(i, false)">
+                <mat-icon>close</mat-icon>
+              </button>
+              <mat-error
+                *ngIf="placePhones.controls[i].hasError('pattern') &&
+                  !placePhones.controls[i].hasError('required')">
+                Будь ласка, введіть дійсний телефон
+              </mat-error>
+              <mat-error
+                *ngIf="placePhones.controls[i].hasError('required')">
+                Поле є обов'язковим
+              </mat-error>
+            </mat-form-field>
+            <button class="add-phone" mat-button matSuffix mat-icon-button aria-label="Add" (click)="addPhone($event, false)">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Сайт</mat-label>
+            <input type="url" matInput formControlName="website" placeholder="https://www.example.com/">
+            <mat-error
+              *ngIf="mainGroup.get('website').hasError('required')">
+              Поле є обов'язковим
+            </mat-error>
+          </mat-form-field>
+          <div>
+            <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
+            <button type="button" color="primary" mat-raised-button matStepperNext>Наступний крок</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="availabilityGroup">
+        <form formGroupName="availability_group">
+          <ng-template matStepLabel>Толерантність</ng-template>
+          <div class="availability">
+            <!--              <mat-label class="gray">Толерантність:</mat-label>-->
+            <section class="padding-left">
+              <mat-checkbox *ngFor="let item of availabilityFilter" formControlName="{{item.filter_id}}">{{item.name}}</mat-checkbox>
+            </section>
+          </div>
+          <div>
+            <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
+            <button type="button" color="primary" mat-raised-button matStepperNext>Наступний крок</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="workTimeGroup">
+        <form formGroupName="work_time_group">
+          <ng-template matStepLabel>Розклад роботи</ng-template>
+          <!--            <mat-label class="gray">Розклад роботи:</mat-label>-->
+          <div class="workTime padding-left" *ngFor="let day of week">
+            <mat-label class="workTime__title">{{day.name}}</mat-label>
+            <mat-form-field class="workTime__field">
+              <mat-label>Відкриття</mat-label>
+              <input matInput formControlName="{{day.id + '_start'}}" [ngxTimepicker]="open" [format]="24" [value]="'8:00'" placeholder="HH:MM">
+              <ngx-material-timepicker #open></ngx-material-timepicker>
+              <mat-error
+                *ngIf="workTimeGroup.get(day.id + '_start').hasError('required')">
+                Поле є обов'язковим
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="workTime__field">
+              <mat-label>Закриття</mat-label>
+              <input matInput formControlName="{{day.id + '_end'}}" [ngxTimepicker]="close" [format]="24" [value]="'17:00'" placeholder="HH:MM">
+              <ngx-material-timepicker #close></ngx-material-timepicker>
+              <mat-error
+                *ngIf="workTimeGroup.get(day.id + '_end').hasError('required')">
+                Поле є обов'язковим
+              </mat-error>
+            </mat-form-field>
+            <section>
+              <mat-checkbox *ngIf="getCheckboxVisibility(day.id)" class="gray" (click)="toggleDayOff(day.id)">Вихідний</mat-checkbox>
+            </section>
+          </div>
+          <div>
+            <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
+            <button type="button" color="primary" mat-raised-button matStepperNext>Наступний крок</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="photosGroup">
+        <form formGroupName="photos_group">
+          <ng-template matStepLabel>Фотографії</ng-template>
+          <app-uploader-for-photos
+            [photosGroupValidation]="photosGroupValidation"
+            (photosGroupValue)="setPhotosGroupValue($event)"
+            (photosState)="setPhotos($event)"
+            (photoCoverState)="setPhotoCover($event)">
+          </app-uploader-for-photos>
+          <div>
+            <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
+            <button type="button" color="primary" mat-raised-button matStepperNext (click)="updatePhotosGroupValidation()">Наступний крок</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Відправити </ng-template>
+        <p>Уважно перевірте дані та натисніть на кнопку "Запропонувати місце".</p>
+        <div>
+          <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
+          <button type="submit" mat-raised-button color="accent" >Запропонувати місце</button>
+        </div>
+      </mat-step>
+    </mat-vertical-stepper>
+  </form>
+  <div *ngIf="isSavedPlace">
+    <p *ngIf="!httpErrorResponse" class="mat-subheading-2 green">
+      Запропоноване вами місце успішно додано в обробку!<br>
+      Місце стане доступним після того, як пройде модерацію.
+    </p>
+    <p *ngIf="httpErrorResponse" class="mat-subheading-2 red">
+      Запропоноване вами місце не завантажене, через збій з сервером.<br>
+      Повторіть будь ласка спробу через декілька хвилин.
+    </p>
+    <a routerLink="">Повернутися на голову сторінку</a>
   </div>
+</div>
+<div class="container">
   <mat-spinner *ngIf="formLoaderVisibility | async"></mat-spinner>
-</app-layout>
+</div>

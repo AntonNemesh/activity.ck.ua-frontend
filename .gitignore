@@ -46,3 +46,6 @@ Thumbs.db
 
 # Access credentials
 .env
+
+# Media Files
+/src/assets/video.mp4

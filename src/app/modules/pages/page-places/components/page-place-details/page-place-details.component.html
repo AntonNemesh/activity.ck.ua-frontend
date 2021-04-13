@@ -1,39 +1,56 @@
-<app-layout>
-  <div *ngIf="place">
-    <p><b>Ідентифікатор місця:</b>  {{placeId}}</p>
-    <p><b>Ідентифікатор категорії місця:</b>  {{place.category_id}}</p>
-    <p><b>Ідентифікатор типу місця:</b>  {{place.type_id || 'відсутній'}}</p>
-    <p><b>Ідентифікатор організації:</b>  {{place.organization_id}}</p>
-    <br><br>
-    <app-gallery [photos]="place.photos"></app-gallery>
-    <br><br>
-    <p><b>Назва місця:</b>  {{place.name}}</p>
-
-
-    <div>
+<div *ngIf="place" class="container">
+  <p><b>Ідентифікатор місця:</b>  {{placeId}}</p>
+  <p><b>Ідентифікатор категорії місця:</b>  {{place.category_id || 'відсутній'}}</p>
+  <p><b>Ідентифікатор типу місця:</b>  {{place.type_id || 'відсутній'}}</p>
+  <p><b>Ідентифікатор організації:</b>  {{place.organization_id || 'відсутній'}}</p>
+  <br><br>
+  <app-gallery [photos]="place.photos"></app-gallery>
+  <br><br>
+  <p><b>Назва місця:</b>  {{place.name}}</p>
+  <div>
     <b>Телефони:</b>
-      <ul *ngIf="place.phones">
-        <li *ngFor="let phone of place.phones">{{phone}}</li>
-      </ul>
-    </div>
-    <p><b>Адреса:</b>  {{place.address}}</p>
-    <p><b>Веб сайт:</b>  {{place.website}}</p>
-    <div>
-      <b>Графік роботи:</b>
-      <ul *ngIf="place.work_time">
-        <li *ngIf="place.work_time.mon"> Понеділок: {{place.work_time.mon.start}} - {{place.work_time.mon.end}}</li>
-        <li *ngIf="place.work_time.tue"> Вівторок: {{place.work_time.tue.start}} - {{place.work_time.tue.end}}</li>
-        <li *ngIf="place.work_time.wed"> Середа: {{place.work_time.wed.start}} - {{place.work_time.wed.end}}</li>
-        <li *ngIf="place.work_time.thu"> Четверг: {{place.work_time.thu.start}} - {{place.work_time.thu.end}}</li>
-        <li *ngIf="place.work_time.fri"> П'ятниця: {{place.work_time.fri.start}} - {{place.work_time.fri.end}}</li>
-        <li *ngIf="place.work_time.sat"> Субота: {{place.work_time.sat.start}} - {{place.work_time.sat.end}}</li>
-        <li *ngIf="place.work_time.sun"> Неділя: {{place.work_time.sun.start}} - {{place.work_time.sun.end}}</li>
-      </ul>
-    </div>
-    <p><b>Доступність:</b>  {{place.accessibility}}</p>
-    <p><b>Місце дружнє до дітей:</b>  {{place.child_friendly}}</p>
-    <p><b>Місце дружнє до тварин:</b>  {{place.dog_friendly}}</p>
-    <p><b>Детальна інформація:</b>  {{place.description}}</p>
-    <p><b>Рейтинг:</b> {{place.rating || 'відсутній'}}</p>
+    <ul *ngIf="place.phones">
+      <li *ngFor="let phone of place.phones">{{phone}}</li>
+    </ul>
   </div>
-</app-layout>
+  <p><b>Адреса:</b>  {{place.address}}</p>
+  <p><b>Веб сайт:</b>  {{place.website}}</p>
+  <div>
+    <b>Графік роботи:</b>
+    <ul *ngIf="place.work_time">
+      <li  *ngIf="place.work_time.mon"> Понеділок: {{place.work_time.mon.start}} - {{place.work_time.mon.end}}</li>
+      <li *ngIf="!place.work_time.mon"> Понеділок: вихідний</li>
+      <li  *ngIf="place.work_time.tue"> Вівторок: {{place.work_time.tue.start}} - {{place.work_time.tue.end}}</li>
+      <li *ngIf="!place.work_time.tue"> Вівторок: вихідний</li>
+      <li  *ngIf="place.work_time.wed"> Середа: {{place.work_time.wed.start}} - {{place.work_time.wed.end}}</li>
+      <li *ngIf="!place.work_time.wed"> Середа: вихідний</li>
+      <li  *ngIf="place.work_time.thu"> Четверг: {{place.work_time.thu.start}} - {{place.work_time.thu.end}}</li>
+      <li *ngIf="!place.work_time.thu"> Четверг: вихідний</li>
+      <li  *ngIf="place.work_time.fri"> П'ятниця: {{place.work_time.fri.start}} - {{place.work_time.fri.end}}</li>
+      <li *ngIf="!place.work_time.fri"> П'ятниця: вихідний</li>
+      <li  *ngIf="place.work_time.sat"> Субота: {{place.work_time.sat.start}} - {{place.work_time.sat.end}}</li>
+      <li *ngIf="!place.work_time.sat"> Субота: вихідний</li>
+      <li  *ngIf="place.work_time.sun"> Неділя: {{place.work_time.sun.start}} - {{place.work_time.sun.end}}</li>
+      <li *ngIf="!place.work_time.sun"> Неділя: вихідний</li>
+    </ul>
+  </div>
+  <div *ngIf="events?.length">
+    <b>Найближчі події:</b>
+    <ul class="events-list" >
+      <li class="event" *ngFor="let event of events">
+        <a routerLink="/events/{{event.id}}">
+          <img class="event__photo" src="{{event.main_photo}}" alt="">
+          <p class="event__title">
+            {{event.name}}<br>
+            {{dateService.getDateTime(event.start_time)}}
+          </p>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <p><b>Доступність:</b>  {{place.accessibility}}</p>
+  <p><b>Місце дружнє до дітей:</b>  {{place.child_friendly}}</p>
+  <p><b>Місце дружнє до тварин:</b>  {{place.dog_friendly}}</p>
+  <p><b>Детальна інформація:</b>  {{place.description}}</p>
+  <p><b>Рейтинг:</b> {{place.rating || 'відсутній'}}</p>
+</div>

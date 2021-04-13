@@ -1,4 +1,4 @@
-<div class="datepicker-wrapper">
+<div class="container datepicker-wrapper">
   <span class="mat-h1">Найближчі події</span>
   <span class="mat-h3">{{dateUrkFormat}}</span>
   <button class="btn__datepicker" mat-button matSuffix mat-icon-button aria-label="Calendar" (click)="picker.open()">
@@ -10,13 +10,16 @@
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 </div>
-<div class="events-wrapper">
+<div class="container events-wrapper">
   <div *ngIf="eventsContentVisibility | async">
     <ul class="events-list" *ngIf="events?.length">
       <li class="event" *ngFor="let event of events">
         <a routerLink="/events/{{event.id}}">
           <img class="event__photo" src="{{event.main_photo}}">
-          <p class="event__title">{{event.name}}</p>
+          <p class="event__title">
+            {{event.name}}<br>
+            {{dateService.getDateTime(event.start_time)}}
+          </p>
         </a>
       </li>
     </ul>

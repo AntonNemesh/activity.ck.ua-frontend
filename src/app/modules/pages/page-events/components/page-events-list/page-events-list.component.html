@@ -1,4 +1,6 @@
-<app-layout>
+<div class="container">
+  <app-filter-by-availability (availabilityStateChange)="updateFilterAvailabilityState($event)">
+  </app-filter-by-availability>
   <div class="datepicker-wrapper">
     <span class="mat-h1">Події</span>
     <span class="mat-h3">{{dateUrkFormat}}</span>
@@ -12,17 +14,24 @@
     </mat-form-field>
   </div>
   <div class="events-wrapper">
-    <div *ngIf="eventsContentVisibility | async">
-      <ul class="events-list" *ngIf="events?.length">
-        <li class="event" *ngFor="let event of events">
-          <a routerLink="{{event.id}}">
-            <img class="event__photo" src="{{event.main_photo}}">
-            <p class="event__title">{{event.name}}</p>
-          </a>
-        </li>
-      </ul>
-      <p class="mat-h3" *ngIf="!events?.length">Нічого не знайдено!</p>
-    </div>
-    <mat-spinner class="loader" *ngIf="eventsLoaderVisibility | async"></mat-spinner>
+    <ul class="events-list" *ngIf="events?.length">
+      <li class="event" *ngFor="let event of events">
+        <a routerLink="{{event.id}}">
+          <img class="event__photo" src="{{event.main_photo}}">
+          <p class="event__title">
+            {{event.name}}<br>
+            {{dateService.getDateTime(event.start_time)}}
+          </p>
+        </a>
+      </li>
+    </ul>
+    <p class="mat-h3" *ngIf="!events?.length">Нічого не знайдено!</p>
   </div>
-</app-layout>
+  <app-pagination *ngIf="totalPages"
+                  (paginationStateChange)="updatePaginationState($event)"
+                  [filterAvailabilityState]="filterAvailabilityState"
+                  [totalPages]="totalPages"
+                  [datePickerState]="date">
+  </app-pagination>
+</div>
+

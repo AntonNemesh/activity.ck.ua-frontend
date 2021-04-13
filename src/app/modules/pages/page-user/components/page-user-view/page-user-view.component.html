@@ -1,0 +1,77 @@
+<div class="container">
+  <h1 class="mat-h1">Заплановані події</h1>
+  <ul class="events-list" *ngIf="scheduledEvents?.length">
+    <li class="event" *ngFor="let event of scheduledEvents">
+      <a routerLink="/events/{{event.id}}">
+        <img class="event__photo" src="{{event.main_photo}}" alt="">
+        <p class="event__title">{{event.name}}</p>
+      </a>
+    </li>
+  </ul>
+  <app-pagination
+    *ngIf="scheduledEventsTotalPages"
+    [isArrowPagination]="true"
+    (paginationStateChange)="updateScheduledEventsPaginationState($event)"
+    [totalPages]="scheduledEventsTotalPages">
+  </app-pagination>
+  <h1 class="mat-h1">Недавні місця</h1>
+  <ul class="events-list" *ngIf="visitedPlaces?.length">
+    <li class="event" *ngFor="let place of visitedPlaces">
+      <a routerLink="/places/{{place.category_id}}/{{place.id}}">
+        <img class="event__photo" src="{{place.main_photo}}" alt="">
+        <p class="event__title">{{place.name}}</p>
+      </a>
+    </li>
+  </ul>
+  <app-pagination
+    *ngIf="visitedPlacesTotalPages"
+    [isArrowPagination]="true"
+    (paginationStateChange)="updateVisitedPlacesPaginationState($event)"
+    [totalPages]="visitedPlacesTotalPages">
+  </app-pagination>
+  <h1 class="mat-h1">Улюблені місця</h1>
+  <ul class="events-list" *ngIf="favoritePlaces?.length">
+    <li class="event" *ngFor="let place of favoritePlaces">
+      <a routerLink="/places/{{place.category_id}}/{{place.id}}">
+        <img class="event__photo" src="{{place.main_photo}}" alt="">
+        <p class="event__title">{{place.name}}</p>
+      </a>
+    </li>
+  </ul>
+  <app-pagination
+    *ngIf="favoritePlacesTotalPages"
+    [isArrowPagination]="true"
+    (paginationStateChange)="updateFavoritePlacesPaginationState($event)"
+    [totalPages]="favoritePlacesTotalPages">
+  </app-pagination>
+  <h1 class="mat-h1">Мої місця</h1>
+  <ul class="events-list" *ngIf="userPlaces?.length">
+    <li class="event" *ngFor="let place of userPlaces">
+      <a routerLink="/places/{{place.category_id}}/{{place.id}}">
+        <img class="event__photo" src="{{place.main_photo}}" alt="">
+        <p class="event__title">{{place.name}}</p>
+      </a>
+    </li>
+  </ul>
+  <app-pagination
+    *ngIf="userPlacesTotalPages"
+    [isArrowPagination]="true"
+    (paginationStateChange)="updateUserPlacesPaginationState($event)"
+    [totalPages]="userPlacesTotalPages">
+  </app-pagination>
+  <h1 class="mat-h1">Мої події</h1>
+  <ul class="events-list" *ngIf="userEvents?.length">
+    <li class="event" *ngFor="let event of userEvents">
+      <a routerLink="/events/{{event.id}}">
+        <img class="event__photo" src="{{event.main_photo}}" alt="">
+        <p class="event__title">{{event.name}}</p>
+      </a>
+    </li>
+  </ul>
+  <app-pagination
+    *ngIf="userEventsTotalPages"
+    [isArrowPagination]="true"
+    (paginationStateChange)="updateUserEventsPaginationState($event)"
+    [totalPages]="userEventsTotalPages">
+  </app-pagination>
+</div>

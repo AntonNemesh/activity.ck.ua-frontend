@@ -4,4 +4,30 @@
 
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0}
+main {padding: 0}
+
+
+:root {
+  --main-text-color: #393939;
+  --bright-color: #0594E4;
+  --light-color: #5F5D5D;
+
+  --text-font: 1rem 'Inter', sans-serif;
+  --text-headline: 600 2rem 'Inter', sans-serif;
+
+  --section-margin: 5% auto 0;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.list {
+  list-style: none;
+}
