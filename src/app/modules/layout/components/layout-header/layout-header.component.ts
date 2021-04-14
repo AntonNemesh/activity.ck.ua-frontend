@@ -13,8 +13,8 @@ export class LayoutHeaderComponent implements OnInit {
   public user: IUser;
 
   private updateInfo(): void {
-    this.usersService.getUserInfo().subscribe((user) => {
-      this.user = user;
+    this.usersService.getUserInfo().subscribe((data) => {
+      this.user = data.user;
     });
   }
 

@@ -1,6 +1,6 @@
-<div *ngIf="events" class="container">
+<div *ngIf="events?.length" class="container">
   <h1 class="mat-h1">Приєднуйся зараз</h1>
-  <ul class="events-list" *ngIf="events?.length">
+  <ul class="events-list">
     <li class="event" *ngFor="let event of events">
       <a routerLink="/events/{{event.id}}">
         <img class="event__photo" src="{{event.main_photo}}" alt="">

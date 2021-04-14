@@ -1,3 +1,7 @@
+export interface IUserResponse {
+  user: IUser;
+}
+
 export interface IUser {
   name: string;
   avatar: string;
