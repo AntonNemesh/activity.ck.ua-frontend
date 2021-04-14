@@ -21,7 +21,7 @@ export class PagePlaceDetailsComponent implements OnInit {
     public dateService: DateService) { }
 
   private page: number = 1;
-  private limit: number = 3;
+  private limit: number = 4;
 
   getPlace(): void {
     this.placesService.getPlaceById(this.placeId).subscribe((place) => {

@@ -14,7 +14,7 @@ export class SectionEventsRightNowComponent implements OnInit {
   public events: IEvent[];
 
   public page: number = 1;
-  public limit: number = 1;
+  public limit: number = 4;
   public totalPages: number;
 
   public updateEvents(): void {

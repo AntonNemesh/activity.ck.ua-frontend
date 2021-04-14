@@ -2,19 +2,20 @@
   <div class="place-details__wrapper">
     <div class="container">
       <app-gallery [photos]="place.photos"></app-gallery>
-      <h1 class="place-details__headline">{{place.name}}</h1>
+
       <div class="place-details__info">
         <div class="place-details__contacts">
-            <ul *ngIf="place.phones" class="list">
-              <li *ngFor="let phone of place.phones">
-                <a href="tel:{{place.phones}}" class="contact-text contact-link icon-text-row">
-                  <svg viewBox="0 0 35 35" class="icon">
+          <h1 class="place-details__headline">{{place.name}}</h1>
+          <ul *ngIf="place.phones" class="list">
+            <li *ngFor="let phone of place.phones">
+              <a href="tel:{{place.phones}}" class="contact-text contact-link icon-text-row">
+                <svg viewBox="0 0 35 35" class="icon">
                   <use xlink:href="../../../../../assets/icons.svg#phone"></use>
                 </svg>
                 {{phone}}
-                </a>
-              </li>
-            </ul>
+              </a>
+            </li>
+          </ul>
           <a href="https:/maps.google.com/?q={{place.address}}" class="contact-text contact-link icon-text-row">
             <svg viewBox="0 0 512 512" class="icon">
               <use xlink:href="../../../../../assets/icons.svg#map"></use>
@@ -30,8 +31,8 @@
 
           <p class="contact-text icon-text-row">
             <svg viewBox="0 0 512 512" class="icon">
-            <use xlink:href="../../../../../assets/icons.svg#tolerance"></use>
-          </svg>
+              <use xlink:href="../../../../../assets/icons.svg#tolerance"></use>
+            </svg>
             Доступність: {{place.accessibility}}</p>
           <p class="contact-text icon-text-row">
             <svg viewBox="0 0 512 512" class="icon">
@@ -48,8 +49,8 @@
         <div class="contact-text">
           <p class="bold">
             <svg viewBox="0 0 512 512" class="icon">
-            <use xlink:href="../../../../../assets/icons.svg#clock"></use>
-          </svg>
+              <use xlink:href="../../../../../assets/icons.svg#clock"></use>
+            </svg>
             Графік роботи:
           </p>
           <ul *ngIf="place.work_time" class="list place-details__text">
@@ -70,23 +71,34 @@
           </ul>
         </div>
       </div>
+    </div>
+    <section class="events">
+      <div class="container">
         <div *ngIf="events?.length">
-          <b>Найближчі події:</b>
-          <ul class="events-list">
+          <h2 class="place-details__headline">Найближчі події:</h2>
+          <ul class="events__list list">
             <li class="event" *ngFor="let event of events">
-              <a routerLink="/events/{{event.id}}">
-                <img class="event__photo" src="{{event.main_photo}}" alt="">
-                <p class="event__title">
-                  {{event.name}}<br>
+              <a routerLink="/events/{{event.id}}" class=" event__img-wrapper">
+                   <img class="event__photo" src="{{event.main_photo}}" alt="{{event.name}}">
+              </a>
+              <p class="event__headline contact-link  link">
+                  {{event.name}}
+                </p>
+                <p class="contact-text link">
                   {{dateService.getDateTime(event.start_time)}}
                 </p>
-              </a>
+
             </li>
           </ul>
         </div>
-        <h2 class="place-details-about__headline">Про {{place.name}}</h2>
+      </div>
+    </section>
+    <section class="place__about">
+      <div class="container">
+        <h2 class="place-details__headline">Про {{place.name}}</h2>
         <p class="place-details__about">{{place.description}}</p>
         <p class="place-details__text">Рейтинг: {{place.rating || 'відсутній'}}</p>
       </div>
-    </div>
+    </section>
   </div>
+</div>

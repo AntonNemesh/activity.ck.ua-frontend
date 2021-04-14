@@ -402,7 +402,7 @@ body {font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0}
 }
 
 .contact-text {
-  padding: 10px 0;
+  padding: 0 0 10px;
   color: var(--main-text-color);
   font: var(--text-font);
   line-height: 1.7rem;
@@ -410,4 +410,8 @@ body {font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0}
   display: grid;
   align-items: center;
   justify-content: start;
+}
+
+.events {
+  background: #ffffff;
 }
