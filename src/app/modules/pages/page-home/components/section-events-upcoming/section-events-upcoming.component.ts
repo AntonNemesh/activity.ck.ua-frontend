@@ -35,7 +35,8 @@ export class SectionEventsUpcomingComponent implements OnInit {
       switchMap((date) => {
         this.eventsLoader.show();
         this.dateUrkFormat = this.dateService.getUkrFormat(date);
-        return this.eventsService.getEventsFromDate(date.getTime());
+        const params: EventsRequestParamsHelper = new EventsRequestParamsHelper(date.getTime());
+        return this.eventsService.getEventsFromDate(params);
       })
     );
     this.eventsFromDate.pipe(debounceTime(500)).subscribe((data) => {
