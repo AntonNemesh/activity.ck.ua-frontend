@@ -52,5 +52,11 @@
   <p><b>Місце дружнє до дітей:</b>  {{place.child_friendly}}</p>
   <p><b>Місце дружнє до тварин:</b>  {{place.dog_friendly}}</p>
   <p><b>Детальна інформація:</b>  {{place.description}}</p>
+  <div class="favorite-visit-section">
+    <button [class.pressed-primary-btn]="visited" mat-flat-button color="primary" (click)="updateVisitedState()">Відвідаю</button>
+    <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon" (click)="updateFavoriteState()">
+      <mat-icon [class.pressed-favorite-btn]="favorite">favorite</mat-icon>
+    </button>
+  </div>
   <p><b>Рейтинг:</b> {{place.rating || 'відсутній'}}</p>
 </div>

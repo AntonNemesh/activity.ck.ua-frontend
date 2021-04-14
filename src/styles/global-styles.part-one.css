@@ -41,3 +41,11 @@ main {
 .mat-form-field-appearance-fill .mat-form-field-flex {
   background: none;
 }
+
+.pressed-favorite-btn {
+  color: #ffa9a2;
+}
+
+.pressed-primary-btn {
+  background-color: #c6a6ff!important;
+}
