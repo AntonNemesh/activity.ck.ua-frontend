@@ -31,19 +31,19 @@
                 <span [innerHTML]="dateService.getWorkState(place.work_time)"></span>
               </p>
               <a href="https:/maps.google.com/?q={{place.address}}"
-                 class="contact-text contact-link icon-text-row">
+                 class="contact-text contact-link icon-text-row link">
                 <svg viewBox="0 0 512 512" class="icon">
                   <use xlink:href="../../../../../assets/icons.svg#map"></use>
                 </svg>
                 {{place.address}}
               </a>
-              <a href="tel:{{place.phones}}" class="contact-text contact-link icon-text-row">
+              <a href="tel:{{place.phones}}" class="contact-text contact-link icon-text-row link">
                 <svg viewBox="0 0 35 35" class="icon">
                   <use xlink:href="../../../../../assets/icons.svg#phone"></use>
                 </svg>
                 {{place.phones}}
               </a>
-              <a href="{{place.website}}" class="contact-text contact-link icon-text-row">
+              <a href="{{place.website}}" class="contact-text contact-link icon-text-row link">
                 <svg viewBox="0 0 128 128" class="icon">
                   <use xlink:href="../../../../../assets/icons.svg#website"></use>
                 </svg>
