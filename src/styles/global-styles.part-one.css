@@ -47,5 +47,13 @@ main {
 }
 
 .pressed-primary-btn {
-  background-color: #c6a6ff!important;
+  background-color: #c6a6ff !important;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
 }

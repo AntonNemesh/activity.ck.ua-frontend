@@ -48,11 +48,11 @@ export class DateService {
     }
 
     if (conditionStartDay && conditionEndDay) {
-      return `Відчинено ${String.fromCharCode(0x0387)} Зачиняється: ${workTime[weekday].end}`;
+      return `<span class="green">Відчинено</span> ${String.fromCharCode(0x0387)} Зачиняється: ${workTime[weekday].end}`;
     }
 
     if (!conditionStartDay && conditionEndDay) {
-      return `Зачинено ${String.fromCharCode(0x0387)} Відчиняється: ${workTime[weekday].start}`;
+      return `<span class="red">Зачинено</span> ${String.fromCharCode(0x0387)} Відчиняється: ${workTime[weekday].start}`;
     }
 
     do {
@@ -60,6 +60,6 @@ export class DateService {
       weekday = this.getShortNameOfMonth(date);
     } while (!workTime[weekday]);
 
-    return `Зачинено ${String.fromCharCode(0x0387)} Відчиняється: ${workTime[weekday].start}, ${this.getUkrNameOfMonth(date)}`;
+    return `<span class="red">Зачинено</span> ${String.fromCharCode(0x0387)} Відчиняється: ${workTime[weekday].start}, ${this.getUkrNameOfMonth(date)}`;
   }
 }
