@@ -1,7 +1,7 @@
 <section class="events">
-  <div *ngIf="events" class="container ">
+  <div *ngIf="events" class="container">
     <h2 class="headline">Приєднуйся зараз</h2>
-    <ul class="events__list list" *ngIf="events?.length">
+    <ul class="main__list list" *ngIf="events?.length">
       <li class="event-item" *ngFor="let event of events">
         <a routerLink="/events/{{event.id}}">
         <span class="img-wrapper">
