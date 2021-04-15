@@ -77,4 +77,12 @@ export class UsersService {
   public removePlaceFromVisited(placeId: string): Observable<any> {
     return this.http.delete<any>(this.apiUrlService.generateApiLink(`users/myself/visited_places/${placeId}`));
   }
+
+  public addEventToScheduled(eventId: string): Observable<any> {
+    return this.http.post<any>(this.apiUrlService.generateApiLink(`users/myself/scheduled_events/${eventId}`), null);
+  }
+
+  public removeEventFromScheduled(eventId: string): Observable<any> {
+    return this.http.delete<any>(this.apiUrlService.generateApiLink(`users/myself/scheduled_events/${eventId}`));
+  }
 }
