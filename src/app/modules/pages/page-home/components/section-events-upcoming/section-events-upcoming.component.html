@@ -1,30 +1,39 @@
-<div class="container datepicker-wrapper">
-  <span class="mat-h1">Найближчі події</span>
-  <span class="mat-h3">{{dateUrkFormat}}</span>
-  <button class="btn__datepicker" mat-button matSuffix mat-icon-button aria-label="Calendar" (click)="picker.open()">
-    <mat-icon>events</mat-icon>
-  </button>
-  <mat-form-field appearance="fill" style="width: 1px; visibility: hidden">
-    <input matInput [matDatepicker]="picker" [formControl]="dateInput">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-</div>
-<div class="container events-wrapper">
-  <div *ngIf="eventsContentVisibility | async">
-    <ul class="events-list" *ngIf="events?.length">
-      <li class="event" *ngFor="let event of events">
-        <a routerLink="/events/{{event.id}}">
-          <img class="event__photo" src="{{event.main_photo}}">
-          <p class="event__title">
-            {{event.name}}<br>
-            {{dateService.getDateTime(event.start_time)}}
-          </p>
-        </a>
-      </li>
-    </ul>
-    <p class="mat-h3" *ngIf="!events?.length">Нічого не знайдено!</p>
-    <a routerLink="/events">Більше подій</a>
+<section class="events-upcoming">
+  <div class="container">
+    <div class="events-headline__line">
+      <h2 class="headline events-headline__headline">Найближчі події</h2>
+      <span class="mat-h3 events__date">{{dateUrkFormat}}</span>
+      <button class="btn__datepicker" mat-button matSuffix mat-icon-button aria-label="Calendar" (click)="picker.open()">
+        <mat-icon>events</mat-icon>
+      </button>
+      <mat-form-field appearance="fill" style="width: 1px; visibility: hidden" class="mat-hidden">
+        <input matInput [matDatepicker]="picker" [formControl]="dateInput">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+
+    <div *ngIf="eventsContentVisibility | async">
+      <ul class="main__list" *ngIf="events?.length">
+        <li class="event-item upcoming-events__item" *ngFor="let event of events">
+          <a routerLink="/events/{{event.id}}">
+            <span class="img-wrapper">
+            <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
+            </span>
+            <p class="card-link event__headline">
+              {{event.name}}
+            </p>
+            <p class="card-text">
+              {{dateService.getDateTime(event.start_time)}}
+            </p>
+          </a>
+        </li>
+      </ul>
+      <p class="mat-h3" *ngIf="!events?.length">Нічого не знайдено!</p>
+      <a routerLink="/events" class="upcoming-events__link link">Більше подій</a>
+    </div>
+    <mat-spinner class="loader" *ngIf="eventsLoaderVisibility | async"></mat-spinner>
   </div>
-  <mat-spinner class="loader" *ngIf="eventsLoaderVisibility | async"></mat-spinner>
-</div>
+</section>
+
