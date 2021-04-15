@@ -18,9 +18,10 @@
 </section>
 <section class="categories-wrapper">
   <div class="categories container">
-    <h1 class="categories__title">Що шукаєш?</h1>
-    <div class="categories__list list">
-        <a routerLink="/places/{{categories[0].id}}" class="categories__item-link-wrapper link">
+    <h2 class="headline">Що шукаєш?</h2>
+    <ul class="main__list categories__list list">
+      <li class="categories__item-link-wrapper">
+        <a routerLink="/places/{{categories[0].id}}" class="link">
           <div class="photo-wrapper">
             <div class="photo-overlay categories__photo-overlay-sleeping">
               <div class="content">
@@ -31,12 +32,14 @@
             </div>
             <img src="../../../../../../assets/sleeping-gray.jpg" class="img" alt="{{categories[0].name}}"/>
           </div>
-          <a routerLink="/places/{{categories[0].id}}" class="categories__link link categories__l">
+          <a routerLink="/places/{{categories[0].id}}" class="card-link link category-name">
             {{categories[0].name}}
           </a>
-          <p class="categories_count">кількість вражень</p>
+          <p class="card-text category-text">кількість вражень</p>
         </a>
-        <a routerLink="/places/{{categories[1].id}}" class="categories__item-link-wrapper link">
+      </li>
+      <li class="categories__item-link-wrapper">
+        <a routerLink="/places/{{categories[1].id}}" class="link">
           <div class="photo-wrapper">
             <div class="photo-overlay categories__photo-overlay-gastronomy">
               <div class="content">
@@ -47,44 +50,50 @@
             </div>
             <img src="../../../../../../assets/gastronomy-gray.jpg" class="img" alt="{{categories[1].name}}"/>
           </div>
-          <a routerLink="/places/{{categories[1].id}}" class="categories__link link categories__l">
+          <a routerLink="/places/{{categories[1].id}}" class="card-link link category-name">
             {{categories[1].name}}
           </a>
-          <p class="categories_count">кількість вражень</p>
+          <p class="card-text category-text">кількість вражень</p>
         </a>
-        <a routerLink="/places/{{categories[2].id}}" class="categories__item-link-wrapper link">
+      </li>
+      <li class="categories__item-link-wrapper">
+        <a routerLink="/places/{{categories[2].id}}" class="link">
           <div class="photo-wrapper">
             <div class="photo-overlay categories__photo-overlay-recreation">
               <div class="content">
-              <span>
-                {{categories[2].name}}
+              <span class="overlay">
+                {{categories[3].name}}
               </span>
               </div>
             </div>
             <img src="../../../../../../assets/recreation-gray.jpg" class="img" alt="{{categories[2].name}}"/>
           </div>
-          <a routerLink="/places/{{categories[2].id}}" class="categories__link link categories__l">
+          <a routerLink="/places/{{categories[2].id}}" class="link card-link category-name">
             {{categories[2].name}}
           </a>
-          <p class="categories_count">кількість вражень</p>
+          <p class="card-text category-text">кількість вражень</p>
         </a>
-        <a routerLink="/places/{{categories[3].id}}" class="categories__item-link-wrapper link">
-          <div class="photo-wrapper">
-            <div class="photo-overlay categories__photo-overlay-culture">
-              <div class="content">
+      </li>
+<li class="categories__item-link-wrapper">
+  <a routerLink="/places/{{categories[3].id}}" class="link">
+    <div class="photo-wrapper">
+      <div class="photo-overlay categories__photo-overlay-culture">
+        <div class="content">
               <span>
                 {{categories[3].name}}
               </span>
-              </div>
-            </div>
-            <img src="../../../../../../assets/culture-gray.jpg" class="img" alt="{{categories[3].name}}"/>
-          </div>
-          <a routerLink="/places/{{categories[3].id}}" class="categories__link link categories__l">
-            {{categories[3].name}}
-          </a>
-          <p class="categories_count">кількість вражень</p>
-        </a>
-        <a routerLink="/places/{{categories[4].id}}" class="categories__item-link-wrapper link">
+        </div>
+      </div>
+      <img src="../../../../../../assets/culture-gray.jpg" class="img" alt="{{categories[3].name}}"/>
+    </div>
+    <a routerLink="/places/{{categories[3].id}}" class="card-link link category-name">
+      {{categories[3].name}}
+    </a>
+    <p class="card-text category-text">кількість вражень</p>
+  </a>
+</li>
+      <li class="categories__item-link-wrapper">
+        <a routerLink="/places/{{categories[4].id}}" class="link">
           <div class="photo-wrapper">
             <div class="photo-overlay categories__photo-overlay-unique">
               <div class="content">
@@ -95,12 +104,14 @@
             </div>
             <img src="../../../../../../assets/unique-gray.jpg" class="img" alt="{{categories[4].name}}"/>
           </div>
-          <a routerLink="/places/{{categories[4].id}}" class="categories__link link categories__l">
+          <a routerLink="/places/{{categories[4].id}}" class="card-link link category-name">
             {{categories[4].name}}
           </a>
-          <p class="categories_count">кількість вражень</p>
+          <p class="card-text category-text">кількість вражень</p>
         </a>
-        <a routerLink="/places/{{categories[5].id}}" class="categories__item-link-wrapper link">
+      </li>
+      <li class="categories__item-link-wrapper">
+        <a routerLink="/places/{{categories[5].id}}" class="link">
           <div class="photo-wrapper">
             <div class="photo-overlay categories__photo-overlay-navigation">
               <div class="content">
@@ -111,30 +122,32 @@
             </div>
             <img src="../../../../../../assets/navigation-gray.jpg" class="img" alt="{{categories[5].name}}"/>
           </div>
-          <a routerLink="/places/{{categories[5].id}}" class="categories__link link categories__l">
+          <a routerLink="/places/{{categories[5].id}}" class="card-link link category-name">
             {{categories[5].name}}
           </a>
-          <p class="categories_count">кількість вражень</p>
+          <p class="card-text category-text">кількість вражень</p>
         </a>
+      </li>
 
-<!--      <li class="categories__item-test">-->
-<!--        <div class="photo-wrapper-test">-->
-<!--          <div class="photo-overlay-test">-->
-<!--            <div class="content">-->
-<!--              <span>-->
-<!--                {{ categories[5].name }}-->
-<!--              </span>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <img src="../../../../../../assets/navigation.jpg" class="img-test-col"/>-->
-<!--          <img src="../../../../../../assets/nav.jpg" class="img-test-gray"/>-->
-<!--        </div>-->
 
-<!--        <a routerLink="/places/{{categories[5].id}}" class="categories__link link categories__l">-->
-<!--          {{ categories[5].name }}-->
-<!--        </a>-->
-<!--        <p class="categories_count">кількість вражень</p>-->
-<!--      </li>-->
-    </div>
+      <!--      <li class="categories__item-test">-->
+      <!--        <div class="photo-wrapper-test">-->
+      <!--          <div class="photo-overlay-test photo-overlay">-->
+      <!--            <div class="content">-->
+      <!--              <span>-->
+      <!--                {{ categories[5].name }}-->
+      <!--              </span>-->
+      <!--            </div>-->
+      <!--          </div>-->
+      <!--          <img src="../../../../../../assets/navigation.jpg" class="img-test-col"/>-->
+      <!--          <img src="../../../../../../assets/navigation-gray.jpg" class="img-test-gray"/>-->
+      <!--        </div>-->
+
+      <!--        <a routerLink="/places/{{categories[5].id}}" class="categories__link link categories__l">-->
+      <!--          {{ categories[5].name }}-->
+      <!--        </a>-->
+      <!--        <p class="categories_count">кількість вражень</p>-->
+      <!--      </li>-->
+    </ul>
   </div>
 </section>
