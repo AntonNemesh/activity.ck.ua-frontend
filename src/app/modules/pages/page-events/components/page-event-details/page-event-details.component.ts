@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IEvent, IPhotos } from '../../../../../static/type';
 import { ActivatedRoute } from '@angular/router';
-import { EventsService } from '../../../../../services';
+import {EventsService, UsersService} from '../../../../../services';
 
 @Component({
   selector: 'app-page-event-details',
@@ -11,14 +11,30 @@ import { EventsService } from '../../../../../services';
 export class PageEventDetailsComponent implements OnInit {
   public eventId: string;
   public event: IEvent;
-  public eventPhotos: IPhotos[];
+  public scheduled: boolean;
 
-  constructor(private route: ActivatedRoute, private eventsService: EventsService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private eventsService: EventsService,
+    private usersService: UsersService) { }
 
   getEvent(): void {
     this.eventsService.getEventById(this.eventId).subscribe((data) => {
       this.event = data.event;
-      this.eventPhotos = data.photos;
+      this.scheduled = data.event.scheduled;
+    });
+  }
+
+  public updateScheduledState(): void {
+    this.eventsService.getEventById(this.eventId).subscribe((data) => {
+      this.scheduled = data.event.scheduled;
+      if (this.scheduled) {
+        this.usersService.removeEventFromScheduled(this.eventId).subscribe();
+        this.scheduled = !this.scheduled;
+        return;
+      }
+      this.usersService.addEventToScheduled(this.eventId).subscribe();
+      this.scheduled = !this.scheduled;
     });
   }
 

@@ -42,10 +42,18 @@ main {
   background: none;
 }
 
+.pressed-favorite-btn {
+  color: #ffa9a2;
+}
+
+.pressed-primary-btn {
+  background-color: #c6a6ff !important;
+}
+
 .red {
   color: red;
 }
 
 .green {
-  color:green;
+  color: green;
 }

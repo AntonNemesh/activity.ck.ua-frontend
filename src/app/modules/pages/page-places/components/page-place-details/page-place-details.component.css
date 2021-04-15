@@ -44,10 +44,6 @@
 }
 /*events*/
 
-
-
-
-
 .event:hover {
   background: var(--background-color);
 }
@@ -56,4 +52,32 @@
   margin-top: 15px;
   font-weight: 600;
   letter-spacing: 1px;
+}
+
+.place-about {
+  padding-top: 4%;
+}
+
+.favorite-visit-section {
+  display: grid;
+  grid-template-columns: 2.5fr 0.05fr;
+  justify-items: end;
+}
+
+.visited-btn {
+  padding: 5px 25px;
+  justify-items: end;
+  background-color: #ffffff;
+  color: var(--main-text-color);
+  font: var(--text-font);
+  border: 1px solid var(--main-text-color);
+  border-radius: 8px;
+  transition: background-color 2s;
+}
+
+.visited-btn:hover,
+.visited-btn:active,
+.visited-btn:focus {
+  background-color: var(--main-text-color);
+  color: #ffffff;
 }

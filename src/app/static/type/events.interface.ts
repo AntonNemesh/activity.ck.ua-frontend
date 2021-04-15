@@ -26,6 +26,7 @@ export interface IEvent {
   start_time: string;
   end_time: string;
   photos: IPhotos[];
+  scheduled: boolean;
   organization_id: number;
   organizer: string;
   user_id: number;

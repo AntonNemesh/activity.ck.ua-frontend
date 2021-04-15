@@ -80,7 +80,7 @@
                     Поле є обов'язковим
                   </mat-error>
                 </mat-form-field>
-                <button class="add-phone" mat-button matSuffix mat-icon-button aria-label="Add" (click)="addPhone($event, true)">
+                <button *ngIf="organizationPhones.controls?.length < 5" class="add-phone" mat-button matSuffix mat-icon-button aria-label="Add" (click)="addPhone($event, true)">
                   <mat-icon>add</mat-icon>
                 </button>
               </div>
@@ -194,7 +194,7 @@
                 Поле є обов'язковим
               </mat-error>
             </mat-form-field>
-            <button class="add-phone" mat-button matSuffix mat-icon-button aria-label="Add" (click)="addPhone($event, false)">
+            <button *ngIf="placePhones.controls?.length < 5" class="add-phone" mat-button matSuffix mat-icon-button aria-label="Add" (click)="addPhone($event, false)">
               <mat-icon>add</mat-icon>
             </button>
           </div>

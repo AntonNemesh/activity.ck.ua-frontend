@@ -16,6 +16,8 @@ export interface IPlaceBase {
   accessibility: boolean;
   dog_friendly: boolean;
   child_friendly: boolean;
+  favorite: boolean;
+  visited: boolean;
   description: string;
   rating?: number;
 }

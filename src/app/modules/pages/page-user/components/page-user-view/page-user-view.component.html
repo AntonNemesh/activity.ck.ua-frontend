@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="mat-h1">Заплановані події</h1>
+  <h1 class="mat-h1" *ngIf="scheduledEvents?.length">Заплановані події</h1>
   <ul class="events-list" *ngIf="scheduledEvents?.length">
     <li class="event" *ngFor="let event of scheduledEvents">
       <a routerLink="/events/{{event.id}}">
@@ -14,7 +14,7 @@
     (paginationStateChange)="updateScheduledEventsPaginationState($event)"
     [totalPages]="scheduledEventsTotalPages">
   </app-pagination>
-  <h1 class="mat-h1">Недавні місця</h1>
+  <h1 class="mat-h1" *ngIf="visitedPlaces?.length">Недавні місця</h1>
   <ul class="events-list" *ngIf="visitedPlaces?.length">
     <li class="event" *ngFor="let place of visitedPlaces">
       <a routerLink="/places/{{place.category_id}}/{{place.id}}">
@@ -29,7 +29,7 @@
     (paginationStateChange)="updateVisitedPlacesPaginationState($event)"
     [totalPages]="visitedPlacesTotalPages">
   </app-pagination>
-  <h1 class="mat-h1">Улюблені місця</h1>
+  <h1 class="mat-h1" *ngIf="favoritePlaces?.length">Улюблені місця</h1>
   <ul class="events-list" *ngIf="favoritePlaces?.length">
     <li class="event" *ngFor="let place of favoritePlaces">
       <a routerLink="/places/{{place.category_id}}/{{place.id}}">
@@ -44,7 +44,7 @@
     (paginationStateChange)="updateFavoritePlacesPaginationState($event)"
     [totalPages]="favoritePlacesTotalPages">
   </app-pagination>
-  <h1 class="mat-h1">Мої місця</h1>
+  <h1 class="mat-h1" *ngIf="userPlaces?.length">Мої місця</h1>
   <ul class="events-list" *ngIf="userPlaces?.length">
     <li class="event" *ngFor="let place of userPlaces">
       <a routerLink="/places/{{place.category_id}}/{{place.id}}">
@@ -59,7 +59,7 @@
     (paginationStateChange)="updateUserPlacesPaginationState($event)"
     [totalPages]="userPlacesTotalPages">
   </app-pagination>
-  <h1 class="mat-h1">Мої події</h1>
+  <h1 class="mat-h1" *ngIf="userEvents?.length">Мої події</h1>
   <ul class="events-list" *ngIf="userEvents?.length">
     <li class="event" *ngFor="let event of userEvents">
       <a routerLink="/events/{{event.id}}">

@@ -1,7 +1,7 @@
 <div *ngIf="event" class="container">
   <p><b>Ідентифікатор події:</b>  {{eventId}}</p>
   <br><br>
-  <app-gallery [photos]="eventPhotos"></app-gallery>
+  <app-gallery [photos]="event.photos"></app-gallery>
   <br><br>
   <p><b>Назва події:</b>  {{event.name}}</p>
   <div>
@@ -19,4 +19,7 @@
   <p><b>Ідентифікатор місця проведення:</b>  {{event.place_id}}</p>
   <p><b>Ціна:</b>  {{event.price}}</p>
   <p><b>Програма:</b>  {{event.program}}</p>
+  <div class="favorite-visit-section">
+    <button [class.pressed-primary-btn]="scheduled" mat-flat-button color="primary" (click)="updateScheduledState()">Відвідаю</button>
+  </div>
 </div>

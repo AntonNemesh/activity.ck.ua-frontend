@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../../../../services';
-import { IObjectActivity } from '../../../../../static/type/user.interface';
+import { IEvent, IPlace } from '../../../../../static/type';
 
 @Component({
   selector: 'app-page-user-view',
@@ -11,11 +11,11 @@ export class PageUserViewComponent implements OnInit {
 
   constructor(private usersService: UsersService) { }
 
-  public visitedPlaces: IObjectActivity[];
-  public favoritePlaces: IObjectActivity[];
-  public userPlaces: IObjectActivity[];
-  public userEvents: IObjectActivity[];
-  public scheduledEvents: IObjectActivity[];
+  public visitedPlaces: IPlace[];
+  public favoritePlaces: IPlace[];
+  public userPlaces: IPlace[];
+  public userEvents: IEvent[];
+  public scheduledEvents: IEvent[];
 
   public visitedPlacesPage: number = 1;
   public favoritePlacesPage: number = 1;
@@ -23,46 +23,85 @@ export class PageUserViewComponent implements OnInit {
   public userEventsPage: number = 1;
   public scheduledEventsPage: number = 1;
 
-  public visitedPlacesTotalPages: number = 5;
-  public favoritePlacesTotalPages: number = 5;
-  public userPlacesTotalPages: number = 5;
-  public userEventsTotalPages: number = 5;
-  public scheduledEventsTotalPages: number = 5;
+  public visitedPlacesTotalPages: number;
+  public favoritePlacesTotalPages: number;
+  public userPlacesTotalPages: number;
+  public userEventsTotalPages: number;
+  public scheduledEventsTotalPages: number;
 
   public limit: number = 1;
 
   public updateEvents(section: string = 'all'): void {
     if (section === 'all') {
       this.usersService.getVisitedPlaces(this.visitedPlacesPage, this.limit).subscribe(
-        (visitedPlaces) => { this.visitedPlaces = visitedPlaces; });
+        (data) => {
+          this.visitedPlacesTotalPages = data._totalPages;
+          this.visitedPlaces = data.places;
+        }
+      );
       this.usersService.getFavoritePlaces(this.favoritePlacesPage, this.limit).subscribe(
-        (favoritePlaces) => { this.favoritePlaces = favoritePlaces; });
+        (data) => {
+          this.favoritePlacesTotalPages = data._totalPages;
+          this.favoritePlaces = data.places;
+        }
+      );
       this.usersService.getCreatedPlaces(this.userPlacesPage, this.limit).subscribe(
-        (userPlaces) => { this.userPlaces = userPlaces; });
+        (data) => {
+          this.userPlacesTotalPages = data._totalPages;
+          this.userPlaces = data.places;
+        }
+      );
       this.usersService.getCreatedEvents(this.userEventsPage, this.limit).subscribe(
-        (userEvents) => { this.userEvents = userEvents; });
+        (data) => {
+          this.userEventsTotalPages = data._totalPages;
+          this.userEvents = data.events;
+        }
+      );
       this.usersService.getScheduledEvents(this.scheduledEventsPage, this.limit).subscribe(
-        (scheduledEvents) => { this.scheduledEvents = scheduledEvents; });
+        (data) => {
+          this.scheduledEventsTotalPages = data._totalPages;
+          this.scheduledEvents = data.events;
+        }
+      );
     }
     if (section === 'visited places') {
       this.usersService.getVisitedPlaces(this.visitedPlacesPage, this.limit).subscribe(
-        (visitedPlaces) => { this.visitedPlaces = visitedPlaces; });
+        (data) => {
+          this.visitedPlacesTotalPages = data._totalPages;
+          this.visitedPlaces = data.places;
+        });
     }
     if (section === 'favorite places') {
       this.usersService.getFavoritePlaces(this.favoritePlacesPage, this.limit).subscribe(
-        (favoritePlaces) => { this.favoritePlaces = favoritePlaces; });
+        (data) => {
+          this.favoritePlacesTotalPages = data._totalPages;
+          this.favoritePlaces = data.places;
+        }
+      );
     }
     if (section === 'created places') {
       this.usersService.getCreatedPlaces(this.userPlacesPage, this.limit).subscribe(
-        (userPlaces) => { this.userPlaces = userPlaces; });
+        (data) => {
+          this.userPlacesTotalPages = data._totalPages;
+          this.userPlaces = data.places;
+        }
+      );
     }
     if (section === 'created events') {
       this.usersService.getCreatedEvents(this.userEventsPage, this.limit).subscribe(
-        (userEvents) => { this.userEvents = userEvents; });
+        (data) => {
+          this.userEventsTotalPages = data._totalPages;
+          this.userEvents = data.events;
+        }
+      );
     }
     if (section === 'scheduled events') {
       this.usersService.getScheduledEvents(this.scheduledEventsPage, this.limit).subscribe(
-        (scheduledEvents) => { this.scheduledEvents = scheduledEvents; });
+        (data) => {
+          this.scheduledEventsTotalPages = data._totalPages;
+          this.scheduledEvents = data.events;
+        }
+      );
     }
   }
 

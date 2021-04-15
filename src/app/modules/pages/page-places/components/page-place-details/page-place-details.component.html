@@ -72,31 +72,39 @@
         </div>
       </div>
     </div>
-    <section class="events">
+    <section *ngIf="events?.length" class="events">
       <div class="container">
-        <div *ngIf="events?.length">
-          <h2 class="place-details__headline">Найближчі події:</h2>
-          <ul class="main__list list">
-            <li class="event-item" *ngFor="let event of events">
-              <a routerLink="/events/{{event.id}}" class="img-wrapper ">
-                   <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
-              </a>
-              <p class="event__headline contact-link  link">
-                  {{event.name}}
-                </p>
-                <p class="contact-text link">
-                  {{dateService.getDateTime(event.start_time)}}
-                </p>
-
-            </li>
-          </ul>
-        </div>
+        <h2 class="headline events-headline__headline">Найближчі події</h2>
+        <ul class="main__list">
+          <li class="event-item" *ngFor="let event of events">
+            <a routerLink="/events/{{event.id}}">
+               <span class="img-wrapper">
+            <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
+            </span>
+              <p class="card-link event__headline">
+                {{event.name}}
+              </p>
+              <p class="card-text">
+                {{dateService.getDateTime(event.start_time)}}
+              </p>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
-    <section class="place__about">
+    <section class="place-about">
       <div class="container">
-        <h2 class="place-details__headline">Про {{place.name}}</h2>
+        <h2 class="place-details-about__headline">Про {{place.name}}</h2>
         <p class="place-details__about">{{place.description}}</p>
+        <div class="favorite-visit-section">
+          <button [class.pressed-primary-btn]="visited" mat-flat-button class="visited-btn" (click)="updateVisitedState()">
+            Відвідаю
+          </button>
+          <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon"
+                  (click)="updateFavoriteState()">
+            <mat-icon [class.pressed-favorite-btn]="favorite">favorite</mat-icon>
+          </button>
+        </div>
         <p class="place-details__text">Рейтинг: {{place.rating || 'відсутній'}}</p>
       </div>
     </section>
