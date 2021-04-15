@@ -76,10 +76,10 @@
       <div class="container">
         <div *ngIf="events?.length">
           <h2 class="place-details__headline">Найближчі події:</h2>
-          <ul class="events__list list">
-            <li class="event" *ngFor="let event of events">
-              <a routerLink="/events/{{event.id}}" class=" event__img-wrapper">
-                   <img class="event__photo" src="{{event.main_photo}}" alt="{{event.name}}">
+          <ul class="main__list list">
+            <li class="event-item" *ngFor="let event of events">
+              <a routerLink="/events/{{event.id}}" class="img-wrapper ">
+                   <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
               </a>
               <p class="event__headline contact-link  link">
                   {{event.name}}

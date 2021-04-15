@@ -378,6 +378,7 @@ body {font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0}
   text-decoration: underline 2px var(--bright-color);
   color: var(--bright-color);
 }
+
 .list {
   margin: 0;
   padding: 0;
@@ -440,12 +441,12 @@ body {font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0}
 /*events*/
 
 .events {
-  padding: 4% 15px 4%;
+  padding: 4% 15px 0;
   background: #ffffff;
 }
 
 @media (min-width: 576px) {
-  .events__list {
+  .main__list {
     display: grid;
     column-gap: 30px;
     row-gap: 30px;
