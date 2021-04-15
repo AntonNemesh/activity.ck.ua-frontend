@@ -1,25 +1,30 @@
+<section class="page-events-list">
 <div class="container">
   <app-filter-by-availability (availabilityStateChange)="updateFilterAvailabilityState($event)">
   </app-filter-by-availability>
   <div class="datepicker-wrapper">
-    <span class="mat-h1">Події</span>
-    <span class="mat-h3">{{dateUrkFormat}}</span>
+    <h2 class="headline datepicker-wrapper__headline">Події</h2>
+    <span class="mat-h3 events__date">{{dateUrkFormat}}</span>
     <button class="btn__datepicker" mat-button matSuffix mat-icon-button aria-label="Calendar" (click)="picker.open()">
       <mat-icon>events</mat-icon>
     </button>
-    <mat-form-field appearance="fill" style="width: 1px; visibility: hidden">
+    <mat-form-field appearance="fill" style="width: 1px; visibility: hidden" class="mat-hidden">
       <input matInput [matDatepicker]="picker" [formControl]="dateInput">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
   </div>
   <div class="events-wrapper">
-    <ul class="events-list" *ngIf="events?.length">
-      <li class="event" *ngFor="let event of events">
+    <ul class="main__list" *ngIf="events?.length">
+      <li class="event-item page-events-list__item" *ngFor="let event of events">
         <a routerLink="{{event.id}}">
-          <img class="event__photo" src="{{event.main_photo}}">
-          <p class="event__title">
-            {{event.name}}<br>
+           <span class="img-wrapper">
+            <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
+        </span>
+          <p class="card-link event__headline name">
+            {{event.name}}
+          </p>
+          <p class="card-text">
             {{dateService.getDateTime(event.start_time)}}
           </p>
         </a>
@@ -34,4 +39,5 @@
                   [datePickerState]="date">
   </app-pagination>
 </div>
+</section>
 
