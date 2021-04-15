@@ -1,20 +1,26 @@
-<div *ngIf="events" class="container">
-  <h1 class="mat-h1">Приєднуйся зараз</h1>
-  <ul class="events-list" *ngIf="events?.length">
-    <li class="event" *ngFor="let event of events">
-      <a routerLink="/events/{{event.id}}">
-        <img class="event__photo" src="{{event.main_photo}}" alt="">
-        <p class="event__title">
-          {{event.name}}<br>
-          {{dateService.getDateTime(event.start_time)}}
-        </p>
-      </a>
-    </li>
-  </ul>
-  <app-pagination
-    *ngIf="totalPages"
-    [isArrowPagination]="true"
-    (paginationStateChange)="updatePaginationState($event)"
-    [totalPages]="totalPages">
-  </app-pagination>
-</div>
+<section class="events">
+  <div *ngIf="events" class="container ">
+    <h2 class="headline">Приєднуйся зараз</h2>
+    <ul class="events__list list" *ngIf="events?.length">
+      <li class="event-item" *ngFor="let event of events">
+        <a routerLink="/events/{{event.id}}">
+        <span class="img-wrapper">
+            <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
+        </span>
+          <p class="card-link event__headline">
+            {{event.name}}
+          </p>
+          <p class="card-text">
+            {{dateService.getDateTime(event.start_time)}}
+          </p>
+        </a>
+      </li>
+    </ul>
+    <app-pagination
+      *ngIf="totalPages"
+      [isArrowPagination]="true"
+      (paginationStateChange)="updatePaginationState($event)"
+      [totalPages]="totalPages">
+    </app-pagination>
+  </div>
+</section>

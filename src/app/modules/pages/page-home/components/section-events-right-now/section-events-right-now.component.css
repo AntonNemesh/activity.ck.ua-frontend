@@ -1,28 +1,11 @@
-.events-wrapper {
-  min-height: 360px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
 
-.events-list {
-  display: flex;
-  flex-flow: wrap;
-  list-style: none;
-  padding-inline-start: 0;
-  margin: 0;
-}
+/*.event-item {*/
+/*  padding: 20px;*/
+/*  width: max-content;*/
+/*  border-top-left-radius: 8px;*/
+/*  border-top-right-radius: 8px;*/
+/*}*/
 
-.event {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-}
-
-.event__photo {
-  max-width: 192px;
-}
-
-.event__title {
-
+.event__headline {
+  margin-top: 25px;
 }

@@ -363,10 +363,7 @@ body {font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0}
 
   --section-margin: 5% auto 0;
 }
-
-.bold {
-  font-weight: 600;
-}
+/*root classes*/
 
 .container {
   max-width: 1280px;
@@ -377,6 +374,10 @@ body {font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0}
   text-decoration: none;
 }
 
+.link:hover {
+  text-decoration: underline 2px var(--bright-color);
+  color: var(--bright-color);
+}
 .list {
   margin: 0;
   padding: 0;
@@ -388,14 +389,17 @@ body {font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0}
   fill: var(--light-color);
 }
 
-.contact-link {
-  text-decoration: none;
+.bold {
+  font-weight: 600;
 }
 
-.contact-link:hover {
-  text-decoration: underline 2px var(--bright-color);
-  color: var(--bright-color);
+.headline {
+  font: var(--text-headline);
+  color: var(--main-text-color);
+  padding: 0 20px 15px;
 }
+
+/*contacts*/
 
 .icon-text-row {
   grid-template: 1fr / .07fr 1fr;
@@ -412,6 +416,84 @@ body {font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0}
   justify-content: start;
 }
 
+/*card*/
+
+.card-link {
+  color: var(--main-text-color);
+  margin: 10px 0;
+  font-weight: 600;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
+}
+
+.card-link:hover {
+  color: var(--bright-color);
+  text-decoration: underline 2px var(--bright-color);
+}
+
+.card-text {
+  font: var(--text-font);
+  color: var(--main-text-color);
+}
+
+/*events*/
+
 .events {
+  padding: 4% 15px 4%;
   background: #ffffff;
 }
+
+@media (min-width: 576px) {
+  .events__list {
+    display: grid;
+    column-gap: 30px;
+    row-gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 1fr;
+    justify-content: center;
+  }
+}
+
+.event-item {
+  padding: 15px;
+  margin: 0 auto;
+  max-width: max-content;
+  color: var(--main-text-color);
+  display: grid;
+  grid-auto-flow: row;
+  grid-template: auto 1fr minmax(40px, auto) / 1fr;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+.event-item:hover .img-wrapper {
+  border: 2px solid var(--bright-color);
+  outline: none;
+}
+
+.event-item a {
+  text-decoration: none;
+}
+
+.event-item:hover {
+  background-color: var(--background-color);
+}
+.img-wrapper {
+  display: grid;
+  width: 260px;
+  height: 200px;
+  border: 2px dotted var(--light-color);
+  border-radius: 8px;
+}
+
+.img-photo {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  object-fit: contain;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
