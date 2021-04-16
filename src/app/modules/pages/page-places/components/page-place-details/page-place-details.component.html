@@ -108,5 +108,8 @@
         <p class="place-details__text">Рейтинг: {{place.rating || 'відсутній'}}</p>
       </div>
     </section>
+    <section class="container form-review">
+      <app-form-review *ngIf="placeId" [placeId]="placeId"></app-form-review>
+    </section>
   </div>
 </div>

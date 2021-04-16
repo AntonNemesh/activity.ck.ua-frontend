@@ -6,7 +6,8 @@ import {
   GalleryComponent,
   FilterByAvailabilityComponent,
   FilterByTypeComponent,
-  UploaderForPhotosComponent
+  UploaderForPhotosComponent,
+  FormReviewComponent
 } from './components';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { MaterialModule } from '../material';
@@ -22,7 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     GalleryComponent,
     FilterByAvailabilityComponent,
     FilterByTypeComponent,
-    UploaderForPhotosComponent
+    UploaderForPhotosComponent,
+    FormReviewComponent
   ],
   exports: [
     LoadingComponent,
@@ -30,7 +32,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     GalleryComponent,
     FilterByAvailabilityComponent,
     FilterByTypeComponent,
-    UploaderForPhotosComponent
+    UploaderForPhotosComponent,
+    FormReviewComponent
   ],
   imports: [
     CommonModule,
