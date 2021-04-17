@@ -13,10 +13,6 @@
   border: 1px solid gray;
 }
 
-.user__name {
-  align-self: flex-end;
-}
-
 .header {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -26,9 +22,6 @@
 
 .header__link {
   color: var(--light-color);
-  grid-template: 1fr / 1fr 1fr;
-  display: grid;
-  align-items: center;
 }
 
 .logo-link {
@@ -57,6 +50,7 @@
 }
 
 .header__auth {
+  display: grid;
   padding-right: 10px;
   justify-self: end;
 }

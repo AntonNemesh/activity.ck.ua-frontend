@@ -29,7 +29,7 @@ export class PageUserViewComponent implements OnInit {
   public userEventsTotalPages: number;
   public scheduledEventsTotalPages: number;
 
-  public limit: number = 1;
+  public limit: number = 4;
 
   public updateEvents(section: string = 'all'): void {
     if (section === 'all') {

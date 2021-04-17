@@ -10,7 +10,7 @@
 <!--      <use xlink:href="../../../../../assets/icons.svg#user"></use>-->
 <!--    </svg>-->
 <!--  </a>-->
-  <a class="user" *ngIf="user" routerLink="/user">
+  <a class="link header__link header__auth" *ngIf="user" routerLink="/user">
     <img class="user__avatar" src="{{user.avatar}}" alt="{{user.name}}">
     <span class="user__name">{{user.name}}</span>
   </a>
