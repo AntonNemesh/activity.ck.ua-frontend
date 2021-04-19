@@ -1,9 +1,10 @@
-<section class="page-events-details">
-  <div *ngIf="event" class="container">
+<app-layout>
+  <section class="page-events-details">
+    <div *ngIf="event" class="container">
 
-    <app-gallery [photos]="event.photos"></app-gallery>
+      <app-gallery [photos]="event.photos"></app-gallery>
 
-    <h1 class="headline events-details__headline">{{event.name}}</h1>
+      <h1 class="headline events-details__headline">{{event.name}}</h1>
       <ul *ngIf="event.phones" class="list">
         <li *ngFor="let phone of event.phones">
           <a href="tel:{{event.phones}}" class="contact-text contact-link icon-text-row link">
@@ -26,19 +27,21 @@
         </svg>
         {{event.website}}
       </a>
-    <p class="card-text"><span class="bold">Ціна:</span>  {{event.price}}</p>
+      <p class="card-text"><span class="bold">Ціна:</span>  {{event.price}}</p>
 
 
-    <p class="card-text"><span class="bold">Опис: </span>  {{event.description}}</p>
-    <p class="card-text"><span class="bold">Дата початку:</span>  {{event.start_time}}</p>
-    <p class="card-text"><span class="bold">Дата кінця:</span>  {{event.end_time}}</p>
-    <p class="card-text"><span class="bold">Організатор:</span>  {{event.organizer}}</p>
-    <p class="card-text"><span class="bold">Ідентифікатор місця проведення:</span>  {{event.place_id}}</p>
-    <h2 class="card-text bold event__program">Програма:</h2>
+      <p class="card-text"><span class="bold">Опис: </span>  {{event.description}}</p>
+      <p class="card-text"><span class="bold">Дата початку:</span>  {{event.start_time}}</p>
+      <p class="card-text"><span class="bold">Дата кінця:</span>  {{event.end_time}}</p>
+      <p class="card-text"><span class="bold">Організатор:</span>  {{event.organizer}}</p>
+      <p class="card-text"><span class="bold">Ідентифікатор місця проведення:</span>  {{event.place_id}}</p>
+      <h2 class="card-text bold event__program">Програма:</h2>
       <p class="card-text">{{event.program}}</p>
-    <div class="favorite-visit-section">
-      <button class="visited-btn" [class.pressed-primary-btn]="scheduled" mat-flat-button color="primary" (click)="updateScheduledState()">Відвідаю</button>
+      <div class="favorite-visit-section">
+        <button class="visited-btn" [class.pressed-primary-btn]="scheduled" mat-flat-button color="primary" (click)="updateScheduledState()">Відвідаю</button>
+      </div>
     </div>
-  </div>
 
-</section>
+  </section>
+
+</app-layout>
