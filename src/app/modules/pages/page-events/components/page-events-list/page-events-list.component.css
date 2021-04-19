@@ -1,23 +1,38 @@
-.page-events-list {
-  background-color: var(--background-color);
-  padding: 4% 15px;
+@media (min-width: 769px) {
+  .page-events-list-wrapper {
+    display: grid;
+    grid-template-columns: .5fr 2.5fr;
+    grid-template-rows: auto;
+  }
+}
+
+.aside-filters {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+.datepicker-wrapper {
+  padding-top: 25px;
+  display: grid;
+  grid-template-columns: 1fr .5fr .002fr;
+  grid-template-rows: .5fr;
+  grid-column: 2/3;
+}
+
+.mat-hidden {
+  grid-row: 1/2;
+}
+
+.page-events-list__events {
+  padding-top: var(--padding);
+  grid-column: 2/3;
+  background-color: var(--background-saturated-color);
 }
 
 .page-events-list__item:hover {
   background-color: #fff;
 }
 
-.datepicker-wrapper {
-  padding-top: 25px;
-  display: grid;
-  grid-template-columns: 1fr .25fr .002fr;
-  grid-template-rows: .5fr;
-  align-items: baseline;
-}
-
-.mat-hidden {
-  grid-row: 1/2;
-}
 
 .datepicker-wrapper__headline {
   grid-row: 1/2;
@@ -26,6 +41,7 @@
 .events__date {
   grid-column: 2/3;
   grid-row: 1/2;
+  justify-self: end;
 }
 
 .btn__datepicker {
@@ -36,23 +52,6 @@
 .name {
   margin-top: 25px;
 }
-/*.datepicker-wrapper {*/
-/*  display: flex;*/
-/*  justify-content: flex-end;*/
-/*  align-items: center;*/
-/*}*/
-
-/*.datepicker-wrapper span {*/
-/*  margin: auto;*/
-/*}*/
-
-/*.datepicker-wrapper .mat-h1 {*/
-/*  margin-left: 0;*/
-/*}*/
-
-/*.datepicker-wrapper .mat-h3 {*/
-/*  margin-right: 10px;*/
-/*}*/
 
 .hidden {
   display: none;
