@@ -5,7 +5,7 @@ import { UsersResolverService } from '../../../services';
 
 const routes: Routes = [
   { path: '', component: PagePlacesListComponent },
-  { path: ':place_id', component: PagePlaceDetailsComponent, resolve: { user: UsersResolverService } },
+  { path: ':place_id', component: PagePlaceDetailsComponent },
 ];
 
 @NgModule({
