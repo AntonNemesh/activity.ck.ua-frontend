@@ -47,7 +47,8 @@ main {
 }
 
 .pressed-primary-btn {
-  background-color: #c6a6ff !important;
+  background-color: #27c903 !important;
+  border-radius: 8px;
 }
 
 .red {
