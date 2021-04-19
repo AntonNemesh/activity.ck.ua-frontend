@@ -1,6 +1,6 @@
 <section class="video__section">
   <div class="video__overlay">
-    <div class="container video__text">
+    <div class="container padding-inside video__text">
       <h1 class="video__headline">
         ЧЕРКАСИ -
       </h1>
@@ -16,12 +16,12 @@
     <source src="../../../../../../assets/video.mp4" type="video/mp4" class="video">
   </video>
 </section>
-<section class="categories-wrapper">
-  <div class="categories container">
+<section class="background-saturated">
+  <div class="categories container padding-inside">
     <h2 class="headline">Що шукаєш?</h2>
     <ul class="main__list categories__list list">
-      <li class="categories__item-link-wrapper">
-        <a routerLink="/places/{{categories[0].id}}" class="link">
+      <li>
+        <a routerLink="/places/{{categories[0].id}}" class="categories__item-link-wrapper link">
           <div class="photo-wrapper">
             <div class="photo-overlay categories__photo-overlay-sleeping">
               <div class="content">
@@ -32,14 +32,14 @@
             </div>
             <img src="../../../../../../assets/sleeping-gray.jpg" class="img" alt="{{categories[0].name}}"/>
           </div>
-          <a routerLink="/places/{{categories[0].id}}" class="card-link link category-name">
+          <p class="card-link link category-name">
             {{categories[0].name}}
-          </a>
+          </p>
           <p class="card-text category-text">кількість вражень</p>
         </a>
       </li>
-      <li class="categories__item-link-wrapper">
-        <a routerLink="/places/{{categories[1].id}}" class="link">
+      <li>
+        <a routerLink="/places/{{categories[1].id}}" class="link categories__item-link-wrapper">
           <div class="photo-wrapper">
             <div class="photo-overlay categories__photo-overlay-gastronomy">
               <div class="content">
@@ -50,50 +50,50 @@
             </div>
             <img src="../../../../../../assets/gastronomy-gray.jpg" class="img" alt="{{categories[1].name}}"/>
           </div>
-          <a routerLink="/places/{{categories[1].id}}" class="card-link link category-name">
+          <p class="card-link link category-name">
             {{categories[1].name}}
-          </a>
+          </p>
           <p class="card-text category-text">кількість вражень</p>
         </a>
       </li>
-      <li class="categories__item-link-wrapper">
-        <a routerLink="/places/{{categories[2].id}}" class="link">
+      <li>
+        <a routerLink="/places/{{categories[2].id}}" class="link categories__item-link-wrapper">
           <div class="photo-wrapper">
             <div class="photo-overlay categories__photo-overlay-recreation">
               <div class="content">
               <span class="overlay">
-                {{categories[3].name}}
+                {{categories[2].name}}
               </span>
               </div>
             </div>
             <img src="../../../../../../assets/recreation-gray.jpg" class="img" alt="{{categories[2].name}}"/>
           </div>
-          <a routerLink="/places/{{categories[2].id}}" class="link card-link category-name">
+          <p class="link card-link category-name">
             {{categories[2].name}}
-          </a>
+          </p>
           <p class="card-text category-text">кількість вражень</p>
         </a>
       </li>
-<li class="categories__item-link-wrapper">
-  <a routerLink="/places/{{categories[3].id}}" class="link">
-    <div class="photo-wrapper">
-      <div class="photo-overlay categories__photo-overlay-culture">
-        <div class="content">
+      <li>
+        <a routerLink="/places/{{categories[3].id}}" class="link categories__item-link-wrapper">
+          <div class="photo-wrapper">
+            <div class="photo-overlay categories__photo-overlay-culture">
+              <div class="content">
               <span>
                 {{categories[3].name}}
               </span>
-        </div>
-      </div>
-      <img src="../../../../../../assets/culture-gray.jpg" class="img" alt="{{categories[3].name}}"/>
-    </div>
-    <a routerLink="/places/{{categories[3].id}}" class="card-link link category-name">
-      {{categories[3].name}}
-    </a>
-    <p class="card-text category-text">кількість вражень</p>
-  </a>
-</li>
-      <li class="categories__item-link-wrapper">
-        <a routerLink="/places/{{categories[4].id}}" class="link">
+              </div>
+            </div>
+            <img src="../../../../../../assets/culture-gray.jpg" class="img" alt="{{categories[3].name}}"/>
+          </div>
+          <p class="card-link link category-name">
+            {{categories[3].name}}
+          </p>
+          <p class="card-text category-text">кількість вражень</p>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/places/{{categories[4].id}}" class="link categories__item-link-wrapper">
           <div class="photo-wrapper">
             <div class="photo-overlay categories__photo-overlay-unique">
               <div class="content">
@@ -104,14 +104,14 @@
             </div>
             <img src="../../../../../../assets/unique-gray.jpg" class="img" alt="{{categories[4].name}}"/>
           </div>
-          <a routerLink="/places/{{categories[4].id}}" class="card-link link category-name">
+          <p class="card-link link category-name">
             {{categories[4].name}}
-          </a>
+          </p>
           <p class="card-text category-text">кількість вражень</p>
         </a>
       </li>
-      <li class="categories__item-link-wrapper">
-        <a routerLink="/places/{{categories[5].id}}" class="link">
+      <li>
+        <a routerLink="/places/{{categories[5].id}}" class="link categories__item-link-wrapper">
           <div class="photo-wrapper">
             <div class="photo-overlay categories__photo-overlay-navigation">
               <div class="content">
@@ -122,9 +122,9 @@
             </div>
             <img src="../../../../../../assets/navigation-gray.jpg" class="img" alt="{{categories[5].name}}"/>
           </div>
-          <a routerLink="/places/{{categories[5].id}}" class="card-link link category-name">
+          <p class="card-link link category-name">
             {{categories[5].name}}
-          </a>
+          </p>
           <p class="card-text category-text">кількість вражень</p>
         </a>
       </li>
