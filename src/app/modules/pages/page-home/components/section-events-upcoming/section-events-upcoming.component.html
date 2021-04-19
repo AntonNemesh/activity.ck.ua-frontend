@@ -1,9 +1,10 @@
-<section class="events-upcoming">
-  <div class="container">
+<section class="events-upcoming background-saturated">
+  <div class="container  padding-inside">
     <div class="events-headline__line">
       <h2 class="headline events-headline__headline">Найближчі події</h2>
       <span class="mat-h3 events__date">{{dateUrkFormat}}</span>
-      <button class="btn__datepicker" mat-button matSuffix mat-icon-button aria-label="Calendar" (click)="picker.open()">
+      <button class="btn__datepicker" mat-button matSuffix mat-icon-button aria-label="Calendar"
+              (click)="picker.open()">
         <mat-icon>events</mat-icon>
       </button>
       <mat-form-field appearance="fill" style="width: 1px; visibility: hidden" class="mat-hidden">
@@ -13,25 +14,25 @@
       </mat-form-field>
     </div>
 
-
     <div *ngIf="eventsContentVisibility | async">
-      <ul class="main__list" *ngIf="events?.length">
-        <li class="event-item upcoming-events__item" *ngFor="let event of events">
-          <a routerLink="/events/{{event.id}}">
+      <div class="list main-list " *ngIf="events?.length">
+        <a routerLink="/events/{{event.id}}" *ngFor="let event of events" class="event-item upcoming-events__item">
             <span class="img-wrapper">
             <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
             </span>
-            <p class="card-link event__headline">
-              {{event.name}}
-            </p>
-            <p class="card-text">
-              {{dateService.getDateTime(event.start_time)}}
-            </p>
-          </a>
-        </li>
-      </ul>
+          <p class="card-link">
+            {{event.name}}
+          </p>
+          <p class="card-text">
+            {{dateService.getDateTime(event.start_time)}}
+          </p>
+        </a>
+      </div>
       <p class="mat-h3" *ngIf="!events?.length">Нічого не знайдено!</p>
-      <a routerLink="/events" class="upcoming-events__link link">Більше подій</a>
+      <a routerLink="/events" class="upcoming-events__link link ">
+        <mat-icon>sync</mat-icon>
+        Більше подій
+      </a>
     </div>
     <mat-spinner class="loader" *ngIf="eventsLoaderVisibility | async"></mat-spinner>
   </div>
