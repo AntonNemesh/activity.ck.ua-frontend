@@ -1,3 +1,7 @@
-.event__headline {
-  margin-top: 25px;
+.events-right-now__headline {
+  padding-bottom: var(--padding);
+}
+
+.events-right-now__event-item:hover {
+  background-color: var(--background-saturated-color);
 }

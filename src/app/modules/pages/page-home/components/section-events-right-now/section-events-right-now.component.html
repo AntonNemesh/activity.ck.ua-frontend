@@ -1,21 +1,19 @@
-<section class="events">
-  <div *ngIf="events?.length" class="container">
-    <h2 class="headline">Приєднуйся зараз</h2>
-    <ul class="main__list list">
-      <li class="event-item" *ngFor="let event of events">
-        <a routerLink="/events/{{event.id}}">
+<section class="background-light">
+  <div *ngIf="events?.length" class="container padding-inside">
+    <h2 class="headline events-right-now__headline">Приєднуйся зараз</h2>
+    <div class="main-list list events-right-now__list">
+        <a *ngFor="let event of events" routerLink="/events/{{event.id}}" class="event-item events-right-now__event-item">
         <span class="img-wrapper">
             <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
         </span>
-          <p class="card-link event__headline">
+          <p class="card-link">
             {{event.name}}
           </p>
           <p class="card-text">
             {{dateService.getDateTime(event.start_time)}}
           </p>
         </a>
-      </li>
-    </ul>
+    </div>
     <app-pagination
       *ngIf="totalPages"
       [isArrowPagination]="true"
