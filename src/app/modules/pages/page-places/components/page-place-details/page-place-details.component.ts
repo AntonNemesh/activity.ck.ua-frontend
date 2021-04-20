@@ -12,7 +12,6 @@ import { IEvent, IPlace } from '../../../../../static/type';
 export class PagePlaceDetailsComponent implements OnInit {
   public placeId: string;
   public place: IPlace;
-  public user: any;
   public events: IEvent[];
   public visited: boolean;
   public favorite: boolean;
@@ -67,9 +66,6 @@ export class PagePlaceDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.placeId = params.place_id;
-    });
-    this.route.data.subscribe((data) => {
-      this.user = data.user;
     });
     this.getPlace();
   }

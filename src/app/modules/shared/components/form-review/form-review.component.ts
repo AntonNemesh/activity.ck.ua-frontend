@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PlacesService } from '../../../../services';
-import { IPlaceReview } from '../../../../static/type';
+import { IPlaceReview, IUser } from '../../../../static/type';
+import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -11,7 +13,13 @@ import { IPlaceReview } from '../../../../static/type';
 })
 export class FormReviewComponent implements OnInit {
 
-  constructor(private placesService: PlacesService) { }
+  constructor(
+    private placesService: PlacesService,
+    private route: ActivatedRoute,
+    private matSnackBar: MatSnackBar
+  ) { }
+
+  public user: IUser;
 
   public rating: number = 0;
   public starCount: number = 5;
@@ -20,15 +28,13 @@ export class FormReviewComponent implements OnInit {
   public ratingTouched: boolean = false;
   public hasRatingError: boolean = false;
 
-  public sentReview: boolean = false;
-
   public ratingArr: number[] = [];
 
   @Input() placeId: string;
 
   public formReview: FormGroup = new FormGroup({
-    rating: new FormControl(null, [Validators.required]),
-    comment: new FormControl(null, [Validators.required])
+    rating: new FormControl(null, Validators.required),
+    comment: new FormControl(null)
   });
 
   public setRating(rating: number): boolean {
@@ -37,6 +43,12 @@ export class FormReviewComponent implements OnInit {
     this.hasRatingError = false;
     this.formReview.get('rating').setValue(rating);
     return false;
+  }
+
+  public initRatingView(): void {
+    for (let index: number = 0; index < this.starCount; index++) {
+      this.ratingArr.push(index);
+    }
   }
 
   public getRatingIcon(index: number): string {
@@ -49,16 +61,20 @@ export class FormReviewComponent implements OnInit {
   public onSubmit(): void {
     this.hasRatingError = this.ratingTouched === false;
     if (this.formReview.invalid) { return; }
+    let comment: string|null = this.formReview.get('comment').value;
+    comment = (typeof comment === 'string') ? comment.trim() : comment;
     const placeReview: IPlaceReview = {
       rating: this.formReview.get('rating').value,
-      comment: this.formReview.get('comment').value
+      comment: (comment === '') ? null : comment,
     };
     this.placesService.savePlaceReview(this.placeId, placeReview).subscribe(
       (data) => {
         this.resetForm();
+        this.matSnackBar.open('Ви залишили відгук!', '', { duration: 2000 });
         console.log('success', data);
       },
       (error) => {
+        this.matSnackBar.open('Відгук не був залишений через збій із сервером.', '', { duration: 2000, });
         console.log('oops', error);
       }
     );
@@ -69,13 +85,14 @@ export class FormReviewComponent implements OnInit {
     this.rating = 0;
     this.ratingTouched = false;
     this.hasRatingError = false;
-    this.sentReview = true;
+
   }
 
   ngOnInit(): void {
-    for (let index: number = 0; index < this.starCount; index++) {
-      this.ratingArr.push(index);
-    }
+    this.initRatingView();
+    this.route.data.subscribe((data) => {
+      this.user = data.user;
+    });
   }
 
 }

@@ -77,6 +77,6 @@ export interface ICategoryGroup {
 
 export interface IPlaceReview {
   rating: number;
-  comment: string;
+  comment: null|string;
 }
 

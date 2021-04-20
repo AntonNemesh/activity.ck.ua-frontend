@@ -1,6 +1,5 @@
 <app-layout>
   <div *ngIf="place">
-    <h1 *ngIf="user">{{user.name}}</h1>
     <div class="place-details__wrapper">
       <div class="container">
         <app-gallery [photos]="place.photos"></app-gallery>
