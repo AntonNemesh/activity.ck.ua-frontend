@@ -106,9 +106,14 @@
               <mat-icon [class.pressed-favorite-btn]="favorite">favorite</mat-icon>
             </button>
           </div>
-          <p class="place-details__text">Рейтинг: {{place.rating || 'відсутній'}}</p>
         </div>
       </section>
+      <section class="container view-rating">
+        <app-rating-view *ngIf="placeId" [placeId]="placeId" [rating]="place.rating" [numberOfReview]="12"></app-rating-view>
+      </section>
+      <br>
+      <br>
+      <br>
       <section class="container form-review">
         <app-form-review *ngIf="placeId" [placeId]="placeId"></app-form-review>
       </section>
