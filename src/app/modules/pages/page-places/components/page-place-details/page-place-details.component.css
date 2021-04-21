@@ -1,6 +1,10 @@
+.place-details__contact:hover a {
+  text-decoration: none;
+}
+
 .place-details__wrapper,
 .place__about {
-  background-color: var(--background-color);
+  background-color: var(--background-saturated-color);
   padding: 50px 10px;
 }
 
@@ -11,7 +15,7 @@
 .place-details__headline {
   padding: 30px 0;
   margin: 0;
-  font: var(--text-headline);
+  font: var(--font-headline);
 }
 
 .place-details__contacts {
@@ -21,6 +25,11 @@
 
 .place-details__text li {
   padding: 5px;
+}
+
+.page-place-details__work-time {
+  grid-template-rows: max-content;
+  align-items: normal;
 }
 
 .place-details__about {
@@ -39,23 +48,19 @@
   }
 
   .place-details-about__headline {
-    font: var(--text-headline);
+    font: var(--font-headline);
   }
 }
 /*events*/
 
 .event:hover {
-  background: var(--background-color);
+  background: var(--background-light-color);
 }
 
 .event__headline {
   margin-top: 15px;
   font-weight: 600;
   letter-spacing: 1px;
-}
-
-.place-about {
-  padding-top: 4%;
 }
 
 .favorite-visit-section {
@@ -69,7 +74,7 @@
   justify-items: end;
   background-color: #ffffff;
   color: var(--main-text-color);
-  font: var(--text-font);
+  font: var(--font-text);
   border: 1px solid var(--main-text-color);
   border-radius: 8px;
   transition: background-color 2s;

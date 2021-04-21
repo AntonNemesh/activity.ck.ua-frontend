@@ -1,18 +1,21 @@
-<div *ngIf="place">
+<section class="background-saturated place-details__contact">
+  <div *ngIf="place">
   <div class="place-details__wrapper">
-    <div class="container">
+    <div class="container padding-inside">
       <app-gallery [photos]="place.photos"></app-gallery>
 
-      <div class="place-details__info">
+      <section class="place-details__info">
         <div class="place-details__contacts">
           <h1 class="place-details__headline">{{place.name}}</h1>
           <ul *ngIf="place.phones" class="list">
             <li *ngFor="let phone of place.phones">
-              <a href="tel:{{place.phones}}" class="contact-text contact-link icon-text-row">
-                <svg viewBox="0 0 35 35" class="icon">
-                  <use xlink:href="../../../../../assets/icons.svg#phone"></use>
-                </svg>
-                {{phone}}
+              <a href="tel:{{place.phones}}" class="contact-text contact-link icon-text-row ">
+<!--                <svg viewBox="0 0 35 35" class="icon">-->
+<!--                  <use xlink:href="../../../../../assets/icons.svg#phone"></use>-->
+<!--                </svg>-->
+
+                <mat-icon class="icon">phone_in_talk</mat-icon>
+                <span class="contact__link">{{phone}}</span>
               </a>
             </li>
           </ul>
@@ -20,13 +23,13 @@
             <svg viewBox="0 0 512 512" class="icon">
               <use xlink:href="../../../../../assets/icons.svg#map"></use>
             </svg>
-            {{place.address}}
+            <span class="contact__link">{{place.address}}</span>
           </a>
           <a href="{{place.website}}" class="contact-text contact-link icon-text-row">
             <svg viewBox="0 0 128 128" class="icon">
               <use xlink:href="../../../../../assets/icons.svg#website"></use>
             </svg>
-            {{place.website}}
+            <span class="contact__link">{{place.website}}</span>
           </a>
 
           <p class="contact-text icon-text-row">
@@ -41,17 +44,18 @@
             Місце дружнє до дітей: {{place.child_friendly}}
           </p>
           <p class="contact-text icon-text-row">
-            <svg viewBox="0 0 512 512" class="icon">
-              <use xlink:href="../../../../../assets/icons.svg#paw"></use>
-            </svg>
+            <mat-icon class="icon">pets</mat-icon>
+<!--            <svg viewBox="0 0 512 512" class="icon">-->
+<!--              <use xlink:href="../../../../../assets/icons.svg#paw"></use>-->
+<!--            </svg>-->
             Місце дружнє до тварин: {{place.dog_friendly}}</p>
         </div>
-        <div class="contact-text">
-          <p class="bold">
+        <div class="contact-text page-place-details__work-time">
+          <p class="contact-text  icon-text-row">
             <svg viewBox="0 0 512 512" class="icon">
               <use xlink:href="../../../../../assets/icons.svg#clock"></use>
             </svg>
-            Графік роботи:
+            <span class="bold">  Графік роботи:</span>
           </p>
           <ul *ngIf="place.work_time" class="list place-details__text">
             <li *ngIf="place.work_time.mon"> Понеділок: {{place.work_time.mon.start}} - {{place.work_time.mon.end}}</li>
@@ -70,7 +74,7 @@
             <li *ngIf="!place.work_time.sun"> Неділя: вихідний</li>
           </ul>
         </div>
-      </div>
+      </section>
     </div>
     <section *ngIf="events?.length" class="events">
       <div class="container">
@@ -104,9 +108,13 @@
                   (click)="updateFavoriteState()">
             <mat-icon [class.pressed-favorite-btn]="favorite">favorite</mat-icon>
           </button>
+
+          <mat-icon>favorite_border</mat-icon>
+          <mat-icon>favorite</mat-icon>
         </div>
         <p class="place-details__text">Рейтинг: {{place.rating || 'відсутній'}}</p>
       </div>
     </section>
   </div>
 </div>
+</section>
