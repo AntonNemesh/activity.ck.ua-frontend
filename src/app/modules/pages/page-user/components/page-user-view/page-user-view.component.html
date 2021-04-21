@@ -1,50 +1,51 @@
-<section class="scheduled-events background-saturated" *ngIf="scheduledEvents?.length">
-  <div class="container">
-    <h1 class="headline">Заплановані події</h1>
-    <ul class="main-list" *ngIf="scheduledEvents?.length">
-      <li class="event-item" *ngFor="let event of scheduledEvents">
-        <a routerLink="/events/{{event.id}}">
+<app-layout>
+  <section class="scheduled-events background-saturated" *ngIf="scheduledEvents?.length">
+    <div class="container">
+      <h1 class="headline">Заплановані події</h1>
+      <ul class="main-list" *ngIf="scheduledEvents?.length">
+        <li class="event-item" *ngFor="let event of scheduledEvents">
+          <a routerLink="/events/{{event.id}}">
           <span class="img-wrapper">
             <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
             </span>
-          <p class="card-link event__headline">
-            {{event.name}}
-          </p>
-          <p class="card-text">
-            {{event.start_time}}
-          </p>
-        </a>
-      </li>
-    </ul>
-    <app-pagination
-      *ngIf="scheduledEventsTotalPages"
-      [isArrowPagination]="true"
-      (paginationStateChange)="updateScheduledEventsPaginationState($event)"
-      [totalPages]="scheduledEventsTotalPages">
-    </app-pagination>
-  </div>
-</section>
-<section class="visited-places background-light" *ngIf="visitedPlaces?.length">
-  <div class="container">
-    <h1 class="headline">Недавні місця</h1>
-    <ul class="main-list" *ngIf="visitedPlaces?.length">
-      <li class="event-item" *ngFor="let place of visitedPlaces">
-        <a routerLink="/places/{{place.category_id}}/{{place.id}}">
+            <p class="card-link event__headline">
+              {{event.name}}
+            </p>
+            <p class="card-text">
+              {{event.start_time}}
+            </p>
+          </a>
+        </li>
+      </ul>
+      <app-pagination
+        *ngIf="scheduledEventsTotalPages"
+        [isArrowPagination]="true"
+        (paginationStateChange)="updateScheduledEventsPaginationState($event)"
+        [totalPages]="scheduledEventsTotalPages">
+      </app-pagination>
+    </div>
+  </section>
+  <section class="visited-places background-light" *ngIf="visitedPlaces?.length">
+    <div class="container">
+      <h1 class="headline">Недавні місця</h1>
+      <ul class="main-list" *ngIf="visitedPlaces?.length">
+        <li class="event-item" *ngFor="let place of visitedPlaces">
+          <a routerLink="/places/{{place.category_id}}/{{place.id}}">
           <span class="img-wrapper">
             <img class="img-photo" src="{{place.main_photo}}" alt="{{place.name}}">
             </span>
-          <p class="card-link event__title">{{place.name}}</p>
-        </a>
-      </li>
-    </ul>
-    <app-pagination
-      *ngIf="visitedPlacesTotalPages"
-      [isArrowPagination]="true"
-      (paginationStateChange)="updateVisitedPlacesPaginationState($event)"
-      [totalPages]="visitedPlacesTotalPages">
-    </app-pagination>
-  </div>
-</section>
+            <p class="card-link event__title">{{place.name}}</p>
+          </a>
+        </li>
+      </ul>
+      <app-pagination
+        *ngIf="visitedPlacesTotalPages"
+        [isArrowPagination]="true"
+        (paginationStateChange)="updateVisitedPlacesPaginationState($event)"
+        [totalPages]="visitedPlacesTotalPages">
+      </app-pagination>
+    </div>
+  </section>
   <section class="favorite-places background-saturated" *ngIf="favoritePlaces?.length">
     <div class="container">
       <h1 class="headline">Улюблені місця</h1>
@@ -66,45 +67,46 @@
       </app-pagination>
     </div>
   </section>
-<section class="userPlaces background-light" *ngIf="userPlaces?.length">
-  <div class="container">
-    <h1 class="headline">Мої місця</h1>
-    <ul class="main-list list" *ngIf="userPlaces?.length">
-      <li *ngFor="let place of userPlaces">
-        <a routerLink="/places/{{place.category_id}}/{{place.id}}" class="event-item" >
+  <section class="userPlaces background-light" *ngIf="userPlaces?.length">
+    <div class="container">
+      <h1 class="headline">Мої місця</h1>
+      <ul class="main-list list" *ngIf="userPlaces?.length">
+        <li *ngFor="let place of userPlaces">
+          <a routerLink="/places/{{place.category_id}}/{{place.id}}" class="event-item" >
           <span class="img-wrapper">
             <img class="img-photo" src="{{place.main_photo}}" alt="{{place.name}}">
             </span>
-          <p class="card-link">{{place.name}}</p>
-        </a>
-      </li>
-    </ul>
-    <app-pagination
-      *ngIf="userPlacesTotalPages"
-      [isArrowPagination]="true"
-      (paginationStateChange)="updateUserPlacesPaginationState($event)"
-      [totalPages]="userPlacesTotalPages">
-    </app-pagination>
-  </div>
-</section>
-<section class="user-events background-saturated" *ngIf="userEvents?.length">
-  <div class="container">
-    <h1 class="headline">Мої події</h1>
-    <ul class="main-list" *ngIf="userEvents?.length">
-      <li class="event-item" *ngFor="let event of userEvents">
-        <a routerLink="/events/{{event.id}}">
+            <p class="card-link">{{place.name}}</p>
+          </a>
+        </li>
+      </ul>
+      <app-pagination
+        *ngIf="userPlacesTotalPages"
+        [isArrowPagination]="true"
+        (paginationStateChange)="updateUserPlacesPaginationState($event)"
+        [totalPages]="userPlacesTotalPages">
+      </app-pagination>
+    </div>
+  </section>
+  <section class="user-events background-saturated" *ngIf="userEvents?.length">
+    <div class="container">
+      <h1 class="headline">Мої події</h1>
+      <ul class="main-list" *ngIf="userEvents?.length">
+        <li class="event-item" *ngFor="let event of userEvents">
+          <a routerLink="/events/{{event.id}}">
           <span class="img-wrapper">
             <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
             </span>
-          <p class="card-link event__headline">{{event.name}}</p>
-        </a>
-      </li>
-    </ul>
-    <app-pagination
-      *ngIf="userEventsTotalPages"
-      [isArrowPagination]="true"
-      (paginationStateChange)="updateUserEventsPaginationState($event)"
-      [totalPages]="userEventsTotalPages">
-    </app-pagination>
-  </div>
-</section>
+            <p class="card-link event__headline">{{event.name}}</p>
+          </a>
+        </li>
+      </ul>
+      <app-pagination
+        *ngIf="userEventsTotalPages"
+        [isArrowPagination]="true"
+        (paginationStateChange)="updateUserEventsPaginationState($event)"
+        [totalPages]="userEventsTotalPages">
+      </app-pagination>
+    </div>
+  </section>
+</app-layout>

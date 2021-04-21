@@ -1,0 +1,21 @@
+<form class="example-form" [formGroup]="formReview" (ngSubmit)="onSubmit()">
+  <div>
+    <input type="text" formControlName="rating" style="display: none">
+    <mat-error *ngIf="hasRatingError">Будь ласка, виставте оцінку</mat-error>
+    <button mat-icon-button
+            matTooltipPosition="above"
+            *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i"
+            [color]="color"
+            (click)="setRating(i + 1)" [matTooltip]="ratingId + 1">
+      <mat-icon>
+        {{getRatingIcon(i)}}
+      </mat-icon>
+    </button>
+  </div>
+  <img class="user__avatar" src="{{user.avatar}}" alt="{{user.name}}">
+  <mat-form-field class="example-full-width">
+    <mat-label>Коментар</mat-label>
+    <textarea formControlName="comment" matInput placeholder="Залиште коментар"></textarea>
+  </mat-form-field>
+  <button type="submit" mat-button matSuffix mat-icon-button color="primary"><mat-icon>send</mat-icon></button>
+</form>

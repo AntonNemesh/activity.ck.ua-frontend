@@ -1,0 +1,11 @@
+<div class="rating">
+  <h1 class="rating__title mat-h1">{{rating | number: '1.1'}}</h1>
+  <div class="rating__body">
+
+    <p class="rating__counter"><mat-icon class="rating__icon-person">person</mat-icon>{{numberOfReview}} користувачів</p>
+    <mat-icon class="rating__icon-star" [color]="color" *ngFor="let ratingId of ratingArr; index as i" [id]="'star_'+i">
+      {{getRatingIcon(i)}}
+    </mat-icon>
+  </div>
+</div>
+

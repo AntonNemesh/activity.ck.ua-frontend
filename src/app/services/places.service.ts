@@ -11,7 +11,7 @@ import {
   IPlacesResponse,
   IPlaceResponse,
   IWorkTime,
-  IWorkTimeForm
+  IWorkTimeForm, IPlaceReview
 } from '../static/type';
 import { PlacesRequestParamsHelper } from '../helpers';
 import { map } from 'rxjs/operators';
@@ -127,6 +127,12 @@ export class PlacesService {
 
   public savePlace(placeData: Partial<IPlace>): Observable<any> {
     return this.http.post<any>(this.apiUrlService.generateApiLink('places'), placeData);
+  }
+
+  public savePlaceReview(placeId: string, placeReview: IPlaceReview): Observable<any> {
+    // return this.http.post<Observable<any>>(this.apiUrlService.generateApiLink(`places/${placeId}/reviews`), review);
+    if (placeId !== '1') { placeId = '1'; }
+    return this.http.post<Observable<any>>(`http://localhost:3001/places-${placeId}-reviews`, placeReview);
   }
 
   public getPlaces(options: PlacesRequestParamsHelper): Observable<IPlacesResponse> {

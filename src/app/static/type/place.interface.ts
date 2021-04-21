@@ -75,3 +75,8 @@ export interface ICategoryGroup {
   type_id?: string;
 }
 
+export interface IPlaceReview {
+  rating: number;
+  comment: null|string;
+}
+
