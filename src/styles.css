@@ -347,9 +347,19 @@ template {
 [hidden] {
   display: none;
 }
-html, body { height: 100%; }
-body {font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0}
-p {margin: 0}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  padding: 0
+}
+
+p {
+  margin: 0
+}
 
 /*custom properties*/
 
@@ -399,7 +409,7 @@ p {margin: 0}
 }
 
 .icon {
-  padding: var(--padding);
+  padding: 15px var(--padding);
   width: 25px;
   fill: var(--light-color);
 }
@@ -454,7 +464,17 @@ p {margin: 0}
 .padding-inside {
   padding: 0 var(--padding);
 }
+
 /*contacts*/
+
+.contact__link {
+  text-decoration: underline var(--light-color);
+}
+
+.contact__link:hover {
+  color: var(--bright-color);
+  text-decoration: underline var(--bright-color);
+}
 
 .icon-text-row {
   grid-template: 1fr / .07fr 1fr;
@@ -477,10 +497,12 @@ p {margin: 0}
   line-height: var(--text-line-height);
   letter-spacing: .1rem;
   text-transform: uppercase;
+  text-decoration: underline var(--light-color);
 }
 
 .card-link:hover {
   color: var(--bright-color);
+  text-decoration: underline var(--bright-color);
 }
 
 .card-text {
@@ -501,7 +523,7 @@ p {margin: 0}
 }
 
 .event-item {
-  max-width: 260px;
+  width: 260px;
   padding: 10px;
   color: var(--main-text-color);
   display: grid;
@@ -512,37 +534,32 @@ p {margin: 0}
 }
 
 .event-item:hover .img-wrapper {
-  border: 2px solid var(--bright-color);
+  border: 1px solid var(--light-color);
   outline: none;
   width: 102%;
 }
 
 .event-item:hover .card-link {
   color: var(--bright-color);
-
+  text-decoration: 1px underline var(--bright-color);
 }
 
-
-
 @media (min-width: 768px) {
-  .events-right-now__event-item {
-    padding: 20px;
-  }
 
   .event-item {
     padding: var(--padding);
   }
 }
 
-.main-list a {
-  text-decoration: none;
-}
+/*.main-list>.card-text {*/
+/*  text-decoration: none!important;*/
+/*}*/
 
 .img-wrapper {
   display: grid;
   width: 260px;
   height: 200px;
-  border: 2px dotted var(--light-color);
+  border: 1px dotted var(--light-color);
   border-radius: 8px;
 }
 
@@ -556,3 +573,10 @@ p {margin: 0}
   align-items: center;
 }
 
+.aside-filters {
+  margin: 14px 0;
+  padding: 50px;
+  grid-column: 1/2;
+  grid-row: 2/3;
+  background-color: rgba(0, 0, 0, 0.08);
+}

@@ -1,43 +1,39 @@
-<section class="page-events-details">
-  <div *ngIf="event" class="container">
-
+<section class="background-saturated events-details__contact">
+  <div *ngIf="event" class="container padding-inside ">
     <app-gallery [photos]="event.photos"></app-gallery>
-
     <h1 class="headline events-details__headline">{{event.name}}</h1>
-      <ul *ngIf="event.phones" class="list">
-        <li *ngFor="let phone of event.phones">
-          <a href="tel:{{event.phones}}" class="contact-text contact-link icon-text-row link">
-            <svg viewBox="0 0 35 35" class="icon">
-              <use xlink:href="../../../../../assets/icons.svg#phone"></use>
-            </svg>
-            {{phone}}
-          </a>
-        </li>
-      </ul>
-      <a href="https:/maps.google.com/?q={{event.address}}" class="contact-text contact-link icon-text-row link">
-        <svg viewBox="0 0 512 512" class="icon">
-          <use xlink:href="../../../../../assets/icons.svg#map"></use>
-        </svg>
-        {{event.address}}
-      </a>
-      <a href="{{event.website}}" class="contact-text contact-link icon-text-row link">
-        <svg viewBox="0 0 128 128" class="icon">
-          <use xlink:href="../../../../../assets/icons.svg#website"></use>
-        </svg>
-        {{event.website}}
-      </a>
+    <ul *ngIf="event.phones" class="list">
+      <li *ngFor="let phone of event.phones">
+        <a href="tel:{{event.phones}}" class="contact-text icon-text-row">
+          <mat-icon class="icon events-details__icon">phone_in_talk</mat-icon>
+          <span class="contact__link">{{phone}}</span>
+        </a>
+      </li>
+    </ul>
+    <a href="https:/maps.google.com/?q={{event.address}}" class="contact-text icon-text-row  contact__link">
+      <svg viewBox="0 0 512 512" class="icon events-details__icon">
+        <use xlink:href="../../../../../assets/icons.svg#map"></use>
+      </svg>
+      <span class="contact__link">{{event.address}}</span>
+    </a>
+    <a href="{{event.website}}" class="contact-text icon-text-row contact__link">
+      <svg viewBox="0 0 128 128" class="icon events-details__icon">
+        <use xlink:href="../../../../../assets/icons.svg#website"></use>
+      </svg>
+      <span class="contact__link">{{event.website}}</span>
+    </a>
     <p class="card-text"><span class="bold">Ціна:</span>  {{event.price}}</p>
-
-
     <p class="card-text"><span class="bold">Опис: </span>  {{event.description}}</p>
     <p class="card-text"><span class="bold">Дата початку:</span>  {{event.start_time}}</p>
     <p class="card-text"><span class="bold">Дата кінця:</span>  {{event.end_time}}</p>
     <p class="card-text"><span class="bold">Організатор:</span>  {{event.organizer}}</p>
     <p class="card-text"><span class="bold">Ідентифікатор місця проведення:</span>  {{event.place_id}}</p>
     <h2 class="card-text bold event__program">Програма:</h2>
-      <p class="card-text">{{event.program}}</p>
+    <p class="card-text">{{event.program}}</p>
     <div class="favorite-visit-section">
-      <button class="visited-btn" [class.pressed-primary-btn]="scheduled" mat-flat-button color="primary" (click)="updateScheduledState()">Відвідаю</button>
+      <button class="visited-btn" [class.pressed-primary-btn]="scheduled"
+              (click)="updateScheduledState()">Відвідаю
+      </button>
     </div>
   </div>
 

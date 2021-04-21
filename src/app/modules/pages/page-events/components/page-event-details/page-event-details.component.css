@@ -1,10 +1,13 @@
-.page-events-details {
-  background-color: var(--background-color);
-  padding: 4% 0;
+.events-details__headline {
+  padding: 40px 0;
 }
 
-.events-details__headline {
-  padding: 25px 0;
+.events-details__icon {
+  padding: 15px;
+}
+
+.events-details__contact:hover a {
+  text-decoration: none;
 }
 
 .event__program {
@@ -15,21 +18,4 @@
 .favorite-visit-section {
   display: grid;
   justify-items: start;
-}
-.visited-btn {
-  padding: 5px 25px;
-  justify-items: end;
-  background-color: #ffffff;
-  color: var(--main-text-color);
-  font: var(--text-font);
-  border: 1px solid var(--main-text-color);
-  border-radius: 8px;
-  transition: background-color 2s;
-}
-
-.visited-btn:hover,
-.visited-btn:active,
-.visited-btn:focus {
-  background-color: var(--main-text-color);
-  color: #ffffff;
 }
