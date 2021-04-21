@@ -17,14 +17,14 @@
       </mat-form-field>
     </div>
     <ul class="main-list page-events-list__events" *ngIf="events?.length">
-      <li class="event-item page-events-list__item" *ngFor="let event of events">
-        <a routerLink="{{event.id}}">
-           <span class="img-wrapper">
+      <li *ngFor="let event of events" class="list">
+        <a routerLink="{{event.id}}" class="event-item page-events-list__item link">
+           <span class="img-wrapper page-events-list__img-wrapper">
             <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
         </span>
-          <p class="card-link event__headline name">
+          <a routerLink="{{event.id}}"class="card-link">
             {{event.name}}
-          </p>
+          </a>
           <p class="card-text">
             {{dateService.getDateTime(event.start_time)}}
           </p>
