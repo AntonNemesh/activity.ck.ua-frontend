@@ -4,7 +4,7 @@
 
 .events-headline__line {
   display: grid;
-  grid-template-columns: 1fr .25fr .002fr;
+  grid-template-columns: 1fr 1fr .002fr;
   grid-template-rows: .5fr;
   align-items: baseline;
 }
@@ -20,6 +20,7 @@
 .events__date {
   grid-column: 2/3;
   grid-row: 1/2;
+  justify-self: end;
 }
 
 .btn__datepicker {
