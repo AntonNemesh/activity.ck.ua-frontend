@@ -156,7 +156,7 @@ display: grid;
   margin-bottom: 0;
 }
 
-.categories__item-link-wrapper:hover .card__link {
+.categories__item-link-wrapper:hover .category-name {
   opacity: 0;
 }
 
