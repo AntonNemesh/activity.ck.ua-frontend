@@ -13,8 +13,9 @@ p {
 
 .review {
   display: grid;
-  grid-template: .1fr .1fr .8fr / 100px 1fr 200px;
+  grid-template: .1fr .1fr .8fr / 90px 1fr 116px;
   align-items: start;
+  justify-items: start;
 }
 
 .review__avatar {
@@ -25,7 +26,6 @@ p {
   border: 1px solid gray;
   grid-column: 1 / 2;
   grid-row: 1 / 4;
-  justify-self: center;
 }
 
 .review__username {
