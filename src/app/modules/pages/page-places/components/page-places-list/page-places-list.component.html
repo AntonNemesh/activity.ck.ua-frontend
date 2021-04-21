@@ -1,65 +1,58 @@
-<div class="main-wrapper">
+<div class="container page-places-list padding-inside">
+  <h2 *ngIf="categoryName" class="headline page-places-list__headline">Шукаємо: {{categoryName}}</h2>
+  <a routerLink="/add_place" class="link page-places-list__link-add">Додати локацію</a>
+</div>
+<div class="container main-wrapper padding-inside">
   <section class="filters">
-    <div class="container">
-      <div class="filters__wrapper">
-        <h2 *ngIf="categoryName" class="filters__headline">Місце категорії: {{categoryName}}</h2>
-        <a routerLink="/add_place" class="filters__link-add link">Додати локацію</a>
-      </div>
-      <div class="filters__wrapper">
-        <app-filter-by-availability (availabilityStateChange)="updateFilterAvailabilityState($event)">
-        </app-filter-by-availability>
-        <app-filter-by-type (filterStateChange)="updateFilterTypeState($event)"
-                            [categoryId]="categoryId" class="filters__filter-by-type">
-        </app-filter-by-type>
-      </div>
-    </div>
+    <app-filter-by-availability (availabilityStateChange)="updateFilterAvailabilityState($event)">
+    </app-filter-by-availability>
+    <app-filter-by-type (filterStateChange)="updateFilterTypeState($event)"
+                        [categoryId]="categoryId" class="filters__filter-by-type">
+    </app-filter-by-type>
   </section>
-  <section class="places">
-    <div class="container">
-      <ul class="list">
-        <li *ngFor="let place of places" class="list">
-          <div class="places__item list">
-            <div  routerLink="{{place.id}}" class="places__img-wrapper link">
-              <img src="{{place.main_photo}}" alt="" class="places__prev-photo">
-            </div>
-            <div class="places__about-info">
-              <p  routerLink="{{place.id}}" class="places__about-info-headline">{{place.name}}</p>
-              <p  routerLink="{{place.id}}" class="contact-text icon-text-row">
-                <svg viewBox="0 0 512 512" class="icon">
-                  <use xlink:href="../../../../../assets/icons.svg#clock"></use>
-                </svg>
-                <span [innerHTML]="dateService.getWorkState(place.work_time)"></span>
-              </p>
-              <a href="https:/maps.google.com/?q={{place.address}}"
-                 class="contact-text contact-link icon-text-row link">
-                <svg viewBox="0 0 512 512" class="icon">
-                  <use xlink:href="../../../../../assets/icons.svg#map"></use>
-                </svg>
-                {{place.address}}
-              </a>
-              <a href="tel:{{place.phones}}" class="contact-text contact-link icon-text-row link">
-                <svg viewBox="0 0 35 35" class="icon">
-                  <use xlink:href="../../../../../assets/icons.svg#phone"></use>
-                </svg>
-                {{place.phones}}
-              </a>
-              <a href="{{place.website}}" class="contact-text contact-link icon-text-row link">
-                <svg viewBox="0 0 128 128" class="icon">
-                  <use xlink:href="../../../../../assets/icons.svg#website"></use>
-                </svg>
-                {{place.website}}
-              </a>
-            </div>
-          </div>
-        </li>
-      </ul>
-      <app-pagination *ngIf="totalPages"
-                      (paginationStateChange)="updatePaginationState($event)"
-                      [filterTypeState]="filterTypeState"
-                      [filterAvailabilityState]="filterAvailabilityState"
-                      [totalPages]="totalPages"
-                      [categoryId]="categoryId">
-      </app-pagination>
-    </div>
+  <section class="places background-saturated">
+    <ul class="list places__list">
+      <li *ngFor="let place of places" class="places__item">
+        <a routerLink="{{place.id}}" class="img-wrapper places__img-wrapper">
+          <img src="{{place.main_photo}}" alt="" class="img-photo">
+        </a>
+        <a routerLink="{{place.id}}" class="places__about-info-headline places__about-info">
+          {{place.name}}
+        </a>
+        <p class="contact-text icon-text-row places__about-info">
+          <svg viewBox="0 0 512 512" class="icon">
+            <use xlink:href="../../../../../assets/icons.svg#clock"></use>
+          </svg>
+          <span [innerHTML]="dateService.getWorkState(place.work_time)"></span>
+        </p>
+        <a href="https:/maps.google.com/?q={{place.address}}"
+           class="contact-text card-link icon-text-row places__about-info">
+          <svg viewBox="0 0 512 512" class="icon">
+            <use xlink:href="../../../../../assets/icons.svg#map"></use>
+          </svg>
+          {{place.address}}
+        </a>
+        <a href="tel:{{place.phones}}" class="contact-text card-link icon-text-row places__about-info">
+          <svg viewBox="0 0 35 35" class="icon">
+            <use xlink:href="../../../../../assets/icons.svg#phone"></use>
+          </svg>
+          {{place.phones}}
+        </a>
+        <a href="{{place.website}}" class="contact-text card-link icon-text-row places__about-info">
+          <svg viewBox="0 0 128 128" class="icon">
+            <use xlink:href="../../../../../assets/icons.svg#website"></use>
+          </svg>
+          {{place.website}}
+        </a>
+      </li>
+    </ul>
+
+    <app-pagination *ngIf="totalPages"
+                    (paginationStateChange)="updatePaginationState($event)"
+                    [filterTypeState]="filterTypeState"
+                    [filterAvailabilityState]="filterAvailabilityState"
+                    [totalPages]="totalPages"
+                    [categoryId]="categoryId">
+    </app-pagination>
   </section>
 </div>
