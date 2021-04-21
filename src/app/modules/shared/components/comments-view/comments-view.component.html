@@ -3,9 +3,7 @@
     <img class="review__avatar" src="{{review.user_avatar}}" alt="">
     <p class="review__username">{{review.user_name}}</p>
     <p class="review__date">{{dateService.getDateNumber(review.created_at)}}</p>
-    <div class="review__rating">
-      <app-rating-stars-bar [rating]="review.rating" [size]="26" [color]="'primary'"></app-rating-stars-bar>
-    </div>
+    <app-rating-stars-bar class="review__rating" [rating]="review.rating" [size]="26" [color]="'primary'"></app-rating-stars-bar>
     <p *ngIf="review.comment" class="review__comment">{{review.comment}}</p>
   </li>
 </ul>
