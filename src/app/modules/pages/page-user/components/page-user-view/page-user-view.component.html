@@ -1,7 +1,7 @@
-<section class="scheduled-events saturated-background">
+<section class="scheduled-events background-saturated" *ngIf="scheduledEvents?.length">
   <div class="container">
-    <h1 class="headline" *ngIf="scheduledEvents?.length">Заплановані події</h1>
-    <ul class="main__list" *ngIf="scheduledEvents?.length">
+    <h1 class="headline">Заплановані події</h1>
+    <ul class="main-list" *ngIf="scheduledEvents?.length">
       <li class="event-item" *ngFor="let event of scheduledEvents">
         <a routerLink="/events/{{event.id}}">
           <span class="img-wrapper">
@@ -24,10 +24,10 @@
     </app-pagination>
   </div>
 </section>
-<section class="visited-places light-background">
+<section class="visited-places background-light" *ngIf="visitedPlaces?.length">
   <div class="container">
-    <h1 class="headline" *ngIf="visitedPlaces?.length">Недавні місця</h1>
-    <ul class="main__list" *ngIf="visitedPlaces?.length">
+    <h1 class="headline">Недавні місця</h1>
+    <ul class="main-list" *ngIf="visitedPlaces?.length">
       <li class="event-item" *ngFor="let place of visitedPlaces">
         <a routerLink="/places/{{place.category_id}}/{{place.id}}">
           <span class="img-wrapper">
@@ -45,12 +45,12 @@
     </app-pagination>
   </div>
 </section>
-  <section class="favorite-places saturated-background">
+  <section class="favorite-places background-saturated" *ngIf="favoritePlaces?.length">
     <div class="container">
-      <h1 class="headline" *ngIf="favoritePlaces?.length">Улюблені місця</h1>
-      <ul class="main__list" *ngIf="favoritePlaces?.length">
-        <li class="event-item" *ngFor="let place of favoritePlaces">
-          <a routerLink="/places/{{place.category_id}}/{{place.id}}">
+      <h1 class="headline">Улюблені місця</h1>
+      <ul class="main-list" *ngIf="favoritePlaces?.length">
+        <li *ngFor="let place of favoritePlaces">
+          <a routerLink="/places/{{place.category_id}}/{{place.id}}" class="event-item" >
             <span class="img-wrapper">
             <img class="img-photo" src="{{place.main_photo}}" alt="{{place.name}}">
             </span>
@@ -66,12 +66,12 @@
       </app-pagination>
     </div>
   </section>
-<section class="userPlaces light-background">
+<section class="userPlaces background-light" *ngIf="userPlaces?.length">
   <div class="container">
-    <h1 class="headline" *ngIf="userPlaces?.length">Мої місця</h1>
-    <ul class="main__list" *ngIf="userPlaces?.length">
-      <li class="event-item" *ngFor="let place of userPlaces">
-        <a routerLink="/places/{{place.category_id}}/{{place.id}}">
+    <h1 class="headline">Мої місця</h1>
+    <ul class="main-list list" *ngIf="userPlaces?.length">
+      <li *ngFor="let place of userPlaces">
+        <a routerLink="/places/{{place.category_id}}/{{place.id}}" class="event-item" >
           <span class="img-wrapper">
             <img class="img-photo" src="{{place.main_photo}}" alt="{{place.name}}">
             </span>
@@ -87,10 +87,10 @@
     </app-pagination>
   </div>
 </section>
-<section class="user-events saturated-background">
+<section class="user-events background-saturated" *ngIf="userEvents?.length">
   <div class="container">
-    <h1 class="headline" *ngIf="userEvents?.length">Мої події</h1>
-    <ul class="main__list" *ngIf="userEvents?.length">
+    <h1 class="headline">Мої події</h1>
+    <ul class="main-list" *ngIf="userEvents?.length">
       <li class="event-item" *ngFor="let event of userEvents">
         <a routerLink="/events/{{event.id}}">
           <span class="img-wrapper">
