@@ -1,120 +1,132 @@
-<section class="background-saturated place-details__contact">
-  <div *ngIf="place">
-  <div class="place-details__wrapper">
-    <div class="container padding-inside">
-      <app-gallery [photos]="place.photos"></app-gallery>
+<app-layout>
 
-      <section class="place-details__info">
-        <div class="place-details__contacts">
-          <h1 class="place-details__headline">{{place.name}}</h1>
-          <ul *ngIf="place.phones" class="list">
-            <li *ngFor="let phone of place.phones">
-              <a href="tel:{{place.phones}}" class="contact-text contact-link icon-text-row ">
-<!--                <svg viewBox="0 0 35 35" class="icon">-->
-<!--                  <use xlink:href="../../../../../assets/icons.svg#phone"></use>-->
-<!--                </svg>-->
+  <section class="background-saturated place-details__contact">
+    <div *ngIf="place">
+      <div class="place-details__wrapper">
+        <div class="container padding-inside">
+          <app-gallery [photos]="place.photos"></app-gallery>
 
-                <mat-icon class="icon">phone_in_talk</mat-icon>
-                <span class="contact__link">{{phone}}</span>
+          <section class="place-details__info">
+            <div class="place-details__contacts">
+              <h1 class="place-details__headline">{{place.name}}</h1>
+              <ul *ngIf="place.phones" class="list">
+                <li *ngFor="let phone of place.phones">
+                  <a href="tel:{{place.phones}}" class="contact-text contact-link icon-text-row ">
+                    <!--                <svg viewBox="0 0 35 35" class="icon">-->
+                    <!--                  <use xlink:href="../../../../../assets/icons.svg#phone"></use>-->
+                    <!--                </svg>-->
+
+                    <mat-icon class="icon">phone_in_talk</mat-icon>
+                    <span class="contact__link">{{phone}}</span>
+                  </a>
+                </li>
+              </ul>
+              <a href="https:/maps.google.com/?q={{place.address}}" class="contact-text contact-link icon-text-row">
+                <svg viewBox="0 0 512 512" class="icon">
+                  <use xlink:href="../../../../../assets/icons.svg#map"></use>
+                </svg>
+                <span class="contact__link">{{place.address}}</span>
               </a>
-            </li>
-          </ul>
-          <a href="https:/maps.google.com/?q={{place.address}}" class="contact-text contact-link icon-text-row">
-            <svg viewBox="0 0 512 512" class="icon">
-              <use xlink:href="../../../../../assets/icons.svg#map"></use>
-            </svg>
-            <span class="contact__link">{{place.address}}</span>
-          </a>
-          <a href="{{place.website}}" class="contact-text contact-link icon-text-row">
-            <svg viewBox="0 0 128 128" class="icon">
-              <use xlink:href="../../../../../assets/icons.svg#website"></use>
-            </svg>
-            <span class="contact__link">{{place.website}}</span>
-          </a>
+              <a href="{{place.website}}" class="contact-text contact-link icon-text-row">
+                <svg viewBox="0 0 128 128" class="icon">
+                  <use xlink:href="../../../../../assets/icons.svg#website"></use>
+                </svg>
+                <span class="contact__link">{{place.website}}</span>
+              </a>
 
-          <p class="contact-text icon-text-row">
-            <svg viewBox="0 0 512 512" class="icon">
-              <use xlink:href="../../../../../assets/icons.svg#tolerance"></use>
-            </svg>
-            Доступність: {{place.accessibility}}</p>
-          <p class="contact-text icon-text-row">
-            <svg viewBox="0 0 512 512" class="icon">
-              <use xlink:href="../../../../../assets/icons.svg#baby"></use>
-            </svg>
-            Місце дружнє до дітей: {{place.child_friendly}}
-          </p>
-          <p class="contact-text icon-text-row">
-            <mat-icon class="icon">pets</mat-icon>
-<!--            <svg viewBox="0 0 512 512" class="icon">-->
-<!--              <use xlink:href="../../../../../assets/icons.svg#paw"></use>-->
-<!--            </svg>-->
-            Місце дружнє до тварин: {{place.dog_friendly}}</p>
+              <p class="contact-text icon-text-row">
+                <svg viewBox="0 0 512 512" class="icon">
+                  <use xlink:href="../../../../../assets/icons.svg#tolerance"></use>
+                </svg>
+                Доступність: {{place.accessibility}}</p>
+              <p class="contact-text icon-text-row">
+                <svg viewBox="0 0 512 512" class="icon">
+                  <use xlink:href="../../../../../assets/icons.svg#baby"></use>
+                </svg>
+                Місце дружнє до дітей: {{place.child_friendly}}
+              </p>
+              <p class="contact-text icon-text-row">
+                <mat-icon class="icon">pets</mat-icon>
+                <!--            <svg viewBox="0 0 512 512" class="icon">-->
+                <!--              <use xlink:href="../../../../../assets/icons.svg#paw"></use>-->
+                <!--            </svg>-->
+                Місце дружнє до тварин: {{place.dog_friendly}}</p>
+            </div>
+            <div class="contact-text page-place-details__work-time">
+              <p class="contact-text  icon-text-row">
+                <svg viewBox="0 0 512 512" class="icon">
+                  <use xlink:href="../../../../../assets/icons.svg#clock"></use>
+                </svg>
+                <span class="bold">  Графік роботи:</span>
+              </p>
+              <ul *ngIf="place.work_time" class="list place-details__text">
+                <li *ngIf="place.work_time.mon"> Понеділок: {{place.work_time.mon.start}} - {{place.work_time.mon.end}}</li>
+                <li *ngIf="!place.work_time.mon"> Понеділок: вихідний</li>
+                <li *ngIf="place.work_time.tue"> Вівторок: {{place.work_time.tue.start}} - {{place.work_time.tue.end}}</li>
+                <li *ngIf="!place.work_time.tue"> Вівторок: вихідний</li>
+                <li *ngIf="place.work_time.wed"> Середа: {{place.work_time.wed.start}} - {{place.work_time.wed.end}}</li>
+                <li *ngIf="!place.work_time.wed"> Середа: вихідний</li>
+                <li *ngIf="place.work_time.thu"> Четверг: {{place.work_time.thu.start}} - {{place.work_time.thu.end}}</li>
+                <li *ngIf="!place.work_time.thu"> Четверг: вихідний</li>
+                <li *ngIf="place.work_time.fri"> П'ятниця: {{place.work_time.fri.start}} - {{place.work_time.fri.end}}</li>
+                <li *ngIf="!place.work_time.fri"> П'ятниця: вихідний</li>
+                <li *ngIf="place.work_time.sat"> Субота: {{place.work_time.sat.start}} - {{place.work_time.sat.end}}</li>
+                <li *ngIf="!place.work_time.sat"> Субота: вихідний</li>
+                <li *ngIf="place.work_time.sun"> Неділя: {{place.work_time.sun.start}} - {{place.work_time.sun.end}}</li>
+                <li *ngIf="!place.work_time.sun"> Неділя: вихідний</li>
+              </ul>
+            </div>
+          </section>
         </div>
-        <div class="contact-text page-place-details__work-time">
-          <p class="contact-text  icon-text-row">
-            <svg viewBox="0 0 512 512" class="icon">
-              <use xlink:href="../../../../../assets/icons.svg#clock"></use>
-            </svg>
-            <span class="bold">  Графік роботи:</span>
-          </p>
-          <ul *ngIf="place.work_time" class="list place-details__text">
-            <li *ngIf="place.work_time.mon"> Понеділок: {{place.work_time.mon.start}} - {{place.work_time.mon.end}}</li>
-            <li *ngIf="!place.work_time.mon"> Понеділок: вихідний</li>
-            <li *ngIf="place.work_time.tue"> Вівторок: {{place.work_time.tue.start}} - {{place.work_time.tue.end}}</li>
-            <li *ngIf="!place.work_time.tue"> Вівторок: вихідний</li>
-            <li *ngIf="place.work_time.wed"> Середа: {{place.work_time.wed.start}} - {{place.work_time.wed.end}}</li>
-            <li *ngIf="!place.work_time.wed"> Середа: вихідний</li>
-            <li *ngIf="place.work_time.thu"> Четверг: {{place.work_time.thu.start}} - {{place.work_time.thu.end}}</li>
-            <li *ngIf="!place.work_time.thu"> Четверг: вихідний</li>
-            <li *ngIf="place.work_time.fri"> П'ятниця: {{place.work_time.fri.start}} - {{place.work_time.fri.end}}</li>
-            <li *ngIf="!place.work_time.fri"> П'ятниця: вихідний</li>
-            <li *ngIf="place.work_time.sat"> Субота: {{place.work_time.sat.start}} - {{place.work_time.sat.end}}</li>
-            <li *ngIf="!place.work_time.sat"> Субота: вихідний</li>
-            <li *ngIf="place.work_time.sun"> Неділя: {{place.work_time.sun.start}} - {{place.work_time.sun.end}}</li>
-            <li *ngIf="!place.work_time.sun"> Неділя: вихідний</li>
-          </ul>
-        </div>
-      </section>
-    </div>
-    <section *ngIf="events?.length" class="events">
-      <div class="container">
-        <h2 class="headline events-headline__headline">Найближчі події</h2>
-        <ul class="main__list">
-          <li class="event-item" *ngFor="let event of events">
-            <a routerLink="/events/{{event.id}}">
+        <section *ngIf="events?.length" class="events">
+          <div class="container">
+            <h2 class="headline events-headline__headline">Найближчі події</h2>
+            <ul class="main__list">
+              <li class="event-item" *ngFor="let event of events">
+                <a routerLink="/events/{{event.id}}">
                <span class="img-wrapper">
             <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
             </span>
-              <p class="card-link event__headline">
-                {{event.name}}
-              </p>
-              <p class="card-text">
-                {{dateService.getDateTime(event.start_time)}}
-              </p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
-    <section class="place-about">
-      <div class="container">
-        <h2 class="place-details-about__headline">Про {{place.name}}</h2>
-        <p class="place-details__about">{{place.description}}</p>
-        <div class="favorite-visit-section">
-          <button [class.pressed-primary-btn]="visited" mat-flat-button class="visited-btn" (click)="updateVisitedState()">
-            Відвідаю
-          </button>
-          <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon"
-                  (click)="updateFavoriteState()">
-            <mat-icon [class.pressed-favorite-btn]="favorite">favorite</mat-icon>
-          </button>
+                  <p class="card-link event__headline">
+                    {{event.name}}
+                  </p>
+                  <p class="card-text">
+                    {{dateService.getDateTime(event.start_time)}}
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section class="place-about">
+          <div class="container">
+            <h2 class="place-details-about__headline">Про {{place.name}}</h2>
+            <p class="place-details__about">{{place.description}}</p>
+            <div class="favorite-visit-section">
+              <button [class.pressed-primary-btn]="visited" mat-flat-button class="visited-btn" (click)="updateVisitedState()">
+                Відвідаю
+              </button>
+              <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon"
+                      (click)="updateFavoriteState()">
+                <mat-icon [class.pressed-favorite-btn]="favorite">favorite</mat-icon>
+              </button>
 
-          <mat-icon>favorite_border</mat-icon>
-          <mat-icon>favorite</mat-icon>
-        </div>
-        <p class="place-details__text">Рейтинг: {{place.rating || 'відсутній'}}</p>
+              <mat-icon>favorite_border</mat-icon>
+              <mat-icon>favorite</mat-icon>
+            </div>
+            <p class="place-details__text">Рейтинг: {{place.rating || 'відсутній'}}</p>
+          </div>
+        </section>
+        <section class="container view-rating">
+          <app-rating-view *ngIf="placeId" [placeId]="placeId" [rating]="place.rating" [numberOfReview]="12"></app-rating-view>
+        </section>
+        <br>
+        <br>
+        <br>
+        <section class="container form-review">
+          <app-form-review *ngIf="placeId" [placeId]="placeId"></app-form-review>
+        </section>
       </div>
-    </section>
-  </div>
-</div>
-</section>
+    </div>
+  </section>
+</app-layout>

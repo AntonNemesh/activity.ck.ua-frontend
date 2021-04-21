@@ -11,7 +11,8 @@ export {
   IOrganizationGroup,
   IPhotosGroup,
   IPlacesResponse,
-  IPlaceResponse
+  IPlaceResponse,
+  IPlaceReview
 } from './place.interface';
 
 export { IPhotos } from './photos.interface';

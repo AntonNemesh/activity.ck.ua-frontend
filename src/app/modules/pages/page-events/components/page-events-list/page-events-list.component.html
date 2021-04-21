@@ -1,43 +1,44 @@
-<section class="page-events-list">
-  <div class="container padding-inside page-events-list-wrapper">
-    <app-filter-by-availability
-      (availabilityStateChange)="updateFilterAvailabilityState($event)" class="aside-filters">
-    </app-filter-by-availability>
-    <div class="datepicker-wrapper">
-      <h2 class="headline datepicker-wrapper__headline">Події</h2>
-      <span class="mat-h3 events__date">{{dateUrkFormat}}</span>
-      <button class="btn__datepicker" mat-button matSuffix mat-icon-button aria-label="Calendar"
-              (click)="picker.open()">
-        <mat-icon>events</mat-icon>
-      </button>
-      <mat-form-field appearance="fill" style="width: 1px; visibility: hidden" class="mat-hidden">
-        <input matInput [matDatepicker]="picker" [formControl]="dateInput">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </div>
-    <ul class="main-list page-events-list__events" *ngIf="events?.length">
-      <li *ngFor="let event of events" class="list">
-        <a routerLink="{{event.id}}" class="event-item page-events-list__item link">
+<app-layout>
+  <section class="page-events-list">
+    <div class="container padding-inside page-events-list-wrapper">
+      <app-filter-by-availability
+        (availabilityStateChange)="updateFilterAvailabilityState($event)" class="aside-filters">
+      </app-filter-by-availability>
+      <div class="datepicker-wrapper">
+        <h2 class="headline datepicker-wrapper__headline">Події</h2>
+        <span class="mat-h3 events__date">{{dateUrkFormat}}</span>
+        <button class="btn__datepicker" mat-button matSuffix mat-icon-button aria-label="Calendar"
+                (click)="picker.open()">
+          <mat-icon>events</mat-icon>
+        </button>
+        <mat-form-field appearance="fill" style="width: 1px; visibility: hidden" class="mat-hidden">
+          <input matInput [matDatepicker]="picker" [formControl]="dateInput">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <ul class="main-list page-events-list__events" *ngIf="events?.length">
+        <li *ngFor="let event of events" class="list">
+          <a routerLink="{{event.id}}" class="event-item page-events-list__item link">
            <span class="img-wrapper page-events-list__img-wrapper">
             <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
         </span>
-          <a routerLink="{{event.id}}"class="card-link">
-            {{event.name}}
+            <a routerLink="{{event.id}}"class="card-link">
+              {{event.name}}
+            </a>
+            <p class="card-text">
+              {{dateService.getDateTime(event.start_time)}}
+            </p>
           </a>
-          <p class="card-text">
-            {{dateService.getDateTime(event.start_time)}}
-          </p>
-        </a>
-      </li>
-    </ul>
-    <p class="mat-h3" *ngIf="!events?.length">Нічого не знайдено!</p>
-  </div>
-  <app-pagination *ngIf="totalPages"
-                  (paginationStateChange)="updatePaginationState($event)"
-                  [filterAvailabilityState]="filterAvailabilityState"
-                  [totalPages]="totalPages"
-                  [datePickerState]="date">
-  </app-pagination>
-</section>
-
+        </li>
+      </ul>
+      <p class="mat-h3" *ngIf="!events?.length">Нічого не знайдено!</p>
+    </div>
+    <app-pagination *ngIf="totalPages"
+                    (paginationStateChange)="updatePaginationState($event)"
+                    [filterAvailabilityState]="filterAvailabilityState"
+                    [totalPages]="totalPages"
+                    [datePickerState]="date">
+    </app-pagination>
+  </section>
+</app-layout>
