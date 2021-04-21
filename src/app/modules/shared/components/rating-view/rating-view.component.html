@@ -3,9 +3,7 @@
   <div class="rating__body">
 
     <p class="rating__counter"><mat-icon class="rating__icon-person">person</mat-icon>{{numberOfReview}} користувачів</p>
-    <mat-icon class="rating__icon-star" [color]="color" *ngFor="let ratingId of ratingArr; index as i" [id]="'star_'+i">
-      {{getRatingIcon(i)}}
-    </mat-icon>
+    <app-rating-stars-bar [rating]="rating" [size]="36" [color]="'primary'"></app-rating-stars-bar>
   </div>
 </div>
 

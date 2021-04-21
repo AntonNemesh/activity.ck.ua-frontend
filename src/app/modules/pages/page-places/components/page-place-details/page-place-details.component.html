@@ -5,7 +5,6 @@
       <div class="place-details__wrapper">
         <div class="container padding-inside">
           <app-gallery [photos]="place.photos"></app-gallery>
-
           <section class="place-details__info">
             <div class="place-details__contacts">
               <h1 class="place-details__headline">{{place.name}}</h1>
@@ -125,6 +124,12 @@
         <br>
         <section class="container form-review">
           <app-form-review *ngIf="placeId" [placeId]="placeId"></app-form-review>
+        </section>
+        <br>
+        <br>
+        <br>
+        <section class="container form-review">
+          <app-comments-view *ngIf="placeId" [placeId]="placeId"></app-comments-view>
         </section>
       </div>
     </div>

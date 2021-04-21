@@ -20,6 +20,12 @@ export class DateService {
     return date.toLocaleString('uk-UK', options);
   }
 
+  public getDateNumber(dateString: Date|string): string {
+    const date: Date = new Date(dateString);
+    const options: any = { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false };
+    return date.toLocaleString('uk-UK', options);
+  }
+
   public getShortNameOfMonth(date: Date): string {
     return date.toLocaleString('en-US', { weekday: 'short' }).toLowerCase();
   }
