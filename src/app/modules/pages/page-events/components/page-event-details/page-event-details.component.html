@@ -32,7 +32,7 @@
       <h2 class="card-text bold event__program">Програма:</h2>
       <p class="card-text">{{event.program}}</p>
       <div class="favorite-visit-section">
-        <button class="visited-btn" [class.pressed-primary-btn]="scheduled"
+        <button mat-flat-button class="visited-btn" [class.pressed-primary-btn]="scheduled"
                 (click)="updateScheduledState()">Відвідаю
         </button>
       </div>

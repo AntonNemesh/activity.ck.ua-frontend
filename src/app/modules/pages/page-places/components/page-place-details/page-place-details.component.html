@@ -107,13 +107,10 @@
               </button>
               <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon"
                       (click)="updateFavoriteState()">
-                <mat-icon [class.pressed-favorite-btn]="favorite">favorite</mat-icon>
+                <mat-icon *ngIf="favorite">favorite</mat-icon>
+                <mat-icon *ngIf="!favorite">favorite_border</mat-icon>
               </button>
-
-              <mat-icon>favorite_border</mat-icon>
-              <mat-icon>favorite</mat-icon>
             </div>
-            <p class="place-details__text">Рейтинг: {{place.rating || 'відсутній'}}</p>
           </div>
         </section>
         <section class="container view-rating">

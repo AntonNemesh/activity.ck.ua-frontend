@@ -77,12 +77,4 @@
   font: var(--font-text);
   border: 1px solid var(--main-text-color);
   border-radius: 8px;
-  transition: background-color 2s;
-}
-
-.visited-btn:hover,
-.visited-btn:active,
-.visited-btn:focus {
-  background-color: var(--main-text-color);
-  color: #ffffff;
 }

@@ -42,15 +42,6 @@ main {
   background: none;
 }
 
-.pressed-favorite-btn {
-  color: #ffa9a2;
-}
-
-.pressed-primary-btn {
-  background-color: #27c903 !important;
-  border-radius: 8px;
-}
-
 .red {
   color: red;
 }

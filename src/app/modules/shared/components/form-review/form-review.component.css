@@ -1,11 +1,44 @@
-.example-full-width {
-  width: 300px;
+.review-form {
+  display: grid;
+  grid-template: .3fr .7fr / 90px 1fr 42px;
+  width: 50%;
+  min-width: 320px;
+  align-items: center;
 }
 
-.user__avatar {
+.review-form__user-avatar {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  justify-self: start;
   height: 80px;
   width: 80px;
-  margin: 0 auto;
   border-radius: 80px;
+  object-fit: cover;
   border: 1px solid gray;
+}
+
+.review-form__rating-bar {
+  grid-column: 2 / 4;
+  grid-row: 1 / 2;
+}
+
+.review-form__error-message {
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
+  align-self: end;
+}
+
+.review-form__comment-input {
+  width: 100%;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+.review-form__submit-btn {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+
+.review-form__rating-input {
+  display: none;
 }

@@ -441,11 +441,6 @@ p {
   border-radius: 8px;
 }
 
-.visited-btn:hover {
-  background-color: var(--main-text-color);
-  color: #ffffff;
-}
-
 /*.visited-btn:active {*/
 /*  background-color: #ffffff;*/
 /*  color:var(--main-text-color);*/
@@ -581,4 +576,9 @@ p {
   grid-column: 1/2;
   grid-row: 2/3;
   background-color: rgba(0, 0, 0, 0.08);
+}
+
+.visited-btn:hover,
+.pressed-primary-btn {
+  background-color: #bbbbbb!important;
 }

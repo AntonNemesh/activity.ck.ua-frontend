@@ -19,3 +19,13 @@
   display: grid;
   justify-items: start;
 }
+
+.visited-btn {
+  padding: 5px 25px;
+  justify-items: end;
+  background-color: #ffffff;
+  color: var(--main-text-color);
+  font: var(--font-text);
+  border: 1px solid var(--main-text-color);
+  border-radius: 8px;
+}

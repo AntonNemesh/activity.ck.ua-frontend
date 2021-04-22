@@ -33,7 +33,7 @@ export class PagePlaceDetailsComponent implements OnInit {
     public dateService: DateService) { }
 
   private eventsPage: number = 1;
-  private eventsLimit: number = 4;
+  private eventsLimit: number = 1;
 
   public getPlace(): void {
     this.placesService.getPlaceById(this.placeId).subscribe((place) => {
