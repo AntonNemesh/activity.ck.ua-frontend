@@ -396,6 +396,13 @@ p {
   text-decoration: none;
 }
 
+.decorated {
+  text-decoration: underline 1px var(--light-color);
+}
+
+.bright {
+  color: var(--bright-color);
+}
 .link:hover {
   color: var(--bright-color);
   transform: scale(1.007);
@@ -516,6 +523,7 @@ p {
   padding: 0 0 var(--padding);
   display: grid;
   column-gap: var(--grig-gap);
+  row-gap: var(--grig-gap);
   grid-template-columns: repeat(auto-fit, minmax(259px, 1fr));
   grid-auto-rows: 1fr;
   justify-items: center;
