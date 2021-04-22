@@ -130,18 +130,18 @@ export class PlacesService {
   }
 
   public savePlaceReview(placeId: string, placeReview: IPlaceReview): Observable<any> {
-    // return this.http.post<Observable<any>>(this.apiUrlService.generateApiLink(`places/${placeId}/reviews`), review);
-    if (placeId !== '1') { placeId = '1'; }
-    return this.http.post<Observable<any>>(`http://localhost:3001/places-${placeId}-reviews`, placeReview);
+    return this.http.post<Observable<any>>(this.apiUrlService.generateApiLink(`places/${placeId}/reviews`), placeReview);
+    // if (placeId !== '1') { placeId = '1'; }
+    // return this.http.post<Observable<any>>(`http://localhost:3001/places-${placeId}-reviews`, placeReview);
   }
 
-  public getReviewsByPlaceId(placeId: string, page: number = 1, limit: number = 3): Observable<IPlaceReview[]> {
+  public getReviewsByPlaceId(placeId: string, page: number = 1, limit: number = 3): Observable<IPlaceReviewsResponse> {
     let params: HttpParams = new HttpParams();
     params = params.set('_page', page.toString());
     params = params.set('_limit', limit.toString());
 
-    // return this.http.get<IPlaceReviewsResponse>(this.apiUrlService.generateApiLink(`places/${placeId}/reviews`), { params });
-    return this.http.get<IPlaceReview[]>('http://localhost:3001/reviews', { params });
+    return this.http.get<IPlaceReviewsResponse>(this.apiUrlService.generateApiLink(`places/${placeId}/reviews`), { params });
+    // return this.http.get<IPlaceReview[]>('http://localhost:3001/reviews', { params });
   }
 
   public getPlaces(options: PlacesRequestParamsHelper): Observable<IPlacesResponse> {

@@ -117,19 +117,24 @@
           </div>
         </section>
         <section class="container view-rating">
-          <app-rating-view *ngIf="placeId" [placeId]="placeId" [rating]="place.rating" [numberOfReview]="12"></app-rating-view>
+          <app-rating-view *ngIf="placeId" [placeId]="placeId" [rating]="place.rating" [reviewsTotal]="reviewsTotal"></app-rating-view>
         </section>
         <br>
         <br>
         <br>
         <section class="container form-review">
-          <app-form-review *ngIf="placeId" [placeId]="placeId"></app-form-review>
+          <app-form-review *ngIf="placeId" [placeId]="placeId" (sentReview)="updateReviewsState()"></app-form-review>
         </section>
         <br>
         <br>
         <br>
         <section class="container form-review">
-          <app-comments-view *ngIf="placeId" [placeId]="placeId"></app-comments-view>
+          <app-comments-view *ngIf="reviews && reviewsTotalPages"
+                             [reviews]="reviews"
+                             [reviewsState]="reviewsState"
+                             [totalPages]="reviewsTotalPages"
+                             (paginationStateChange)="updateReviewsPaginationState($event)"
+          ></app-comments-view>
         </section>
       </div>
     </div>

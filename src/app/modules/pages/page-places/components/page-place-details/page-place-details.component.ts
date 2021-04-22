@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DateService, EventsService, PlacesService, UsersService } from '../../../../../services';
-import { IEvent, IPlace } from '../../../../../static/type';
+import { IEvent, IPlace, IPlaceReview } from '../../../../../static/type';
 
 
 @Component({
@@ -12,9 +12,18 @@ import { IEvent, IPlace } from '../../../../../static/type';
 export class PagePlaceDetailsComponent implements OnInit {
   public placeId: string;
   public place: IPlace;
+
   public events: IEvent[];
+
   public visited: boolean;
   public favorite: boolean;
+
+  public reviews: IPlaceReview[] = [];
+  public reviewsPage: number = 1;
+  public reviewsLimit: number = 3;
+  public reviewsTotal: number;
+  public reviewsTotalPages: number;
+  public reviewsState: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,8 +32,8 @@ export class PagePlaceDetailsComponent implements OnInit {
     private usersService: UsersService,
     public dateService: DateService) { }
 
-  private page: number = 1;
-  private limit: number = 4;
+  private eventsPage: number = 1;
+  private eventsLimit: number = 4;
 
   public getPlace(): void {
     this.placesService.getPlaceById(this.placeId).subscribe((place) => {
@@ -32,7 +41,10 @@ export class PagePlaceDetailsComponent implements OnInit {
       this.favorite = place.favorite;
       this.visited = place.visited;
     });
-    this.eventsService.getEventsByPlaceId(this.placeId, this.page, this.limit).subscribe((data) => {
+  }
+
+  public getEvents(): void {
+    this.eventsService.getEventsByPlaceId(this.placeId, this.eventsPage, this.eventsLimit).subscribe((data) => {
       this.events = data.events;
     });
   }
@@ -63,10 +75,37 @@ export class PagePlaceDetailsComponent implements OnInit {
     });
   }
 
+  public updateReviewsPaginationState([page, isConcatenation]: [number, boolean]): void {
+    this.reviewsPage = page;
+    this.updateReviews(isConcatenation);
+  }
+
+  public updateReviewsState(): void {
+    this.getPlace();
+    this.reviewsPage = 1;
+    this.updateReviews();
+    this.reviewsState = !this.reviewsState;
+  }
+
+  public updateReviews(isConcatenation?: boolean): void {
+    this.placesService.getReviewsByPlaceId(this.placeId, this.reviewsPage, this.reviewsLimit).subscribe((data) => {
+      this.reviewsTotalPages = data._totalPages;
+      this.reviewsTotal = data._total;
+      if (isConcatenation) {
+        this.reviews = this.reviews.concat(data.reviews);
+        return;
+      }
+      if (this.reviews?.length) { this.reviews.length = 0; }
+      this.reviews = data.reviews;
+    });
+  }
+
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.placeId = params.place_id;
     });
     this.getPlace();
+    this.getEvents();
+    this.updateReviews();
   }
 }

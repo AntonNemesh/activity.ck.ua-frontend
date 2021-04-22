@@ -10,7 +10,7 @@ export class RatingViewComponent implements OnInit {
 
   @Input() placeId: string;
   @Input() rating: number;
-  @Input() numberOfReview: number;
+  @Input() reviewsTotal: number;
 
   ngOnInit(): void {}
 }
