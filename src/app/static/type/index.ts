@@ -12,6 +12,7 @@ export {
   IPhotosGroup,
   IPlacesResponse,
   IPlaceResponse,
+  IPlaceReviewsResponse,
   IPlaceReview
 } from './place.interface';
 

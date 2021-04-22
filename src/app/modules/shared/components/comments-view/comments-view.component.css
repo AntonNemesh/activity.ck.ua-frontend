@@ -1,0 +1,50 @@
+p {
+  margin: 0;
+}
+
+.reviews {
+  list-style: none;
+  display: grid;
+  row-gap: 40px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
+
+.review {
+  display: grid;
+  grid-template: .1fr .1fr .8fr / 90px 1fr 116px;
+  align-items: start;
+  justify-items: start;
+}
+
+.review__avatar {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 80px;
+  border: 1px solid gray;
+  grid-column: 1 / 2;
+  grid-row: 1 / 4;
+}
+
+.review__username {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.review__date {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+  justify-self: end;
+}
+
+.review__rating {
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
+}
+
+.review__comment {
+  grid-column: 2 / 4;
+  grid-row: 3 / 4;
+}

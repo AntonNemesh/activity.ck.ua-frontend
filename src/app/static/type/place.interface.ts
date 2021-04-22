@@ -75,8 +75,17 @@ export interface ICategoryGroup {
   type_id?: string;
 }
 
+export interface IPlaceReviewsResponse {
+  reviews: IPlaceReview[];
+  _total: number;
+  _totalPages: number;
+}
+
 export interface IPlaceReview {
-  rating: number;
+  user_name?: string;
+  user_avatar?: string;
   comment: null|string;
+  rating: number;
+  created_at?: string;
 }
 

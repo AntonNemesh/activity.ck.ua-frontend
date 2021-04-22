@@ -8,7 +8,9 @@ import {
   FilterByTypeComponent,
   UploaderForPhotosComponent,
   FormReviewComponent,
-  RatingViewComponent
+  RatingViewComponent,
+  CommentsViewComponent,
+  RatingStarsBarComponent
 } from './components';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { MaterialModule } from '../material';
@@ -25,6 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     UploaderForPhotosComponent,
     FormReviewComponent,
     RatingViewComponent,
+    CommentsViewComponent,
+    RatingStarsBarComponent,
   ],
   exports: [
     LoadingComponent,
@@ -35,6 +39,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     UploaderForPhotosComponent,
     FormReviewComponent,
     RatingViewComponent,
+    CommentsViewComponent,
+    RatingStarsBarComponent,
   ],
   imports: [
     CommonModule,
