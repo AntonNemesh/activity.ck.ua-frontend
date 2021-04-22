@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PlacesService } from '../../../../services';
 import { IPlaceReview, IUser } from '../../../../static/type';
@@ -31,6 +31,7 @@ export class FormReviewComponent implements OnInit {
   public ratingArr: number[] = [];
 
   @Input() placeId: string;
+  @Output() sentReview: EventEmitter<any> = new EventEmitter<any>();
 
   public formReview: FormGroup = new FormGroup({
     rating: new FormControl(null, Validators.required),
@@ -69,6 +70,7 @@ export class FormReviewComponent implements OnInit {
     };
     this.placesService.savePlaceReview(this.placeId, placeReview).subscribe(
       (data) => {
+        this.sentReview.emit();
         this.resetForm();
         this.matSnackBar.open('Ви залишили відгук!', '', { duration: 2000 });
         console.log('success', data);

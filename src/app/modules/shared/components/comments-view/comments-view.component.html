@@ -9,5 +9,6 @@
 </ul>
 <app-pagination *ngIf="totalPages"
                 (paginationStateChange)="updatePaginationState($event)"
+                [reviewsState]="reviewsState"
                 [totalPages]="totalPages">
 </app-pagination>
