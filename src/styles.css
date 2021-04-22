@@ -405,7 +405,7 @@ p {
 }
 .link:hover {
   color: var(--bright-color);
-  transform: scale(1.007);
+  transform: scale(1.07);
 }
 
 .list {
@@ -470,6 +470,7 @@ p {
 /*contacts*/
 
 .contact__link {
+  color: var(--main-text-color);
   text-decoration: underline var(--light-color);
 }
 
@@ -538,7 +539,6 @@ p {
 
 .event-item:hover .img-photo {
   border: 1px solid var(--light-color);
-  width: 102%;
 }
 
 .event-item:hover .card-link {
