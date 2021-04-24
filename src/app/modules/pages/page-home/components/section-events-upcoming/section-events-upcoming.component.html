@@ -15,7 +15,7 @@
     </div>
 
     <div *ngIf="eventsContentVisibility | async">
-      <div class="main-list list" *ngIf="events?.length">
+      <div class="main-list list upcoming-events__list" *ngIf="events?.length">
         <a routerLink="/events/{{event.id}}" *ngFor="let event of events" class="link event-item upcoming-events__item">
             <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
           <p class="card-link">

@@ -16,8 +16,7 @@
 }
 
 .video__text {
-  width: 100%;
-  padding-left: 40px;
+  width: 90%;
 }
 
 .video__headline {
@@ -161,7 +160,7 @@
 }
 
 .categories__item {
-  margin-top: 17%;
+  margin-top: 25%;
   width: 166px;
   color: var(--main-text-color);
   display: grid;
@@ -177,8 +176,17 @@
   opacity: 0;
 }
 
+.categories__item:hover  .categories__list {
+  grid-template-rows: 1fr auto;
+}
 .categories__item:hover .photo-overlay {
   opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .categories__item {
+    margin-top: 17%;
+  }
 }
 
 

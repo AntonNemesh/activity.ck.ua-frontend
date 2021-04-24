@@ -377,7 +377,7 @@ p {
   --link-decoration: underline 2px var(--bright-color);
   --text-line-height: 1.7rem;
 
-  --padding-section: 5% 0 5%;
+  --padding-section: 5% 0;
   --padding: 10px;
 
   --border-radius: 8px;
@@ -388,8 +388,8 @@ p {
 /*root classes*/
 
 .container {
-  max-width: 1280px;
   margin: 0 auto;
+  max-width: 75%;
 }
 
 .link {
@@ -426,8 +426,15 @@ p {
 
 .headline {
   margin: 0;
-  font: var(--font-headline);
+  font: 600 1.5rem 'Inter', sans-serif;
   color: var(--main-text-color);
+}
+
+@media (min-width: 481px) {
+  .headline {
+    margin: 0;
+    font: var(--font-headline);
+  }
 }
 
 .visited-btn {
@@ -464,7 +471,7 @@ p {
 }
 
 .padding-inside {
-  padding: 0 var(--padding);
+  padding: 0 20px;
 }
 
 /*contacts*/
@@ -521,6 +528,7 @@ p {
   column-gap: var(--grig-gap);
   row-gap: var(--grig-gap);
   grid-template-columns: repeat(auto-fit, minmax(259px, 1fr));
+  grid-template-rows: 1fr auto;
   grid-auto-rows: 1fr;
   justify-items: center;
 }
@@ -549,13 +557,20 @@ p {
 @media (min-width: 481px) {
   .main-list {
     justify-items: start;
-    row-gap: var(--padding);
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
 
   .event-item {
     padding: var(--padding);
+  }
+
+}
+
+@media (min-width: 768px) {
+
+  .main-list {
+    row-gap: var(--padding);
   }
 }
 

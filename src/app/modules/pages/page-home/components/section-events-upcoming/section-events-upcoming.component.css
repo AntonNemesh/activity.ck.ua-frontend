@@ -39,3 +39,7 @@
 .upcoming-events__link:active {
   color: var(--bright-color);
 }
+
+.upcoming-events__list {
+  margin-bottom: var(--padding);
+}
