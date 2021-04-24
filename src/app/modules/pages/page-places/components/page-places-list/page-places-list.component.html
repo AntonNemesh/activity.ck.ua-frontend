@@ -4,7 +4,7 @@
     <a routerLink="/add_place" class="link page-places-list__link-add">Додати локацію</a>
   </div>
   <div class="container main-wrapper padding-inside">
-    <section class="filters">
+    <section class="aside-filters">
       <app-filter-by-availability (availabilityStateChange)="updateFilterAvailabilityState($event)">
       </app-filter-by-availability>
       <app-filter-by-type (filterStateChange)="updateFilterTypeState($event)"

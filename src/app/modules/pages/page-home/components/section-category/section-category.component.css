@@ -137,7 +137,7 @@
 @media (min-width: 481px) {
   .categories__list {
     display: grid;
-    column-gap: var(--grig-gap);
+    column-gap: var(--grid-gap);
     grid-template-columns: repeat(2, 1fr);
     justify-items: auto;
   }
