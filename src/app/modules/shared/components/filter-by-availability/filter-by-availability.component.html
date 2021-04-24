@@ -1,5 +1,5 @@
-<div class="filter">
-  <section class="example-section" *ngFor="let filter of availabilityFilterArray.controls; index as i">
+<ul class="list filter">
+  <li class="filter-item" *ngFor="let filter of availabilityFilterArray.controls; index as i">
     <mat-checkbox class="example-margin" [formControl]="availabilityFilterArray.controls[i]">{{availabilityFilter[i].name}}</mat-checkbox>
-  </section>
-</div>
+  </li>
+</ul>
