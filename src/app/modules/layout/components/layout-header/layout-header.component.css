@@ -40,6 +40,18 @@
   height: 80px;
 }
 
+.logo-svg {
+  width: 200px;
+  height: 95px;
+}
+
+@media (min-width: 860px) {
+  .logo-svg {
+    width: 254px;
+    height: 95px;
+  }
+}
+
 .header__icon {
   fill: var(--light-color);
   padding: 7px;
