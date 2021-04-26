@@ -40,10 +40,6 @@
 
 /*list*/
 
-.places {
-  margin-left: 3px;
-}
-
 .places__item {
   padding: 10px;
   color: var(--color-main-grey);
@@ -62,7 +58,9 @@
 .places__about-info {
   padding: 0;
   grid-column: 2/3;
-  text-transform: initial;}
+  text-transform: initial;
+  font-weight: 400;
+}
 
 .places__about-info-headline {
   padding: 15px 0;
@@ -111,6 +109,11 @@
 
 
 @media (min-width: 769px) {
+
+  .places {
+    margin-left: 3px;
+  }
+
   .page-places-list__aside {
     grid-template-columns: 1fr;
   }
