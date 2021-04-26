@@ -21,6 +21,9 @@
   grid-column: 2 / 4;
   grid-row: 1 / 2;
 }
+.review-form__rating-bar button {
+  color: #ffac00;
+}
 
 .review-form__error-message {
   grid-column: 2 / 4;
@@ -37,6 +40,7 @@
 .review-form__submit-btn {
   grid-column: 3 / 4;
   grid-row: 2 / 3;
+  color: var(--color-main-grey);
 }
 
 .review-form__rating-input {

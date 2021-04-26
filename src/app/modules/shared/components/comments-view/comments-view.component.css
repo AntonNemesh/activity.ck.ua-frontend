@@ -42,6 +42,7 @@ p {
 .review__rating {
   grid-column: 2 / 4;
   grid-row: 2 / 3;
+  color: #ffac00;
 }
 
 .review__comment {
