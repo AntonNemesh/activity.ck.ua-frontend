@@ -9,14 +9,13 @@
 
 .footer__icon {
   width: 35px;
-  fill: var(--light-color);
+  fill: var(--color-light-grey);
   grid-column: 1/2;
   grid-row: 1/2;
 }
 
 .footer__link {
-  padding: 7px 0;
-  color: var(--light-color);
+  padding: 7px 15px;
   grid-template: 1fr / 50px 200px;
   display: grid;
   align-items: center;
@@ -41,6 +40,9 @@
 .footer__link:hover .footer__main-link {
   opacity: 0;
 }
+.footer__link:hover .decorated {
+  text-decoration: underline 1px var(--color-bright);
+}
 
 .footer__link:hover {
   box-shadow: 0 2px 5px 1px rgba(64, 60, 67, .25);
@@ -49,7 +51,7 @@
 .footer__copyright {
   padding: var(--padding);
   font-family: 'Inter', sans-serif;
-  color: var(--main-text-color);
+  color: var(--color-light-grey);
   text-align: center;
   grid-column: 1/2;
 }

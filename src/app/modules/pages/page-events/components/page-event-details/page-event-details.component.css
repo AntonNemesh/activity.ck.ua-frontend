@@ -2,10 +2,6 @@
   padding: 40px 0;
 }
 
-.events-details__icon {
-  padding: 15px;
-}
-
 .events-details__contact:hover a {
   text-decoration: none;
 }
@@ -23,9 +19,9 @@
 .visited-btn {
   padding: 5px 25px;
   justify-items: end;
-  background-color: #ffffff;
-  color: var(--main-text-color);
+  background-color: var(--color-light);
+  color: var(--color-main-grey);
   font: var(--font-text);
-  border: 1px solid var(--main-text-color);
+  border: 1px solid var(--color-main-grey);
   border-radius: 8px;
 }

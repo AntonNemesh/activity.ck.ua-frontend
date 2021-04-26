@@ -1,4 +1,4 @@
-<div *ngIf="isArrowPagination">
+<div *ngIf="isArrowPagination" class="padding-inside">
   <button *ngIf="page > 1" mat-button matSuffix mat-icon-button (click)="setPrevPage()">
     <mat-icon>arrow_back</mat-icon>
   </button>
@@ -6,11 +6,11 @@
     <mat-icon>arrow_forward</mat-icon>
   </button>
 </div>
-<div *ngIf="!isArrowPagination">
-  <div class="link pagination__more">
+<div *ngIf="!isArrowPagination" class="padding-inside">
+  <a href="" *ngIf="isTheLastPage" (click)="concatPage($event)"  class="link pagination__more icon-text-row">
     <mat-icon>sync</mat-icon>
-    <a href="" *ngIf="isTheLastPage" (click)="concatPage($event)" class="contact__link">Показати ще...</a>
-  </div>
+    <span class="contact__link">Показати ще...</span>
+  </a>
   <div class="pagination__numb">
     <a href="" *ngIf="totalPages > 1" (click)="setPage($event, 1)" class="button" [class.active]="checkState(1)">{{1}}</a>
     <span class="pagination__separator" *ngIf="this.separatorState[0]">...</span>

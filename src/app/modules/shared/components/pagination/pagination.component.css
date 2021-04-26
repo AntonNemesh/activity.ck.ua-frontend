@@ -6,7 +6,7 @@
   padding-top: var(--padding);
   margin-top: var(--padding);
   font: var(--font-text);
-  color: var(--main-text-color);
+  color: var(--color-main-grey);
   display: grid;
   align-items: center;
   grid-template: 1fr / .3fr 1fr;
@@ -14,7 +14,7 @@
 }
 
 .pagination__more:hover {
-  color: var(--bright-color);
+  color: var(--color-bright);
 }
 .pagination__numb {
   height: 26px;

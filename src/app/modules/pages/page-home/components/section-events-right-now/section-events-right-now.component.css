@@ -3,5 +3,5 @@
 }
 
 .events-right-now__event-item:hover {
-  background-color: var(--background-saturated-color);
+  background-color: var(--color-light-saturated);
 }

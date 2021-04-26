@@ -21,7 +21,7 @@
 }
 
 .header__link {
-  color: var(--light-color);
+  color: var(--color-main-grey);
 }
 
 .logo-link {
@@ -32,7 +32,7 @@
 .header__link:focus,
 .header__link:active,
 .header__link:hover {
-  color: var(--bright-color);
+  color: var(--color-bright);
 }
 
 .header__logo {
@@ -53,11 +53,11 @@
 }
 
 .header__icon {
-  fill: var(--light-color);
+  fill: var(--color-light-grey);
   padding: 7px;
   width: 35px;
   height: 35px;
-  border: 2px solid var(--light-color);
+  border: 2px solid var(--color-light-grey);
   border-radius: 50%;
 }
 
@@ -70,5 +70,5 @@
 .header__icon:hover,
 .header__icon:focus,
 .header__icon:active {
-  fill: var(--bright-color);
+  fill: var(--color-bright);
 }

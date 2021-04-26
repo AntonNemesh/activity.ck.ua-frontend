@@ -27,9 +27,9 @@
         </a>
       </div>
       <p class="mat-h3" *ngIf="!events?.length">Нічого не знайдено!</p>
-      <a routerLink="/events" class="upcoming-events__link link ">
+      <a routerLink="/events" class="upcoming-events__link link icon-text-row">
         <mat-icon>sync</mat-icon>
-        Більше подій
+        <span>Більше подій</span>
       </a>
     </div>
     <mat-spinner class="loader" *ngIf="eventsLoaderVisibility | async"></mat-spinner>

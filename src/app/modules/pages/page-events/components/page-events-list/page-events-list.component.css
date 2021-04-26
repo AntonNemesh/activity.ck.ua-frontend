@@ -1,4 +1,4 @@
-@media (min-width: 769px) {
+@media (min-width: 791px) {
   .page-events-list-wrapper {
     display: grid;
     grid-template-columns: .7fr 2.5fr;
@@ -9,9 +9,9 @@
 .datepicker-wrapper {
   padding-top: 25px;
   display: grid;
-  grid-template-columns: 1fr .5fr .002fr;
+  grid-template-columns: 1fr 1fr .002fr;
   grid-template-rows: .5fr;
-  grid-column: 2/3;
+  grid-column: 1/3;
 }
 
 .mat-hidden {
@@ -19,9 +19,16 @@
 }
 
 .page-events-list__events {
-  padding-top: var(--padding);
-  grid-column: 2/3;
-  background-color: var(--background-saturated-color);
+
+  background-color: var(--color-light-saturated);
+}
+
+@media (min-width: 769px) {
+  .page-events-list__events {
+    grid-column: 2/3;
+    margin-left: 3px;
+    padding: 30px;
+  }
 }
 
 .page-events-list__item:hover {

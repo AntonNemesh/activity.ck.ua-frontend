@@ -1,5 +1,5 @@
 .upcoming-events__item:hover {
-  background-color: #ffffff;
+  background-color: var(--color-light);
 }
 
 .events-headline__line {
@@ -26,18 +26,6 @@
 .btn__datepicker {
   grid-column: 3/4;
   grid-row: 1/2;
-}
-
-.upcoming-events__link {
-  margin-top: var(--padding);
-  font: var(--font-text);
-  color: var(--main-text-color);
-}
-
-.upcoming-events__link:hover,
-.upcoming-events__link:focus,
-.upcoming-events__link:active {
-  color: var(--bright-color);
 }
 
 .upcoming-events__list {
