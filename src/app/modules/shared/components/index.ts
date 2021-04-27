@@ -8,3 +8,4 @@ export { FormReviewComponent } from './form-review/form-review.component';
 export { RatingViewComponent } from './rating-view/rating-view.component';
 export { CommentsViewComponent } from './comments-view/comments-view.component';
 export { RatingStarsBarComponent } from './rating-stars-bar/rating-stars-bar.component';
+export { ExploreBarComponent } from './explore-bar/explore-bar.component';

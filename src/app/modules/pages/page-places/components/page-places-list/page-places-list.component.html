@@ -1,4 +1,5 @@
 <app-layout>
+  <app-explore-bar [categoryId]="categoryId"></app-explore-bar>
   <div class="container page-places-list padding-inside">
     <h2 *ngIf="categoryName" class="headline page-places-list__headline">Шукаємо: {{categoryName}}</h2>
     <a routerLink="/add_place" class="link page-places-list__link-add">Додати локацію</a>
