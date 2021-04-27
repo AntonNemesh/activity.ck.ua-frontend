@@ -26,13 +26,6 @@
   justify-self: center;
 }
 
-.explore-bar__percent {
-  grid-column: 1 / 2;
-  grid-row: 3 / 4;
-  margin: 0;
-  justify-self: center;
-}
-
 .explore-bar__rank {
   grid-column: 1 / 2;
   grid-row: 3 / 4;
