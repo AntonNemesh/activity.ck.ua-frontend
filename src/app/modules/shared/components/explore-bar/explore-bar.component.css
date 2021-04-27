@@ -1,0 +1,38 @@
+.explore-bar {
+  display: grid;
+  grid-template: .1fr .8fr .1fr / 1fr;
+  padding: 0 20px 20px 20px;
+  align-items: center;
+}
+
+.explore-bar__title {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  margin: 0;
+  justify-self: start;
+}
+
+.explore-bar__progress-bar{
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  height: 18px;
+  border-radius: 8px;
+}
+
+.explore-bar__percent {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+  margin: 0;
+  justify-self: center;
+}
+
+.explore-bar__rank {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+  margin: 0;
+  justify-self: start;
+}
+
+@media (max-width: 480px) {
+  .explore-bar__percent { justify-self: end; }
+}

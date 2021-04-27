@@ -1,0 +1,11 @@
+<div class="container explore-bar">
+  <h2 *ngIf="!categoryName" class="headline explore-bar__title">Дослідження міста</h2>
+  <h2 *ngIf="categoryName" class="headline explore-bar__title">Дослідження категорії: {{categoryName}}</h2>
+  <mat-progress-bar class="explore-bar__progress-bar"
+    [color]="color"
+    [mode]="mode"
+    [value]="explore">
+  </mat-progress-bar>
+  <h2 class="headline explore-bar__percent">{{explore}}%</h2>
+  <h3 class="headline explore-bar__rank">Досвід: {{role}}</h3>
+</div>

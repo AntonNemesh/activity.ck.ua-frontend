@@ -69,6 +69,13 @@ export class UsersService {
     // return this.http.get<IObjectActivity[]>('http://localhost:3001/users-myself-scheduled_events', { params });
   }
 
+  public getExplore(categoryId?: string): Observable<any> {
+    let params: HttpParams = new HttpParams();
+    if (categoryId) { params = params.set('category_id', categoryId); }
+
+    return this.http.get<any>(this.apiUrlService.generateApiLink('users/myself/explore'), { params });
+  }
+
   public addPlaceToFavorite(placeId: string): Observable<any> {
     return this.http.post<any>(this.apiUrlService.generateApiLink(`users/myself/favorite_places/${placeId}`), null);
   }

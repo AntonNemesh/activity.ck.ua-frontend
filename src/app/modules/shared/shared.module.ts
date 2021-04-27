@@ -10,7 +10,8 @@ import {
   FormReviewComponent,
   RatingViewComponent,
   CommentsViewComponent,
-  RatingStarsBarComponent
+  RatingStarsBarComponent,
+  ExploreBarComponent,
 } from './components';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { MaterialModule } from '../material';
@@ -29,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RatingViewComponent,
     CommentsViewComponent,
     RatingStarsBarComponent,
+    ExploreBarComponent,
   ],
   exports: [
     LoadingComponent,
@@ -41,6 +43,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RatingViewComponent,
     CommentsViewComponent,
     RatingStarsBarComponent,
+    ExploreBarComponent,
   ],
   imports: [
     CommonModule,
