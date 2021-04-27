@@ -386,7 +386,7 @@ p {
   --link-decoration: underline 2px var(--color-bright);
   --text-line-height: 1.7rem;
 
-  --padding-section: 5% 0;
+  --padding-section: 4% 0;
   --padding: 10px;
 
   --border-radius: 8px;
@@ -474,6 +474,10 @@ p {
   background: var(--color-light-saturated);
 }
 
+.padding-inside {
+  padding: 0 20px;
+}
+
 @media (min-width: 1025px) {
   .background-light,
   .background-saturated {
@@ -481,9 +485,13 @@ p {
   }
 }
 
-.padding-inside {
-  padding: 0 20px;
+@media (min-width: 1025px) {
+  .background-light,
+  .background-saturated {
+    padding: 2%;
+  }
 }
+
 
 /*contacts*/
 
@@ -631,4 +639,8 @@ p {
 .visited-btn:hover,
 .pressed-primary-btn {
   background-color: #bbbbbb !important;
+}
+
+.min-section {
+  min-height: 150px;
 }

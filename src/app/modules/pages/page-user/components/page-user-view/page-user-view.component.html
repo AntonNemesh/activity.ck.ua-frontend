@@ -1,5 +1,5 @@
 <app-layout>
-  <section class="scheduled-events background-saturated " *ngIf="scheduledEvents?.length">
+  <section class="scheduled-events background-saturated">
     <div class="container padding-inside ">
       <h1 class="headline">Заплановані події</h1>
       <div class="main-list" *ngIf="scheduledEvents?.length">
@@ -21,9 +21,10 @@
         (paginationStateChange)="updateScheduledEventsPaginationState($event)"
         [totalPages]="scheduledEventsTotalPages">
       </app-pagination>
+      <p class="mat-h3 min-section" *ngIf="!scheduledEvents?.length">Нічого не знайдено!</p>
     </div>
   </section>
-  <section class="visited-places background-light" *ngIf="visitedPlaces?.length">
+  <section class="visited-places background-light">
     <div class="container padding-inside">
       <h1 class="headline">Недавні місця</h1>
       <div class="main-list" *ngIf="visitedPlaces?.length">
@@ -40,9 +41,10 @@
         (paginationStateChange)="updateVisitedPlacesPaginationState($event)"
         [totalPages]="visitedPlacesTotalPages">
       </app-pagination>
+      <p class="mat-h3 min-section" *ngIf="!visitedPlaces?.length">Нічого не знайдено!</p>
     </div>
   </section>
-  <section class="favorite-places background-saturated" *ngIf="favoritePlaces?.length">
+  <section class="favorite-places background-saturated">
     <div class="container padding-inside">
       <h1 class="headline">Улюблені місця</h1>
       <div class="main-list" *ngIf="favoritePlaces?.length">
@@ -59,9 +61,10 @@
         (paginationStateChange)="updateFavoritePlacesPaginationState($event)"
         [totalPages]="favoritePlacesTotalPages">
       </app-pagination>
+      <p class="mat-h3 min-section" *ngIf="!favoritePlaces?.length">Нічого не знайдено!</p>
     </div>
   </section>
-  <section class="userPlaces background-light" *ngIf="userPlaces?.length">
+  <section class="userPlaces background-light">
     <div class="container padding-inside">
       <h1 class="headline">Мої місця</h1>
       <div class="main-list list" *ngIf="userPlaces?.length">
@@ -78,9 +81,10 @@
         (paginationStateChange)="updateUserPlacesPaginationState($event)"
         [totalPages]="userPlacesTotalPages">
       </app-pagination>
+      <p class="mat-h3 min-section" *ngIf="!userPlaces?.length">Нічого не знайдено!</p>
     </div>
   </section>
-  <section class="user-events background-saturated" *ngIf="userEvents?.length">
+  <section class="user-events background-saturated">
     <div class="container padding-inside">
       <h1 class="headline">Мої події</h1>
       <div class="main-list" *ngIf="userEvents?.length">
@@ -90,13 +94,14 @@
             </span>
             <p class="card-link event__headline">{{event.name}}</p>
           </a>
+        <app-pagination
+          *ngIf="userEventsTotalPages"
+          [isArrowPagination]="true"
+          (paginationStateChange)="updateUserEventsPaginationState($event)"
+          [totalPages]="userEventsTotalPages">
+        </app-pagination>
       </div>
-      <app-pagination
-        *ngIf="userEventsTotalPages"
-        [isArrowPagination]="true"
-        (paginationStateChange)="updateUserEventsPaginationState($event)"
-        [totalPages]="userEventsTotalPages">
-      </app-pagination>
+      <p class="mat-h3 min-section" *ngIf="!userEvents?.length">Нічого не знайдено!</p>
     </div>
   </section>
 </app-layout>
