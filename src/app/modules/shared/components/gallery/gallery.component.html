@@ -2,7 +2,7 @@
   <mat-carousel
     timings="250ms ease-in"
     [autoplay]="true"
-    interval="2000"
+    interval="5000"
     color="accent"
     maxWidth="auto"
     proportion="50"
@@ -19,7 +19,7 @@
       *ngFor="let slide of photos; let i = index"
       [image]="photos[i].url"
       overlayColor="#00000040"
-      [hideOverlay]="false"
+      [hideOverlay]="true"
     >
     </mat-carousel-slide>
   </mat-carousel>
