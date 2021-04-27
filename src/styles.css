@@ -359,7 +359,7 @@ body {
 }
 
 p {
-  margin: 0
+  margin: 0;
 }
 
 /*custom properties*/
@@ -371,9 +371,13 @@ p {
   --color-light-grey: rgba(95, 93, 93, 100);
   --color-main-grey: rgba(57, 57, 57,100);
   --color-light: rgba(255, 255, 255, 100);
-  --color-light-saturated: rgba(242, 242, 242, 100);
+  --color-light-saturated: rgba(33, 154, 214, .05);
   --color-aside:  rgba(0, 0, 0, 0.08);
-  --color-overlay: rgba(0, 0, 0, 0.3);
+  --color-overlay: rgba(0, 0, 0, 0.15);
+  /*--color-overlay: rgba(252, 173, 36, 0.3);*/
+  /*color: #73be44;*/
+  /*color: #fcad24;*/
+  /*color: #219ad6;*/
 
   --font-headline: 600 1.7rem 'Inter', sans-serif;
   --font-card-headline: 600 1rem 'Inter', sans-serif;
@@ -541,7 +545,6 @@ p {
   row-gap: var(--grid-gap);
   grid-template-columns: repeat(auto-fit, minmax(259px, 1fr));
   grid-template-rows: 1fr auto;
-  grid-auto-rows: 1fr;
   justify-items: center;
 }
 

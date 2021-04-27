@@ -28,6 +28,25 @@
   grid-row: 1/2;
 }
 
+.btn__datepicker:hover {
+  color: var(--color-bright);
+}
+
 .upcoming-events__list {
   margin-bottom: var(--padding);
+}
+
+.upcoming-events__link {
+  font-size: 1.5rem;
+  grid-template: 1fr / .35fr 1fr;
+  align-items: end;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.upcoming-events__link .material-icons {
+  font-size: 35px;
+  font-weight: 600;
+  /*height: 50px;*/
+  color: var(--color-bright);
 }
