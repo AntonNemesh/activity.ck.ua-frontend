@@ -572,6 +572,7 @@ p {
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
   box-shadow: 0 2px 5px 1px rgba(64, 60, 67, .25);
+  background-color: var(--color-light);
 }
 
 .event-item:hover .img-photo {
@@ -583,6 +584,10 @@ p {
   text-decoration: 1px underline var(--color-bright);
 }
 
+.home-list {
+  grid-template-columns: repeat(1,  1fr);
+}
+
 @media (min-width: 481px) {
   .main-list {
     margin-top: 2px;
@@ -590,9 +595,15 @@ p {
   }
 }
 
-@media (min-width: 550px) {
-  .main-list {
-    justify-items: start;
+@media (min-width: 576px) {
+  .home-list {
+    grid-template-columns: repeat(2,  1fr);
+  }
+}
+
+@media (min-width: 1194px) {
+  .home-list {
+    grid-template-columns: repeat(4,  1fr);
   }
 }
 
