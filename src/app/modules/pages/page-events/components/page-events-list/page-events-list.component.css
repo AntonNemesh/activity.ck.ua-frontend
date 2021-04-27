@@ -9,9 +9,9 @@
 .datepicker-wrapper {
   padding-top: 25px;
   display: grid;
-  grid-template-columns: 1fr 1fr .002fr;
-  grid-template-rows: .5fr;
+  grid-template-columns: 1.1fr .8fr .002fr;
   grid-column: 1/3;
+  align-items: center;
 }
 
 .mat-hidden {
@@ -49,6 +49,11 @@
 .btn__datepicker {
   grid-column: 3/4;
   grid-row: 1/2;
+  margin-bottom: 16px;
+}
+
+.btn__datepicker:hover {
+  color: var(--color-bright);
 }
 
 .hidden {
