@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PageHomeViewComponent } from './modules/pages/page-home/components';
 import { PagePlaceAddComponent } from './modules/pages/page-places/components';
 import { PageUserViewComponent } from './modules/pages/page-user/components';
+import { PageAuthorizationViewComponent } from './modules/pages/page-authorization/components';
 import { UsersResolverService } from './services';
 
 const routes: Routes = [
@@ -12,9 +13,10 @@ const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: PageHomeViewComponent },
       { path: 'user', component: PageUserViewComponent },
+      { path: 'add_place', component: PagePlaceAddComponent },
+      { path: 'authorization', component: PageAuthorizationViewComponent },
       { path: 'places/:category_id', loadChildren: () => import('./modules/pages/page-places').then(m => m.PagePlacesModule) },
       { path: 'events', loadChildren: () => import('./modules/pages/page-events').then(m => m.PageEventsModule) },
-      { path: 'add_place', component: PagePlaceAddComponent },
       { path: '**', redirectTo: 'home', pathMatch: 'full' },
     ]
   }

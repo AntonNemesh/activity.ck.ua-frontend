@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressBarMode } from '@angular/material/progress-bar';
-import { CategoriesService, UsersService } from '../../../../services';
+import { AuthorizationService, CategoriesService, UsersService } from '../../../../services';
 
 @Component({
   selector: 'app-explore-bar',
@@ -9,7 +9,13 @@ import { CategoriesService, UsersService } from '../../../../services';
   styleUrls: ['./explore-bar.component.css']
 })
 export class ExploreBarComponent implements OnInit {
-  constructor(private usersService: UsersService, private categoriesService: CategoriesService) { }
+  constructor(
+    private usersService: UsersService,
+    private categoriesService: CategoriesService,
+    private authorizationService: AuthorizationService,
+  ) { }
+
+  public isLoggedIn: boolean = this.authorizationService.isLoggedIn;
 
   public roles: string[] = ['Новачок', 'Любитель', 'Гуру'];
 
@@ -29,6 +35,8 @@ export class ExploreBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!this.isLoggedIn) { return; }
+
     if (this.categoryId) {
       this.categoryName = this.categoriesService.getCategoryNameById(this.categoryId);
     }

@@ -87,11 +87,11 @@
       <h2 class="place-details-about__headline">Про {{place.name}}</h2>
       <p class="place-details__about">{{place.description}}</p>
       <div class="favorite-visit-section">
-        <button [class.pressed-primary-btn]="visited" mat-flat-button class="visited-btn"
+        <button *ngIf="isLoggedIn" [class.pressed-primary-btn]="visited" mat-flat-button class="visited-btn"
                 (click)="updateVisitedState()">
           Відвідаю
         </button>
-        <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon"
+        <button *ngIf="isLoggedIn" mat-icon-button color="warn" aria-label="Example icon button with a heart icon"
                 (click)="updateFavoriteState()">
           <mat-icon *ngIf="favorite">favorite</mat-icon>
           <mat-icon *ngIf="!favorite">favorite_border</mat-icon>
@@ -105,7 +105,7 @@
     <br>
     <br>
     <br>
-    <section class="container form-review">
+    <section *ngIf="isLoggedIn" class="container form-review">
       <app-form-review *ngIf="placeId" [placeId]="placeId" (sentReview)="updateReviewsState()"></app-form-review>
     </section>
     <br>

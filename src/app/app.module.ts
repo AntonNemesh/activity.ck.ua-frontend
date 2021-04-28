@@ -5,8 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { modules } from './modules';
 import { services } from './services';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderModInterceptor } from './interceptors';
+
 
 @NgModule({
   declarations: [
@@ -17,11 +19,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    ...modules,
     BrowserAnimationsModule,
+    ...modules,
   ],
   providers: [
     ...services,
+    { provide: HTTP_INTERCEPTORS, useClass: HeaderModInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

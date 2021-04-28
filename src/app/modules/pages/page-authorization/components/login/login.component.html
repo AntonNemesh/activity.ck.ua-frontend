@@ -1,0 +1,26 @@
+<form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <p>
+    <mat-form-field class="example-full-width">
+      <mat-label>Електронна адреса</mat-label>
+      <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+      <mat-error *ngIf="loginForm.get('email').hasError('email') && !loginForm.get('email').hasError('required')">
+        Будь ласка, введіть дійсну адресу електронної пошти
+      </mat-error>
+      <mat-error *ngIf="loginForm.get('email').hasError('required')">
+        Поле є <strong>обов'язковим</strong>
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field class="example-full-width">
+      <mat-label>Пароль</mat-label>
+      <input type="password" matInput formControlName="password" >
+      <mat-error *ngIf="loginForm.get('password').hasError('required')">
+        Поле є <strong>обов'язковим</strong>
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <button type="submit" mat-raised-button color="primary">Увійти</button>
+  </p>
+</form>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DateService, EventsService, PlacesService, UsersService } from '../../../../../services';
+import { AuthorizationService, DateService, EventsService, PlacesService, UsersService } from '../../../../../services';
 import { IEvent, IPlace, IPlaceReview } from '../../../../../static/type';
 
 
@@ -25,11 +25,14 @@ export class PagePlaceDetailsComponent implements OnInit {
   public reviewsTotalPages: number;
   public reviewsState: boolean = false;
 
+  public isLoggedIn: boolean = this.authorizationService.isLoggedIn;
+
   constructor(
     private route: ActivatedRoute,
     private placesService: PlacesService,
     private eventsService: EventsService,
     private usersService: UsersService,
+    private authorizationService: AuthorizationService,
     public dateService: DateService) { }
 
   private eventsPage: number = 1;
