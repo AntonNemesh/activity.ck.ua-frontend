@@ -2,7 +2,7 @@
   <app-explore-bar [categoryId]="categoryId"></app-explore-bar>
   <div class="container page-places-list padding-inside">
     <h2 *ngIf="categoryName" class="headline page-places-list__headline">Шукаємо: {{categoryName}}</h2>
-    <a routerLink="/add_place" class="link page-places-list__link-add">Додати локацію</a>
+    <a *ngIf="isLoggedIn" routerLink="/add_place" class="link page-places-list__link-add">Додати локацію</a>
   </div>
   <div class="container main-wrapper padding-inside">
     <section class="aside-filters page-places-list__aside">

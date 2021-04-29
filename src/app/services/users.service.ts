@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ApiUrlService } from './api-url.service';
-import { Observable } from 'rxjs';
+import {Observable, of} from 'rxjs';
 import { IEventsResponse, IPlacesResponse, IUser, IUserResponse } from '../static/type';
-import { map, tap } from 'rxjs/operators';
+import {catchError, map, tap} from 'rxjs/operators';
 
 
 @Injectable({
@@ -15,13 +15,12 @@ export class UsersService {
 
   public currentUser: IUser;
 
-  public getUserInfo(): Observable<IUser> {
+  public getUserInfo(): Observable<IUser|any> {
     return this.http.get<IUserResponse>(this.apiUrlService.generateApiLink('users/myself'))
       .pipe(
-        tap(data => this.currentUser = data.user),
-        map(data => data.user)
-    );
-    // return this.http.get<IUser>('http://localhost:3001/users-myself');
+        map(data => data.user),
+        tap(data => this.currentUser = data.user)
+      );
   }
 
   public getVisitedPlaces(page: number, limit: number): Observable<IPlacesResponse> {

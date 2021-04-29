@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IEvent, IPhotos } from '../../../../../static/type';
 import { ActivatedRoute } from '@angular/router';
-import {EventsService, UsersService} from '../../../../../services';
+import { AuthorizationService, EventsService, UsersService } from '../../../../../services';
 
 @Component({
   selector: 'app-page-event-details',
@@ -12,10 +12,12 @@ export class PageEventDetailsComponent implements OnInit {
   public eventId: string;
   public event: IEvent;
   public scheduled: boolean;
+  public isLoggedIn: boolean = this.authorizationService.isLoggedIn;
 
   constructor(
     private route: ActivatedRoute,
     private eventsService: EventsService,
+    private authorizationService: AuthorizationService,
     private usersService: UsersService) { }
 
   getEvent(): void {

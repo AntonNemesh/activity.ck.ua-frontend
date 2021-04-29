@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthorizationService, UsersService } from '../../../../services';
 import { IUser } from '../../../../static/type';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-layout-header',
@@ -16,17 +15,38 @@ export class LayoutHeaderComponent implements OnInit {
     private authorizationService: AuthorizationService
   ) { }
 
+  private lifeCycleAccessToken: number = this.authorizationService.getLifeCycleOfAccessToken();
   public isLoggedIn: boolean = this.authorizationService.isLoggedIn;
 
   public user: IUser;
 
-  ngOnInit(): void {
-    this.route.data.subscribe(
-      (data) => {
-        this.user = data.user;
-        console.log(this.user);
+  public logout(): void {
+    this.authorizationService.logout().subscribe(
+      (value) => {
+        this.authorizationService.deleteTokens();
+        window.location.replace('/home');
       },
       (error) => {
+          console.log(error);
+      }
+    );
+  }
+
+  ngOnInit(): void {
+    console.log(this.lifeCycleAccessToken, this.isLoggedIn);
+    if (this.lifeCycleAccessToken < 2) {
+      this.authorizationService.updateTokens();
+    }
+    this.route.data.subscribe(
+(data) => {
+        if (data.user) {
+          this.user = data.user;
+          this.authorizationService.isLoggedIn = true;
+        } else {
+          this.authorizationService.isLoggedIn = false;
+        }
+      },
+(error) => {
         console.log(error);
       }
     );
