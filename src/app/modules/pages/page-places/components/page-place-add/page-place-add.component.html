@@ -43,11 +43,11 @@
                 </mat-error>
                 <mat-error
                   *ngIf="proposeOrganization.get('name').hasError('minlength')">
-                  Кількість симполів має бути більше 2
+                  Кількість символів має бути більше 2
                 </mat-error>
                 <mat-error
                   *ngIf="proposeOrganization.get('name').hasError('maxlength')">
-                  Кількість симполів має бути не більше 255
+                  Кількість символів має бути не більше 255
                 </mat-error>
               </mat-form-field>
               <div *ngIf="isProposeOrganization">
@@ -108,11 +108,11 @@
               </mat-error>
               <mat-error
                 *ngIf="categoryGroup.get('category_id').hasError('minlength')">
-                Кількість симполів має бути більше 2
+                Кількість символів має бути більше 2
               </mat-error>
               <mat-error
                 *ngIf="categoryGroup.get('category_id').hasError('maxlength')">
-                Кількість симполів має бути не більше 255
+                Кількість символів має бути не більше 255
               </mat-error>
             </mat-form-field>
             <div *ngIf="types?.length">
@@ -143,11 +143,11 @@
               </mat-error>
               <mat-error
                 *ngIf="mainGroup.get('name').hasError('minlength')">
-                Кількість симполів має бути більше 2
+                Кількість символів має бути більше 2
               </mat-error>
               <mat-error
                 *ngIf="mainGroup.get('name').hasError('maxlength')">
-                Кількість симполів має бути не більше 255
+                Кількість символів має бути не більше 255
               </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
@@ -159,7 +159,7 @@
               </mat-error>
               <mat-error
                 *ngIf="mainGroup.get('description').hasError('minlength')">
-                Кількість симполів має бути більше 20
+                Кількість символів має бути більше 20
               </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
@@ -171,11 +171,11 @@
               </mat-error>
               <mat-error
                 *ngIf="mainGroup.get('address').hasError('minlength')">
-                Кількість симполів має бути більше 2
+                Кількість символів має бути більше 2
               </mat-error>
               <mat-error
                 *ngIf="mainGroup.get('address').hasError('maxlength')">
-                Кількість симполів має бути не більше 255
+                Кількість символів має бути не більше 255
               </mat-error>
             </mat-form-field>
             <div formArrayName="phones" class="phones">
