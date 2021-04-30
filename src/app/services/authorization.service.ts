@@ -11,7 +11,22 @@ import {distinctUntilChanged} from 'rxjs/operators';
 export class AuthorizationService {
   constructor(private http: HttpClient, private apiUrlService: ApiUrlService) { }
 
+  private readonly authorizationStateStream: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private authorizationState: boolean;
+
+  public setLogIn(): void {
+    this.authorizationStateStream.next(true);
+  }
+
+  public setLogOut(): void  {
+    this.authorizationStateStream.next(false);
+  }
+
+  public get isLoggedInStream(): Observable<boolean> {
+    return this.authorizationStateStream.asObservable().pipe(
+      distinctUntilChanged()
+    );
+  }
 
   public get isLoggedIn(): boolean {
     return this.authorizationState;

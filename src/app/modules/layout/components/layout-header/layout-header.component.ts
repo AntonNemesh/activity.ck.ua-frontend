@@ -41,8 +41,10 @@ export class LayoutHeaderComponent implements OnInit {
 (data) => {
         if (data.user) {
           this.user = data.user;
+          this.authorizationService.setLogIn();
           this.authorizationService.isLoggedIn = true;
         } else {
+          this.authorizationService.setLogOut();
           this.authorizationService.isLoggedIn = false;
         }
       },

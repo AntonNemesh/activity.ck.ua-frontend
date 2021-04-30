@@ -5,6 +5,7 @@ import { PagePlaceAddComponent } from './modules/pages/page-places/components';
 import { PageUserViewComponent } from './modules/pages/page-user/components';
 import { PageAuthorizationViewComponent } from './modules/pages/page-authorization/components';
 import { UsersResolverService } from './services';
+import { AuthorizationGuard } from './guards';
 
 const routes: Routes = [
   { path: '',
@@ -12,9 +13,9 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: PageHomeViewComponent },
-      { path: 'user', component: PageUserViewComponent },
-      { path: 'add_place', component: PagePlaceAddComponent },
-      { path: 'authorization', component: PageAuthorizationViewComponent },
+      { path: 'user', component: PageUserViewComponent, canActivate: [AuthorizationGuard] },
+      { path: 'add_place', component: PagePlaceAddComponent, canActivate: [AuthorizationGuard] },
+      { path: 'authorization', component: PageAuthorizationViewComponent, canActivate: [AuthorizationGuard] },
       { path: 'places/:category_id', loadChildren: () => import('./modules/pages/page-places').then(m => m.PagePlacesModule) },
       { path: 'events', loadChildren: () => import('./modules/pages/page-events').then(m => m.PageEventsModule) },
       { path: '**', redirectTo: 'home', pathMatch: 'full' },
@@ -25,6 +26,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthorizationGuard]
 })
 export class AppRoutingModule { }
