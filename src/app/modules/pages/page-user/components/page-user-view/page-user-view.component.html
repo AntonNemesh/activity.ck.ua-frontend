@@ -2,7 +2,7 @@
   <section class="scheduled-events background-saturated">
     <div class="container padding-inside ">
       <h1 class="headline">Заплановані події</h1>
-      <div class="main-list" *ngIf="scheduledEvents?.length">
+      <div class="main-list list home-list user-places__list user-list" *ngIf="scheduledEvents?.length">
           <a routerLink="/events/{{event.id}}" class="event-item" *ngFor="let event of scheduledEvents">
           <span class="img-wrapper">
             <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
@@ -27,7 +27,7 @@
   <section class="visited-places background-light">
     <div class="container padding-inside">
       <h1 class="headline">Недавні місця</h1>
-      <div class="main-list" *ngIf="visitedPlaces?.length">
+      <div class="main-list list home-list user-places__list user-list" *ngIf="visitedPlaces?.length">
           <a routerLink="/places/{{place.category_id}}/{{place.id}}" class="event-item" *ngFor="let place of visitedPlaces">
           <span class="img-wrapper">
             <img class="img-photo" src="{{place.main_photo}}" alt="{{place.name}}">
@@ -47,7 +47,7 @@
   <section class="favorite-places background-saturated">
     <div class="container padding-inside">
       <h1 class="headline">Улюблені місця</h1>
-      <div class="main-list" *ngIf="favoritePlaces?.length">
+      <div class="main-list list home-list user-places__list user-list" *ngIf="favoritePlaces?.length">
           <a routerLink="/places/{{place.category_id}}/{{place.id}}" *ngFor="let place of favoritePlaces" class="event-item" >
             <span class="img-wrapper">
             <img class="img-photo" src="{{place.main_photo}}" alt="{{place.name}}">
@@ -64,10 +64,11 @@
       <p class="mat-h3 min-section" *ngIf="!favoritePlaces?.length">Нічого не знайдено!</p>
     </div>
   </section>
-  <section class="userPlaces background-light">
-    <div class="container padding-inside">
-      <h1 class="headline">Мої місця</h1>
-      <div class="main-list list" *ngIf="userPlaces?.length">
+  <section class="user-places background-light">
+    <div class="container padding-inside created-user__container">
+      <h1 class="headline user-places__headline">Мої місця</h1>
+      <a routerLink="/add_place" class="link link-add user-places__link-add">Додати локацію</a>
+      <div class="main-list list home-list user-places__list user-list" *ngIf="userPlaces?.length">
           <a routerLink="/places/{{place.category_id}}/{{place.id}}" *ngFor="let place of userPlaces" class="event-item" >
           <span class="img-wrapper">
             <img class="img-photo" src="{{place.main_photo}}" alt="{{place.name}}">
@@ -85,9 +86,10 @@
     </div>
   </section>
   <section class="user-events background-saturated">
-    <div class="container padding-inside">
+    <div class="container padding-inside created-user__container">
       <h1 class="headline">Мої події</h1>
-      <div class="main-list" *ngIf="userEvents?.length">
+      <a routerLink="/add_event" class="link link-add user-places__link-add">Створити подію</a>
+      <div class="main-list list home-list user-places__list user-list" *ngIf="userEvents?.length">
           <a routerLink="/events/{{event.id}}" class="event-item" *ngFor="let event of userEvents">
           <span class="img-wrapper">
             <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">

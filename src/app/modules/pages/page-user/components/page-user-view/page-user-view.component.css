@@ -1,0 +1,17 @@
+.created-user__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.user-places__headline {
+  grid-column: 1/2;
+}
+
+.user-places__link-add {
+  grid-column: 2/3;
+  justify-self: end;
+}
+
+.user-places__list {
+  grid-column: 1/3;
+}

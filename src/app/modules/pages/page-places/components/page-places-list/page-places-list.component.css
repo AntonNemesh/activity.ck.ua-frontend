@@ -10,27 +10,6 @@
   line-height: 28px;
 }
 
-.page-places-list__link-add {
-  padding: 8px;
-  justify-self: end;
-  align-self: center;
-  background-color: #ffffff;
-  color: var(--color-main-grey);
-  border: 1px solid var(--color-main-grey);
-  border-radius: 8px;
-  transition: background-color 2s;
-}
-
-
-
-/*.page-places-list__link-add:hover,*/
-/*.page-places-list__link-add:active,*/
-/*.page-places-list__link-add:focus {*/
-/*  background-color: var(--color-main-grey);*/
-/*  color: #ffffff;*/
-/*}*/
-
-
 .filters {
   padding: 50px;
   display: grid;
