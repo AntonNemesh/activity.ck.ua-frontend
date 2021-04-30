@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PlacesService } from '../../../../services';
+import { AuthorizationService, PlacesService } from '../../../../services';
 import { IPlaceReview, IUser } from '../../../../static/type';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -16,7 +16,8 @@ export class FormReviewComponent implements OnInit {
   constructor(
     private placesService: PlacesService,
     private route: ActivatedRoute,
-    private matSnackBar: MatSnackBar
+    private matSnackBar: MatSnackBar,
+    private authorizationService: AuthorizationService
   ) { }
 
   public user: IUser;
@@ -27,6 +28,8 @@ export class FormReviewComponent implements OnInit {
 
   public ratingTouched: boolean = false;
   public hasRatingError: boolean = false;
+
+  public isLoggedIn: boolean = this.authorizationService.isLoggedIn;
 
   public ratingArr: number[] = [];
 
@@ -92,6 +95,10 @@ export class FormReviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.initRatingView();
+    if (!this.isLoggedIn) {
+      this.formReview.disable();
+      return;
+    }
     this.route.data.subscribe((data) => {
       this.user = data.user;
     });

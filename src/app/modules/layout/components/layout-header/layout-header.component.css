@@ -5,14 +5,6 @@
   flex-direction: column;
 }
 
-.user__avatar {
-  height: 70px;
-  width: 70px;
-  margin: 0 auto;
-  border-radius: 80px;
-  border: 1px solid gray;
-}
-
 .header {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -62,24 +54,9 @@
   }
 }
 
-.header__icon {
-  fill: var(--color-light-grey);
-  padding: 7px;
-  width: 70px;
-  height: 70px;
-  border: 2px solid var(--color-light-grey);
-  border-radius: 50%;
-}
-
 .header__auth {
   display: grid;
   padding-right: 10px;
   justify-self: end;
   justify-items: center;
-}
-
-.header__icon:hover,
-.header__icon:focus,
-.header__icon:active {
-  fill: var(--color-bright);
 }

@@ -1,4 +1,4 @@
-<div *ngIf="isLoggedIn" class="container explore-bar">
+<div [class.--disabled]="!isLoggedIn" class="container explore-bar">
   <h2 *ngIf="!categoryName" class="headline explore-bar__title">Дослідження міста</h2>
   <h2 *ngIf="categoryName" class="headline explore-bar__title">Дослідження категорії: {{categoryName}}</h2>
   <mat-progress-bar class="explore-bar__progress-bar"

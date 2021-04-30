@@ -1,6 +1,6 @@
 .review-form {
   display: grid;
-  grid-template: .3fr .7fr / 90px 1fr 42px;
+  grid-template: .3fr .7fr / 80px 1fr 42px;
   width: 50%;
   min-width: 320px;
   align-items: center;
@@ -10,11 +10,6 @@
   grid-column: 1 / 2;
   grid-row: 1 / 3;
   justify-self: start;
-  height: 80px;
-  width: 80px;
-  border-radius: 80px;
-  object-fit: cover;
-  border: 1px solid gray;
 }
 
 .review-form__rating-bar {
@@ -45,4 +40,13 @@
 
 .review-form__rating-input {
   display: none;
+}
+
+.header__icon {
+  fill: var(--color-light-grey);
+  padding: 7px;
+  width: 70px;
+  height: 70px;
+  border: 2px solid var(--color-light-grey);
+  border-radius: 50%;
 }

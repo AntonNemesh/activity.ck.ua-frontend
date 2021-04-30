@@ -11,12 +11,12 @@
   </a>
   <a *ngIf="!isLoggedIn" routerLink="/authorization" class="link header__link header__auth">
     Увійти
-    <svg viewBox="-42 0 512 512.002" class="header__icon">
+    <svg viewBox="-42 0 512 512.002" class="avatar-placeholder">
       <use xlink:href="../../../../../assets/icons.svg#user"></use>
     </svg>
   </a>
   <a *ngIf="user" class="link header__link header__auth" routerLink="/user">
-    <img class="user__avatar" src="{{user.avatar}}" alt="{{user.name}}">
+    <img class="avatar-img" src="{{user.avatar}}" alt="{{user.name}}">
     <span class="user__name">{{user.name}}</span>
   </a>
   <button class="header__logout" mat-icon-button color="primary" *ngIf="isLoggedIn" (click)="logout()">

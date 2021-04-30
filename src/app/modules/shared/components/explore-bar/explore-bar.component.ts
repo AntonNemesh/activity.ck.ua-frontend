@@ -35,11 +35,10 @@ export class ExploreBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!this.isLoggedIn) { return; }
-
     if (this.categoryId) {
       this.categoryName = this.categoriesService.getCategoryNameById(this.categoryId);
     }
+    if (!this.isLoggedIn) { return; }
     this.usersService.getExplore(this.categoryId).subscribe(
       (data) => {
         this.explore = data.explore;

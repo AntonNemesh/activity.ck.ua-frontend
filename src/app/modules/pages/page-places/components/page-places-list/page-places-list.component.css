@@ -21,12 +21,14 @@
   transition: background-color 2s;
 }
 
-.page-places-list__link-add:hover,
-.page-places-list__link-add:active,
-.page-places-list__link-add:focus {
-  background-color: var(--color-main-grey);
-  color: #ffffff;
-}
+
+
+/*.page-places-list__link-add:hover,*/
+/*.page-places-list__link-add:active,*/
+/*.page-places-list__link-add:focus {*/
+/*  background-color: var(--color-main-grey);*/
+/*  color: #ffffff;*/
+/*}*/
 
 
 .filters {
