@@ -1,0 +1,171 @@
+<app-layout>
+
+  <div class="background-light padding-inside container">
+    <h1 class="headline">
+      Створити подію
+    </h1>
+    <form  [formGroup]="EventForm"
+           (ngSubmit)="onSubmit()">
+
+      <mat-form-field class="form-field">
+        <mat-label>Назва події</mat-label>
+        <input type="text" matInput formControlName="name" placeholder="Назва заходу">
+        <mat-error
+          *ngIf="EventForm.get('name').hasError('required')">
+          Поле є обов'язковим
+        </mat-error>
+        <mat-error
+          *ngIf="EventForm.get('name').hasError('minlength')">
+          Кількість символів має бути більше 2
+        </mat-error>
+        <mat-error
+          *ngIf="EventForm.get('name').hasError('maxlength')">
+          Кількість символів має бути не більше 255
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>Організатор події</mat-label>
+        <input type="text" matInput formControlName="organizer" placeholder="Організатор">
+        <mat-error
+          *ngIf="EventForm.get('organizer').hasError('minlength')">
+          Кількість символів має бути більше 2
+        </mat-error>
+        <mat-error
+          *ngIf="EventForm.get('organizer').hasError('maxlength')">
+          Кількість символів має бути не більше 255
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>Ціна</mat-label>
+        <input type="number" matInput formControlName="price" placeholder="Вартість участі(якщо безкоштовно - вкажіть '0')">
+        <mat-error
+          *ngIf="EventForm.get('price').hasError('required')">
+          Поле є обов'язковим
+        </mat-error>
+        <mat-error
+          *ngIf="EventForm.get('price').hasError('maxlength')">
+          Кількість символів має бути не більше 255
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>Сайт</mat-label>
+        <input type="text" matInput formControlName="website" placeholder="Сайт/анонс в соцмережах">
+        <mat-error
+          *ngIf="EventForm.get('website').hasError('minlength')">
+          Кількість символів має бути більше 2
+        </mat-error>
+        <mat-error
+          *ngIf="EventForm.get('website').hasError('maxlength')">
+          Кількість символів має бути не більше 255
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>Адреса (місце проведення)</mat-label>
+        <input type="text" matInput ngx-google-places-autocomplete #placesRef="ngx-places" formControlName="address" placeholder="вулиця Смілянська, 31, Черкаси, Черкаська область, 18000">
+        <mat-error
+          *ngIf="EventForm.get('address').hasError('required')">
+          Поле є обов'язковим
+        </mat-error>
+        <mat-error
+          *ngIf="EventForm.get('address').hasError('minlength')">
+          Кількість символів має бути більше 2
+        </mat-error>
+        <mat-error
+          *ngIf="EventForm.get('address').hasError('maxlength')">
+          Кількість символів має бути не більше 255
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>Телефон</mat-label>
+        <input type="tel" matInput formControlName="phone" placeholder="Телефон">
+        <mat-error
+          *ngIf="EventForm.get('phone').hasError('required')">
+          Поле є обов'язковим
+        </mat-error>
+        <mat-error
+          *ngIf="EventForm.get('phone').hasError('minlength')">
+          Кількість символів має бути більше 2
+        </mat-error>
+        <mat-error
+          *ngIf="EventForm.get('phone').hasError('maxlength')">
+          Кількість символів має бути не більше 13
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>Дата події</mat-label>
+        <input type="date" matInput formControlName="date">
+        <mat-error
+          *ngIf="EventForm.get('date').hasError('required')">
+          Поле є обов'язковим
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>Час початку події</mat-label>
+        <input type="time" matInput formControlName="start">
+        <mat-error
+          *ngIf="EventForm.get('start').hasError('required')">
+          Поле є обов'язковим
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>Час завершення події</mat-label>
+        <input type="time" matInput formControlName="end">
+        <mat-error
+          *ngIf="EventForm.get('end').hasError('required')">
+          Поле є обов'язковим
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="form-field">
+        <mat-label>Програма заходу</mat-label>
+        <textarea matInput formControlName="program" placeholder="Програма заходу"></textarea>
+        <mat-error
+          *ngIf="EventForm.get('program').hasError('required')">
+          Поле є обов'язковим
+        </mat-error>
+        <mat-error
+          *ngIf="EventForm.get('program').hasError('minlength')">
+          Кількість символів має бути більше 2
+        </mat-error>
+        <mat-error
+          *ngIf="EventForm.get('program').hasError('maxlength')">
+          Кількість символів має бути не більше 255
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>Детальна інформація</mat-label>
+        <textarea matInput formControlName="details" placeholder="Черкаський книжковий фестиваль - це подія, яка збере сучасних кращих майстрів, музикантів, письменників, акторів, кіносценаристів, краєзнавців."></textarea>
+        <mat-error
+          *ngIf="EventForm.get('details').hasError('required')">
+          Поле є обов'язковим
+        </mat-error>
+        <mat-error
+          *ngIf="EventForm.get('details').hasError('minlength')">
+          Кількість символів має бути більше 50
+        </mat-error>
+      </mat-form-field>
+      <mat-checkbox *ngFor="let item of availabilityFilter" formControlName="{{item.filter_id}}">{{item.name}}</mat-checkbox>
+<!--      <app-uploader-for-photos-->
+<!--        [photosGroupValidation]="photosGroupValidation"-->
+<!--        (photosGroupValue)="setPhotosGroupValue($event)"-->
+<!--        (photosState)="setPhotos($event)"-->
+<!--        (photoCoverState)="setPhotoCover($event)">-->
+<!--      </app-uploader-for-photos>-->
+
+      <button type="submit" class="btn" [disabled]="!EventForm.valid">
+        Submit
+      </button>
+
+    </form>
+  </div>
+</app-layout>

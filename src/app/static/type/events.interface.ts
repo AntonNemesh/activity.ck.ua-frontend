@@ -33,3 +33,20 @@ export interface IEvent {
   place_id: number;
   price: string;
 }
+
+export interface IEventForm {
+  name: string;
+  organizer: string;
+  price: number;
+  website: string;
+  address: string;
+  phone: number;
+  date: number;
+  start: number;
+  end: number;
+  program: string;
+  details: string;
+  accessibility: boolean;
+  child_friendly: boolean;
+  dog_friendly: boolean;
+}
