@@ -1,7 +1,7 @@
 .explore-bar {
   display: grid;
   grid-template: .1fr .8fr .1fr / 1fr;
-  padding: 0 20px 20px 20px;
+  padding: 10px 20px;
   align-items: center;
 }
 
@@ -10,6 +10,7 @@
   grid-row: 1 / 2;
   margin: 0;
   justify-self: start;
+  font: 500 1.4rem 'Inter', sans-serif;
 }
 
 .explore-bar__progress-bar{
