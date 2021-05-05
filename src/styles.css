@@ -447,8 +447,8 @@ p {
 .avatar-placeholder {
   fill: var(--color-light-grey);
   padding: 7px;
-  width: 70px;
-  height: 70px;
+  width: 40px;
+  height: 40px;
   border: 2px solid var(--color-light-grey);
   border-radius: 50%;
 }
