@@ -14,17 +14,11 @@ export class UploaderForPhotosComponent implements OnInit {
 
   constructor(private filesService: FilesService) { }
 
-  @Input('photosGroupValidation')
-  set _photosGroupValidation(value: boolean) {
-    this.updateErrorPhotosRequired();
-  }
-
   public hasErrorPhotosRequired: boolean;
 
   public photos: any[] = [];
   public photosB64: string[] = [];
   public photoCover: number = 0;
-  public photosLimit: number = 5;
 
   public messagesWarningOfType: string[];
   public messagesWarningOfSize: string[];
@@ -33,6 +27,20 @@ export class UploaderForPhotosComponent implements OnInit {
   public photosLoader: LoaderHelper = new LoaderHelper();
   public photosLoaderVisibility: Observable<boolean> = this.photosLoader.isVisibleLoader$;
   public photosContentVisibility: Observable<boolean> = this.photosLoader.isVisibleContent$;
+
+  @Input() photosLimit: number;
+
+  @Input('photosGroupValidation')
+  set _photosGroupValidation(value: boolean) {
+    this.updateErrorPhotosRequired();
+  }
+
+  @Input('clearUploader')
+  set _clearUploader(value: any) {
+    this.photos.length = 0;
+    this.photosB64.length = 0;
+    this.photoCover = 0;
+  }
 
   @Output() photosGroupValue: EventEmitter<string|null> = new EventEmitter<string|null>();
   @Output() photosState: EventEmitter<File[]> = new EventEmitter<File[]>();

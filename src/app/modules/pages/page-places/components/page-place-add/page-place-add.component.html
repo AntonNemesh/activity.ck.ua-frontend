@@ -266,6 +266,7 @@
           <form formGroupName="photos_group">
             <ng-template matStepLabel>Фотографії</ng-template>
             <app-uploader-for-photos
+              [photosLimit]="5"
               [photosGroupValidation]="photosGroupValidation"
               (photosGroupValue)="setPhotosGroupValue($event)"
               (photosState)="setPhotos($event)"

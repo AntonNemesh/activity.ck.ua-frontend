@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ApiUrlService } from './api-url.service';
-import {Observable, of} from 'rxjs';
+import { Observable } from 'rxjs';
 import { IEventsResponse, IPlacesResponse, IUser, IUserResponse } from '../static/type';
-import {catchError, map, tap} from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 
 @Injectable({

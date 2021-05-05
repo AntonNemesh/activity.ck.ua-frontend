@@ -56,6 +56,7 @@
 
 .header__auth {
   display: grid;
+  min-width: 154px;
   padding-right: 10px;
   justify-self: end;
   justify-items: center;
