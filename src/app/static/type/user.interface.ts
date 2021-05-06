@@ -3,8 +3,10 @@ export interface IUserResponse {
 }
 
 export interface IUser {
+  email?: string;
   name: string;
   avatar: string;
+  password?: string;
 }
 
 export interface IUserActivity {

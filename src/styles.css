@@ -30,7 +30,6 @@ body {
  */
 
 main {
-  margin-top: 5.5%;
   display: block;
   padding: 0;
   min-height: 85%;
@@ -371,7 +370,7 @@ p {
 
 :root {
   --color-bright: rgba(13, 134, 242, 100);
-  --color: #0D86F2;
+  --color: #f7b600;
   --color-light-grey: rgba(95, 93, 93, 100);
   --color-main-grey: rgba(57, 57, 57, 100);
   --color-light: rgba(255, 255, 255, 100);
@@ -398,6 +397,10 @@ p {
 }
 
 /*root classes*/
+
+main {
+  padding: 120px 0 0 0;
+}
 
 .container {
   margin: 0 auto;
@@ -693,13 +696,14 @@ p {
 
 .link-add {
   padding: 8px;
+  letter-spacing: 1px;
+  font-weight: 500;
   justify-self: end;
   align-self: center;
   background-color: var(--color-light);
   color: var(--color-main-grey);
   border: 1px solid var(--color-main-grey);
   border-radius: 8px;
-  transition: background-color 2s;
 }
 
 .link-add:hover,

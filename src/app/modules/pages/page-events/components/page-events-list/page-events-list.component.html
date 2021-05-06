@@ -14,8 +14,9 @@
       </mat-form-field>
     </div>
     <div class="page-events-list-wrapper">
-      <app-filter-by-availability
-        (availabilityStateChange)="updateFilterAvailabilityState($event)" class="aside-filters padding-inside">
+      <app-filter-by-availability class="aside-filters padding-inside"
+        (availabilityStateChange)="updateFilterAvailabilityState($event)"
+        [page]="'events'">
       </app-filter-by-availability>
       <div class="padding-inside main-list page-events-list__events" *ngIf="events?.length">
         <a routerLink="{{event.id}}" class="event-item page-events-list__item link" *ngFor="let event of events">

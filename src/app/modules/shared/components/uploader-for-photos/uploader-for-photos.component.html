@@ -1,5 +1,9 @@
 <div class="photos-wrapper">
-    <button type="button" class="add-photos" mat-raised-button (click)="fileInput.click()">
+    <button *ngIf="photosLimit <= 1" type="button" class="add-photos" mat-raised-button (click)="fileInput.click()">
+      <mat-label>Додати фотографію</mat-label>
+      <input #fileInput type="file" (change)="selectFiles($event)" style="display:none;" />
+    </button>
+    <button *ngIf="photosLimit >= 2" type="button" class="add-photos" mat-raised-button (click)="fileInput.click()">
       <mat-label>Додати фотографії</mat-label>
       <input #fileInput type="file" multiple (change)="selectFiles($event)" style="display:none;" />
     </button>

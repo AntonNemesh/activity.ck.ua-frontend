@@ -1,1 +1,73 @@
-<p>registration works!</p>
+<div class="login-form-wrapper">
+  <form *ngIf="!isRegisteredUser" class="login-form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <p>
+      <mat-form-field class="example-full-width">
+        <mat-label>Електронна адреса</mat-label>
+        <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+        <mat-error *ngIf="registrationForm.get('email').hasError('email') && !registrationForm.get('email').hasError('required')">
+          Будь ласка, введіть дійсну адресу електронної пошти
+        </mat-error>
+        <mat-error *ngIf="registrationForm.get('email').hasError('required')">
+          Поле є <strong>обов'язковим</strong>
+        </mat-error>
+        <mat-error *ngIf="registrationForm.get('email').hasError('registered')">
+          Користувач з цією електронною адресою вже зареєстрований в системі.
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="example-full-width">
+        <mat-label>Ім'я користувача</mat-label>
+        <input type="text" matInput formControlName="name">
+        <mat-error *ngIf="registrationForm.get('name').hasError('required')">
+          Поле є <strong>обов'язковим</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <form formGroupName="password_group">
+      <p>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Новий пароль" formControlName="password" type="password">
+          <mat-error *ngIf="passwordGroup.hasError('required', 'password')">
+            Будь ласка введіть новий пароль
+          </mat-error>
+          <mat-error *ngIf="passwordGroup.hasError('minlength', 'password')">
+            Пароль має містити мінімум 8 символів
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Підтвердження паролю" formControlName="confirmPassword" [errorStateMatcher]="matcher" type="password">
+          <mat-error *ngIf="passwordGroup.hasError('notSame')">
+            Паролі мають співпадати
+          </mat-error>
+        </mat-form-field>
+      </p>
+    </form>
+    <form formGroupName="photos_group">
+      <mat-label>Закантажити аватарку</mat-label>
+      <app-uploader-for-photos
+        [photosLimit]="1"
+        [clearUploader]="clearUploader"
+        [photosGroupValidation]="photosGroupValidation"
+        (photosGroupValue)="setPhotosGroupValue($event)"
+        (photosState)="setPhotos($event)"
+        (photoCoverState)="setPhotoCover($event)">
+      </app-uploader-for-photos>
+    </form>
+    <p>
+      <button type="submit" mat-raised-button color="primary" (click)="updatePhotosGroupValidation()">Зареєструватися</button>
+    </p>
+  </form>
+  <div *ngIf="isRegisteredUser">
+    <p class="mat-subheading-2 green">
+      Ви успішно зареєструвались в системі!<br>
+      Можете увійти на сайт, використовуючи пошту
+    </p>
+    <p>
+      {{registrationForm.get('email').value}}
+    </p>
+  </div>
+</div>
+

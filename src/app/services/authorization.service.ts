@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { ApiUrlService } from './api-url.service';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {distinctUntilChanged} from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
+import { IUser } from '../static/type';
 
 
 @Injectable({
@@ -83,7 +84,24 @@ export class AuthorizationService {
     return Math.floor((+time - +Date.now()) / 60000);
   }
 
-  public registration(): void {
+  public buildRegistrationRequest(dataForm: any, linksToPhotos: string[]): any {
+    const newUser: Partial<IUser> = {};
 
+    newUser.email = dataForm.email;
+    newUser.name = dataForm.name;
+
+    if (dataForm.hasOwnProperty('password_group')) {
+      newUser.password = dataForm.password_group.password;
+    }
+
+    if (linksToPhotos?.length) {
+      newUser.avatar = linksToPhotos[0];
+    }
+
+    return newUser;
+  }
+
+  public registration(newUserData: IUser): any {
+    return this.http.post<any>(this.apiUrlService.generateApiLink('auth/registration'), newUserData);
   }
 }

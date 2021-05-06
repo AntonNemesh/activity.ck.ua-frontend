@@ -6,7 +6,9 @@
   </div>
   <div class="container main-wrapper padding-inside">
     <section class="aside-filters page-places-list__aside">
-      <app-filter-by-availability (availabilityStateChange)="updateFilterAvailabilityState($event)">
+      <app-filter-by-availability
+        (availabilityStateChange)="updateFilterAvailabilityState($event)"
+        [page]="'places'">
       </app-filter-by-availability>
       <app-filter-by-type (filterStateChange)="updateFilterTypeState($event)"
                           [categoryId]="categoryId" class="filters__filter-by-type">
