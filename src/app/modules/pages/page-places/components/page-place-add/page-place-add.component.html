@@ -218,7 +218,7 @@
             <ng-template matStepLabel>Толерантність</ng-template>
             <div class="availability">
               <!--              <mat-label class="gray">Толерантність:</mat-label>-->
-              <section class="padding-left">
+              <section *ngIf="availabilityFilter" class="padding-left">
                 <mat-checkbox *ngFor="let item of availabilityFilter" formControlName="{{item.filter_id}}">{{item.name}}</mat-checkbox>
               </section>
             </div>

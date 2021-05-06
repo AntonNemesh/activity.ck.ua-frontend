@@ -54,7 +54,7 @@ export class PagePlaceAddComponent implements OnInit {
   public maskEmail: IMaskEmail = MASK_EMAIL;
 
   public week: IWeek[] = WEEK;
-  public availabilityFilter: IAvailabilityFilter[] = AVAILABILITY_FILTER;
+  public availabilityFilter: IAvailabilityFilter[] = [];
 
   public organizationPhones: FormArray = new FormArray(
     [this.phoneFormControl]);
@@ -149,7 +149,9 @@ export class PagePlaceAddComponent implements OnInit {
       this.workTimeGroup.addControl(`${day.id}_start`, new FormControl(null, Validators.required));
       this.workTimeGroup.addControl(`${day.id}_end`, new FormControl(null, Validators.required));
     });
-    this.availabilityFilter.forEach((item) => {
+    AVAILABILITY_FILTER.forEach((item) => {
+      if (item.filter_id === 'opened' || item.filter_id === 'unexplored') { return; }
+      this.availabilityFilter.push(item);
       this.availabilityGroup.addControl(item.filter_id, new FormControl(false, Validators.required));
     });
   }
