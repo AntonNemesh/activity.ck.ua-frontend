@@ -6,14 +6,18 @@
   margin-top: var(--padding);
   padding: var(--padding);
   background-color: var(--color-light);
-  display: grid;
-  grid-template-columns: 1fr 6fr;
-  grid-template-rows: repeat(3, 1fr);
+
   border-radius: var(--border-radius);
 }
 
+.search__link {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  grid-template-rows: repeat(3, 1fr);
+}
+
 .search__item:hover{
-  transform: scale(1.05);
+  transform: scale(1.01);
 }
 .search__img {
   width: 120px;
