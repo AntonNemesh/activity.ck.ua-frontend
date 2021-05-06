@@ -23,8 +23,15 @@
   padding-bottom: 10px;
 }
 
+.header__logo {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
 .header__logout {
   justify-self: end;
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
 }
 
 .header__link {
@@ -33,7 +40,7 @@
 
 .search-field {
   padding-right: 20px;
-  grid-row: 2/3;
+  grid-row: 2 / 3;
   grid-column: 1 / 3;
   justify-self: end;
 }
@@ -67,6 +74,8 @@
   padding-right: 10px;
   justify-self: end;
   justify-items: center;
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
 }
 
 @media (min-width: 414px) {
