@@ -1,19 +1,24 @@
-<app-layout>
-  <section class="background-light container">
+<app-layout class="search__page">
+  <section class="background-light container padding-inside" *ngIf="places?.length">
     <p>Результати пошуку: {{searchRequest.data}}</p>
-    <h1>Місця</h1>
-    <ul *ngIf="places?.length">
-      <li *ngFor="let place of places">
-        <p>{{place.name}}</p>
+    <h1 class="headline">Місця</h1>
+    <ul *ngIf="places?.length" class="list">
+      <li *ngFor="let place of places" class="search__item">
+        <img src="{{place.main_photo}}" alt="" class="img-photo search__img">
+        <p class="card-link category-name" >{{place.name}}</p>
+        <p >{{place.address}}</p>
       </li>
     </ul>
   </section>
-  <section class="background-light container">
-    <h1>Події</h1>
-    <ul *ngIf="events?.length">
-      <li *ngFor="let event of events">
-        <p>{{event.name}}</p>
+  <section class="background-light container padding-inside" *ngIf="events?.length">
+    <h1 class="headline">Події</h1>
+    <ul *ngIf="events?.length" class="list">
+      <li *ngFor="let event of events" class="search__item">
+        <img src="{{event.main_photo}}" alt="" class="img-photo search__img">
+        <p  class="card-link category-name" >{{event.name}}</p>
+        <p>{{event.start_time}}</p>
       </li>
     </ul>
   </section>
+  <p class="container headline min-section" *ngIf="!events?.length && !places?.length">Нічого не знайдено!</p>
 </app-layout>
