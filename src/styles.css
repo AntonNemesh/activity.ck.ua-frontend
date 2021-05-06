@@ -370,7 +370,8 @@ p {
 }
 
 :root {
-  --color-bright: rgba(5, 148, 228, 100);
+  --color-bright: rgba(13, 134, 242, 100);
+  --color: #0D86F2;
   --color-light-grey: rgba(95, 93, 93, 100);
   --color-main-grey: rgba(57, 57, 57, 100);
   --color-light: rgba(255, 255, 255, 100);
