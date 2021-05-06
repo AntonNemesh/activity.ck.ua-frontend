@@ -2,11 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutComponent, LayoutHeaderComponent, LayoutFooterComponent } from './components/';
 import { RouterModule } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-
+import { MaterialModule } from '../material';
+import { SharedModule } from '../shared';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,11 +14,10 @@ import {MatInputModule} from '@angular/material/input';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule,
-    MatIconModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
+    ReactiveFormsModule,
+    MaterialModule
   ]
 })
 export class LayoutModule { }

@@ -1,0 +1,19 @@
+<app-layout>
+  <section class="background-light container">
+    <p>Результати пошуку: {{searchRequest.data}}</p>
+    <h1>Місця</h1>
+    <ul *ngIf="places?.length">
+      <li *ngFor="let place of places">
+        <p>{{place.name}}</p>
+      </li>
+    </ul>
+  </section>
+  <section class="background-light container">
+    <h1>Події</h1>
+    <ul *ngIf="events?.length">
+      <li *ngFor="let event of events">
+        <p>{{event.name}}</p>
+      </li>
+    </ul>
+  </section>
+</app-layout>
