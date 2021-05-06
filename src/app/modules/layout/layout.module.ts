@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutComponent, LayoutHeaderComponent, LayoutFooterComponent } from './components/';
 import { RouterModule } from '@angular/router';
-import {MaterialModule} from '../material';
-
+import { MaterialModule } from '../material';
+import { SharedModule } from '../shared';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,8 +14,10 @@ import {MaterialModule} from '../material';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule,
-    MaterialModule,
+    ReactiveFormsModule,
+    MaterialModule
   ]
 })
 export class LayoutModule { }

@@ -127,11 +127,15 @@
       </svg>
     </a>
     <div class="search-field">
-      <mat-form-field>
-        <mat-label class="input-search">Пошук</mat-label>
-        <input matInput placeholder="Пошук">
-      </mat-form-field>
-      <mat-icon class="search-icon">search</mat-icon>
+      <form [formGroup]="searchGroup" (ngSubmit)="search()">
+        <mat-form-field>
+          <mat-label class="input-search">Пошук</mat-label>
+          <input matInput placeholder="Пошук" formControlName="search">
+        </mat-form-field>
+        <button mat-button type="submit" matSuffix mat-icon-button>
+          <mat-icon class="search-icon">search</mat-icon>
+        </button>
+      </form>
     </div>
 
     <a *ngIf="!isLoggedIn" routerLink="/authorization" class="link header__link header__auth">

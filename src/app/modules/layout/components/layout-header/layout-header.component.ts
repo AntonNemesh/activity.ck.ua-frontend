@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorizationService, UsersService } from '../../../../services';
 import { IUser } from '../../../../static/type';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-layout-header',
@@ -12,11 +13,16 @@ export class LayoutHeaderComponent implements OnInit {
   constructor(
     private usersService: UsersService,
     private route: ActivatedRoute,
-    private authorizationService: AuthorizationService
+    private authorizationService: AuthorizationService,
+    private router: Router,
   ) { }
 
   private lifeCycleAccessToken: number = this.authorizationService.getLifeCycleOfAccessToken();
   public isLoggedIn: boolean = this.authorizationService.isLoggedIn;
+
+  public searchGroup: FormGroup = new FormGroup({
+    search: new FormControl('', {})
+  });
 
   public user: IUser;
 
@@ -30,6 +36,12 @@ export class LayoutHeaderComponent implements OnInit {
           console.log(error);
       }
     );
+  }
+
+  public search(): void {
+    const searchText: string = this.searchGroup.get('search').value;
+    if (searchText.trim() === '') { return; }
+    this.router.navigateByUrl('/search', { state: { data: searchText } });
   }
 
   ngOnInit(): void {

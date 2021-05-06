@@ -9,6 +9,7 @@ import { UsersService } from './users.service';
 import { DateService } from './date.service';
 import { UsersResolverService } from './users-resolver.service';
 import { AuthorizationService } from './authorization.service';
+import { DataService } from './data.service';
 
 // tslint:disable-next-line:typedef
 export const services = [
@@ -23,6 +24,7 @@ export const services = [
   DateService,
   UsersResolverService,
   AuthorizationService,
+  DataService,
 ];
 
 export * from './categories.service';
@@ -36,3 +38,4 @@ export * from './users.service';
 export * from './date.service';
 export * from './users-resolver.service';
 export * from './authorization.service';
+export * from './data.service';
