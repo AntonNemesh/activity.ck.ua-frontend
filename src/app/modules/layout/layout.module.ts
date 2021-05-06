@@ -4,6 +4,8 @@ import { LayoutComponent, LayoutHeaderComponent, LayoutFooterComponent } from '.
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 
 
@@ -12,11 +14,13 @@ import { MatButtonModule } from '@angular/material/button';
   exports: [
     LayoutComponent
   ],
-    imports: [
-        CommonModule,
-        RouterModule,
-        MatIconModule,
-        MatButtonModule,
-    ]
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+  ]
 })
 export class LayoutModule { }
