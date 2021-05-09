@@ -1,4 +1,4 @@
-<app-layout>
+<app-layout xmlns="http://www.w3.org/1999/html">
 
   <section *ngIf="place" class="place-details__wrapper container padding-inside">
     <app-gallery [photos]="place.photos"></app-gallery>
@@ -29,16 +29,16 @@
           <svg viewBox="0 0 512 512" class="icon">
             <use xlink:href="../../../../../assets/icons.svg#tolerance"></use>
           </svg>
-          Доступність: {{place.accessibility}}</p>
+          Доступність:<span [innerHTML]="getFitterState(place.accessibility)" class="padding-inside"></span> </p>
         <p class="contact-text icon-text-row">
           <svg viewBox="0 0 512 512" class="icon">
             <use xlink:href="../../../../../assets/icons.svg#baby"></use>
           </svg>
-          Місце дружнє до дітей: {{place.child_friendly}}
+          Місце дружнє до дітей: <span [innerHTML]="getFitterState(place.child_friendly)" class="padding-inside"></span>
         </p>
         <p class="contact-text icon-text-row">
           <mat-icon class="icon">pets</mat-icon>
-          Місце дружнє до тварин: {{place.dog_friendly}}</p>
+          Місце дружнє до тварин:  <span [innerHTML]="getFitterState(place.dog_friendly)" class="padding-inside"></span></p>
       </div>
       <div class="contact-text page-place-details__work-time">
         <p class="contact-text  icon-text-row">

@@ -4,7 +4,7 @@
     <h1 class="headline">Місця</h1>
     <ul *ngIf="places?.length" class="list">
       <li *ngFor="let place of places" class="search__item">
-        <a routerLink="{{place.id}}" class="search__link">
+        <a routerLink="/places/{{place.id}}" class="search__link">
         <img src="{{place.main_photo}}" alt="" class="img-photo search__img">
         <p class="card-link category-name" >{{place.name}}</p>
         <p class="contact-text">{{place.address}}</p>
@@ -16,7 +16,7 @@
     <h1 class="headline">Події</h1>
     <ul *ngIf="events?.length" class="list">
       <li *ngFor="let event of events" class="search__item">
-        <a routerLink="{{event.id}}" class="search__link">
+        <a routerLink="/events/{{event.id}}" class="search__link">
         <img src="{{event.main_photo}}" alt="" class="img-photo search__img">
         <p  class="card-link category-name" >{{event.name}}</p>
         <p class="contact-text">{{event.start_time}}</p>

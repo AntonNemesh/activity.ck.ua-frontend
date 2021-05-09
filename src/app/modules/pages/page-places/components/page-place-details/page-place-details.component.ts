@@ -103,6 +103,15 @@ export class PagePlaceDetailsComponent implements OnInit {
     });
   }
 
+  public getFitterState(state: boolean): string {
+    if (state === true) {
+      return `<span class="green"> так</span>`;
+    }
+    if (state === false) {
+      return `<span class="red"> ні</span>`;
+    }
+  }
+
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.placeId = params.place_id;

@@ -542,7 +542,8 @@ main {
 .icon-text-row {
   display: grid;
   padding: 12px;
-  grid-template: 1fr / .2fr 1fr;
+  grid-template: 1fr / .2fr 1fr 1fr;
+  width: fit-content;
 }
 
 .contact-text {
@@ -552,13 +553,6 @@ main {
   align-items: center;
   justify-content: start;
   text-decoration: none;
-}
-
-
-@media (min-width: 481px) {
-  .icon-text-row {
-    grid-template: 1fr / .05fr 1fr;
-  }
 }
 
 /*card*/

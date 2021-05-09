@@ -19,3 +19,7 @@
 .pagination__numb {
   height: 26px;
 }
+
+.arrow-buttons {
+  text-align: center;
+}

@@ -19,7 +19,7 @@
 }
 
 .page-events-list__events {
-
+  padding-top: var(--padding);
   background-color: var(--color-light-saturated);
 }
 
