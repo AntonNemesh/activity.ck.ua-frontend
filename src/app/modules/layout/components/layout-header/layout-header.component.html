@@ -144,12 +144,15 @@
       </svg>
       <span class="user__name">Увійти </span>
     </a>
-    <a *ngIf="user" class="link header__link header__auth" routerLink="/user">
-      <img class="avatar-img" src="{{user.avatar}}" alt="{{user.name}}">
-      <span class="user__name">{{user.name}}</span>
-    </a>
-    <button class="header__logout" mat-icon-button color="primary" *ngIf="isLoggedIn" (click)="logout()">
-      <mat-icon>exit_to_app</mat-icon>
-    </button>
+    <div class="header__auth">
+      <a *ngIf="user" class="link header__link user__info" routerLink="/user">
+        <img class="avatar-img" src="{{user.avatar}}" alt="{{user.name}}">
+        <span class="user__name">{{user.name}}</span>
+      </a>
+      <button class="header__logout" mat-icon-button color="primary" *ngIf="isLoggedIn" (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </div>
+
   </div>
 </header>

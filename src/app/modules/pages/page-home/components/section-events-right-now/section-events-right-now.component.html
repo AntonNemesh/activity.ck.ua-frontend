@@ -1,4 +1,5 @@
-<section class="background-light container padding-inside">
+<section class="background-saturated">
+  <div class="container padding-inside">
   <h2 class="headline events-right-now__headline">Приєднуйся зараз</h2>
   <div *ngIf="events?.length">
     <div class="main-list list home-list">
@@ -20,5 +21,5 @@
     </app-pagination>
   </div>
   <p class="mat-h3 min-section" *ngIf="!events?.length">Нічого не знайдено!</p>
-
+  </div>
 </section>

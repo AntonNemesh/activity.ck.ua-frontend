@@ -374,7 +374,7 @@ p {
   --color-light-grey: rgba(95, 93, 93, 100);
   --color-main-grey: rgba(57, 57, 57, 100);
   --color-light: rgba(255, 255, 255, 100);
-  --color-light-saturated: rgba(33, 154, 214, .05);
+  --color-light-saturated: #9adb71;
   --color-aside: rgba(0, 0, 0, 0.08);
   --color-overlay: rgba(0, 0, 0, 0.15);
   /*--color-overlay: rgba(252, 173, 36, 0.3);*/
