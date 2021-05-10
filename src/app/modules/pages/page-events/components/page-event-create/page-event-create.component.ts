@@ -211,6 +211,6 @@ export class PageEventCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.initFormControls();
-    this.autocompleteData();
+    // this.autocompleteData();
   }
 }
