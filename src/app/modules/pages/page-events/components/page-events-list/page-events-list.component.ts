@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DateService, EventsService } from '../../../../../services';
+import { AuthorizationService, DateService, EventsService } from '../../../../../services';
 import { IEvent } from '../../../../../static/type';
 import { FormControl } from '@angular/forms';
 import { EventsRequestParamsHelper } from '../../../../../helpers';
@@ -10,7 +10,10 @@ import { EventsRequestParamsHelper } from '../../../../../helpers';
   styleUrls: ['./page-events-list.component.css']
 })
 export class PageEventsListComponent implements OnInit {
-  constructor(private eventsService: EventsService, public dateService: DateService) { }
+  constructor(
+    private eventsService: EventsService,
+    private authorizationService: AuthorizationService,
+    public dateService: DateService) { }
 
   public events: IEvent[];
   public dateToday: Date = new Date();
@@ -22,6 +25,7 @@ export class PageEventsListComponent implements OnInit {
   public page: number = 1;
   public limit: number = 20;
   public totalPages: number;
+  public isLoggedIn: boolean = this.authorizationService.isLoggedIn;
 
   public filterAvailabilityState: string[];
 

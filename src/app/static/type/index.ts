@@ -25,6 +25,6 @@ export { IEnvironment } from './enviroment.interface';
 export { IOrganizations, IOrganization } from './organization.interface';
 export { IMaskEmail } from './masks-patterns.interface';
 export { IWeek, IWorkTimeForm, IWorkTime, IWorkDay } from './week.interface';
-export { IEvent, IEventsResponse, IEventResponse } from './events.interface';
+export { IEvent, IEventsResponse, IEventResponse, IEventForm, IScheduleGroup } from './events.interface';
 export { IUserResponse, IUser, IUserActivity } from './user.interface';
 export { IEventRequestParams, IEventsRequestParamsHelper } from './event-request-params.interface';

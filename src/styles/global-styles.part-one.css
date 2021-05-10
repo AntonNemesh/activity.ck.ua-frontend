@@ -40,6 +40,11 @@ main {
 
 .mat-form-field-appearance-fill .mat-form-field-flex {
   background: none;
+  padding: .75em 0 0 0!important;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-subscript-wrapper {
+  padding: 0!important;
 }
 
 .red {

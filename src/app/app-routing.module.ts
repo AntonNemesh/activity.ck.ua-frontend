@@ -7,6 +7,7 @@ import { PageAuthorizationViewComponent } from './modules/pages/page-authorizati
 import { UsersResolverService } from './services';
 import { AuthorizationGuard } from './guards';
 import { PageSearchResultsViewComponent } from './modules/pages/page-search-results/components';
+import { PageEventCreateComponent } from './modules/pages/page-events/components';
 
 const routes: Routes = [
   { path: '',
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'search', component: PageSearchResultsViewComponent },
       { path: 'user', component: PageUserViewComponent, canActivate: [AuthorizationGuard] },
       { path: 'add_place', component: PagePlaceAddComponent, canActivate: [AuthorizationGuard] },
+      { path: 'event_create', component: PageEventCreateComponent, canActivate: [AuthorizationGuard] },
       { path: 'authorization', component: PageAuthorizationViewComponent, canActivate: [AuthorizationGuard] },
       { path: 'places/:category_id', loadChildren: () => import('./modules/pages/page-places').then(m => m.PagePlacesModule) },
       { path: 'events', loadChildren: () => import('./modules/pages/page-events').then(m => m.PageEventsModule) },

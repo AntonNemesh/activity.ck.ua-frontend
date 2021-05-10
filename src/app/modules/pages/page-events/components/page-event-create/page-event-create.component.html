@@ -1,0 +1,229 @@
+<app-layout>
+  <div *ngIf="formContentVisibility | async" class="container">
+    <form *ngIf="!isSavedEvent" [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+      <mat-vertical-stepper [linear]="true" #stepper>
+        <mat-step [stepControl]="scheduleGroup">
+          <form formGroupName="schedule_group">
+            <ng-template matStepLabel>Дата та час проведення події</ng-template>
+            <div class="event-schedule">
+              <mat-form-field class="event-schedule__date-field"  appearance="fill">
+                <mat-label>День</mat-label>
+                <input
+                  [min]="today"
+                  [matDatepicker]="picker"
+                  matInput formControlName="date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error
+                  *ngIf="scheduleGroup.get('date').hasError('required')">
+                  Поле є обов'язковим
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="event-schedule__time-field">
+                <mat-label>Початок</mat-label>
+                <input matInput formControlName="start_time" [ngxTimepicker]="open" [format]="24" [value]="'8:00'" placeholder="HH:MM">
+                <ngx-material-timepicker #open></ngx-material-timepicker>
+                <mat-error
+                  *ngIf="scheduleGroup.get('start_time').hasError('required')">
+                  Поле є обов'язковим
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="event-schedule__time-field">
+                <mat-label>Закінчення</mat-label>
+                <input matInput formControlName="end_time" [ngxTimepicker]="close" [format]="24" [value]="'17:00'" placeholder="HH:MM">
+                <ngx-material-timepicker #close></ngx-material-timepicker>
+                <mat-error
+                  *ngIf="scheduleGroup.get('end_time').hasError('required')">
+                  Поле є обов'язковим
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+              <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
+              <button type="button" color="primary" mat-raised-button matStepperNext>Наступний крок</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="mainGroup">
+          <form formGroupName="main_group">
+            <ng-template matStepLabel>Основні</ng-template>
+            <mat-form-field class="example-full-width">
+              <mat-label>Організатор</mat-label>
+              <input matInput formControlName="organizer">
+              <mat-error
+                *ngIf="mainGroup.get('organizer').hasError('required')">
+                Поле є обов'язковим
+              </mat-error>
+              <mat-error
+                *ngIf="mainGroup.get('organizer').hasError('minlength')">
+                Кількість символів має бути більше 2
+              </mat-error>
+              <mat-error
+                *ngIf="mainGroup.get('organizer').hasError('maxlength')">
+                Кількість символів має бути не більше 255
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>Назва</mat-label>
+              <input matInput formControlName="name" placeholder="Mcdonalds">
+              <mat-error
+                *ngIf="mainGroup.get('name').hasError('required')">
+                Поле є обов'язковим
+              </mat-error>
+              <mat-error
+                *ngIf="mainGroup.get('name').hasError('minlength')">
+                Кількість символів має бути більше 2
+              </mat-error>
+              <mat-error
+                *ngIf="mainGroup.get('name').hasError('maxlength')">
+                Кількість символів має бути не більше 255
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>Детальна інформація</mat-label>
+              <textarea matInput formControlName="description" placeholder="Mcdonalds - это крупнейшая в мире сеть ресторанов быстрого питания"></textarea>
+              <mat-error
+                *ngIf="mainGroup.get('description').hasError('required')">
+                Поле є обов'язковим
+              </mat-error>
+              <mat-error
+                *ngIf="mainGroup.get('description').hasError('minlength')">
+                Кількість символів має бути більше 20
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>Програма</mat-label>
+              <textarea matInput formControlName="program" placeholder="Програма події"></textarea>
+              <mat-error
+                *ngIf="mainGroup.get('program').hasError('required')">
+                Поле є обов'язковим
+              </mat-error>
+              <mat-error
+                *ngIf="mainGroup.get('program').hasError('minlength')">
+                Кількість символів має бути більше 20
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>Адреса</mat-label>
+              <input matInput ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" [options]='googlePlacesOptions' formControlName="address" placeholder="вулиця Смілянська, 31, Черкаси, Черкаська область, 18000">
+              <mat-error
+                *ngIf="mainGroup.get('address').hasError('required')">
+                Поле є обов'язковим
+              </mat-error>
+              <mat-error
+                *ngIf="mainGroup.get('address').hasError('minlength')">
+                Кількість символів має бути більше 2
+              </mat-error>
+              <mat-error
+                *ngIf="mainGroup.get('address').hasError('maxlength')">
+                Кількість символів має бути не більше 255
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>Ціна</mat-label>
+              <input matInput formControlName="price" placeholder="₴">
+              <mat-error
+                *ngIf="mainGroup.get('price').hasError('required')">
+                Поле є обов'язковим
+              </mat-error>
+              <mat-error
+                *ngIf="mainGroup.get('price').hasError('minlength')">
+                Кількість символів має бути більше 2
+              </mat-error>
+              <mat-error
+                *ngIf="mainGroup.get('price').hasError('maxlength')">
+                Кількість символів має бути не більше 255
+              </mat-error>
+            </mat-form-field>
+            <div formArrayName="phones" class="phones">
+              <mat-form-field *ngFor="let control of phones.controls; index as i" class="example-full-width">
+                <mat-label>Телефон</mat-label>
+                <input type="tel" [textMask]="{mask: maskPhone}" matInput [formControl]="phones.controls[i]" Name="phone" placeholder="+380 (66) 555 55 55">
+                <button mat-button matSuffix mat-icon-button aria-label="Delete" *ngIf="i !== 0" (click)="deletePhone(i)">
+                  <mat-icon>close</mat-icon>
+                </button>
+                <mat-error
+                  *ngIf="phones.controls[i].hasError('pattern') &&
+                  !phones.controls[i].hasError('required')">
+                  Будь ласка, введіть дійсний телефон
+                </mat-error>
+                <mat-error
+                  *ngIf="phones.controls[i].hasError('required')">
+                  Поле є обов'язковим
+                </mat-error>
+              </mat-form-field>
+              <button *ngIf="phones.controls?.length < 5" class="add-phone" mat-button matSuffix mat-icon-button aria-label="Add" (click)="addPhone($event)">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Сайт</mat-label>
+              <input type="url" matInput formControlName="website" placeholder="https://www.example.com/">
+              <mat-error
+                *ngIf="mainGroup.get('website').hasError('required')">
+                Поле є обов'язковим
+              </mat-error>
+            </mat-form-field>
+            <div>
+              <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
+              <button type="button" color="primary" mat-raised-button matStepperNext>Наступний крок</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="availabilityGroup">
+          <form formGroupName="availability_group">
+            <ng-template matStepLabel>Толерантність</ng-template>
+            <div class="availability">
+              <!--              <mat-label class="gray">Толерантність:</mat-label>-->
+              <section *ngIf="availabilityFilter" class="padding-left">
+                <mat-checkbox *ngFor="let item of availabilityFilter" formControlName="{{item.filter_id}}">{{item.name}}</mat-checkbox>
+              </section>
+            </div>
+            <div>
+              <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
+              <button type="button" color="primary" mat-raised-button matStepperNext>Наступний крок</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="photosGroup">
+          <form formGroupName="photos_group">
+            <ng-template matStepLabel>Фотографії</ng-template>
+            <app-uploader-for-photos
+              [photosLimit]="5"
+              [photosGroupValidation]="photosGroupValidation"
+              (photosGroupValue)="setPhotosGroupValue($event)"
+              (photosState)="setPhotos($event)"
+              (photoCoverState)="setPhotoCover($event)">
+            </app-uploader-for-photos>
+            <div>
+              <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
+              <button type="button" color="primary" mat-raised-button matStepperNext (click)="updatePhotosGroupValidation()">Наступний крок</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Відправити </ng-template>
+          <p>Уважно перевірте дані та натисніть на кнопку "Запропонувати подію".</p>
+          <div>
+            <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
+            <button type="submit" mat-raised-button color="accent" >Запропонувати місце</button>
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+    </form>
+    <div *ngIf="isSavedEvent">
+      <p *ngIf="!httpErrorResponse" class="mat-subheading-2 green">
+        Запропонована вами подія успішно додана в обробку!<br>
+        Вона стане доступною після того, як пройде модерацію.
+      </p>
+      <p *ngIf="httpErrorResponse" class="mat-subheading-2 red">
+        Запропонована вами подія не завантажена через збій із сервером.<br>
+        Повторіть будь ласка спробу через декілька хвилин.
+      </p>
+      <a routerLink="">Повернутися на голову сторінку</a>
+    </div>
+  </div>
+  <div class="container">
+    <mat-spinner *ngIf="formLoaderVisibility | async"></mat-spinner>
+  </div>
+</app-layout>

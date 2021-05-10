@@ -1,0 +1,78 @@
+mat-radio-group{
+  display: block;
+  padding: 0 0 20px 0;
+}
+
+mat-form-field,
+mat-radio-group,
+mat-radio-button {
+  display: block;
+}
+
+mat-radio-button {
+  padding-bottom: 5px;
+}
+
+mat-form-field {
+  max-width: calc(100% - 25px);
+  padding-bottom: 10px;
+}
+
+.event-schedule {
+  padding-bottom: 15px;
+}
+
+.padding-left {
+  padding: 0 0 0 50px;
+}
+
+.phones {
+  position: relative;
+}
+
+.phones .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+.add-phone {
+  position: absolute;
+  right: -20px;
+  bottom: 25px;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  padding: 0!important;
+}
+
+.gray {
+  color: rgb(133, 133, 133);
+}
+
+.small {
+  font-size: 75%;
+}
+
+.availability section {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.availability mat-checkbox {
+  padding-right: 27px;
+}
+
+.availability mat-checkbox:last-of-type {
+  padding: 0;
+}
+
+.green {
+  color: #4CAF50;
+}
+
+.red {
+  color: #f44336;
+}
+
+.hidden {
+  display: none;
+}

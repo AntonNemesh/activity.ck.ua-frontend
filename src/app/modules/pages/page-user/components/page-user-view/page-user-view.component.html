@@ -88,7 +88,7 @@
   <section class="user-events background-saturated">
     <div class="container padding-inside created-user__container">
       <h1 class="headline">Мої події</h1>
-      <a routerLink="/add_event" class="link link-add user-places__link-add">Створити подію</a>
+      <a routerLink="/event_create" class="link link-add user-places__link-add">Створити подію</a>
       <div class="main-list list home-list user-places__list user-list" *ngIf="userEvents?.length">
           <a routerLink="/events/{{event.id}}" class="event-item" *ngFor="let event of userEvents">
           <span class="img-wrapper">
