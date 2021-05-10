@@ -1,6 +1,6 @@
 <app-layout>
   <section class="background-saturated events-details__contact">
-    <div *ngIf="event" class="container padding-inside ">
+    <div *ngIf="event" class="container padding-inside details-wrapper">
       <app-gallery [photos]="event.photos"></app-gallery>
       <h1 class="headline events-details__headline">{{event.name}}</h1>
       <ul *ngIf="event.phones" class="list">

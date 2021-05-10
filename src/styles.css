@@ -370,16 +370,19 @@ p {
 
 :root {
   --color-bright: rgba(13, 134, 242, 100);
+  --color-braght-second: rgba(115, 190, 68, 100);
   --color: #f7b600;
   --color-light-grey: rgba(95, 93, 93, 100);
   --color-main-grey: rgba(57, 57, 57, 100);
   --color-light: rgba(255, 255, 255, 100);
-  --color-light-saturated: #9adb71;
+  --color-light-saturated: #f6f6f5;
   --color-aside: rgba(0, 0, 0, 0.08);
   --color-overlay: rgba(0, 0, 0, 0.15);
+/*color: #daeace;*/
   /*--color-overlay: rgba(252, 173, 36, 0.3);*/
   /*color: #73be44;*/
   /*color: #fcad24;*/
+  /*color: #ffd740;*/
   /*color: #219ad6;*/
 
   --font-headline: 600 2rem 'Inter', sans-serif;
@@ -388,7 +391,7 @@ p {
   --link-decoration: underline 2px var(--color-bright);
   --text-line-height: 1.7rem;
 
-  --padding-section: 4% 0;
+  --padding-section: 4% 20px;
   --padding: 10px;
 
   --border-radius: 8px;
@@ -399,7 +402,8 @@ p {
 /*root classes*/
 
 main {
-  padding: 120px 0 0 0;
+  /*padding: 120px 0 0 0;*/
+  padding-top: 40%;
 }
 
 .container {
@@ -418,6 +422,13 @@ main {
 
 .bright {
   color: var(--color-bright);
+}
+
+.bright-line {
+  padding: 10px 0;
+  height: 3px;
+  width: 80%;
+  color: var(--color-braght-second);
 }
 
 .link:hover {
@@ -453,8 +464,8 @@ main {
 .avatar-placeholder {
   fill: var(--color-light-grey);
   padding: 7px;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border: 2px solid var(--color-light-grey);
   border-radius: 50%;
 }
@@ -475,16 +486,77 @@ main {
   color: var(--color-main-grey);
 }
 
-@media (min-width: 481px) {
-  .headline {
-    font-size: 1.5rem
+@media (min-width: 375px) {
+
+  main {
+    /*padding: 120px 0 0 0;*/
+    padding-top: 35%;
   }
 }
 
+@media (min-width: 414px) {
+
+  main {
+    /*padding: 120px 0 0 0;*/
+    padding-top: 32%;
+  }
+}
+
+@media (min-width: 481px) {
+
+  main {
+    /*padding: 120px 0 0 0;*/
+    padding-top: 28%;
+  }
+
+  .headline {
+    font-size: 1.5rem
+  }
+
+}
+
+@media (min-width: 551px) {
+
+  main {
+    /*padding: 120px 0 0 0;*/
+    padding-top: 25%;
+  }
+
+}
+
 @media (min-width: 576px) {
+
+  main {
+    padding-top: 21%;
+  }
+
   .headline {
     font: var(--font-headline);
   }
+}
+
+@media (min-width: 585px) {
+
+  main {
+    padding-top: 13%;
+  }
+
+}
+
+@media (min-width: 667px) {
+
+  main {
+    padding-top: 10%;
+  }
+
+}
+
+@media (min-width: 812px) {
+
+  main {
+    /*padding-top: 13%;*/
+  }
+
 }
 
 .visited-btn {
@@ -504,8 +576,12 @@ main {
 }
 
 .background-saturated {
-  padding: var(--padding-section);
-  background: var(--color-light-saturated);
+  background-color: var(--color-light-saturated);
+}
+
+.details-wrapper {
+  background: var(--color-light);
+  min-height: 75vh;
 }
 
 .padding-inside {
@@ -515,15 +591,21 @@ main {
 @media (min-width: 1025px) {
   .background-light,
   .background-saturated {
-    padding: 3.5%;
+    /*padding: 3.5%;*/
   }
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 1201px) {
   .background-light,
   .background-saturated {
-    padding: 2%;
+    /*padding: 2%;*/
   }
+
+
+  .padding-inside {
+    padding: 0 30px;
+  }
+
 }
 
 
@@ -668,8 +750,9 @@ main {
   grid-template-rows: max-content;
   row-gap: var(--grid-gap);
   border-radius: 8px;
-  background-color: var(--color-light-saturated);
+  /*background-color: var(--color-light-saturated);*/
   box-shadow: 2px 3px 10px -2px var(--color-bright);
+  background-color: var(--color-light-saturated);
 }
 
 @media (min-width: 769px) {
@@ -705,4 +788,8 @@ main {
 .link-add:focus {
   background-color: var(--color-main-grey);
   color: var(--color-light);
+}
+
+.auth__page {
+  min-height: 80vh;
 }

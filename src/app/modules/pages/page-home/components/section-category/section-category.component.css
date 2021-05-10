@@ -1,3 +1,8 @@
+.categories {
+  padding: var(--padding-section);
+  background-color: var(--color-light);
+}
+
 .video__section {
   display: grid;
   grid-auto-columns: 1fr;

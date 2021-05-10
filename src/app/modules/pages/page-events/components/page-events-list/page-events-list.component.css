@@ -21,6 +21,8 @@
 .page-events-list__events {
   padding-top: var(--padding);
   background-color: var(--color-light-saturated);
+  background-image:
+    linear-gradient(rgba(114, 173, 246, 0.5), rgba(73, 207, 238, 0.3));
 }
 
 @media (min-width: 769px) {
@@ -30,11 +32,6 @@
     padding: 30px;
   }
 }
-
-.page-events-list__item:hover {
-  /*background-color: rgba(0, 0, 0, 0.08);*/
-}
-
 
 .datepicker-wrapper__headline {
   grid-row: 1/2;
