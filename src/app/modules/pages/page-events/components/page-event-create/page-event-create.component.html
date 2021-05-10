@@ -2,48 +2,6 @@
   <div *ngIf="formContentVisibility | async" class="container">
     <form *ngIf="!isSavedEvent" [formGroup]="eventForm" (ngSubmit)="onSubmit()">
       <mat-vertical-stepper [linear]="true" #stepper>
-        <mat-step [stepControl]="scheduleGroup">
-          <form formGroupName="schedule_group">
-            <ng-template matStepLabel>Дата та час проведення події</ng-template>
-            <div class="event-schedule">
-              <mat-form-field class="event-schedule__date-field"  appearance="fill">
-                <mat-label>День</mat-label>
-                <input
-                  [min]="today"
-                  [matDatepicker]="picker"
-                  matInput formControlName="date">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-                <mat-error
-                  *ngIf="scheduleGroup.get('date').hasError('required')">
-                  Поле є обов'язковим
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field class="event-schedule__time-field">
-                <mat-label>Початок</mat-label>
-                <input matInput formControlName="start_time" [ngxTimepicker]="open" [format]="24" [value]="'8:00'" placeholder="HH:MM">
-                <ngx-material-timepicker #open></ngx-material-timepicker>
-                <mat-error
-                  *ngIf="scheduleGroup.get('start_time').hasError('required')">
-                  Поле є обов'язковим
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field class="event-schedule__time-field">
-                <mat-label>Закінчення</mat-label>
-                <input matInput formControlName="end_time" [ngxTimepicker]="close" [format]="24" [value]="'17:00'" placeholder="HH:MM">
-                <ngx-material-timepicker #close></ngx-material-timepicker>
-                <mat-error
-                  *ngIf="scheduleGroup.get('end_time').hasError('required')">
-                  Поле є обов'язковим
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <div>
-              <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
-              <button type="button" color="primary" mat-raised-button matStepperNext>Наступний крок</button>
-            </div>
-          </form>
-        </mat-step>
         <mat-step [stepControl]="mainGroup">
           <form formGroupName="main_group">
             <ng-template matStepLabel>Основні</ng-template>
@@ -172,12 +130,53 @@
         </mat-step>
         <mat-step [stepControl]="availabilityGroup">
           <form formGroupName="availability_group">
-            <ng-template matStepLabel>Толерантність</ng-template>
+            <ng-template matStepLabel>Доступність</ng-template>
             <div class="availability">
-              <!--              <mat-label class="gray">Толерантність:</mat-label>-->
               <section *ngIf="availabilityFilter" class="padding-left">
                 <mat-checkbox *ngFor="let item of availabilityFilter" formControlName="{{item.filter_id}}">{{item.name}}</mat-checkbox>
               </section>
+            </div>
+            <div>
+              <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
+              <button type="button" color="primary" mat-raised-button matStepperNext>Наступний крок</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="scheduleGroup">
+          <form formGroupName="schedule_group">
+            <ng-template matStepLabel>Дата та час проведення події</ng-template>
+            <div class="event-schedule">
+              <mat-form-field class="event-schedule__date-field"  appearance="fill">
+                <mat-label>День</mat-label>
+                <input
+                  [min]="today"
+                  [matDatepicker]="picker"
+                  matInput formControlName="date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error
+                  *ngIf="scheduleGroup.get('date').hasError('required')">
+                  Поле є обов'язковим
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="event-schedule__time-field">
+                <mat-label>Початок</mat-label>
+                <input matInput formControlName="start_time" [ngxTimepicker]="open" [format]="24" [value]="'8:00'" placeholder="HH:MM">
+                <ngx-material-timepicker #open></ngx-material-timepicker>
+                <mat-error
+                  *ngIf="scheduleGroup.get('start_time').hasError('required')">
+                  Поле є обов'язковим
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="event-schedule__time-field">
+                <mat-label>Закінчення</mat-label>
+                <input matInput formControlName="end_time" [ngxTimepicker]="close" [format]="24" [value]="'17:00'" placeholder="HH:MM">
+                <ngx-material-timepicker #close></ngx-material-timepicker>
+                <mat-error
+                  *ngIf="scheduleGroup.get('end_time').hasError('required')">
+                  Поле є обов'язковим
+                </mat-error>
+              </mat-form-field>
             </div>
             <div>
               <button type="button" mat-raised-button matStepperPrevious>Попередній крок</button>
