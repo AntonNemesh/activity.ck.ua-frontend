@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IEvent, IPhotos } from '../../../../../static/type';
+import { IEvent } from '../../../../../static/type';
 import { ActivatedRoute } from '@angular/router';
-import { AuthorizationService, EventsService, UsersService } from '../../../../../services';
+import { AuthorizationService, DateService, EventsService, UsersService } from '../../../../../services';
 
 @Component({
   selector: 'app-page-event-details',
@@ -18,7 +18,8 @@ export class PageEventDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private eventsService: EventsService,
     private authorizationService: AuthorizationService,
-    private usersService: UsersService) { }
+    private usersService: UsersService,
+    public dateService: DateService) { }
 
   getEvent(): void {
     this.eventsService.getEventById(this.eventId).subscribe((data) => {

@@ -25,8 +25,8 @@
       </a>
       <p class="card-text"><span class="bold">Ціна:</span>  {{event.price}}</p>
       <p class="card-text"><span class="bold">Опис: </span>  {{event.description}}</p>
-      <p class="card-text"><span class="bold">Дата початку:</span>  {{event.start_time}}</p>
-      <p class="card-text"><span class="bold">Дата кінця:</span>  {{event.end_time}}</p>
+      <p class="card-text"><span class="bold">Дата початку:</span>  {{dateService.getDateTime(event.start_time)}}</p>
+      <p class="card-text"><span class="bold">Дата кінця:</span>  {{dateService.getDateTime(event.end_time)}}</p>
       <p class="card-text"><span class="bold">Організатор:</span>  {{event.organizer}}</p>
       <p class="card-text"><span class="bold">Ідентифікатор місця проведення:</span>  {{event.place_id}}</p>
       <h2 class="card-text bold event__program">Програма:</h2>

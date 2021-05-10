@@ -11,7 +11,7 @@
               {{event.name}}
             </p>
             <p class="card-text">
-              {{event.start_time}}
+              {{dateService.getDateTime(event.start_time)}}
             </p>
           </a>
       </div>
@@ -95,6 +95,9 @@
             <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
             </span>
             <p class="card-link event__headline">{{event.name}}</p>
+            <p class="card-text">
+              {{dateService.getDateTime(event.start_time)}}
+            </p>
           </a>
         <app-pagination
           *ngIf="userEventsTotalPages"
