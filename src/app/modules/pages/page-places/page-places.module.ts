@@ -6,7 +6,7 @@ import { SharedModule } from '../../shared';
 import {
   PagePlacesListComponent,
   PagePlaceDetailsComponent,
-  PagePlaceAddComponent,
+  PagePlaceCreateComponent,
 } from './components';
 import { PagePlacesRoutingModule } from './page-places-routing.module';
 import { MaterialModule } from '../../material';
@@ -21,7 +21,7 @@ import { AngularFireModule } from '@angular/fire';
   declarations: [
     PagePlacesListComponent,
     PagePlaceDetailsComponent,
-    PagePlaceAddComponent,
+    PagePlaceCreateComponent,
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PageHomeViewComponent } from './modules/pages/page-home/components';
-import { PagePlaceAddComponent } from './modules/pages/page-places/components';
+import { PagePlaceCreateComponent } from './modules/pages/page-places/components';
 import { PageUserViewComponent } from './modules/pages/page-user/components';
 import { PageAuthorizationViewComponent } from './modules/pages/page-authorization/components';
 import { UsersResolverService } from './services';
@@ -17,7 +17,7 @@ const routes: Routes = [
       { path: 'home', component: PageHomeViewComponent },
       { path: 'search', component: PageSearchResultsViewComponent },
       { path: 'user', component: PageUserViewComponent, canActivate: [AuthorizationGuard] },
-      { path: 'add_place', component: PagePlaceAddComponent, canActivate: [AuthorizationGuard] },
+      { path: 'place_create', component: PagePlaceCreateComponent, canActivate: [AuthorizationGuard] },
       { path: 'event_create', component: PageEventCreateComponent, canActivate: [AuthorizationGuard] },
       { path: 'authorization', component: PageAuthorizationViewComponent, canActivate: [AuthorizationGuard] },
       { path: 'places/:category_id', loadChildren: () => import('./modules/pages/page-places').then(m => m.PagePlacesModule) },

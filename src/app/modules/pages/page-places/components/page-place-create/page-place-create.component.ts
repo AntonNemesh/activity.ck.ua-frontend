@@ -23,11 +23,11 @@ import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { LoaderHelper } from '../../../../../helpers';
 
 @Component({
-  selector: 'app-page-place-add',
-  templateUrl: './page-place-add.component.html',
-  styleUrls: ['./page-place-add.component.css']
+  selector: 'app-page-place-create',
+  templateUrl: './page-place-create.component.html',
+  styleUrls: ['./page-place-create.component.css']
 })
-export class PagePlaceAddComponent implements OnInit {
+export class PagePlaceCreateComponent implements OnInit {
   constructor(
     private placesService: PlacesService,
     private categoriesService: CategoriesService,
@@ -377,6 +377,6 @@ export class PagePlaceAddComponent implements OnInit {
       this.setTypes(value);
     });
 
-    // this.autocompleteData();
+    this.autocompleteData();
   }
 }

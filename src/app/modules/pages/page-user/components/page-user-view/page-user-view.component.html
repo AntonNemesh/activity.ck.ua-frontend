@@ -67,7 +67,7 @@
   <section class="user-places background-light">
     <div class="container padding-inside created-user__container">
       <h1 class="headline user-places__headline">Мої місця</h1>
-      <a routerLink="/add_place" class="link link-add user-places__link-add">Додати локацію</a>
+      <a routerLink="/place_create" class="link link-add user-places__link-add">Додати локацію</a>
       <div class="main-list list home-list user-places__list user-list" *ngIf="userPlaces?.length">
           <a routerLink="/places/{{place.category_id}}/{{place.id}}" *ngFor="let place of userPlaces" class="event-item" >
           <span class="img-wrapper">
