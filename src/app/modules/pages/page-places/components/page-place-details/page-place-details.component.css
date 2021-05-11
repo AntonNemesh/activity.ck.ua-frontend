@@ -2,7 +2,14 @@
   text-decoration: none;
 }
 
-.place-details__wrapper,
+.place-details__wrapper {
+  background-color: var(--color-light-saturated);
+}
+
+.main-content {
+  background-color: var(--color-light);
+}
+
 .place__about {
   padding: 50px 10px;
 }
@@ -34,15 +41,13 @@
   line-height: 2rem;
   text-align: justify;
 }
-
+.view-rating {
+  padding-bottom: var(--padding);
+}
 @media (min-width: 481px) {
 
   .place-details__about {
     font-size: 1.3rem;
-  }
-
-  .place-details-about__headline {
-    font: var(--font-headline);
   }
 }
 
@@ -68,12 +73,6 @@
   background: var(--color-light);
 }
 
-.event__headline {
-  margin-top: 15px;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
 .favorite-visit-section {
   display: grid;
   grid-template-columns: 2.5fr 0.05fr;
@@ -89,3 +88,8 @@
   border: 1px solid var(--color-main-grey);
   border-radius: 8px;
 }
+
+.filter-state {
+  padding-left: 7px;
+}
+

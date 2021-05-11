@@ -7,7 +7,7 @@
 
 .header-wrapper {
   padding: 10px 20px;
-  box-shadow: 2px 3px 10px -2px var(--color-bright);;
+  box-shadow: 2px 3px 10px -2px var(--color-overlay);;
   position: fixed;
   top: 0;
   left: 0;
@@ -110,4 +110,11 @@
     display: block;
   }
 
+}
+
+@media (min-width: 1024px) {
+
+  .logo-svg {
+    width: 200px;
+  }
 }

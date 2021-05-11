@@ -391,7 +391,7 @@ p {
   --link-decoration: underline 2px var(--color-bright);
   --text-line-height: 1.7rem;
 
-  --padding-section: 4% 20px;
+  --padding-section: 2% 20px;
   --padding: 10px;
 
   --border-radius: 8px;
@@ -425,10 +425,16 @@ main {
 }
 
 .bright-line {
-  padding: 10px 0;
+  margin-bottom: 20px;
   height: 3px;
-  width: 80%;
-  color: var(--color-braght-second);
+  width: 10%;
+  background-color: var(--color-braght-second);
+}
+
+.section {
+  padding: var(--padding-section);
+  background-color: var(--color-light);
+  border-bottom: 1px solid var(--color-overlay);
 }
 
 .link:hover {
@@ -486,6 +492,17 @@ main {
   color: var(--color-main-grey);
 }
 
+
+.subtitle {
+  padding: var(--padding);
+  letter-spacing: 1px;
+  font: 600 1.2rem 'Inter', sans-serif;
+}
+
+.cards-list {
+  margin-top: 10px;
+}
+
 @media (min-width: 375px) {
 
   main {
@@ -513,6 +530,10 @@ main {
     font-size: 1.5rem
   }
 
+  .page__aside {
+    grid-template-columns: 1fr 1fr;
+  }
+
 }
 
 @media (min-width: 551px) {
@@ -533,6 +554,10 @@ main {
   .headline {
     font: var(--font-headline);
   }
+
+  .subtitle {
+    font-size: 1.4rem;;
+  }
 }
 
 @media (min-width: 585px) {
@@ -549,6 +574,18 @@ main {
     padding-top: 10%;
   }
 
+}
+
+@media (min-width: 769px) {
+  .page__aside {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-list{
+    margin: 0 10px;
+    border-bottom: 1px solid var(--color-overlay);
+    border-top: 1px solid var(--color-overlay);
+  }
 }
 
 @media (min-width: 812px) {
@@ -624,7 +661,7 @@ main {
 .icon-text-row {
   display: grid;
   padding: 12px;
-  grid-template: 1fr / .2fr 1fr 1fr;
+  grid-template: 1fr / 40px 1fr .3fr;
   width: fit-content;
 }
 
@@ -749,10 +786,9 @@ main {
   grid-row: 2/3;
   grid-template-rows: max-content;
   row-gap: var(--grid-gap);
-  border-radius: 8px;
-  /*background-color: var(--color-light-saturated);*/
-  box-shadow: 2px 3px 10px -2px var(--color-bright);
-  background-color: var(--color-light-saturated);
+  border-top: 1px solid var(--color-overlay);
+  background-color: var(--color-light);
+  box-shadow: 3px 3px 7px -3px var(--color-overlay);
 }
 
 @media (min-width: 769px) {

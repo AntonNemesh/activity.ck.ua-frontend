@@ -1,5 +1,14 @@
+.page-events-list__wrapper {
+  background-color: var(--color-light-saturated);
+}
+.page-events-list-wrapper {
+  margin-top: 10px;
+  background-color: var(--color-light);
+}
+
 @media (min-width: 791px) {
   .page-events-list-wrapper {
+    margin-top: 0;
     display: grid;
     grid-template-columns: .7fr 2.5fr;
     grid-template-rows: auto;
@@ -16,13 +25,6 @@
 
 .mat-hidden {
   grid-row: 1/2;
-}
-
-.page-events-list__events {
-  padding-top: var(--padding);
-  background-color: var(--color-light-saturated);
-  background-image:
-    linear-gradient(rgba(114, 173, 246, 0.5), rgba(73, 207, 238, 0.3));
 }
 
 @media (min-width: 769px) {

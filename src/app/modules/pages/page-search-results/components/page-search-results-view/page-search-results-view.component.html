@@ -1,4 +1,5 @@
-<app-layout class="search__page">
+<app-layout>
+    <div class="search__page">
   <section class="background-light container padding-inside" *ngIf="places?.length">
     <p>Результати пошуку: {{searchRequest.data}}</p>
     <h1 class="headline">Місця</h1>
@@ -27,6 +28,6 @@
   </section>
   <section class="background-light container">
     <p class=" headline min-section" *ngIf="!events?.length && !places?.length">Нічого не знайдено!</p>
-
   </section>
+    </div>
 </app-layout>

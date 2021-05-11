@@ -1,3 +1,7 @@
+
+.wrapper {
+  background-color: var(--color-light-saturated);
+}
 .user__headline {
   font-size: 25px;
   font-weight: 500;

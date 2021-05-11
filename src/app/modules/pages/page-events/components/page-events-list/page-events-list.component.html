@@ -1,5 +1,6 @@
 <app-layout>
-  <section class="container page-events-list">
+  <div class="page-events-list__wrapper">
+  <section class="container main-content">
     <div class="datepicker-wrapper padding-inside">
       <h2 class="headline datepicker-wrapper__headline">Приєднуйся до найближчих подій</h2>
       <span class="mat-h3 events__date">{{dateUrkFormat}}</span>
@@ -14,11 +15,11 @@
       </mat-form-field>
     </div>
     <div class="page-events-list-wrapper">
-      <app-filter-by-availability class="aside-filters padding-inside"
+      <app-filter-by-availability class="page__aside aside-filters padding-inside"
         (availabilityStateChange)="updateFilterAvailabilityState($event)"
         [page]="'events'">
       </app-filter-by-availability>
-      <div class="padding-inside main-list page-events-list__events" *ngIf="events?.length">
+      <div class="padding-inside cards-list main-list page-events-list__events" *ngIf="events?.length">
         <a routerLink="{{event.id}}" class="event-item page-events-list__item link" *ngFor="let event of events">
            <span class="img-wrapper page-events-list__img-wrapper">
             <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
@@ -40,4 +41,5 @@
                     [datePickerState]="date">
     </app-pagination>
   </section>
+  </div>
 </app-layout>
