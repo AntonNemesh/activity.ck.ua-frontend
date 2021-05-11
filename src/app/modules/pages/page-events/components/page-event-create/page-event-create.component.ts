@@ -62,12 +62,7 @@ export class PageEventCreateComponent implements OnInit {
           Validators.minLength(3),
           Validators.maxLength(255)
         ]),
-      price: new FormControl('',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(255)
-        ]),
+      price: new FormControl('', Validators.required),
       description: new FormControl('',
         [
           Validators.required,
