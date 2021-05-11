@@ -81,6 +81,7 @@
             <p class="card-link">{{place.name}}</p>
           </a>
         </div>
+      </div>
         <app-pagination
           *ngIf="userPlacesTotalPages"
           [isArrowPagination]="true"
@@ -88,7 +89,7 @@
           [totalPages]="userPlacesTotalPages">
         </app-pagination>
         <p class="mat-h3 min-section" *ngIf="!userPlaces?.length">Нічого не знайдено!</p>
-      </div>
+
     </section>
     <section class="section user-events background-saturated">
       <div class="container padding-inside created-user__container">
@@ -105,15 +106,15 @@
               {{dateService.getDateTime(event.start_time)}}
             </p>
           </a>
-          <app-pagination
-            *ngIf="userEventsTotalPages"
-            [isArrowPagination]="true"
-            (paginationStateChange)="updateUserEventsPaginationState($event)"
-            [totalPages]="userEventsTotalPages">
-          </app-pagination>
         </div>
-        <p class="mat-h3 min-section" *ngIf="!userEvents?.length">Нічого не знайдено!</p>
       </div>
+        <app-pagination
+          *ngIf="userEventsTotalPages"
+          [isArrowPagination]="true"
+          (paginationStateChange)="updateScheduledEventsPaginationState($event)"
+          [totalPages]="scheduledEventsTotalPages">
+        </app-pagination>
+        <p class="mat-h3 min-section" *ngIf="!userEvents?.length">Нічого не знайдено!</p>
     </section>
   </div>
 </app-layout>

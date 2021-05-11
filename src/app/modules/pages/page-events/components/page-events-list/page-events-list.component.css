@@ -18,42 +18,63 @@
 .datepicker-wrapper {
   padding-top: 25px;
   display: grid;
-  grid-template-columns: 1.1fr .8fr .002fr;
+  grid-template-columns: 1fr 1fr;
   grid-column: 1/3;
   align-items: center;
+}
+
+.link-create {
+  grid-row: 2 / 3;
+  justify-self: end;
 }
 
 .mat-hidden {
   grid-row: 1/2;
 }
-
-@media (min-width: 769px) {
-  .page-events-list__events {
-    grid-column: 2/3;
-    margin-left: 3px;
-    padding: 30px;
-  }
-}
-
 .datepicker-wrapper__headline {
   grid-row: 1/2;
 }
 
 .events__date {
-  grid-column: 2/3;
+  grid-column: 2 / 3;
   grid-row: 1/2;
   justify-self: end;
 }
 
 .btn__datepicker {
-  grid-column: 3/4;
-  grid-row: 1/2;
+  grid-column: 1/2;
+  grid-row: 2/3;
   margin-bottom: 16px;
 }
 
 .btn__datepicker:hover {
   color: var(--color-bright);
 }
+@media (min-width: 769px) {
+  .page-events-list__events {
+    grid-column: 2/3;
+    margin-left: 3px;
+    padding: 30px;
+  }
+
+  .datepicker-wrapper {
+    grid-template-columns: 1.1fr .8fr .002fr .5fr;
+  }
+
+  .events__date {
+    grid-column: 2 / 3;
+  }
+  .btn__datepicker {
+    grid-column: 3/4;
+    grid-row: 1/2;
+  }
+
+  .link-create {
+    grid-row: 1/2;
+  }
+  }
+
+
 
 .hidden {
   display: none;
