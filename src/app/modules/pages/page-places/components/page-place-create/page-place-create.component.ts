@@ -377,6 +377,6 @@ export class PagePlaceCreateComponent implements OnInit {
       this.setTypes(value);
     });
 
-    this.autocompleteData();
+    // this.autocompleteData();
   }
 }
