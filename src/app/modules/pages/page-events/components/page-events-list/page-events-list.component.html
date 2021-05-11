@@ -34,13 +34,15 @@
         </a>
       </div>
       <p class="mat-h3" *ngIf="!events?.length">Нічого не знайдено!</p>
+      <app-pagination *ngIf="totalPages"
+                      class="page-events-list__pagination"
+                      (paginationStateChange)="updatePaginationState($event)"
+                      [filterAvailabilityState]="filterAvailabilityState"
+                      [totalPages]="totalPages"
+                      [datePickerState]="date">
+      </app-pagination>
     </div>
-    <app-pagination *ngIf="totalPages"
-                    (paginationStateChange)="updatePaginationState($event)"
-                    [filterAvailabilityState]="filterAvailabilityState"
-                    [totalPages]="totalPages"
-                    [datePickerState]="date">
-    </app-pagination>
+
   </section>
   </div>
 </app-layout>

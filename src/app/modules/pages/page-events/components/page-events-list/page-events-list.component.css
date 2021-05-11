@@ -57,6 +57,10 @@
     padding: 30px;
   }
 
+  .page-events-list__pagination {
+    grid-column: 2/3;
+  }
+
   .datepicker-wrapper {
     grid-template-columns: 1.1fr .8fr .002fr .5fr;
   }
