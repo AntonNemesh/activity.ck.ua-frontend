@@ -23,7 +23,7 @@ export class PageEventsListComponent implements OnInit {
   public numbOfLoadedImages: number;
 
   public page: number = 1;
-  public limit: number = 8;
+  public limit: number = 6;
   public totalPages: number;
   public isLoggedIn: boolean = this.authorizationService.isLoggedIn;
 
