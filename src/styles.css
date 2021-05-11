@@ -402,8 +402,7 @@ p {
 /*root classes*/
 
 main {
-  /*padding: 120px 0 0 0;*/
-  padding-top: 40%;
+  padding-top: 160px;
 }
 
 .container {
@@ -460,8 +459,8 @@ main {
 }
 
 .avatar-img {
-  height: 70px;
-  width: 70px;
+  height: 50px;
+  width: 50px;
   border-radius: 70px;
   object-fit: cover;
   border: 1px solid gray;
@@ -492,7 +491,6 @@ main {
   color: var(--color-main-grey);
 }
 
-
 .subtitle {
   padding: var(--padding);
   letter-spacing: 1px;
@@ -503,28 +501,7 @@ main {
   margin-top: 10px;
 }
 
-@media (min-width: 375px) {
-
-  main {
-    /*padding: 120px 0 0 0;*/
-    padding-top: 35%;
-  }
-}
-
-@media (min-width: 414px) {
-
-  main {
-    /*padding: 120px 0 0 0;*/
-    padding-top: 32%;
-  }
-}
-
 @media (min-width: 481px) {
-
-  main {
-    /*padding: 120px 0 0 0;*/
-    padding-top: 28%;
-  }
 
   .headline {
     font-size: 1.5rem
@@ -536,19 +513,10 @@ main {
 
 }
 
-@media (min-width: 551px) {
-
-  main {
-    /*padding: 120px 0 0 0;*/
-    padding-top: 25%;
-  }
-
-}
-
 @media (min-width: 576px) {
 
   main {
-    padding-top: 21%;
+    padding-top: 125px;
   }
 
   .headline {
@@ -558,22 +526,6 @@ main {
   .subtitle {
     font-size: 1.4rem;;
   }
-}
-
-@media (min-width: 585px) {
-
-  main {
-    padding-top: 13%;
-  }
-
-}
-
-@media (min-width: 667px) {
-
-  main {
-    padding-top: 10%;
-  }
-
 }
 
 @media (min-width: 769px) {
@@ -586,14 +538,6 @@ main {
     border-bottom: 1px solid var(--color-overlay);
     border-top: 1px solid var(--color-overlay);
   }
-}
-
-@media (min-width: 812px) {
-
-  main {
-    /*padding-top: 13%;*/
-  }
-
 }
 
 .visited-btn {
