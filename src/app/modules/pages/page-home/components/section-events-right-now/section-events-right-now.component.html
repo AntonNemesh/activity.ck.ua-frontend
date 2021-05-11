@@ -1,9 +1,12 @@
-<section class="background-light container padding-inside">
-  <h2 class="headline events-right-now__headline">Приєднуйся зараз</h2>
-  <div *ngIf="events?.length">
-    <div class="main-list list home-list">
-        <a *ngFor="let event of events" routerLink="/events/{{event.id}}" class="link event-item events-right-now__event-item">
-            <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
+<section class="background-saturated">
+  <div class="section container">
+    <h2 class="headline events-right-now__headline">Приєднуйся зараз</h2>
+    <div class="bright-line"></div>
+    <div *ngIf="events?.length">
+      <div class="main-list list home-list">
+        <a *ngFor="let event of events" routerLink="/events/{{event.id}}"
+           class="link event-item events-right-now__event-item">
+          <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
           <p class="card-link">
             {{event.name}}
           </p>
@@ -11,14 +14,14 @@
             {{dateService.getDateTime(event.start_time)}}
           </p>
         </a>
+      </div>
+      <app-pagination
+        *ngIf="totalPages"
+        [isArrowPagination]="true"
+        (paginationStateChange)="updatePaginationState($event)"
+        [totalPages]="totalPages">
+      </app-pagination>
     </div>
-    <app-pagination
-      *ngIf="totalPages"
-      [isArrowPagination]="true"
-      (paginationStateChange)="updatePaginationState($event)"
-      [totalPages]="totalPages">
-    </app-pagination>
+    <p class="mat-h3 min-section" *ngIf="!events?.length">Нічого не знайдено!</p>
   </div>
-  <p class="mat-h3 min-section" *ngIf="!events?.length">Нічого не знайдено!</p>
-
 </section>

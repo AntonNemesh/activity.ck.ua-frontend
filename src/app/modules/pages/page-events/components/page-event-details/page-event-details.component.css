@@ -1,5 +1,5 @@
 .events-details__headline {
-  padding: 40px 0;
+  padding: 40px 0 30px;
 }
 
 .events-details__contact:hover a {
@@ -12,6 +12,7 @@
 }
 
 .favorite-visit-section {
+  padding-bottom: 30px;
   display: grid;
   justify-items: start;
 }

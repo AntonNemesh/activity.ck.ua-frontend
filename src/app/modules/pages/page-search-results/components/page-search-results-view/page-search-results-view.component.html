@@ -1,16 +1,18 @@
-<app-layout class="search__page">
+<app-layout>
+    <div class="search__page">
   <section class="background-light container padding-inside" *ngIf="places?.length">
     <p>Результати пошуку: {{searchRequest.data}}</p>
     <h1 class="headline">Місця</h1>
     <ul *ngIf="places?.length" class="list">
       <li *ngFor="let place of places" class="search__item">
-        <a routerLink="/places/{{place.id}}" class="search__link">
+        <a routerLink="/places/{{place.category_id}}/{{place.id}}"  class="search__link">
         <img src="{{place.main_photo}}" alt="" class="img-photo search__img">
         <p class="card-link category-name" >{{place.name}}</p>
         <p class="contact-text">{{place.address}}</p>
         </a>
       </li>
     </ul>
+
   </section>
   <section class="background-light container padding-inside" *ngIf="events?.length">
     <h1 class="headline">Події</h1>
@@ -26,6 +28,6 @@
   </section>
   <section class="background-light container">
     <p class=" headline min-section" *ngIf="!events?.length && !places?.length">Нічого не знайдено!</p>
-
   </section>
+    </div>
 </app-layout>

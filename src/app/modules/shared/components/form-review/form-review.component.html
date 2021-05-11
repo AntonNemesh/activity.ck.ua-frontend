@@ -1,4 +1,4 @@
-<h2 class="headline">Залишити відгук:</h2>
+<h2 class="subtitle">Залишити відгук:</h2>
 <form [class.--disabled]="!isLoggedIn" class="review-form" [formGroup]="formReview" (ngSubmit)="onSubmit()">
   <img *ngIf="user" class="review-form__user-avatar avatar-img" src="{{user.avatar}}" alt="{{user.name}}">
   <svg *ngIf="!user" class="review-form__user-avatar avatar-placeholder" viewBox="-42 0 512 512.002">

@@ -1,8 +1,10 @@
 <app-layout>
-  <section class="scheduled-events background-saturated">
-    <div class="container padding-inside ">
-      <h1 class="headline">Заплановані події</h1>
-      <div class="main-list list home-list user-places__list user-list" *ngIf="scheduledEvents?.length">
+  <div class="wrapper">
+    <section class="section scheduled-events background-saturated">
+      <div class="container padding-inside ">
+        <h1 class="headline user__headline">Заплановані події</h1>
+        <div class="main-list list home-list user-places__list user-list" *ngIf="scheduledEvents?.length">
+          <div class="bright-line"></div>
           <a routerLink="/events/{{event.id}}" class="event-item" *ngFor="let event of scheduledEvents">
           <span class="img-wrapper">
             <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
@@ -14,82 +16,86 @@
               {{dateService.getDateTime(event.start_time)}}
             </p>
           </a>
+        </div>
+        <app-pagination
+          *ngIf="scheduledEventsTotalPages"
+          [isArrowPagination]="true"
+          (paginationStateChange)="updateScheduledEventsPaginationState($event)"
+          [totalPages]="scheduledEventsTotalPages">
+        </app-pagination>
+        <p class="mat-h3 min-section" *ngIf="!scheduledEvents?.length">Нічого не знайдено!</p>
       </div>
-      <app-pagination
-        *ngIf="scheduledEventsTotalPages"
-        [isArrowPagination]="true"
-        (paginationStateChange)="updateScheduledEventsPaginationState($event)"
-        [totalPages]="scheduledEventsTotalPages">
-      </app-pagination>
-      <p class="mat-h3 min-section" *ngIf="!scheduledEvents?.length">Нічого не знайдено!</p>
-    </div>
-  </section>
-  <section class="visited-places background-light">
-    <div class="container padding-inside">
-      <h1 class="headline">Недавні місця</h1>
-      <div class="main-list list home-list user-places__list user-list" *ngIf="visitedPlaces?.length">
+    </section>
+    <section class="section visited-places background-light">
+      <div class="container padding-inside">
+        <h1 class="headline user__headline">Відвідані місця</h1>
+        <div class="bright-line"></div>
+        <div class="main-list list home-list user-places__list user-list" *ngIf="visitedPlaces?.length">
           <a routerLink="/places/{{place.category_id}}/{{place.id}}" class="event-item" *ngFor="let place of visitedPlaces">
           <span class="img-wrapper">
             <img class="img-photo" src="{{place.main_photo}}" alt="{{place.name}}">
             </span>
             <p class="card-link event__title">{{place.name}}</p>
           </a>
+        </div>
+        <app-pagination
+          *ngIf="visitedPlacesTotalPages"
+          [isArrowPagination]="true"
+          (paginationStateChange)="updateVisitedPlacesPaginationState($event)"
+          [totalPages]="visitedPlacesTotalPages">
+        </app-pagination>
+        <p class="mat-h3 min-section" *ngIf="!visitedPlaces?.length">Нічого не знайдено!</p>
       </div>
-      <app-pagination
-        *ngIf="visitedPlacesTotalPages"
-        [isArrowPagination]="true"
-        (paginationStateChange)="updateVisitedPlacesPaginationState($event)"
-        [totalPages]="visitedPlacesTotalPages">
-      </app-pagination>
-      <p class="mat-h3 min-section" *ngIf="!visitedPlaces?.length">Нічого не знайдено!</p>
-    </div>
-  </section>
-  <section class="favorite-places background-saturated">
-    <div class="container padding-inside">
-      <h1 class="headline">Улюблені місця</h1>
-      <div class="main-list list home-list user-places__list user-list" *ngIf="favoritePlaces?.length">
+    </section>
+    <section class="section favorite-places background-saturated">
+      <div class="container padding-inside">
+        <h1 class="headline user__headline">Улюблені місця</h1>
+        <div class="bright-line"></div>
+        <div class="main-list list home-list user-places__list user-list" *ngIf="favoritePlaces?.length">
           <a routerLink="/places/{{place.category_id}}/{{place.id}}" *ngFor="let place of favoritePlaces" class="event-item" >
             <span class="img-wrapper">
             <img class="img-photo" src="{{place.main_photo}}" alt="{{place.name}}">
             </span>
             <p class="card-link">{{place.name}}</p>
           </a>
+        </div>
+        <app-pagination
+          *ngIf="favoritePlacesTotalPages"
+          [isArrowPagination]="true"
+          (paginationStateChange)="updateFavoritePlacesPaginationState($event)"
+          [totalPages]="favoritePlacesTotalPages">
+        </app-pagination>
+        <p class="mat-h3 min-section" *ngIf="!favoritePlaces?.length">Нічого не знайдено!</p>
       </div>
-      <app-pagination
-        *ngIf="favoritePlacesTotalPages"
-        [isArrowPagination]="true"
-        (paginationStateChange)="updateFavoritePlacesPaginationState($event)"
-        [totalPages]="favoritePlacesTotalPages">
-      </app-pagination>
-      <p class="mat-h3 min-section" *ngIf="!favoritePlaces?.length">Нічого не знайдено!</p>
-    </div>
-  </section>
-  <section class="user-places background-light">
-    <div class="container padding-inside created-user__container">
-      <h1 class="headline user-places__headline">Мої місця</h1>
-      <a routerLink="/place_create" class="link link-add user-places__link-add">Додати локацію</a>
-      <div class="main-list list home-list user-places__list user-list" *ngIf="userPlaces?.length">
+    </section>
+    <section class="section user-places background-light">
+      <div class="container padding-inside created-user__container">
+        <h1 class="headline user-places__headline user__headline">Мої місця</h1>
+        <a routerLink="/place_create" class="link link-add user-places__link-add">Додати локацію</a>
+        <div class="bright-line"></div>
+        <div class="main-list list home-list user-places__list user-list" *ngIf="userPlaces?.length">
           <a routerLink="/places/{{place.category_id}}/{{place.id}}" *ngFor="let place of userPlaces" class="event-item" >
           <span class="img-wrapper">
             <img class="img-photo" src="{{place.main_photo}}" alt="{{place.name}}">
             </span>
             <p class="card-link">{{place.name}}</p>
           </a>
+        </div>
+        <app-pagination
+          *ngIf="userPlacesTotalPages"
+          [isArrowPagination]="true"
+          (paginationStateChange)="updateUserPlacesPaginationState($event)"
+          [totalPages]="userPlacesTotalPages">
+        </app-pagination>
+        <p class="mat-h3 min-section" *ngIf="!userPlaces?.length">Нічого не знайдено!</p>
       </div>
-      <app-pagination
-        *ngIf="userPlacesTotalPages"
-        [isArrowPagination]="true"
-        (paginationStateChange)="updateUserPlacesPaginationState($event)"
-        [totalPages]="userPlacesTotalPages">
-      </app-pagination>
-      <p class="mat-h3 min-section" *ngIf="!userPlaces?.length">Нічого не знайдено!</p>
-    </div>
-  </section>
-  <section class="user-events background-saturated">
-    <div class="container padding-inside created-user__container">
-      <h1 class="headline">Мої події</h1>
-      <a routerLink="/event_create" class="link link-add user-places__link-add">Створити подію</a>
-      <div class="main-list list home-list user-places__list user-list" *ngIf="userEvents?.length">
+    </section>
+    <section class="section user-events background-saturated">
+      <div class="container padding-inside created-user__container">
+        <h1 class="headline user__headline">Мої події</h1>
+        <a routerLink="/event_create" class="link link-add user-places__link-add">Створити подію</a>
+        <div class="bright-line"></div>
+        <div class="main-list list home-list user-places__list user-list" *ngIf="userEvents?.length">
           <a routerLink="/events/{{event.id}}" class="event-item" *ngFor="let event of userEvents">
           <span class="img-wrapper">
             <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
@@ -99,14 +105,15 @@
               {{dateService.getDateTime(event.start_time)}}
             </p>
           </a>
-        <app-pagination
-          *ngIf="userEventsTotalPages"
-          [isArrowPagination]="true"
-          (paginationStateChange)="updateUserEventsPaginationState($event)"
-          [totalPages]="userEventsTotalPages">
-        </app-pagination>
+          <app-pagination
+            *ngIf="userEventsTotalPages"
+            [isArrowPagination]="true"
+            (paginationStateChange)="updateUserEventsPaginationState($event)"
+            [totalPages]="userEventsTotalPages">
+          </app-pagination>
+        </div>
+        <p class="mat-h3 min-section" *ngIf="!userEvents?.length">Нічого не знайдено!</p>
       </div>
-      <p class="mat-h3 min-section" *ngIf="!userEvents?.length">Нічого не знайдено!</p>
-    </div>
-  </section>
+    </section>
+  </div>
 </app-layout>

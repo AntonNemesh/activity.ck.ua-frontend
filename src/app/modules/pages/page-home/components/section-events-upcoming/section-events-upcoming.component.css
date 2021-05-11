@@ -1,5 +1,5 @@
 .upcoming-events__item:hover {
-  background-color: var(--color-light);
+  background-color: var(--color-light-saturated);
 }
 
 .events-headline__line {
@@ -11,6 +11,7 @@
 
 .mat-hidden {
   grid-row: 1/2;
+  grid-column: 3/4;
 }
 
 .events-headline__headline {

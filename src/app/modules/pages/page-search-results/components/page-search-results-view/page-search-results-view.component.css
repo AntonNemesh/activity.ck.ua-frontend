@@ -9,6 +9,10 @@
   border-radius: var(--border-radius);
 }
 
+.search__item:hover {
+  background-color: var(--color-light-saturated);
+}
+
 .search__link {
   display: grid;
   grid-template-columns: 1fr 6fr;

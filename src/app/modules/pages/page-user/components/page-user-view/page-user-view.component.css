@@ -1,3 +1,14 @@
+
+.wrapper {
+  background-color: var(--color-light-saturated);
+}
+.user__headline {
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--color-light-grey);
+}
+
 .created-user__container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

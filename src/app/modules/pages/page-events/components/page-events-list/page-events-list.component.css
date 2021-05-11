@@ -1,5 +1,14 @@
+.page-events-list__wrapper {
+  background-color: var(--color-light-saturated);
+}
+.page-events-list-wrapper {
+  margin-top: 10px;
+  background-color: var(--color-light);
+}
+
 @media (min-width: 791px) {
   .page-events-list-wrapper {
+    margin-top: 0;
     display: grid;
     grid-template-columns: .7fr 2.5fr;
     grid-template-rows: auto;
@@ -18,11 +27,6 @@
   grid-row: 1/2;
 }
 
-.page-events-list__events {
-  padding-top: var(--padding);
-  background-color: var(--color-light-saturated);
-}
-
 @media (min-width: 769px) {
   .page-events-list__events {
     grid-column: 2/3;
@@ -30,11 +34,6 @@
     padding: 30px;
   }
 }
-
-.page-events-list__item:hover {
-  background-color: rgba(0, 0, 0, 0.08);
-}
-
 
 .datepicker-wrapper__headline {
   grid-row: 1/2;
