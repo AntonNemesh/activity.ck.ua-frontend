@@ -3,6 +3,10 @@
   align-items: center;
 }
 
+.rating__title {
+  font-size: 36px;
+  margin: 0;
+}
 
 .rating__body {
   padding-left: 10px;
