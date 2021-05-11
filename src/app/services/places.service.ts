@@ -28,7 +28,7 @@ export class PlacesService {
     private apiUrlService: ApiUrlService,
     private organizationsService: OrganizationsService) { }
 
-  private limit: number = 1;
+  private limit: number = 6;
 
   public getLimit(): number {
     return this.limit;

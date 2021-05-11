@@ -10,7 +10,7 @@ export class EventsRequestParamsHelper {
   private readonly limit: number;
   public filterAvailabilityState: Partial<IAvailabilityFilterState> = {};
 
-  constructor(startTime: number, page: number = 1, limit: number = 6, filterAvailabilityState?: string[]) {
+  constructor(startTime: number, page: number = 1, limit: number = 4, filterAvailabilityState?: string[]) {
     this.startTime = startTime;
     this.page = page;
     this.limit = limit;
