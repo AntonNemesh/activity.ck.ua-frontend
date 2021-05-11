@@ -47,6 +47,10 @@ main {
   padding: 0!important;
 }
 
+.carousel-slide {
+  background-size: contain!important;
+}
+
 .red {
   color: red;
 }
