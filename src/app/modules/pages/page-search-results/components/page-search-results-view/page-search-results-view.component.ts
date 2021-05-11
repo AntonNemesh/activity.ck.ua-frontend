@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { DataService } from '../../../../../services';
+import { DataService, DateService } from '../../../../../services';
 import {IEvent, IPlace} from '../../../../../static/type';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-search-results-view',
@@ -10,7 +10,11 @@ import {Router} from '@angular/router';
   styleUrls: ['./page-search-results-view.component.css']
 })
 export class PageSearchResultsViewComponent implements OnInit {
-  constructor(private location: Location, private dataService: DataService, private router: Router) { }
+  constructor(
+    private location: Location,
+    private dataService: DataService,
+    private router: Router,
+    public dateService: DateService) { }
 
   public searchRequest: any;
   public events: IEvent[];
