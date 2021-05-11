@@ -3,8 +3,8 @@
     <section class="section scheduled-events background-saturated">
       <div class="container padding-inside ">
         <h1 class="headline user__headline">Заплановані події</h1>
+        <div class="bright-line"></div>
         <div class="main-list list home-list user-places__list user-list" *ngIf="scheduledEvents?.length">
-          <div class="bright-line"></div>
           <a routerLink="/events/{{event.id}}" class="event-item" *ngFor="let event of scheduledEvents">
           <span class="img-wrapper">
             <img class="img-photo" src="{{event.main_photo}}" alt="{{event.name}}">
