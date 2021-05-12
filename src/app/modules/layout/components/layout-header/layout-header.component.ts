@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthorizationService, UsersService } from '../../../../services';
+import { AuthorizationService, DataService, UsersService } from '../../../../services';
 import { IUser } from '../../../../static/type';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -11,6 +11,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class LayoutHeaderComponent implements OnInit {
   constructor(
+    private dataService: DataService,
     private usersService: UsersService,
     private route: ActivatedRoute,
     private authorizationService: AuthorizationService,
@@ -41,7 +42,11 @@ export class LayoutHeaderComponent implements OnInit {
   public search(): void {
     const searchText: string = this.searchGroup.get('search').value;
     if (searchText.trim() === '') { return; }
-    this.router.navigateByUrl('/search', { state: { data: searchText } });
+    if (this.router.url !== '/search') {
+      this.router.navigateByUrl('/search', { state: { data: searchText } });
+      return;
+    }
+    this.dataService.setSearchText(searchText);
   }
 
   ngOnInit(): void {
