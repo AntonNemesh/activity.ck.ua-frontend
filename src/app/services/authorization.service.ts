@@ -30,7 +30,7 @@ export class AuthorizationService {
 
   public get isLoggedOut$(): Observable<boolean> {
     return this.authorizationStateStream.asObservable().pipe(
-      map((value) => !value),
+      map(value => !value),
       distinctUntilChanged()
     );
   }
@@ -73,15 +73,22 @@ export class AuthorizationService {
     });
   }
 
-  public deleteTokens(): void {
+  public removeSession(): void {
     this.setLogOut();
     localStorage.clear();
+    window.location.replace('/home');
   }
 
-  public getLifeCycleOfAccessToken(): number {
+  public createSession(tokens: any): void {
+    this.accessToken = tokens.access_token;
+    this.refreshToken = tokens.refresh_token;
+    window.location.replace('/home');
+  }
+
+  public get isAccessTokenAlive(): boolean {
     if (!this.accessToken) { return; }
     const time: string = JSON.parse(window.atob(this.accessToken.split('.')[1])).exp + '000';
-    return Math.floor((+time - +Date.now()) / 60000);
+    return Math.floor((+time - +Date.now()) / 60000) > 0;
   }
 
   public buildRegistrationRequest(dataForm: any, linksToPhotos: string[]): any {

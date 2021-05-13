@@ -9,6 +9,7 @@ import {map} from 'rxjs/operators';
 })
 export class LogoutGuard implements CanActivate {
   constructor(private authorizationService: AuthorizationService, private router: Router) {
+    if (this.authorizationService.isAccessTokenAlive) { this.authorizationService.setLogIn(); }
   }
   canActivate(
     route: ActivatedRouteSnapshot,

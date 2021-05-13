@@ -7,11 +7,11 @@ import {
 } from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {AuthorizationService} from '../services';
-import {catchError, map} from 'rxjs/operators';
+import {catchError, map, tap} from 'rxjs/operators';
 
 @Injectable()
 export class HeaderModInterceptor implements HttpInterceptor {
-  constructor(private authorizationService: AuthorizationService) {}
+  constructor(private authorizationService: AuthorizationService) { }
 
   intercept(req: HttpRequest<any>,
             next: HttpHandler): Observable<HttpEvent<any>> {
@@ -31,7 +31,18 @@ export class HeaderModInterceptor implements HttpInterceptor {
         headers: req.headers.set('Authorization',
           'Bearer ' + accessToken)
       });
-      return next.handle(cloned);
+      return next.handle(cloned).pipe(
+        tap( () => {
+          this.authorizationService.setLogIn();
+        }),
+        catchError(err => {
+          if (err.status === 403) {
+            this.authorizationService.removeSession();
+          }
+          const error: any = err.error.message || err.statusText;
+          return throwError(error);
+        })
+      );
     }
 
     if (!req.url.includes('myself')) {

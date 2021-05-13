@@ -25,14 +25,8 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.get('password').value,
     };
     this.authorizationService.login(authData).subscribe(
-      (data) => {
-        this.authorizationService.accessToken = data.access_token;
-        this.authorizationService.refreshToken = data.refresh_token;
-        window.location.replace('/home');
-      },
-      (error) => {
-        console.log(error);
-      },
+      (tokens) => { this.authorizationService.createSession(tokens); },
+      (error) => { console.log(error); },
     );
   }
 

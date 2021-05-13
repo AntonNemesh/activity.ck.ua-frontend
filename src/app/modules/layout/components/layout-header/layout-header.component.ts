@@ -18,8 +18,6 @@ export class LayoutHeaderComponent implements OnInit {
     private router: Router,
   ) { }
 
-  private lifeCycleAccessToken: number = this.authorizationService.getLifeCycleOfAccessToken();
-
   public searchGroup: FormGroup = new FormGroup({
     search: new FormControl('', {})
   });
@@ -28,13 +26,8 @@ export class LayoutHeaderComponent implements OnInit {
 
   public logout(): void {
     this.authorizationService.logout().subscribe(
-      (value) => {
-        this.authorizationService.deleteTokens();
-        window.location.replace('/home');
-      },
-      (error) => {
-          console.log(error);
-      }
+      (value) => { this.authorizationService.removeSession(); },
+      (error) => { console.log(error); }
     );
   }
 
@@ -49,22 +42,6 @@ export class LayoutHeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.lifeCycleAccessToken);
-    if (this.lifeCycleAccessToken < 2) {
-      this.authorizationService.updateTokens();
-    }
-    this.route.data.subscribe(
-(data) => {
-        if (data.user) {
-          this.user = data.user;
-          this.authorizationService.setLogIn();
-        } else {
-          this.authorizationService.setLogOut();
-        }
-      },
-(error) => {
-        console.log(error);
-      }
-    );
+    this.route.data.subscribe((data) => { this.user = (data.user) ? data.user : undefined; });
   }
 }
