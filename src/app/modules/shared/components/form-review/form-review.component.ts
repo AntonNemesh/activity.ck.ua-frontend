@@ -4,6 +4,7 @@ import { AuthorizationService, PlacesService } from '../../../../services';
 import { IPlaceReview, IUser } from '../../../../static/type';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {Observable} from 'rxjs';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class FormReviewComponent implements OnInit {
   public ratingTouched: boolean = false;
   public hasRatingError: boolean = false;
 
-  public isLoggedIn: boolean = this.authorizationService.isLoggedIn;
+  public isLoggedOut$: Observable<boolean> = this.authorizationService.isLoggedOut$;
 
   public ratingArr: number[] = [];
 
@@ -95,12 +96,14 @@ export class FormReviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.initRatingView();
-    if (!this.isLoggedIn) {
-      this.formReview.disable();
-      return;
-    }
-    this.route.data.subscribe((data) => {
-      this.user = data.user;
+    this.isLoggedOut$.subscribe((value) => {
+      if (value) {
+        this.formReview.disable();
+        return;
+      }
+      this.route.data.subscribe((data) => {
+        this.user = data.user;
+      });
     });
   }
 

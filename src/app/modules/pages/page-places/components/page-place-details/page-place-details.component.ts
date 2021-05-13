@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthorizationService, DateService, EventsService, PlacesService, UsersService } from '../../../../../services';
 import { IEvent, IPlace, IPlaceReview } from '../../../../../static/type';
+import {Observable} from 'rxjs';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class PagePlaceDetailsComponent implements OnInit {
   public reviewsTotalPages: number;
   public reviewsState: boolean = false;
 
-  public isLoggedIn: boolean = this.authorizationService.isLoggedIn;
+  public isLoggedOut$: Observable<boolean> = this.authorizationService.isLoggedOut$;
 
   constructor(
     private route: ActivatedRoute,

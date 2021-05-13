@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthorizationService, CategoriesService, DateService, PlacesService } from '../../../../../services';
 import { IPlace } from '../../../../../static/type';
 import { PlacesRequestParamsHelper } from '../../../../../helpers';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-page-places-list',
@@ -20,7 +21,7 @@ export class PagePlacesListComponent implements OnInit {
   public filterAvailabilityState: string[] = [];
 
   public totalPages: number;
-  public isLoggedIn: boolean = this.authorizationService.isLoggedIn;
+  public isLoggedOut$: Observable<boolean> = this.authorizationService.isLoggedOut$;
 
   constructor(
     private route: ActivatedRoute,

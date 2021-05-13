@@ -136,7 +136,7 @@
       </button>
     </form>
 
-    <a *ngIf="!isLoggedIn" routerLink="/authorization" class="link header__link header__auth">
+    <a *ngIf="!user" routerLink="/authorization" class="link header__link header__auth">
       <svg viewBox="-42 0 512 512.002" class="avatar-placeholder">
         <use xlink:href="../../../../../assets/icons.svg#user"></use>
       </svg>
@@ -146,9 +146,8 @@
       <img class="avatar-img" src="{{user.avatar}}" alt="{{user.name}}">
       <span class="user__name">{{user.name}}</span>
     </a>
-    <button class="header__logout" mat-icon-button color="primary" *ngIf="isLoggedIn" (click)="logout()">
+    <button class="header__logout" mat-icon-button color="primary" *ngIf="user" (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>
     </button>
-
   </div>
 </header>

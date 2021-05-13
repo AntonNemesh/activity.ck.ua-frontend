@@ -19,7 +19,6 @@ export class LayoutHeaderComponent implements OnInit {
   ) { }
 
   private lifeCycleAccessToken: number = this.authorizationService.getLifeCycleOfAccessToken();
-  public isLoggedIn: boolean = this.authorizationService.isLoggedIn;
 
   public searchGroup: FormGroup = new FormGroup({
     search: new FormControl('', {})
@@ -50,7 +49,7 @@ export class LayoutHeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.lifeCycleAccessToken, this.isLoggedIn);
+    console.log(this.lifeCycleAccessToken);
     if (this.lifeCycleAccessToken < 2) {
       this.authorizationService.updateTokens();
     }
@@ -59,10 +58,8 @@ export class LayoutHeaderComponent implements OnInit {
         if (data.user) {
           this.user = data.user;
           this.authorizationService.setLogIn();
-          this.authorizationService.isLoggedIn = true;
         } else {
           this.authorizationService.setLogOut();
-          this.authorizationService.isLoggedIn = false;
         }
       },
 (error) => {

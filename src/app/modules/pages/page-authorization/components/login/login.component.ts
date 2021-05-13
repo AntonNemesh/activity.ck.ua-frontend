@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthorizationService } from '../../../../../services';
 import { Router } from '@angular/router';
 
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-      }
+      },
     );
   }
 

@@ -89,14 +89,14 @@
         <div class="bright-line"></div>
         <p class="place-details__about">{{place.description}}</p>
         <div class="favorite-visit-section">
-          <button [disabled]="!isLoggedIn"
-                  [class.--disabled]="!isLoggedIn"
+          <button [disabled]="isLoggedOut$ | async"
+                  [class.--disabled]="isLoggedOut$ | async"
                   [class.pressed-primary-btn]="visited" mat-flat-button class="visited-btn"
                   (click)="updateVisitedState()">
             Відвідаю
           </button>
-          <button [disabled]="!isLoggedIn"
-                  [class.--disabled]="!isLoggedIn" mat-icon-button color="warn"
+          <button [disabled]="isLoggedOut$ | async"
+                  [class.--disabled]="isLoggedOut$ | async" mat-icon-button color="warn"
                   (click)="updateFavoriteState()">
             <mat-icon *ngIf="favorite">favorite</mat-icon>
             <mat-icon *ngIf="!favorite">favorite_border</mat-icon>

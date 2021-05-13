@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiUrlService } from './api-url.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
+import { distinctUntilChanged, map } from 'rxjs/operators';
 import { IUser } from '../static/type';
 
 
@@ -13,7 +13,6 @@ export class AuthorizationService {
   constructor(private http: HttpClient, private apiUrlService: ApiUrlService) { }
 
   private readonly authorizationStateStream: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  private authorizationState: boolean;
 
   public setLogIn(): void {
     this.authorizationStateStream.next(true);
@@ -23,18 +22,17 @@ export class AuthorizationService {
     this.authorizationStateStream.next(false);
   }
 
-  public get isLoggedInStream(): Observable<boolean> {
+  public get isLoggedIn$(): Observable<boolean> {
     return this.authorizationStateStream.asObservable().pipe(
       distinctUntilChanged()
     );
   }
 
-  public get isLoggedIn(): boolean {
-    return this.authorizationState;
-  }
-
-  public set isLoggedIn(value: boolean) {
-    this.authorizationState = value;
+  public get isLoggedOut$(): Observable<boolean> {
+    return this.authorizationStateStream.asObservable().pipe(
+      map((value) => !value),
+      distinctUntilChanged()
+    );
   }
 
   public get accessToken(): string|null {
@@ -54,10 +52,12 @@ export class AuthorizationService {
   }
 
   public login(authData: any): any {
+    this.setLogIn();
     return this.http.post<any>(this.apiUrlService.generateApiLink('auth/login'), authData);
   }
 
   public logout(): any {
+    this.setLogOut();
     return this.http.get<any>(this.apiUrlService.generateApiLink('auth/logout'));
   }
 
@@ -74,7 +74,7 @@ export class AuthorizationService {
   }
 
   public deleteTokens(): void {
-    this.isLoggedIn = false;
+    this.setLogOut();
     localStorage.clear();
   }
 

@@ -5,7 +5,7 @@ import { PagePlaceCreateComponent } from './modules/pages/page-places/components
 import { PageUserViewComponent } from './modules/pages/page-user/components';
 import { PageAuthorizationViewComponent } from './modules/pages/page-authorization/components';
 import { UsersResolverService } from './services';
-import { AuthorizationGuard } from './guards';
+import { LoginGuard, LogoutGuard } from './guards';
 import { PageSearchResultsViewComponent } from './modules/pages/page-search-results/components';
 import { PageEventCreateComponent } from './modules/pages/page-events/components';
 
@@ -16,10 +16,10 @@ const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: PageHomeViewComponent },
       { path: 'search', component: PageSearchResultsViewComponent },
-      { path: 'user', component: PageUserViewComponent, canActivate: [AuthorizationGuard] },
-      { path: 'place_create', component: PagePlaceCreateComponent, canActivate: [AuthorizationGuard] },
-      { path: 'event_create', component: PageEventCreateComponent, canActivate: [AuthorizationGuard] },
-      { path: 'authorization', component: PageAuthorizationViewComponent, canActivate: [AuthorizationGuard] },
+      { path: 'user', component: PageUserViewComponent, canActivate: [LoginGuard] },
+      { path: 'place_create', component: PagePlaceCreateComponent, canActivate: [LoginGuard] },
+      { path: 'event_create', component: PageEventCreateComponent, canActivate: [LoginGuard] },
+      { path: 'authorization', component: PageAuthorizationViewComponent, canActivate: [LogoutGuard] },
       { path: 'places/:category_id', loadChildren: () => import('./modules/pages/page-places').then(m => m.PagePlacesModule) },
       { path: 'events', loadChildren: () => import('./modules/pages/page-events').then(m => m.PageEventsModule) },
       { path: '**', redirectTo: 'home', pathMatch: 'full' },
@@ -31,6 +31,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule],
-  providers: [AuthorizationGuard]
+  providers: [LoginGuard, LogoutGuard]
 })
 export class AppRoutingModule { }

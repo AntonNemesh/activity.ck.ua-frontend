@@ -1,1 +1,2 @@
-export { AuthorizationGuard } from './authorization.guard';
+export { LoginGuard } from './login.guard';
+export { LogoutGuard } from './logout.guard';

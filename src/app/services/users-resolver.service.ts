@@ -21,12 +21,10 @@ export class UsersResolverService implements Resolve<any> {
     return this.usersService.getUserInfo().pipe(
       tap((data) => {
         this.authorizationService.setLogIn();
-        this.authorizationService.isLoggedIn = true;
       }),
       catchError((data) => {
         this.authorizationService.updateTokens();
         this.authorizationService.setLogOut();
-        this.authorizationService.isLoggedIn = false;
         return of(false);
       })
     );

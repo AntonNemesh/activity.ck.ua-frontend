@@ -3,6 +3,7 @@ import { AuthorizationService, DateService, EventsService } from '../../../../..
 import { IEvent } from '../../../../../static/type';
 import { FormControl } from '@angular/forms';
 import { EventsRequestParamsHelper } from '../../../../../helpers';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-page-events-list',
@@ -25,7 +26,7 @@ export class PageEventsListComponent implements OnInit {
   public page: number = 1;
   public limit: number = 6;
   public totalPages: number;
-  public isLoggedIn: boolean = this.authorizationService.isLoggedIn;
+  public isLoggedOut$: Observable<boolean> = this.authorizationService.isLoggedOut$;
 
   public filterAvailabilityState: string[];
 

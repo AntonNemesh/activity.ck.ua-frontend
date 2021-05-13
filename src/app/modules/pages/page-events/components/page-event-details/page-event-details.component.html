@@ -32,8 +32,8 @@
       <h2 class="card-text bold event__program">Програма:</h2>
       <p class="card-text">{{event.program}}</p>
       <div class="favorite-visit-section">
-        <button [disabled]="!isLoggedIn"
-                [class.--disabled]="!isLoggedIn"
+        <button [disabled]="isLoggedOut$ | async"
+                [class.--disabled]="isLoggedOut$ | async"
                 [class.pressed-primary-btn]="scheduled"
                 mat-flat-button class="visited-btn"
                 (click)="updateScheduledState()">Відвідаю
