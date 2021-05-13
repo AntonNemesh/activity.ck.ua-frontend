@@ -1,4 +1,6 @@
 @import "styles/global-styles.part-one.css";
+/*@import "custom-theme.scss";*/
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 /*normalize*/
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -772,4 +774,43 @@ main {
 
 .auth__page {
   min-height: 80vh;
+}
+
+/*override material design palette*/
+
+.mat-icon,
+.mat-form-field-label,
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: var(--color-bright);
+}
+
+.mat-input-element {
+  caret-color: var(--color-bright);
+}
+
+.mat-raised-button.mat-primary,
+.mat-step-header .mat-step-icon-selected,
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: var(--color-bright);
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: var(--color-light-grey);
+}
+
+.mat-progress-bar-fill::after {
+  background-color: #73be44;
+}
+
+.mat-progress-bar-buffer {
+  background-color: #bbe3a4;
+
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background: none;
+}
+
+.mat-step-header .mat-step-icon-state-edit {
+  background-color: #ffd740;;
 }
