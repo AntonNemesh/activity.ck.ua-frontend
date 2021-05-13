@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {AuthorizationService} from '../services';
-import {catchError, map, tap} from 'rxjs/operators';
+import {catchError, debounceTime, map, tap} from 'rxjs/operators';
 
 @Injectable()
 export class HeaderModInterceptor implements HttpInterceptor {
@@ -35,9 +35,21 @@ export class HeaderModInterceptor implements HttpInterceptor {
         tap( () => {
           this.authorizationService.setLogIn();
         }),
+        debounceTime(2000),
         catchError(err => {
-          if (err.status === 403) {
-            this.authorizationService.removeSession();
+          if (err.status === 403 && !this.authorizationService.isAccessTokenAlive) {
+            this.authorizationService.refreshTokens().subscribe(
+              (data) => {
+                console.log('Access Token Refreshed!');
+                this.authorizationService.accessToken = data.access_token;
+                this.authorizationService.refreshToken = data.refresh_token;
+                window.location.reload();
+              },
+              (e) => {
+                console.log('Access Token ERROR', e);
+                this.authorizationService.removeSession();
+              }
+            );
           }
           const error: any = err.error.message || err.statusText;
           return throwError(error);

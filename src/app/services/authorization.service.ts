@@ -61,16 +61,8 @@ export class AuthorizationService {
     return this.http.get<any>(this.apiUrlService.generateApiLink('auth/logout'));
   }
 
-  private getNewTokens(): any {
+  public refreshTokens(): any {
     return this.http.get<any>(this.apiUrlService.generateApiLink('auth/refresh'));
-  }
-
-  public updateTokens(): void {
-    if (!this.accessToken || !this.refreshToken) { return; }
-    this.getNewTokens().subscribe((data) => {
-      this.accessToken = data.access_token;
-      this.refreshToken = data.refresh_token;
-    });
   }
 
   public removeSession(): void {
@@ -88,7 +80,7 @@ export class AuthorizationService {
   public get isAccessTokenAlive(): boolean {
     if (!this.accessToken) { return; }
     const time: string = JSON.parse(window.atob(this.accessToken.split('.')[1])).exp + '000';
-    return Math.floor((+time - +Date.now()) / 60000) > 0;
+    return Math.floor((+time - +Date.now())) > 0;
   }
 
   public buildRegistrationRequest(dataForm: any, linksToPhotos: string[]): any {
