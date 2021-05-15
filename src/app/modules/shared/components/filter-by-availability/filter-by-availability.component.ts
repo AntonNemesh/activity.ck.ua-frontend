@@ -3,6 +3,7 @@ import { IAvailabilityFilter } from '../../../../static/type';
 import { AVAILABILITY_FILTER } from '../../../../static/data';
 import { FormArray, FormControl } from '@angular/forms';
 import { AuthorizationService } from '../../../../services';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-filter-by-availability',
@@ -16,19 +17,19 @@ export class FilterByAvailabilityComponent implements OnInit {
   public selectedFilter: string[];
   public availabilityFilterArray: FormArray = new FormArray([]);
 
-  public isLoggedIn: boolean = this.authorizationService.isLoggedIn;
+  public isLoggedOut$: Observable<boolean> = this.authorizationService.isLoggedOut$;
 
   @Input() page: string;
   @Output()
   availabilityStateChange: EventEmitter<string[]> = new EventEmitter<string[]>();
 
-  public setAvailabilityFilter(): void {
+  public setAvailabilityFilter(isLoggedOut: boolean): void {
     this.availabilityFilter.forEach((item) => {
       if (this.page === 'events' && item.filter_id === 'opened' ||
           this.page === 'events' && item.filter_id === 'unexplored') {
         return;
       }
-      if (item.filter_id === 'unexplored' && !this.isLoggedIn) {
+      if (isLoggedOut && item.filter_id === 'unexplored') {
         this.availabilityFilterArray.push(new FormControl({value: false, disabled: true}));
         return;
       }
@@ -46,7 +47,9 @@ export class FilterByAvailabilityComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setAvailabilityFilter();
+    this.isLoggedOut$.subscribe((isLoggedOut) => {
+      this.setAvailabilityFilter(isLoggedOut);
+    });
     this.availabilityFilterArray.valueChanges.subscribe((value) => {
       this.selectedFilter = this.getAvailabilityFilterState(value);
       this.availabilityStateChange.emit(this.selectedFilter);

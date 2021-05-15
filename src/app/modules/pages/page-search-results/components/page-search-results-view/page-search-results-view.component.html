@@ -1,7 +1,7 @@
 <app-layout>
     <div class="search__page">
   <section class="background-light container padding-inside" *ngIf="places?.length">
-    <p>Результати пошуку: {{searchRequest.data}}</p>
+    <p>Результати пошуку: {{searchText}}</p>
     <h1 class="headline">Місця</h1>
     <ul *ngIf="places?.length" class="list">
       <li *ngFor="let place of places" class="search__item">
@@ -12,7 +12,11 @@
         </a>
       </li>
     </ul>
-
+    <app-pagination
+      *ngIf="placesTotalPages"
+      (paginationStateChange)="updatePlacesPaginationState($event)"
+      [totalPages]="placesTotalPages">
+    </app-pagination>
   </section>
   <section class="background-light container padding-inside" *ngIf="events?.length">
     <h1 class="headline">Події</h1>
@@ -25,9 +29,14 @@
         </a>
       </li>
     </ul>
+    <app-pagination
+      *ngIf="eventsTotalPages"
+      (paginationStateChange)="updateEventsPaginationState($event)"
+      [totalPages]="eventsTotalPages">
+    </app-pagination>
   </section>
   <section class="background-light container">
-    <p class=" headline min-section" *ngIf="!events?.length && !places?.length">Нічого не знайдено!</p>
+    <p class="headline min-section mat-h3" *ngIf="!events?.length && !places?.length">По запиту "{{searchText}}" нічого не знайдено!</p>
   </section>
     </div>
 </app-layout>

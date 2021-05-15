@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthorizationService, UsersService } from '../../../../services';
+import { AuthorizationService, DataService, UsersService } from '../../../../services';
 import { IUser } from '../../../../static/type';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -11,14 +11,12 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class LayoutHeaderComponent implements OnInit {
   constructor(
+    private dataService: DataService,
     private usersService: UsersService,
     private route: ActivatedRoute,
     private authorizationService: AuthorizationService,
     private router: Router,
   ) { }
-
-  private lifeCycleAccessToken: number = this.authorizationService.getLifeCycleOfAccessToken();
-  public isLoggedIn: boolean = this.authorizationService.isLoggedIn;
 
   public searchGroup: FormGroup = new FormGroup({
     search: new FormControl('', {})
@@ -28,41 +26,22 @@ export class LayoutHeaderComponent implements OnInit {
 
   public logout(): void {
     this.authorizationService.logout().subscribe(
-      (value) => {
-        this.authorizationService.deleteTokens();
-        window.location.replace('/home');
-      },
-      (error) => {
-          console.log(error);
-      }
+      (value) => { this.authorizationService.removeSession(); },
+      (error) => { console.log(error); }
     );
   }
 
   public search(): void {
     const searchText: string = this.searchGroup.get('search').value;
     if (searchText.trim() === '') { return; }
-    this.router.navigateByUrl('/search', { state: { data: searchText } });
+    if (this.router.url !== '/search') {
+      this.router.navigateByUrl('/search', { state: { data: searchText } });
+      return;
+    }
+    this.dataService.setSearchText(searchText);
   }
 
   ngOnInit(): void {
-    console.log(this.lifeCycleAccessToken, this.isLoggedIn);
-    if (this.lifeCycleAccessToken < 2) {
-      this.authorizationService.updateTokens();
-    }
-    this.route.data.subscribe(
-(data) => {
-        if (data.user) {
-          this.user = data.user;
-          this.authorizationService.setLogIn();
-          this.authorizationService.isLoggedIn = true;
-        } else {
-          this.authorizationService.setLogOut();
-          this.authorizationService.isLoggedIn = false;
-        }
-      },
-(error) => {
-        console.log(error);
-      }
-    );
+    this.route.data.subscribe((data) => { this.user = (data.user) ? data.user : undefined; });
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IEvent } from '../../../../../static/type';
 import { ActivatedRoute } from '@angular/router';
 import { AuthorizationService, DateService, EventsService, UsersService } from '../../../../../services';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-page-event-details',
@@ -12,7 +13,7 @@ export class PageEventDetailsComponent implements OnInit {
   public eventId: string;
   public event: IEvent;
   public scheduled: boolean;
-  public isLoggedIn: boolean = this.authorizationService.isLoggedIn;
+  public isLoggedOut$: Observable<boolean> = this.authorizationService.isLoggedOut$;
 
   constructor(
     private route: ActivatedRoute,

@@ -32,15 +32,16 @@
       <h2 class="card-text bold event__program">Програма:</h2>
       <p class="card-text">{{event.program}}</p>
       <div class="favorite-visit-section">
-        <button *ngIf="!scheduled" [disabled]="!isLoggedIn"
-                [class.--disabled]="!isLoggedIn"
+        <button *ngIf="!scheduled" [disabled]="isLoggedOut$ | async"
+                [class.--disabled]="isLoggedOut$ | async"
                 mat-raised-button
                 color="primary"
                 class="scheduled-btn"
                 (click)="updateScheduledState()">Відвідати
         </button>
-        <button *ngIf="scheduled" [disabled]="!isLoggedIn"
-                [class.--disabled]="!isLoggedIn"
+
+        <button *ngIf="scheduled" [disabled]="isLoggedOut$ | async"
+                [class.--disabled]="isLoggedOut$ | async"
                 [class.pressed-primary-btn]="scheduled"
                 mat-raised-button
                 (click)="updateScheduledState()">Відвідаю

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiUrlService } from './api-url.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
+import { distinctUntilChanged, map } from 'rxjs/operators';
 import { IUser } from '../static/type';
 
 
@@ -13,7 +13,6 @@ export class AuthorizationService {
   constructor(private http: HttpClient, private apiUrlService: ApiUrlService) { }
 
   private readonly authorizationStateStream: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  private authorizationState: boolean;
 
   public setLogIn(): void {
     this.authorizationStateStream.next(true);
@@ -23,18 +22,17 @@ export class AuthorizationService {
     this.authorizationStateStream.next(false);
   }
 
-  public get isLoggedInStream(): Observable<boolean> {
+  public get isLoggedIn$(): Observable<boolean> {
     return this.authorizationStateStream.asObservable().pipe(
       distinctUntilChanged()
     );
   }
 
-  public get isLoggedIn(): boolean {
-    return this.authorizationState;
-  }
-
-  public set isLoggedIn(value: boolean) {
-    this.authorizationState = value;
+  public get isLoggedOut$(): Observable<boolean> {
+    return this.authorizationStateStream.asObservable().pipe(
+      map(value => !value),
+      distinctUntilChanged()
+    );
   }
 
   public get accessToken(): string|null {
@@ -54,34 +52,35 @@ export class AuthorizationService {
   }
 
   public login(authData: any): any {
+    this.setLogIn();
     return this.http.post<any>(this.apiUrlService.generateApiLink('auth/login'), authData);
   }
 
   public logout(): any {
+    this.setLogOut();
     return this.http.get<any>(this.apiUrlService.generateApiLink('auth/logout'));
   }
 
-  private getNewTokens(): any {
+  public refreshTokens(): any {
     return this.http.get<any>(this.apiUrlService.generateApiLink('auth/refresh'));
   }
 
-  public updateTokens(): void {
-    if (!this.accessToken || !this.refreshToken) { return; }
-    this.getNewTokens().subscribe((data) => {
-      this.accessToken = data.access_token;
-      this.refreshToken = data.refresh_token;
-    });
-  }
-
-  public deleteTokens(): void {
-    this.isLoggedIn = false;
+  public removeSession(): void {
+    this.setLogOut();
     localStorage.clear();
+    window.location.replace('/home');
   }
 
-  public getLifeCycleOfAccessToken(): number {
+  public createSession(tokens: any): void {
+    this.accessToken = tokens.access_token;
+    this.refreshToken = tokens.refresh_token;
+    window.location.replace('/home');
+  }
+
+  public get isAccessTokenAlive(): boolean {
     if (!this.accessToken) { return; }
     const time: string = JSON.parse(window.atob(this.accessToken.split('.')[1])).exp + '000';
-    return Math.floor((+time - +Date.now()) / 60000);
+    return Math.floor((+time - +Date.now())) > 0;
   }
 
   public buildRegistrationRequest(dataForm: any, linksToPhotos: string[]): any {

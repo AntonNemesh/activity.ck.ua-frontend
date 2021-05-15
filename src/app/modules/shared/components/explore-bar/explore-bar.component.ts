@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressBarMode } from '@angular/material/progress-bar';
 import { AuthorizationService, CategoriesService, UsersService } from '../../../../services';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-explore-bar',
@@ -15,7 +16,8 @@ export class ExploreBarComponent implements OnInit {
     private authorizationService: AuthorizationService,
   ) { }
 
-  public isLoggedIn: boolean = this.authorizationService.isLoggedIn;
+  public isLoggedIn$: Observable<boolean> = this.authorizationService.isLoggedIn$;
+  public isLoggedOut$: Observable<boolean> = this.authorizationService.isLoggedOut$;
 
   public roles: string[] = ['Новачок', 'Любитель', 'Гуру'];
 
@@ -38,17 +40,20 @@ export class ExploreBarComponent implements OnInit {
     if (this.categoryId) {
       this.categoryName = this.categoriesService.getCategoryNameById(this.categoryId);
     }
-    if (!this.isLoggedIn) { return; }
-    this.usersService.getExplore(this.categoryId).subscribe(
-      (data) => {
-        this.explore = data.explore;
-        this.updateRole(data.explore);
-      },
-      () => {
-        this.explore = 0;
-        this.updateRole(0);
+    this.isLoggedIn$.subscribe((value) => {
+      if (value) {
+        this.usersService.getExplore(this.categoryId).subscribe(
+          (data) => {
+            this.explore = data.explore;
+            this.updateRole(data.explore);
+          },
+          () => {
+            this.explore = 0;
+            this.updateRole(0);
+          }
+        );
       }
-    );
+    });
   }
 
 }

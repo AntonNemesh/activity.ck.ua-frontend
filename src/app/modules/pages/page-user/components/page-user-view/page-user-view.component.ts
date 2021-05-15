@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DateService, UsersService} from '../../../../../services';
+import {AuthorizationService, DateService, UsersService} from '../../../../../services';
 import { IEvent, IPlace } from '../../../../../static/type';
 
 @Component({
@@ -9,7 +9,7 @@ import { IEvent, IPlace } from '../../../../../static/type';
 })
 export class PageUserViewComponent implements OnInit {
 
-  constructor(private usersService: UsersService, public dateService: DateService) { }
+  constructor(private usersService: UsersService, public dateService: DateService, private authorizationService: AuthorizationService) { }
 
   public visitedPlaces: IPlace[];
   public favoritePlaces: IPlace[];
@@ -132,5 +132,6 @@ export class PageUserViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateEvents();
+    this.authorizationService.setLogIn();
   }
 }

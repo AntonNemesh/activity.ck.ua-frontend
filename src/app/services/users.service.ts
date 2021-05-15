@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ApiUrlService } from './api-url.service';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { IEventsResponse, IPlacesResponse, IUser, IUserResponse } from '../static/type';
-import { map, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -19,7 +19,8 @@ export class UsersService {
     return this.http.get<IUserResponse>(this.apiUrlService.generateApiLink('users/myself'))
       .pipe(
         map(data => data.user),
-        tap(data => this.currentUser = data.user)
+        catchError((error) => of(false)),
+        tap(data => this.currentUser = data.user),
       );
   }
 

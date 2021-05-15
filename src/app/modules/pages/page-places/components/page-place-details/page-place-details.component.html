@@ -89,25 +89,38 @@
         <div class="bright-line"></div>
         <p class="place-details__about">{{place.description}}</p>
         <div class="favorite-visit-section">
-          <button *ngIf="!visited" [disabled]="!isLoggedIn"
-                  [class.--disabled]="!isLoggedIn"
+          <button *ngIf="!visited" [disabled]="isLoggedOut$ | async"
+                  [class.--disabled]="isLoggedOut$ | async"
                   mat-raised-button
                   color="primary"
                   class="scheduled-btn"
                   (click)="updateVisitedState()">Відвідати
           </button>
-          <button *ngIf="visited" [disabled]="!isLoggedIn"
-                  [class.--disabled]="!isLoggedIn"
+          <button *ngIf="visited" [disabled]="isLoggedOut$ | async"
+                  [class.--disabled]="isLoggedOut$ | async"
                   [class.pressed-primary-btn]="visited"
                   mat-raised-button
-                  (click)="updateVisitedState()">Відвідав
+                  (click)="updateVisitedState()">Відвідаю
           </button>
-          <button [disabled]="!isLoggedIn"
-                  [class.--disabled]="!isLoggedIn" mat-icon-button
+          <button [disabled]="isLoggedOut$ | async"
+                  [class.--disabled]="isLoggedOut$ | async" mat-icon-button
                   (click)="updateFavoriteState()"
                   class="red">
             <mat-icon *ngIf="favorite" class="red">favorite</mat-icon>
             <mat-icon *ngIf="!favorite" class="red">favorite_border</mat-icon>
+<!--=======-->
+<!--          <button [disabled]="isLoggedOut$ | async"-->
+<!--                  [class.&#45;&#45;disabled]="isLoggedOut$ | async"-->
+<!--                  [class.pressed-primary-btn]="visited" mat-flat-button class="visited-btn"-->
+<!--                  (click)="updateVisitedState()">-->
+<!--            Відвідаю-->
+<!--          </button>-->
+<!--          <button [disabled]="isLoggedOut$ | async"-->
+<!--                  [class.&#45;&#45;disabled]="isLoggedOut$ | async" mat-icon-button color="warn"-->
+<!--                  (click)="updateFavoriteState()">-->
+<!--            <mat-icon *ngIf="favorite">favorite</mat-icon>-->
+<!--            <mat-icon *ngIf="!favorite">favorite_border</mat-icon>-->
+<!--&gt;>>>>>> df16a98b225091d46f96b90aabaf583663e0b7a7-->
           </button>
         </div>
       </section>
