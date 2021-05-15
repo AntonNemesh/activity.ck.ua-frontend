@@ -16,7 +16,7 @@
   grid-column: 2 / 4;
   grid-row: 1 / 2;
 }
-.review-form__rating-bar button {
+.review-form__rating-bar mat-icon {
   color: #ffac00;
 }
 

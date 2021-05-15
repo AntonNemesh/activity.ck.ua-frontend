@@ -9,7 +9,7 @@
           <ul *ngIf="place.phones" class="list">
             <li *ngFor="let phone of place.phones">
               <a href="tel:{{place.phones}}" class="contact-text contact-link icon-text-row ">
-                <mat-icon class="icon">phone_in_talk</mat-icon>
+                <mat-icon class="icon gray-icon">phone_in_talk</mat-icon>
                 <span class="contact__link">{{phone}}</span>
               </a>
             </li>
@@ -38,7 +38,7 @@
             Місце дружнє до дітей: <span [innerHTML]="getFitterState(place.child_friendly)" class="filter-state"></span>
           </p>
           <p class="contact-text icon-text-row">
-            <mat-icon class="icon">pets</mat-icon>
+            <mat-icon class="icon gray-icon">pets</mat-icon>
             Місце дружнє до тварин:  <span [innerHTML]="getFitterState(place.dog_friendly)" class="padding-inside"></span></p>
         </div>
         <div class="contact-text page-place-details__work-time">
@@ -89,17 +89,25 @@
         <div class="bright-line"></div>
         <p class="place-details__about">{{place.description}}</p>
         <div class="favorite-visit-section">
-          <button [disabled]="!isLoggedIn"
+          <button *ngIf="!visited" [disabled]="!isLoggedIn"
                   [class.--disabled]="!isLoggedIn"
-                  [class.pressed-primary-btn]="visited" mat-flat-button class="visited-btn"
-                  (click)="updateVisitedState()">
-            Відвідаю
+                  mat-raised-button
+                  color="primary"
+                  class="scheduled-btn"
+                  (click)="updateVisitedState()">Відвідати
+          </button>
+          <button *ngIf="visited" [disabled]="!isLoggedIn"
+                  [class.--disabled]="!isLoggedIn"
+                  [class.pressed-primary-btn]="visited"
+                  mat-raised-button
+                  (click)="updateVisitedState()">Відвідав
           </button>
           <button [disabled]="!isLoggedIn"
-                  [class.--disabled]="!isLoggedIn" mat-icon-button color="warn"
-                  (click)="updateFavoriteState()">
-            <mat-icon *ngIf="favorite">favorite</mat-icon>
-            <mat-icon *ngIf="!favorite">favorite_border</mat-icon>
+                  [class.--disabled]="!isLoggedIn" mat-icon-button
+                  (click)="updateFavoriteState()"
+                  class="red">
+            <mat-icon *ngIf="favorite" class="red">favorite</mat-icon>
+            <mat-icon *ngIf="!favorite" class="red">favorite_border</mat-icon>
           </button>
         </div>
       </section>

@@ -3,7 +3,10 @@
   <h1 class="rating__title mat-h1">{{rating | number: '1.1'}}</h1>
   <div class="rating__body">
 
-    <p class="rating__counter"><mat-icon class="rating__icon-person">person</mat-icon>{{reviewsTotal}} користувачів</p>
+    <p class="rating__counter">
+      <mat-icon class="rating__icon-person gray-icon">person</mat-icon>
+      {{reviewsTotal}} користувачів
+    </p>
     <app-rating-stars-bar [rating]="rating" [size]="36" [color]="'primary'"></app-rating-stars-bar>
   </div>
 </div>

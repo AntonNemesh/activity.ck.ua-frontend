@@ -48,6 +48,10 @@
   box-shadow: 0 2px 5px 1px rgba(64, 60, 67, .25);
 }
 
+.footer__link:hover mat-icon {
+  color: var(--color-bright);
+}
+
 .footer__copyright {
   padding: var(--padding);
   font-family: 'Inter', sans-serif;

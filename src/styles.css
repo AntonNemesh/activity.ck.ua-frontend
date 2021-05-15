@@ -371,7 +371,7 @@ p {
 }
 
 :root {
-  --color-bright: rgba(13, 134, 242, 100);
+  --color-bright: rgb(81, 173, 246);
   --color-braght-second: rgba(115, 190, 68, 100);
   --color: #f7b600;
   --color-light-grey: rgba(95, 93, 93, 100);
@@ -813,4 +813,26 @@ main {
 
 .mat-step-header .mat-step-icon-state-edit {
   background-color: #ffd740;;
+}
+
+/* edit button*/
+
+.gray-icon {
+  color: var(--color-light-grey);
+}
+
+.scheduled-btn {
+  letter-spacing: 1px;
+}
+
+
+.pressed-primary-btn {
+  box-shadow: inset 0 0 4px 4px #abd7a5;
+  background-color: rgb(187 234 170);
+  color: var(--color-light-grey);
+  letter-spacing: 1px;
+}
+
+.red {
+  color: #f61706;
 }

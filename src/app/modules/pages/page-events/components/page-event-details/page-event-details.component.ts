@@ -28,6 +28,12 @@ export class PageEventDetailsComponent implements OnInit {
     });
   }
 
+  // public isScheduled(state: boolean): string {
+  //   if (state === true) {
+  //     return `<span class="pressed-primary-btn"> Відвідаю</span>`;
+  //   }
+  // }
+
   public updateScheduledState(): void {
     this.eventsService.getEventById(this.eventId).subscribe((data) => {
       this.scheduled = data.event.scheduled;
@@ -39,12 +45,15 @@ export class PageEventDetailsComponent implements OnInit {
       this.usersService.addEventToScheduled(this.eventId).subscribe();
       this.scheduled = !this.scheduled;
     });
+
   }
+
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.eventId = params.event_id;
     });
     this.getEvent();
+    // this.isScheduled(this.scheduled);
   }
 }

@@ -12,7 +12,7 @@
             *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i"
             [color]="color"
             (click)="setRating(i + 1)" [matTooltip]="ratingId + 1">
-      <mat-icon>
+      <mat-icon class="review-form__rating-bar">
         {{getRatingIcon(i)}}
       </mat-icon>
     </button>

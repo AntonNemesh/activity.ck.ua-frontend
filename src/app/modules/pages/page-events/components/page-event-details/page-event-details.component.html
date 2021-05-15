@@ -6,7 +6,7 @@
       <ul *ngIf="event.phones" class="list">
         <li *ngFor="let phone of event.phones">
           <a href="tel:{{event.phones}}" class="contact-text icon-text-row">
-            <mat-icon class="icon events-details__icon">phone_in_talk</mat-icon>
+            <mat-icon class="icon gray-icon">phone_in_talk</mat-icon>
             <span class="contact__link">{{phone}}</span>
           </a>
         </li>
@@ -32,10 +32,17 @@
       <h2 class="card-text bold event__program">Програма:</h2>
       <p class="card-text">{{event.program}}</p>
       <div class="favorite-visit-section">
-        <button [disabled]="!isLoggedIn"
+        <button *ngIf="!scheduled" [disabled]="!isLoggedIn"
+                [class.--disabled]="!isLoggedIn"
+                mat-raised-button
+                color="primary"
+                class="scheduled-btn"
+                (click)="updateScheduledState()">Відвідати
+        </button>
+        <button *ngIf="scheduled" [disabled]="!isLoggedIn"
                 [class.--disabled]="!isLoggedIn"
                 [class.pressed-primary-btn]="scheduled"
-                mat-flat-button class="visited-btn"
+                mat-raised-button
                 (click)="updateScheduledState()">Відвідаю
         </button>
       </div>
