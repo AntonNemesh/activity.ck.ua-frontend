@@ -2,7 +2,7 @@
   <div *ngIf="place" class="place-details__wrapper">
     <div class="main-content container">
       <app-gallery [photos]="place.photos"></app-gallery>
-      <section class="place-details__info padding-inside">
+      <section class="place-details__info section">
         <div class="place-details__contacts">
           <h1 class="place-details__headline">{{place.name}}</h1>
           <div class="bright-line"></div>
@@ -66,7 +66,7 @@
           </ul>
         </div>
       </section>
-      <section *ngIf="events?.length" class="container padding-inside">
+      <section *ngIf="events?.length" class="container section">
         <h2 class="subtitle">Найближчі події</h2>
         <ul class="main__list">
           <li class="event-item" *ngFor="let event of events">
@@ -84,7 +84,7 @@
           </li>
         </ul>
       </section>
-      <section class="place-about container padding-inside">
+      <section class="place-about container section">
         <h2 class="subtitle">Про {{place.name}}</h2>
         <div class="bright-line"></div>
         <p class="place-details__about">{{place.description}}</p>
@@ -108,39 +108,23 @@
                   class="red">
             <mat-icon *ngIf="favorite" class="red">favorite</mat-icon>
             <mat-icon *ngIf="!favorite" class="red">favorite_border</mat-icon>
-<!--=======-->
-<!--          <button [disabled]="isLoggedOut$ | async"-->
-<!--                  [class.&#45;&#45;disabled]="isLoggedOut$ | async"-->
-<!--                  [class.pressed-primary-btn]="visited" mat-flat-button class="visited-btn"-->
-<!--                  (click)="updateVisitedState()">-->
-<!--            Відвідаю-->
-<!--          </button>-->
-<!--          <button [disabled]="isLoggedOut$ | async"-->
-<!--                  [class.&#45;&#45;disabled]="isLoggedOut$ | async" mat-icon-button color="warn"-->
-<!--                  (click)="updateFavoriteState()">-->
-<!--            <mat-icon *ngIf="favorite">favorite</mat-icon>-->
-<!--            <mat-icon *ngIf="!favorite">favorite_border</mat-icon>-->
-<!--&gt;>>>>>> df16a98b225091d46f96b90aabaf583663e0b7a7-->
           </button>
         </div>
       </section>
-      <section class="container view-rating padding-inside">
+      <section class="container view-rating section">
         <app-rating-view *ngIf="placeId" [placeId]="placeId" [rating]="place.rating"
                          [reviewsTotal]="reviewsTotal"></app-rating-view>
       </section>
-      <section class="container form-review padding-inside">
+      <section class="container form-review section">
         <app-form-review *ngIf="placeId" [placeId]="placeId" (sentReview)="updateReviewsState()"></app-form-review>
       </section>
-      <br>
-      <br>
-      <br>
-      <section class="section container form-review">
+      <section class="container form-review">
         <app-comments-view *ngIf="reviews && reviewsTotalPages"
                            [reviews]="reviews"
                            [reviewsState]="reviewsState"
                            [totalPages]="reviewsTotalPages"
-                           (paginationStateChange)="updateReviewsPaginationState($event)"
-        ></app-comments-view>
+                           (paginationStateChange)="updateReviewsPaginationState($event)">
+        </app-comments-view>
       </section>
     </div>
 

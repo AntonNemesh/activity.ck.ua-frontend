@@ -393,7 +393,7 @@ p {
   --link-decoration: underline 2px var(--color-bright);
   --text-line-height: 1.7rem;
 
-  --padding-section: 2% 20px;
+  --padding-section: 30px 20px;
   --padding: 10px;
 
   --border-radius: 8px;
@@ -685,7 +685,6 @@ main {
 
 @media (min-width: 481px) {
   .main-list {
-    margin-top: 2px;
     padding-top: 20px;
   }
 }

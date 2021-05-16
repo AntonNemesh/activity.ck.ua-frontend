@@ -1,15 +1,17 @@
-<h2 class="subtitle">Відгуки про місце:</h2>
-<ul *ngIf="reviews" class="reviews">
-  <li class="review" *ngFor="let review of reviews">
-    <img class="review__avatar avatar-img" src="{{review.user_avatar}}" alt="">
-    <p class="review__username">{{review.user_name}}</p>
-    <p class="review__date">{{dateService.getDateNumber(review.created_at)}}</p>
-    <app-rating-stars-bar class="review__rating" [rating]="review.rating" [size]="26" [color]="'primary'"></app-rating-stars-bar>
-    <p *ngIf="review.comment" class="review__comment">{{review.comment}}</p>
-  </li>
-</ul>
-<app-pagination *ngIf="totalPages"
-                (paginationStateChange)="updatePaginationState($event)"
-                [reviewsState]="reviewsState"
-                [totalPages]="totalPages">
-</app-pagination>
+<div class="">
+  <h2 class="subtitle">Відгуки про місце:</h2>
+  <ul *ngIf="reviews" class="reviews review-wrapper">
+    <li class="review" *ngFor="let review of reviews">
+      <img class="review__avatar avatar-img" src="{{review.user_avatar}}" alt="">
+      <p class="review__username">{{review.user_name}}</p>
+      <p class="review__date">{{dateService.getDateNumber(review.created_at)}}</p>
+      <app-rating-stars-bar class="review__rating" [rating]="review.rating" [size]="26" [color]="'primary'"></app-rating-stars-bar>
+      <p *ngIf="review.comment" class="review__comment">{{review.comment}}</p>
+    </li>
+  </ul>
+  <app-pagination *ngIf="totalPages"
+                  (paginationStateChange)="updatePaginationState($event)"
+                  [reviewsState]="reviewsState"
+                  [totalPages]="totalPages">
+  </app-pagination>
+</div>

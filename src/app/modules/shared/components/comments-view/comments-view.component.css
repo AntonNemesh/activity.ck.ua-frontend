@@ -2,6 +2,9 @@ p {
   margin: 0;
 }
 
+.review-wrapper {
+  padding: 30px 20px;
+}
 .reviews {
   list-style: none;
   display: grid;
@@ -9,13 +12,19 @@ p {
   margin-block-start: 0;
   margin-block-end: 0;
   padding-inline-start: 0;
+  background-color: var(--color-light-saturated);
 }
 
 .review {
+  padding: var(--padding);
+  border-radius: 8px;
   display: grid;
-  grid-template: .1fr .1fr .8fr / 80px 1fr 116px;
+  grid-template: .1fr .1fr / 80px 1fr 116px;
+  grid-auto-rows: auto;
   align-items: start;
   justify-items: start;
+  background-color: var(--color-light);
+
 }
 
 .review__avatar {
@@ -43,4 +52,5 @@ p {
 .review__comment {
   grid-column: 2 / 4;
   grid-row: 3 / 4;
+  width: fit-content;
 }
