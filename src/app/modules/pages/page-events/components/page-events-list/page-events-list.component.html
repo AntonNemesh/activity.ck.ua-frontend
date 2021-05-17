@@ -33,8 +33,9 @@
           </p>
         </a>
       </div>
-      <p class="mat-h3" *ngIf="!events?.length">Нічого не знайдено!</p>
+      <p class="mat-h3 events-list__no-results" *ngIf="!events?.length">Нічого не знайдено!</p>
       <app-pagination *ngIf="totalPages"
+                      [hidden]="!totalPages"
                       class="page-events-list__pagination"
                       (paginationStateChange)="updatePaginationState($event)"
                       [filterAvailabilityState]="filterAvailabilityState"
