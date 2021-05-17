@@ -23,6 +23,7 @@ export interface IEventMainGroup extends IMainGroup{
   program: string;
   price: string;
   organizer: string;
+  place_id: number;
 }
 
 export interface IScheduleGroup {

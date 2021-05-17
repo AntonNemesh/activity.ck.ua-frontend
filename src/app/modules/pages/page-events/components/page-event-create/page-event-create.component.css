@@ -76,3 +76,7 @@ mat-form-field {
 .hidden {
   display: none;
 }
+
+.places img {
+  border-radius: 0;
+}

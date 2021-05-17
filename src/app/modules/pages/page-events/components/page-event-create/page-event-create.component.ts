@@ -2,11 +2,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   FilterByTypeService,
-  FilesService, EventsService
+  FilesService,
+  EventsService,
+  PlacesService
 } from '../../../../../services';
 import {
   IAvailabilityFilter,
-  IEvent
+  IEvent,
+  IPlace
 } from '../../../../../static/type';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -25,6 +28,7 @@ import { LoaderHelper } from '../../../../../helpers';
 export class PageEventCreateComponent implements OnInit {
   constructor(
     private eventsService: EventsService,
+    private placesService: PlacesService,
     private filterByTypeService: FilterByTypeService,
     private router: Router,
     private filesService: FilesService) { }
@@ -32,6 +36,8 @@ export class PageEventCreateComponent implements OnInit {
   public today: Date = new Date();
   public isSavedEvent: boolean = false;
   public httpErrorResponse: boolean = false;
+
+  public places: IPlace[];
 
   public maskPhone: Array<string|RegExp> = MASK_PHONE;
 
@@ -79,6 +85,7 @@ export class PageEventCreateComponent implements OnInit {
           Validators.minLength(3),
           Validators.maxLength(255)
         ]),
+      place_id: new FormControl(null),
       website: new FormControl('', Validators.required),
       phones: this.phones,
     });
@@ -140,6 +147,11 @@ export class PageEventCreateComponent implements OnInit {
 
   public handleAddressChange(address: any): void {
     this.mainGroup.get('address').setValue(address.formatted_address);
+    this.mainGroup.get('place_id').setValue(null);
+    this.placesService.getPlacesByAddress(address.formatted_address).subscribe(
+      (data) => { this.places = data.places; },
+      (error) => { console.log(error); }
+    );
   }
 
   public get phoneFormControl(): FormControl {

@@ -77,6 +77,12 @@
                 Кількість символів має бути не більше 255
               </mat-error>
             </mat-form-field>
+            <mat-radio-group class="places" *ngIf="places?.length" formControlName="place_id" aria-label="Select an option">
+              <mat-radio-button class="places-button" *ngFor="let place of places" value="{{place.id}}">
+                <img class="avatar-img" src="{{place.main_photo}}" alt="{{place.name}}">
+                <p>{{place.name}}</p>
+              </mat-radio-button>
+            </mat-radio-group>
             <mat-form-field class="example-full-width">
               <mat-label>Ціна</mat-label>
               <input matInput formControlName="price" placeholder="₴">

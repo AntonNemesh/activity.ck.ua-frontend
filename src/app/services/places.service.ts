@@ -155,6 +155,12 @@ export class PlacesService {
     return this.http.get<IPlacesResponse>(this.apiUrlService.generateApiLink('places'), { params });
   }
 
+  public getPlacesByAddress(placeAddress: string): Observable<IPlacesResponse> {
+    let params: HttpParams = new HttpParams();
+    params = params.set('address', placeAddress.toString());
+    return this.http.get<IPlacesResponse>(this.apiUrlService.generateApiLink(`places/byaddress`), { params });
+  }
+
   public getPlaceById(placeId: string): Observable<IPlace> {
     return this.http.get<IPlaceResponse>(this.apiUrlService.generateApiLink(`places/${placeId}`)).pipe(
       map((response) => response.place)
