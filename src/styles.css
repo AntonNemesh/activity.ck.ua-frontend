@@ -489,7 +489,7 @@ main {
 
 .headline {
   margin: 0;
-  font: 600 1.2rem 'Inter', sans-serif;
+  font: 600 1.2rem 'Inter', sans-serif!important;
   color: var(--color-main-grey);
 }
 
@@ -506,7 +506,7 @@ main {
 @media (min-width: 481px) {
 
   .headline {
-    font-size: 1.5rem
+    font-size: 1.5rem!important;
   }
 
   .page__aside {
@@ -522,7 +522,7 @@ main {
   }
 
   .headline {
-    font: var(--font-headline);
+    font: var(--font-headline)!important;
   }
 
   .subtitle {
@@ -564,7 +564,7 @@ main {
 
 .details-wrapper {
   background: var(--color-light);
-  min-height: 75vh;
+  min-height: 80vh;
 }
 
 .padding-inside {
@@ -625,7 +625,7 @@ main {
 .card-link {
   padding-top: var(--padding);
   color: var(--color-main-grey);
-  font: var(--font-card-headline);
+  font: var(--font-card-headline)!important;
   line-height: var(--text-line-height);
   letter-spacing: .1rem;
   text-transform: uppercase;
@@ -789,7 +789,8 @@ main {
 
 .mat-raised-button.mat-primary,
 .mat-step-header .mat-step-icon-selected,
-.mat-form-field.mat-focused .mat-form-field-ripple {
+.mat-form-field.mat-focused .mat-form-field-ripple,
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
   background-color: var(--color-bright);
 }
 

@@ -1,8 +1,8 @@
 <app-layout>
     <div class="search__page">
-  <section class="background-light container padding-inside" *ngIf="places?.length">
-    <p>Результати пошуку: {{searchText}}</p>
-    <h1 class="headline">Місця</h1>
+  <section class="section container" *ngIf="places?.length">
+    <h1 class="headline">Результати пошуку: <span class="search-request">"{{searchText}}"</span></h1>
+    <h2 class="subtitle">Місця</h2>
     <ul *ngIf="places?.length" class="list">
       <li *ngFor="let place of places" class="search__item">
         <a routerLink="/places/{{place.category_id}}/{{place.id}}"  class="search__link">
@@ -19,7 +19,7 @@
     </app-pagination>
   </section>
   <section class="background-light container padding-inside" *ngIf="events?.length">
-    <h1 class="headline">Події</h1>
+    <h2 class="subtitle">Події</h2>
     <ul *ngIf="events?.length" class="list">
       <li *ngFor="let event of events" class="search__item">
         <a routerLink="/events/{{event.id}}" class="search__link">

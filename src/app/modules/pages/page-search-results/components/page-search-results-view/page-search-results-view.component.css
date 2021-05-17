@@ -1,3 +1,6 @@
+.search-request {
+  color: var(--color-bright);
+}
 .search__page {
   background-color: var(--color-light-saturated);
 }
