@@ -778,11 +778,12 @@ main {
 /*override material design palette*/
 
 .mat-icon,
-.mat-form-field-label,
-.mat-form-field.mat-focused .mat-form-field-label {
+.mat-form-field-label {
   color: var(--color-bright);
 }
-
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: var(--color-light-grey);
+}
 .mat-input-element {
   caret-color: var(--color-bright);
 }
