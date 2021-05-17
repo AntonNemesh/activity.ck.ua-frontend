@@ -3,15 +3,40 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor, HttpResponse, HttpErrorResponse
+  HttpInterceptor
 } from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
-import {AuthorizationService} from '../services';
-import {catchError, debounceTime, map, tap} from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { AuthorizationService } from '../services';
+import { catchError, finalize, tap } from 'rxjs/operators';
 
 @Injectable()
 export class HeaderModInterceptor implements HttpInterceptor {
   constructor(private authorizationService: AuthorizationService) { }
+
+  public isFailed: boolean = false;
+
+  private handle403Error(): void {
+    if (!this.isFailed) {
+      this.isFailed = true;
+      this.authorizationService.refreshTokens().pipe(
+        finalize(() => {
+          this.isFailed = false;
+          window.location.reload();
+        })
+      )
+        .subscribe(
+        (data) => {
+          console.log('Access Token Refreshed!');
+          this.authorizationService.accessToken = data.access_token;
+          this.authorizationService.refreshToken = data.refresh_token;
+        },
+        (e) => {
+          console.log('Access Token ERROR', e);
+          this.authorizationService.removeSession();
+        }
+      );
+    }
+  }
 
   intercept(req: HttpRequest<any>,
             next: HttpHandler): Observable<HttpEvent<any>> {
@@ -35,22 +60,8 @@ export class HeaderModInterceptor implements HttpInterceptor {
         tap( () => {
           this.authorizationService.setLogIn();
         }),
-        debounceTime(2000),
         catchError(err => {
-          if (err.status === 403 && !this.authorizationService.isAccessTokenAlive) {
-            this.authorizationService.refreshTokens().subscribe(
-              (data) => {
-                console.log('Access Token Refreshed!');
-                this.authorizationService.accessToken = data.access_token;
-                this.authorizationService.refreshToken = data.refresh_token;
-                window.location.reload();
-              },
-              (e) => {
-                console.log('Access Token ERROR', e);
-                this.authorizationService.removeSession();
-              }
-            );
-          }
+          if (err.status === 403) { this.handle403Error(); }
           const error: any = err.error.message || err.statusText;
           return throwError(error);
         })
