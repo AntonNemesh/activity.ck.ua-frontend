@@ -210,7 +210,7 @@
         </mat-step>
       </mat-vertical-stepper>
     </form>
-    <div *ngIf="isSavedEvent">
+    <div *ngIf="isSavedEvent" class="saved">
       <p *ngIf="!httpErrorResponse" class="mat-subheading-2 green">
         Запропонована вами подія успішно додана в обробку!<br>
         Вона стане доступною після того, як пройде модерацію.
@@ -219,7 +219,7 @@
         Запропонована вами подія не завантажена через збій із сервером.<br>
         Повторіть будь ласка спробу через декілька хвилин.
       </p>
-      <a routerLink="">Повернутися на голову сторінку</a>
+      <a routerLink="" class="contact__link">Повернутися на голову сторінку</a>
     </div>
   </div>
   <div class="container">

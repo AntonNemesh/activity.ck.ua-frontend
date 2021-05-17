@@ -799,8 +799,14 @@ main {
   background-color: var(--color-light-grey);
 }
 
-.mat-progress-bar-fill::after {
+.mat-progress-bar-fill::after,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
   background-color: #73be44;
+}
+
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element, .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
+  background: #73be44;
+
 }
 
 .mat-progress-bar-buffer {
@@ -836,4 +842,12 @@ main {
 
 .red {
   color: #f61706;
+}
+
+.saved {
+  margin-top: 10vh;
+  display: grid;
+  justify-items: center;
+  padding: 50px;
+  background-color: var(--color-light-saturated);
 }
