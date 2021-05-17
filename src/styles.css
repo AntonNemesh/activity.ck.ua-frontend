@@ -791,7 +791,8 @@ main {
 .mat-raised-button.mat-primary,
 .mat-step-header .mat-step-icon-selected,
 .mat-form-field.mat-focused .mat-form-field-ripple,
-.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar,
+.mat-flat-button.mat-accent, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {
   background-color: var(--color-bright);
 }
 
