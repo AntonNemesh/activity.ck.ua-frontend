@@ -26,6 +26,7 @@ export class PageEventsListComponent implements OnInit {
   public page: number = 1;
   public limit: number = 6;
   public totalPages: number;
+  public isLoggedIn$: Observable<boolean> = this.authorizationService.isLoggedIn$;
   public isLoggedOut$: Observable<boolean> = this.authorizationService.isLoggedOut$;
 
   public filterAvailabilityState: string[];
