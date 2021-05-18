@@ -53,6 +53,7 @@ export class EventsService {
       event.organizer = dataForm.main_group.organizer;
       event.address = dataForm.main_group.address;
       event.website = dataForm.main_group.website;
+      if (dataForm.main_group.place_id) { event.place_id = dataForm.main_group.place_id; }
       event.phones = this.buildPhones(dataForm.main_group.phones);
     }
 
