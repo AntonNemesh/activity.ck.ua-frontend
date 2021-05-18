@@ -3,10 +3,8 @@
   <section class="container main-content">
     <div class="datepicker-wrapper padding-inside">
       <h2 class="headline datepicker-wrapper__headline">Приєднуйся до найближчих подій</h2>
-      <a [class.--disabled]="isLoggedOut$ | async"
-        routerLink="/event_create"
-        class="link link-add link-create"
-        appAuthorizationTooltip>Створити подію</a>
+      <a *ngIf="isLoggedIn$ | async" routerLink="/event_create" class="link link-add link-create" mat-raised-button appAuthorizationTooltip>Створити подію</a>
+      <a *ngIf="isLoggedOut$ | async" class="link link-add link-create" mat-raised-button appAuthorizationTooltip>Створити подію</a>
       <span class="mat-h3 events__date">{{dateUrkFormat}}</span>
       <button class="btn__datepicker calendar-icon" mat-button matSuffix mat-icon-button aria-label="Calendar"
               (click)="picker.open()">

@@ -21,6 +21,7 @@ export class PagePlacesListComponent implements OnInit {
   public filterAvailabilityState: string[] = [];
 
   public totalPages: number;
+  public isLoggedIn$: Observable<boolean> = this.authorizationService.isLoggedIn$;
   public isLoggedOut$: Observable<boolean> = this.authorizationService.isLoggedOut$;
 
   constructor(
