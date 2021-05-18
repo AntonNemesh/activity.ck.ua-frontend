@@ -793,10 +793,21 @@ main {
 .mat-step-header .mat-step-icon-selected,
 .mat-form-field.mat-focused .mat-form-field-ripple,
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar,
-.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary
+.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary,
+.mat-calendar-body-selected
 /*.mat-flat-button.mat-accent, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent */
 {
   background-color: var(--color-bright);
+}
+
+.mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),
+.mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical):focus,
+.mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical):active,
+.mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical):hover,
+.mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical):checked,
+.mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical):default
+{
+  background-color: rgba(81, 173, 246, .4);
 }
 
 .mat-form-field-appearance-legacy .mat-form-field-underline {
@@ -854,6 +865,7 @@ main {
   justify-items: center;
   padding: 50px;
   background-color: var(--color-light-saturated);
+  border-radius: 8px;
 }
 
 .calendar-icon {

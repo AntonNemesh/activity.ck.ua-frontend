@@ -51,3 +51,7 @@
   /*height: 50px;*/
   color: var(--color-bright);
 }
+
+.upcoming__spinner-wrapper {
+padding: 30px 0;
+}
