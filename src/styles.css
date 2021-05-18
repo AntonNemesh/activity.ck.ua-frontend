@@ -777,7 +777,7 @@ main {
 
 /*override material design palette*/
 
-.mat-icon,
+/*.mat-icon,*/
 .mat-form-field-label {
   color: var(--color-bright);
 }
@@ -802,11 +802,11 @@ main {
 
 .mat-progress-bar-fill::after,
 .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-  background-color: #73be44;
+  background-color: var(--color-braght-second);
 }
 
 .mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element, .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
-  background: #73be44;
+  background: var(--color-braght-second);
 
 }
 
@@ -820,7 +820,7 @@ main {
 }
 
 .mat-step-header .mat-step-icon-state-edit {
-  background-color: #ffd740;;
+  background-color: var(--color-braght-second);
 }
 
 /* edit button*/
