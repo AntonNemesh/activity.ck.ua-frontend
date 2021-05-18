@@ -863,3 +863,15 @@ main {
 .explore-bar__rank {
   font-size: .8rem;
 }
+
+.spinner-wrapper {
+  padding-top: 100px;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: var(--color-bright);
+}
+

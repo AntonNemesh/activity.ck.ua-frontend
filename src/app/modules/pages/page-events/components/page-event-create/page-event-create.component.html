@@ -228,7 +228,7 @@
       <a routerLink="" class="contact__link">Повернутися на голову сторінку</a>
     </div>
   </div>
-  <div class="container">
-    <mat-spinner *ngIf="formLoaderVisibility | async"></mat-spinner>
+  <div *ngIf="formLoaderVisibility | async" class="container spinner-wrapper">
+    <mat-spinner class="spinner"></mat-spinner>
   </div>
 </app-layout>
