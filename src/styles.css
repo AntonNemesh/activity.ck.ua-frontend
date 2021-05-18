@@ -873,5 +873,7 @@ main {
 
 .mat-progress-spinner circle, .mat-spinner circle {
   stroke: var(--color-bright);
+  display: grid;
+  justify-items: center;
 }
 
