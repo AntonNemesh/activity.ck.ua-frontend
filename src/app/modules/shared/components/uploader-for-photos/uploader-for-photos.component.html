@@ -5,12 +5,13 @@
     </button>
     <button *ngIf="photosLimit >= 2" type="button" class="add-photos" mat-raised-button (click)="fileInput.click()">
       <mat-label>Додати фотографії</mat-label>
+      <p [class.orange]="photos.length === photosLimit"
+            class="access-files mat-h4 mat-subheading-1">
+        Дозволено файлів до завантаження: {{photosLimit - photos.length}}
+    </p>
       <input #fileInput type="file" multiple (change)="selectFiles($event)" style="display:none;" />
     </button>
-    <span [class.orange]="photos.length === photosLimit"
-        class="access-files mat-h4 mat-subheading-1">
-        Дозволено файлів до завантаження: {{photosLimit - photos.length}}
-    </span>
+
   <div *ngIf="photosContentVisibility | async">
     <mat-label class="cover-photo__label" *ngIf="photosB64?.length > 1" >Натиснувши на одну із фотографій, оберіть обкладинку місця.</mat-label>
     <ul class="photos">
@@ -54,7 +55,7 @@
       </ul>
     </div>
   </div>
-  <div class="container spinner-wrapper">
-  <mat-spinner *ngIf="photosLoaderVisibility | async"  class="spinner"></mat-spinner>
+  <div class="container spinner-wrapper uploader__spinner-wrapper" *ngIf="photosLoaderVisibility | async">
+  <mat-spinner   class="spinner" *ngIf="photosLoaderVisibility | async"></mat-spinner>
   </div>
 </div>

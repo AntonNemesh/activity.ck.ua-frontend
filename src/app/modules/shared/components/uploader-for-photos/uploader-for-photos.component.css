@@ -3,7 +3,7 @@
 }
 
 .add-photos {
-  margin-right: 15px;
+  margin: 30px 0;
 }
 
 .photos {
@@ -24,7 +24,7 @@
 }
 
 .photos-wrapper mat-spinner {
-  margin: 50px auto;
+  margin-bottom: 30px;
 }
 
 .photos img:hover,
@@ -64,4 +64,9 @@
   margin-block-start: .2em;
   margin-block-end: .2em;
   padding-inline-start: 40px;
+}
+
+.uploader__spinner-wrapper {
+  padding: 0;
+  margin: 0 auto;
 }

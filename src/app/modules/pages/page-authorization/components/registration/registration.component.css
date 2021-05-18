@@ -1,10 +1,23 @@
 .login-form-wrapper {
-  max-width: 480px;
-  padding: 30px 0;
+  width: 320px;
+  padding: 30px 20px;
   margin: 0 auto;
 }
 
 .login-form .example-full-width {
   display: block;
   width: 100%;
+}
+
+@media (min-width: 481px) {
+  .login-form-wrapper {
+    width: 480px;
+  }
+}
+
+.success-registration {
+  margin-top: 20px;
+  padding: 30px 20px;
+  background-color: var(--color-light-saturated);
+  border-radius: 8px;
 }

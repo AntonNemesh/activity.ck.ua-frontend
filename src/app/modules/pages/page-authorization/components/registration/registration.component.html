@@ -4,7 +4,8 @@
       <mat-form-field class="example-full-width">
         <mat-label>Електронна адреса</mat-label>
         <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
-        <mat-error *ngIf="registrationForm.get('email').hasError('email') && !registrationForm.get('email').hasError('required')">
+        <mat-error
+          *ngIf="registrationForm.get('email').hasError('email') && !registrationForm.get('email').hasError('required')">
           Будь ласка, введіть дійсну адресу електронної пошти
         </mat-error>
         <mat-error *ngIf="registrationForm.get('email').hasError('required')">
@@ -38,7 +39,8 @@
       </p>
       <p>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Підтвердження паролю" formControlName="confirmPassword" [errorStateMatcher]="matcher" type="password">
+          <input matInput placeholder="Підтвердження паролю" formControlName="confirmPassword"
+                 [errorStateMatcher]="matcher" type="password">
           <mat-error *ngIf="passwordGroup.hasError('notSame')">
             Паролі мають співпадати
           </mat-error>
@@ -46,7 +48,7 @@
       </p>
     </form>
     <form formGroupName="photos_group">
-      <mat-label>Закантажити аватарку</mat-label>
+      <mat-label>Завантажити аватарку</mat-label>
       <app-uploader-for-photos
         [photosLimit]="1"
         [clearUploader]="clearUploader"
@@ -57,10 +59,12 @@
       </app-uploader-for-photos>
     </form>
     <p>
-      <button type="submit" mat-raised-button color="primary" (click)="updatePhotosGroupValidation()">Зареєструватися</button>
+      <button type="submit" mat-raised-button color="primary" (click)="updatePhotosGroupValidation()" class="registration-btn">
+        Зареєструватися
+      </button>
     </p>
   </form>
-  <div *ngIf="isRegisteredUser">
+  <div *ngIf="isRegisteredUser" class="success-registration">
     <p class="mat-subheading-2 green">
       Ви успішно зареєструвались в системі!<br>
       Можете увійти на сайт, використовуючи пошту
