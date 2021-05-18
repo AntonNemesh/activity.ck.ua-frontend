@@ -132,6 +132,5 @@ export class PageUserViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateEvents();
-    this.authorizationService.setLogIn();
   }
 }

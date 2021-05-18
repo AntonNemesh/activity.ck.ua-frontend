@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthorizationService } from '../../../../../services';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private authorizationService: AuthorizationService, private router: Router) { }
+  constructor(
+    private authorizationService: AuthorizationService,
+    private router: Router,
+    private matSnackBar: MatSnackBar) { }
 
   public loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [
@@ -25,8 +29,16 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.get('password').value,
     };
     this.authorizationService.login(authData).subscribe(
-      (tokens) => { this.authorizationService.createSession(tokens); },
-      (error) => { console.log(error); },
+      (tokens) => {
+        this.authorizationService.createSession(tokens);
+      },
+      (error) => {
+        this.matSnackBar.open(
+          'Невірна електронна адреса користувача або пароль!', '',
+          { horizontalPosition: 'center', verticalPosition: 'bottom', duration: 2000 }
+        );
+        console.log(error);
+      },
     );
   }
 
