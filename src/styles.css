@@ -756,18 +756,18 @@ main {
   padding: 8px;
   letter-spacing: 1px;
   font-weight: 500;
+  font-size: 16px;
   justify-self: end;
   align-self: center;
-  background-color: var(--color-light);
-  color: var(--color-main-grey);
-  border: 1px solid var(--color-main-grey);
-  border-radius: 8px;
+  background-color: var(--color-bright);
+  color: var(--color-light);
+  border-radius: 5px;
 }
 
 .link-add:hover,
 .link-add:active,
 .link-add:focus {
-  background-color: var(--color-main-grey);
+  background-color: var(--color-braght-second);
   color: var(--color-light);
 }
 
@@ -851,4 +851,8 @@ main {
   justify-items: center;
   padding: 50px;
   background-color: var(--color-light-saturated);
+}
+
+.calendar-icon {
+  color: var(--color-bright);
 }

@@ -114,3 +114,7 @@
     width: 200px;
   }
 }
+
+.exit {
+  color: var(--color-bright);
+}

@@ -1,6 +1,7 @@
 .page-events-list__wrapper {
   background-color: var(--color-light-saturated);
 }
+
 .page-events-list-wrapper {
   margin-top: 10px;
   background-color: var(--color-light);
@@ -31,6 +32,7 @@
 .mat-hidden {
   grid-row: 1/2;
 }
+
 .datepicker-wrapper__headline {
   grid-row: 1/2;
 }
@@ -50,6 +52,7 @@
 .btn__datepicker:hover {
   color: var(--color-bright);
 }
+
 @media (min-width: 769px) {
   .page-events-list__events {
     grid-column: 2/3;
@@ -68,6 +71,7 @@
   .events__date {
     grid-column: 2 / 3;
   }
+
   .btn__datepicker {
     grid-column: 3/4;
     grid-row: 1/2;
@@ -76,9 +80,7 @@
   .link-create {
     grid-row: 1/2;
   }
-  }
-
-
+}
 
 .hidden {
   display: none;
