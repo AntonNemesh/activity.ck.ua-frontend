@@ -52,12 +52,10 @@ export class AuthorizationService {
   }
 
   public login(authData: any): any {
-    this.setLogIn();
     return this.http.post<any>(this.apiUrlService.generateApiLink('auth/login'), authData);
   }
 
   public logout(): any {
-    this.setLogOut();
     return this.http.get<any>(this.apiUrlService.generateApiLink('auth/logout'));
   }
 

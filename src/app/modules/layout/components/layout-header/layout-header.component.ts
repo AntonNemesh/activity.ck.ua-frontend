@@ -26,7 +26,7 @@ export class LayoutHeaderComponent implements OnInit {
 
   public logout(): void {
     this.authorizationService.logout().subscribe(
-      (value) => { this.authorizationService.removeSession(); },
+      () => { this.authorizationService.removeSession(); },
       (error) => { console.log(error); }
     );
   }
