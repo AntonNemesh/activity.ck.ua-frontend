@@ -54,28 +54,36 @@ export class PagePlaceDetailsComponent implements OnInit {
   }
 
   public updateFavoriteState(): void {
-    this.placesService.getPlaceById(this.placeId).subscribe((place) => {
-      this.favorite = place.favorite;
-      if (this.favorite) {
-        this.usersService.removePlaceFromFavorite(this.placeId).subscribe();
-        this.favorite = !this.favorite;
-        return;
+    this.authorizationService.isLoggedIn$.subscribe((isLoggedIn) => {
+      if (isLoggedIn) {
+        this.placesService.getPlaceById(this.placeId).subscribe((place) => {
+          this.favorite = place.favorite;
+          if (this.favorite) {
+            this.usersService.removePlaceFromFavorite(this.placeId).subscribe();
+            this.favorite = !this.favorite;
+            return;
+          }
+          this.usersService.addPlaceToFavorite(this.placeId).subscribe();
+          this.favorite = !this.favorite;
+        });
       }
-      this.usersService.addPlaceToFavorite(this.placeId).subscribe();
-      this.favorite = !this.favorite;
     });
   }
 
   public updateVisitedState(): void {
-    this.placesService.getPlaceById(this.placeId).subscribe((place) => {
-      this.visited = place.visited;
-      if (this.visited) {
-        this.usersService.removePlaceFromVisited(this.placeId).subscribe();
-        this.visited = !this.visited;
-        return;
+    this.authorizationService.isLoggedIn$.subscribe((isLoggedIn) => {
+      if (isLoggedIn) {
+        this.placesService.getPlaceById(this.placeId).subscribe((place) => {
+          this.visited = place.visited;
+          if (this.visited) {
+            this.usersService.removePlaceFromVisited(this.placeId).subscribe();
+            this.visited = !this.visited;
+            return;
+          }
+          this.usersService.addPlaceToVisited(this.placeId).subscribe();
+          this.visited = !this.visited;
+        });
       }
-      this.usersService.addPlaceToVisited(this.placeId).subscribe();
-      this.visited = !this.visited;
     });
   }
 

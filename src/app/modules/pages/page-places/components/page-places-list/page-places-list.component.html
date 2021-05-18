@@ -1,8 +1,8 @@
 <app-layout>
-  <app-explore-bar [categoryId]="categoryId"></app-explore-bar>
+  <app-explore-bar [categoryId]="categoryId" appAuthorizationTooltip></app-explore-bar>
   <div class="container page-places-list padding-inside">
     <h2 *ngIf="categoryName" class="headline page-places-list__headline">Шукаємо: {{categoryName}}</h2>
-    <a [class.--disabled]="isLoggedOut$ | async" routerLink="/place_create" class="link link-add">Додати локацію</a>
+    <a [class.--disabled]="isLoggedOut$ | async" routerLink="/place_create" class="link link-add" appAuthorizationTooltip>Додати локацію</a>
   </div>
   <div class="background-saturated">
     <div class="container main-wrapper">

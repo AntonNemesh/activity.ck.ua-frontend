@@ -36,17 +36,20 @@ export class PageEventDetailsComponent implements OnInit {
   // }
 
   public updateScheduledState(): void {
-    this.eventsService.getEventById(this.eventId).subscribe((data) => {
-      this.scheduled = data.event.scheduled;
-      if (this.scheduled) {
-        this.usersService.removeEventFromScheduled(this.eventId).subscribe();
-        this.scheduled = !this.scheduled;
-        return;
+    this.authorizationService.isLoggedIn$.subscribe((isLoggedIn) => {
+      if (isLoggedIn) {
+        this.eventsService.getEventById(this.eventId).subscribe((data) => {
+          this.scheduled = data.event.scheduled;
+          if (this.scheduled) {
+            this.usersService.removeEventFromScheduled(this.eventId).subscribe();
+            this.scheduled = !this.scheduled;
+            return;
+          }
+          this.usersService.addEventToScheduled(this.eventId).subscribe();
+          this.scheduled = !this.scheduled;
+        });
       }
-      this.usersService.addEventToScheduled(this.eventId).subscribe();
-      this.scheduled = !this.scheduled;
     });
-
   }
 
 

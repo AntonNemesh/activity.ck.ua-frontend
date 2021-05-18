@@ -89,23 +89,25 @@
         <div class="bright-line"></div>
         <p class="place-details__about">{{place.description}}</p>
         <div class="favorite-visit-section">
-          <button *ngIf="!visited" [disabled]="isLoggedOut$ | async"
+          <button *ngIf="!visited"
                   [class.--disabled]="isLoggedOut$ | async"
                   mat-raised-button
                   color="primary"
                   class="scheduled-btn"
-                  (click)="updateVisitedState()">Відвідати
+                  (click)="updateVisitedState()"
+                  appAuthorizationTooltip>Відвідати
           </button>
-          <button *ngIf="visited" [disabled]="isLoggedOut$ | async"
+          <button *ngIf="visited"
                   [class.--disabled]="isLoggedOut$ | async"
                   [class.pressed-primary-btn]="visited"
                   mat-raised-button
-                  (click)="updateVisitedState()">Відвідаю
+                  (click)="updateVisitedState()"
+                  appAuthorizationTooltip>Відвідаю
           </button>
-          <button [disabled]="isLoggedOut$ | async"
-                  [class.--disabled]="isLoggedOut$ | async" mat-icon-button
+          <button [class.--disabled]="isLoggedOut$ | async"
+                  mat-icon-button
                   (click)="updateFavoriteState()"
-                  class="red">
+                  class="red" appAuthorizationTooltip>
             <mat-icon *ngIf="favorite" class="red">favorite</mat-icon>
             <mat-icon *ngIf="!favorite" class="red">favorite_border</mat-icon>
           </button>
@@ -116,7 +118,11 @@
                          [reviewsTotal]="reviewsTotal"></app-rating-view>
       </section>
       <section class="container form-review section">
-        <app-form-review *ngIf="placeId" [placeId]="placeId" (sentReview)="updateReviewsState()"></app-form-review>
+        <app-form-review
+          *ngIf="placeId"
+          [placeId]="placeId"
+          (sentReview)="updateReviewsState()"
+          appAuthorizationTooltip></app-form-review>
       </section>
       <section class="container form-review">
         <app-comments-view *ngIf="reviews && reviewsTotalPages"

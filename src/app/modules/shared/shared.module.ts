@@ -16,6 +16,7 @@ import {
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { MaterialModule } from '../material';
 import { ReactiveFormsModule } from '@angular/forms';
+import { directives } from '../../directives';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommentsViewComponent,
     RatingStarsBarComponent,
     ExploreBarComponent,
+    ...directives
   ],
   exports: [
     LoadingComponent,
@@ -44,6 +46,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommentsViewComponent,
     RatingStarsBarComponent,
     ExploreBarComponent,
+    ...directives
   ],
   imports: [
     CommonModule,
