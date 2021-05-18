@@ -389,6 +389,7 @@ p {
 
   --font-headline: 600 2rem 'Inter', sans-serif;
   --font-card-headline: 600 1rem 'Inter', sans-serif;
+  --font-page-headline: 600 1.8rem 'Inter', sans-serif;
   --font-text: 1rem/1.7rem 'Inter', sans-serif;
   --link-decoration: underline 2px var(--color-bright);
   --text-line-height: 1.7rem;

@@ -1,9 +1,10 @@
 <app-layout>
   <app-explore-bar [categoryId]="categoryId" appAuthorizationTooltip></app-explore-bar>
   <div class="container page-places-list padding-inside">
-    <h2 *ngIf="categoryName" class="headline page-places-list__headline">Шукаємо: {{categoryName}}</h2>
+    <h2 *ngIf="categoryName" class="page-places-list__headline">Шукаємо: {{categoryName}}</h2>
     <a *ngIf="isLoggedIn$ | async" routerLink="/place_create" class="link link-add" mat-raised-button appAuthorizationTooltip>Додати локацію</a>
     <a *ngIf="isLoggedOut$ | async" class="link link-add" mat-raised-button appAuthorizationTooltip>Додати локацію</a>
+    <p class="quantity-places">{{totalPlaces}} місць у розділі</p>
   </div>
   <div class="background-saturated">
     <div class="container main-wrapper">
@@ -19,32 +20,33 @@
       <section class="cards-list section">
         <ul class="list places__list">
           <li *ngFor="let place of places" class="places__item">
+            <a routerLink="{{place.id}}" class="places__about-info-headline">
+              {{place.name}}
+            </a>
             <a routerLink="{{place.id}}" class="places__img-wrapper">
               <img src="{{place.main_photo}}" alt="" class="img-photo">
             </a>
-            <a routerLink="{{place.id}}" class="places__about-info-headline places__about-info">
-              {{place.name}}
-            </a>
-            <p class="contact-text icon-text-row places__about-info">
+
+            <p class="contact-text icon-text-row places__about-info places__about-info__work-time">
               <svg viewBox="0 0 512 512" class="icon">
                 <use xlink:href="../../../../../assets/icons.svg#clock"></use>
               </svg>
               <span [innerHTML]="dateService.getWorkState(place.work_time)"></span>
             </p>
             <a href="https:/maps.google.com/?q={{place.address}}"
-               class="contact-text card-link icon-text-row places__about-info">
+               class="contact-text card-link icon-text-row places__about-info places__about-info__address">
               <svg viewBox="0 0 512 512" class="icon">
                 <use xlink:href="../../../../../assets/icons.svg#map"></use>
               </svg>
               {{place.address}}
             </a>
-            <a href="tel:{{place.phones}}" class="contact-text card-link icon-text-row places__about-info">
+            <a href="tel:{{place.phones}}" class="contact-text card-link icon-text-row places__about-info places__about-info__phone">
               <svg viewBox="0 0 35 35" class="icon">
                 <use xlink:href="../../../../../assets/icons.svg#phone"></use>
               </svg>
               {{place.phones}}
             </a>
-            <a href="{{place.website}}" class="contact-text card-link icon-text-row places__about-info">
+            <a href="{{place.website}}" class="contact-text card-link icon-text-row places__about-info places__about-info__website">
               <svg viewBox="0 0 128 128" class="icon">
                 <use xlink:href="../../../../../assets/icons.svg#website"></use>
               </svg>

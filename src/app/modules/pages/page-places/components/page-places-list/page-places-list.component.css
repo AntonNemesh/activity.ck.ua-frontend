@@ -1,5 +1,4 @@
 
-
 .page-places-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -39,10 +38,30 @@
 }
 
 .places__about-info {
-  padding: 0;
-  grid-column: 2/3;
+  padding: 7px 0;
+  margin: 0;
   text-transform: initial;
   font-weight: 400;
+}
+
+.places__about-info__work-time {
+  grid-column: 2/3;
+  grid-row: 2 / 3;
+}
+
+.places__about-info__address {
+  grid-column: 2/3;
+  grid-row: 3 / 4;
+}
+
+.places__about-info__phone {
+  grid-column: 2/3;
+  grid-row: 4 / 5;
+}
+
+.places__about-info__website {
+  grid-column: 2/3;
+  grid-row: 5 / 6;
 }
 
 .places__about-info-headline {
@@ -62,8 +81,7 @@
 @media (min-width: 481px) {
 
   .page-places-list__headline {
-    padding-bottom: 30px;
-    font: var(--font-headline);
+    font: var(--font-page-headline);
   }
 
   .page-places-list__link-add {
@@ -97,8 +115,16 @@
   }
 
 }
+
 @media (min-width: 992px) {
   .places__item {
     grid-template: 1fr/ 300px 1fr;
   }
+}
+
+.quantity-places {
+  padding-bottom: 20px;
+  color: var(--color-light-grey);
+  font: var(--font-text);
+  font-size: 18x;
 }

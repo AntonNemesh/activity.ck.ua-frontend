@@ -21,6 +21,7 @@ export class PagePlacesListComponent implements OnInit {
   public filterAvailabilityState: string[] = [];
 
   public totalPages: number;
+  public totalPlaces: number;
   public isLoggedIn$: Observable<boolean> = this.authorizationService.isLoggedIn$;
   public isLoggedOut$: Observable<boolean> = this.authorizationService.isLoggedOut$;
 
@@ -43,6 +44,8 @@ export class PagePlacesListComponent implements OnInit {
 
     this.placesService.getPlaces(options).subscribe((data) => {
       this.totalPages = data._totalPages;
+      this.totalPlaces = this.totalPages * this.limit;
+      console.log(this.totalPlaces)
       if (isConcatenation) {
         this.places = this.places.concat(data.places);
         return;
