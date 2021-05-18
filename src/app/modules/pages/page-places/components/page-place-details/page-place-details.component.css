@@ -93,3 +93,7 @@
   padding-left: 7px;
 }
 
+.form-review {
+  background-color: var(--color-light-saturated);
+  padding-bottom: 50px;
+}

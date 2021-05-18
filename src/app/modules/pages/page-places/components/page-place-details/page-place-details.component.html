@@ -126,10 +126,12 @@
       </section>
       <section class="container form-review">
         <app-comments-view *ngIf="reviews && reviewsTotalPages"
+                           class="event-details__pagination"
                            [reviews]="reviews"
                            [reviewsState]="reviewsState"
                            [totalPages]="reviewsTotalPages"
                            (paginationStateChange)="updateReviewsPaginationState($event)">
+
         </app-comments-view>
       </section>
     </div>

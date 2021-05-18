@@ -33,8 +33,13 @@
   grid-row: 3 / 4;
   margin: 0;
   justify-self: start;
+  font: 400 19px/28px Roboto, "Helvetica Neue", sans-serif;;
 }
 
 @media (max-width: 480px) {
   .explore-bar__percent { justify-self: end; }
+}
+
+.role {
+  color: var(--color-bright);
 }

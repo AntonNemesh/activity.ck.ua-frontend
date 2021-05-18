@@ -781,7 +781,8 @@ main {
 .mat-form-field-label {
   color: var(--color-bright);
 }
-.mat-form-field.mat-focused .mat-form-field-label {
+.mat-form-field.mat-focused .mat-form-field-label,
+.mat-button.mat-accent, .mat-icon-button.mat-accent, .mat-stroked-button.mat-accent {
   color: var(--color-light-grey);
 }
 .mat-input-element {
@@ -792,7 +793,9 @@ main {
 .mat-step-header .mat-step-icon-selected,
 .mat-form-field.mat-focused .mat-form-field-ripple,
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar,
-.mat-flat-button.mat-accent, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {
+.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary
+/*.mat-flat-button.mat-accent, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent */
+{
   background-color: var(--color-bright);
 }
 
@@ -855,4 +858,8 @@ main {
 
 .calendar-icon {
   color: var(--color-bright);
+}
+
+.explore-bar__rank {
+  font-size: .8rem;
 }

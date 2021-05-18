@@ -41,6 +41,7 @@ p {
   grid-column: 3 / 4;
   grid-row: 1 / 2;
   justify-self: end;
+  color: var(--color-light-grey);
 }
 
 .review__rating {
