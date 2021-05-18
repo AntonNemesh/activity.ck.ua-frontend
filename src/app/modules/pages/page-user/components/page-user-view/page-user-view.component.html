@@ -73,7 +73,7 @@
     <section class="section background-light">
       <div class="container padding-inside created-user__container">
         <h1 class="headline user-places__headline user__headline">Мої місця</h1>
-        <a routerLink="/place_create" class="link link-add user-places__link-add">Додати локацію</a>
+        <a routerLink="/place_create" class="link link-add user-places__link-add" mat-raised-button>Додати локацію</a>
         <div class="bright-line"></div>
         <div class="main-list list home-list user-places__list user-list" *ngIf="userPlaces?.length">
           <a routerLink="/places/{{place.category_id}}/{{place.id}}" *ngFor="let place of userPlaces"
@@ -97,7 +97,7 @@
     <section class="section user-events background-saturated">
       <div class="container padding-inside created-user__container">
         <h1 class="headline user__headline">Мої події</h1>
-        <a routerLink="/event_create" class="link link-add user-places__link-add">Створити подію</a>
+        <a routerLink="/event_create" class="link link-add user-places__link-add" mat-raised-button>Створити подію</a>
         <div class="bright-line"></div>
         <div class="main-list list home-list user-places__list user-list" *ngIf="userEvents?.length">
           <a routerLink="/events/{{event.id}}" class="event-item" *ngFor="let event of userEvents">

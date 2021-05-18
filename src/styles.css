@@ -756,18 +756,18 @@ main {
   padding: 8px;
   letter-spacing: 1px;
   font-weight: 500;
+  font-size: 16px;
   justify-self: end;
   align-self: center;
-  background-color: var(--color-light);
-  color: var(--color-main-grey);
-  border: 1px solid var(--color-main-grey);
-  border-radius: 8px;
+  background-color: var(--color-bright);
+  color: var(--color-light);
+  border-radius: 5px;
 }
 
 .link-add:hover,
 .link-add:active,
 .link-add:focus {
-  background-color: var(--color-main-grey);
+  background-color: var(--color-braght-second);
   color: var(--color-light);
 }
 
@@ -777,7 +777,7 @@ main {
 
 /*override material design palette*/
 
-.mat-icon,
+/*.mat-icon,*/
 .mat-form-field-label {
   color: var(--color-bright);
 }
@@ -802,11 +802,11 @@ main {
 
 .mat-progress-bar-fill::after,
 .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-  background-color: #73be44;
+  background-color: var(--color-braght-second);
 }
 
 .mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element, .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
-  background: #73be44;
+  background: var(--color-braght-second);
 
 }
 
@@ -820,7 +820,7 @@ main {
 }
 
 .mat-step-header .mat-step-icon-state-edit {
-  background-color: #ffd740;;
+  background-color: var(--color-braght-second);
 }
 
 /* edit button*/
@@ -851,4 +851,8 @@ main {
   justify-items: center;
   padding: 50px;
   background-color: var(--color-light-saturated);
+}
+
+.calendar-icon {
+  color: var(--color-bright);
 }
