@@ -102,6 +102,11 @@
     grid-template: 1fr/ 200px 1fr;
     column-gap: var(--padding);
   }
+
+  .places__about-info-headline {
+  grid-column: 1/4;
+  grid-row: 1/2;
+}
 }
 
 
@@ -126,5 +131,5 @@
   padding-bottom: 20px;
   color: var(--color-light-grey);
   font: var(--font-text);
-  font-size: 18x;
+  font-size: 18px;
 }

@@ -44,8 +44,7 @@ export class PagePlacesListComponent implements OnInit {
 
     this.placesService.getPlaces(options).subscribe((data) => {
       this.totalPages = data._totalPages;
-      this.totalPlaces = this.totalPages * this.limit;
-      console.log(this.totalPlaces)
+      this.totalPlaces = data._total;
       if (isConcatenation) {
         this.places = this.places.concat(data.places);
         return;

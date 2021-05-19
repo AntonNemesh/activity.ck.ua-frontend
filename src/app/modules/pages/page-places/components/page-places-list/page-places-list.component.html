@@ -4,7 +4,7 @@
     <h2 *ngIf="categoryName" class="page-places-list__headline">Шукаємо: {{categoryName}}</h2>
     <a *ngIf="isLoggedIn$ | async" routerLink="/place_create" class="link link-add" mat-raised-button appAuthorizationTooltip>Додати локацію</a>
     <a *ngIf="isLoggedOut$ | async" class="link link-add" mat-raised-button appAuthorizationTooltip>Додати локацію</a>
-<!--    <p class="quantity-places">{{totalPlaces}} місць у розділі</p>-->
+    <p class="quantity-places">{{totalPlaces}} місць у розділі</p>
   </div>
   <div class="background-saturated">
     <div class="container main-wrapper">

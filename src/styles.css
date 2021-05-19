@@ -766,9 +766,7 @@ main {
   border-radius: 5px;
 }
 
-.link-add:hover,
-.link-add:active,
-.link-add:focus {
+.link-add:hover {
   background-color: var(--color-braght-second);
   color: var(--color-light);
 }
