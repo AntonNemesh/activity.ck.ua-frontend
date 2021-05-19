@@ -72,7 +72,7 @@ export class AuthorizationService {
   public createSession(tokens: any): void {
     this.accessToken = tokens.access_token;
     this.refreshToken = tokens.refresh_token;
-    window.location.replace('/home');
+    window.location.replace('./dist');
   }
 
   public get isAccessTokenAlive(): boolean {
