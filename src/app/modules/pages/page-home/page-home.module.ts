@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../../material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared';
+import {PagePlacesModule} from '../page-places';
 
 
 @NgModule({
@@ -19,13 +20,14 @@ import { SharedModule } from '../../shared';
     SectionEventsUpcomingComponent,
     SectionEventsRightNowComponent
   ],
-  imports: [
-    CommonModule,
-    LayoutModule,
-    SharedModule,
-    RouterModule,
-    ReactiveFormsModule,
-    MaterialModule
-  ]
+    imports: [
+        CommonModule,
+        LayoutModule,
+        SharedModule,
+        RouterModule,
+        ReactiveFormsModule,
+        MaterialModule,
+        PagePlacesModule
+    ]
 })
 export class PageHomeModule { }
