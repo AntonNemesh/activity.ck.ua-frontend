@@ -80,12 +80,12 @@
                 Кількість символів має бути не більше 255
               </mat-error>
             </mat-form-field>
-            <mat-radio-group class="places event-create__places" *ngIf="places?.length" formControlName="place_id"
+            <mat-radio-group class="places" *ngIf="places?.length" formControlName="place_id"
                              aria-label="Select an option">
                 <mat-radio-button class="places-button" *ngFor="let place of places" value="{{place.id}}">
 
-                <img class="search__img event-create__img" src="{{place.main_photo}}" alt="{{place.name}}">
-                <p class="subtitle event-create__subtitle">{{place.name}}</p>
+                <img class="search__img " src="{{place.main_photo}}" alt="{{place.name}}">
+                <p class="subtitle">{{place.name}}</p>
 
               </mat-radio-button>
             </mat-radio-group>
