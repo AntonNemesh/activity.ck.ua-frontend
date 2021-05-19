@@ -495,7 +495,7 @@ main {
 }
 
 .subtitle {
-  padding: var(--padding);
+  padding: var(--padding) 0;
   letter-spacing: 1px;
   font: 600 1.2rem 'Inter', sans-serif;
 }
@@ -892,4 +892,21 @@ main {
 
 .registration-btn {
   text-align: center;
+}
+
+.textarea {
+  height: 100px;
+  overflow: scroll;
+}
+
+.cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
+  color: var(--color-main-grey);
+  font: var(--font-text);
+}
+
+.search__img {
+  width: 120px;
+  height: 120px;
+  grid-column: 1 / 2;
+  grid-row: 1 / 4;
 }
