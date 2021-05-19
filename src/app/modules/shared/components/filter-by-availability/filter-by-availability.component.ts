@@ -3,7 +3,9 @@ import { IAvailabilityFilter } from '../../../../static/type';
 import { AVAILABILITY_FILTER } from '../../../../static/data';
 import { FormArray, FormControl } from '@angular/forms';
 import { AuthorizationService } from '../../../../services';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-filter-by-availability',
@@ -11,7 +13,10 @@ import {Observable} from 'rxjs';
   styleUrls: [ './filter-by-availability.component.css' ]
 })
 export class FilterByAvailabilityComponent implements OnInit {
-  constructor(private authorizationService: AuthorizationService) { }
+  constructor(
+    private authorizationService: AuthorizationService,
+    private matSnackBar: MatSnackBar,
+    private router: Router) { }
 
   public availabilityFilter: IAvailabilityFilter[] = AVAILABILITY_FILTER;
   public selectedFilter: string[];
@@ -23,14 +28,10 @@ export class FilterByAvailabilityComponent implements OnInit {
   @Output()
   availabilityStateChange: EventEmitter<string[]> = new EventEmitter<string[]>();
 
-  public setAvailabilityFilter(isLoggedOut: boolean): void {
+  public setAvailabilityFilter(): void {
     this.availabilityFilter.forEach((item) => {
       if (this.page === 'events' && item.filter_id === 'opened' ||
           this.page === 'events' && item.filter_id === 'unexplored') {
-        return;
-      }
-      if (isLoggedOut && item.filter_id === 'unexplored') {
-        this.availabilityFilterArray.push(new FormControl({value: false, disabled: true}));
         return;
       }
       this.availabilityFilterArray.push(new FormControl(false));
@@ -46,13 +47,26 @@ export class FilterByAvailabilityComponent implements OnInit {
     return selectedFilter;
   }
 
+  private showTooltip(): void {
+    const tooltip: any = this.matSnackBar.open(
+      'Цей функціонал доступний тільки для авторизованого користувача.',
+      'Авторизуватись?',
+      { horizontalPosition: 'center', verticalPosition: 'bottom', duration: 3000 }
+    );
+    tooltip.onAction().subscribe(
+      () => { this.router.navigateByUrl('/authorization'); }
+    );
+  }
+
   ngOnInit(): void {
-    this.isLoggedOut$.subscribe((isLoggedOut) => {
-      this.setAvailabilityFilter(isLoggedOut);
-    });
+    this.setAvailabilityFilter();
     this.availabilityFilterArray.valueChanges.subscribe((value) => {
-      this.selectedFilter = this.getAvailabilityFilterState(value);
-      this.availabilityStateChange.emit(this.selectedFilter);
+      this.isLoggedOut$.subscribe((isLoggedOut) => {
+        this.selectedFilter = this.getAvailabilityFilterState(value);
+        const condition: undefined|string = this.selectedFilter.find(item => item === 'unexplored');
+        if (isLoggedOut && condition) { this.showTooltip(); }
+        this.availabilityStateChange.emit(this.selectedFilter);
+      });
     });
   }
 
