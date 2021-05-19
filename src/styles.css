@@ -786,6 +786,7 @@ main {
 .mat-form-field.mat-focused .mat-form-field-label,
 .mat-button.mat-accent, .mat-icon-button.mat-accent, .mat-stroked-button.mat-accent {
   color: var(--color-light-grey);
+  background-color: var(--color-light);
 }
 .mat-input-element {
   caret-color: var(--color-bright);
