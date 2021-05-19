@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --base-href=./",
+    "build": "ng build --prod --base-href=./",
     "dbserv": "json-server --watch ./api/database.json --port 3001",
     "test": "ng test",
     "lint": "ng lint",
