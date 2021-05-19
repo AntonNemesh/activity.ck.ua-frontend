@@ -894,11 +894,6 @@ main {
   text-align: center;
 }
 
-.textarea {
-  height: 100px;
-  overflow: scroll;
-}
-
 .cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
   color: var(--color-main-grey);
   font: var(--font-text);
