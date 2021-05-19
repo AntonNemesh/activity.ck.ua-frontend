@@ -80,3 +80,15 @@ mat-form-field {
 .places img {
   border-radius: 0;
 }
+
+.event-create__places {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 165px));
+  column-gap: 20px;
+}
+
+.event-create__subtitle {
+  max-width: 165px;
+  grid-row: 2/3;
+  grid-column: 2/3;
+}

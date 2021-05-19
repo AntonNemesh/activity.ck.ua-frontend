@@ -498,6 +498,7 @@ main {
   padding: var(--padding) 0;
   letter-spacing: 1px;
   font: 600 1.2rem 'Inter', sans-serif;
+  /*overflow: scroll;*/
 }
 
 .cards-list {
