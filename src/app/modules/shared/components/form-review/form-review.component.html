@@ -2,7 +2,7 @@
 <form [class.--disabled]="isLoggedOut$ | async" class="review-form" [formGroup]="formReview" (ngSubmit)="onSubmit()">
   <img *ngIf="user" class="review-form__user-avatar avatar-img" src="{{user.avatar}}" alt="{{user.name}}">
   <svg *ngIf="!user" class="review-form__user-avatar avatar-placeholder" viewBox="-42 0 512 512.002">
-    <use xlink:href="../../../../../assets/icons.svg#user"></use>
+    <use xlink:href="assets/icons.svg#user"></use>
   </svg>
   <div class="review-form__rating-bar">
     <input class="review-form__rating-input" type="text" formControlName="rating">
