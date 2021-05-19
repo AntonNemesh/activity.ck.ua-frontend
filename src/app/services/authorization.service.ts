@@ -66,13 +66,13 @@ export class AuthorizationService {
   public removeSession(): void {
     this.setLogOut();
     localStorage.clear();
-    window.location.replace('/home');
+    window.location.replace('./');
   }
 
   public createSession(tokens: any): void {
     this.accessToken = tokens.access_token;
     this.refreshToken = tokens.refresh_token;
-    window.location.replace('./dist');
+    window.location.replace('./');
   }
 
   public get isAccessTokenAlive(): boolean {

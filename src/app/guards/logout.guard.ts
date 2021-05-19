@@ -18,7 +18,7 @@ export class LogoutGuard implements CanActivate {
     const isLoggedOut$: Observable<boolean> = this.authorizationService.isLoggedOut$;
 
     isLoggedOut$.pipe( map((value: boolean) => {
-        if (!value) { this.router.navigateByUrl('/home'); }
+        if (!value) { this.router.navigateByUrl('./'); }
         return value;
       }) ).subscribe();
 

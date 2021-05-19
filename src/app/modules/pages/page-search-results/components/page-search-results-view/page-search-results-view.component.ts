@@ -55,7 +55,7 @@ export class PageSearchResultsViewComponent implements OnInit {
   public updateAfterRedirect(): boolean {
     const dataRouter: any = this.location.getState();
     if (!dataRouter.data) {
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('./');
       return;
     }
     this.searchText = dataRouter.data;
