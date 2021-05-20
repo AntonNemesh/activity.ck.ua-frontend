@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
           'Невірна електронна адреса користувача або пароль!', '',
           { horizontalPosition: 'center', verticalPosition: 'bottom', duration: 2000 }
         );
-        console.log(error);
+        console.log('oops', error);
       },
     );
   }

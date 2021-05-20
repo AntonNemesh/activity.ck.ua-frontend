@@ -28,7 +28,7 @@ export class FilesService {
       );
       return compressedFile;
     } catch (error) {
-      console.log(error);
+      console.log('oops', error);
     }
   }
 
@@ -53,7 +53,7 @@ export class FilesService {
             return fileRef.getDownloadURL();
           })
         ));
-      } catch (error) { console.log(error); }
+      } catch (error) { console.log('oops', error); }
     }
     return forkJoin(streams);
   }

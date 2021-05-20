@@ -88,7 +88,7 @@ export class UploaderForPhotosComponent implements OnInit {
         this.photos.push(compressedFile);
         this.photosB64.push(compressedFileB64);
 
-      } catch (error) { console.log(error); }
+      } catch (error) { console.log('oops', error); }
     }
 
     if (this.photos?.length) {

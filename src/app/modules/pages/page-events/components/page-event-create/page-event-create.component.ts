@@ -150,7 +150,7 @@ export class PageEventCreateComponent implements OnInit {
     this.mainGroup.get('place_id').setValue(null);
     this.placesService.getPlacesByAddress(address.formatted_address).subscribe(
       (data) => { this.places = data.places; },
-      (error) => { console.log(error); }
+      (error) => { console.log('oops', error); }
     );
   }
 

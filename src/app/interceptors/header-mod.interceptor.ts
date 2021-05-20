@@ -26,12 +26,10 @@ export class HeaderModInterceptor implements HttpInterceptor {
       )
         .subscribe(
         (data) => {
-          console.log('Access Token Refreshed!');
           this.authorizationService.accessToken = data.access_token;
           this.authorizationService.refreshToken = data.refresh_token;
         },
-        (e) => {
-          console.log('Access Token ERROR', e);
+        () => {
           this.authorizationService.removeSession();
         }
       );
