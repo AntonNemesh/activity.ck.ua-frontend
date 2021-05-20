@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthorizationService, CategoriesService, DateService, PlacesService } from '../../../../../services';
 import { IPlace } from '../../../../../static/type';
 import { PlacesRequestParamsHelper } from '../../../../../helpers';
 import { Observable } from 'rxjs';
+import {TotalPlacesService} from '../../../../../services/totalPlaces.service';
 
 @Component({
   selector: 'app-page-places-list',
@@ -21,16 +22,19 @@ export class PagePlacesListComponent implements OnInit {
   public filterAvailabilityState: string[] = [];
 
   public totalPages: number;
-  public totalPlaces: number;
+  // public totalPlaces: number;
   public isLoggedIn$: Observable<boolean> = this.authorizationService.isLoggedIn$;
   public isLoggedOut$: Observable<boolean> = this.authorizationService.isLoggedOut$;
 
   constructor(
+    public totalPlaces: TotalPlacesService,
     private route: ActivatedRoute,
     private placesService: PlacesService,
     private categoriesService: CategoriesService,
     private authorizationService: AuthorizationService,
-    public dateService: DateService) { }
+    public dateService: DateService) {
+    this.totalPlaces.totalPlaces = 5;
+  }
 
   private updatePlaces(isConcatenation?: boolean): void {
 
@@ -44,14 +48,15 @@ export class PagePlacesListComponent implements OnInit {
 
     this.placesService.getPlaces(options).subscribe((data) => {
       this.totalPages = data._totalPages;
-      this.totalPlaces = this.totalPages * this.limit;
-      console.log(this.totalPlaces)
+      this.totalPlaces.totalPlaces = data._total;
+      console.log( this.totalPlaces.totalPlaces);
       if (isConcatenation) {
         this.places = this.places.concat(data.places);
         return;
       }
       if (this.places?.length) { this.places.length = 0; }
       this.places = data.places;
+      return this.totalPlaces;
     });
   }
 
@@ -84,6 +89,7 @@ export class PagePlacesListComponent implements OnInit {
     this.limit = this.placesService.getLimit();
     this.resetPage();
     this.updatePlaces();
+    console.log(this.totalPlaces.totalPlaces)
   }
 
 }

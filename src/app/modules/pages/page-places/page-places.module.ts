@@ -18,23 +18,26 @@ import { AngularFireModule } from '@angular/fire';
 
 
 @NgModule({
-  declarations: [
-    PagePlacesListComponent,
-    PagePlaceDetailsComponent,
-    PagePlaceCreateComponent,
-  ],
-  imports: [
-    CommonModule,
-    LayoutModule,
-    SharedModule,
-    PagePlacesRoutingModule,
-    ReactiveFormsModule,
-    MaterialModule,
-    TextMaskModule,
-    NgxMaterialTimepickerModule,
-    GooglePlaceModule,
-    AngularFireModule.initializeApp(JSON.parse(ACCESS_CREDENTIALS.FIREBASE_OPTIONS)),
-    AngularFireStorageModule
-  ]
+    declarations: [
+        PagePlacesListComponent,
+        PagePlaceDetailsComponent,
+        PagePlaceCreateComponent,
+    ],
+    exports: [
+        PagePlacesListComponent
+    ],
+    imports: [
+        CommonModule,
+        LayoutModule,
+        SharedModule,
+        PagePlacesRoutingModule,
+        ReactiveFormsModule,
+        MaterialModule,
+        TextMaskModule,
+        NgxMaterialTimepickerModule,
+        GooglePlaceModule,
+        AngularFireModule.initializeApp(JSON.parse(ACCESS_CREDENTIALS.FIREBASE_OPTIONS)),
+        AngularFireStorageModule
+    ]
 })
 export class PagePlacesModule { }

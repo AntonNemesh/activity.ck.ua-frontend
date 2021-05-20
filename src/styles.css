@@ -766,9 +766,7 @@ main {
   border-radius: 5px;
 }
 
-.link-add:hover,
-.link-add:active,
-.link-add:focus {
+.link-add:hover {
   background-color: var(--color-braght-second);
   color: var(--color-light);
 }
@@ -894,11 +892,6 @@ main {
 
 .registration-btn {
   text-align: center;
-}
-
-.textarea {
-  height: 100px;
-  overflow: scroll;
 }
 
 .cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
