@@ -97,12 +97,8 @@
                 Поле є обов'язковим
               </mat-error>
               <mat-error
-                *ngIf="mainGroup.get('price').hasError('minlength')">
-                Кількість символів має бути більше 2
-              </mat-error>
-              <mat-error
-                *ngIf="mainGroup.get('price').hasError('maxlength')">
-                Кількість символів має бути не більше 255
+                *ngIf="mainGroup.get('price').hasError('pattern')">
+                Це поле може містити тільки цілі або дробові числа (через точку)
               </mat-error>
             </mat-form-field>
             <div formArrayName="phones" class="phones">

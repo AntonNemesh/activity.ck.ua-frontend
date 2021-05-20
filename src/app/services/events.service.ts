@@ -49,7 +49,7 @@ export class EventsService {
       event.name = dataForm.main_group.name;
       event.description = dataForm.main_group.description;
       event.program = dataForm.main_group.program;
-      event.price = dataForm.main_group.price;
+      event.price = Number(dataForm.main_group.price);
       event.organizer = dataForm.main_group.organizer;
       event.address = dataForm.main_group.address;
       event.website = dataForm.main_group.website;
