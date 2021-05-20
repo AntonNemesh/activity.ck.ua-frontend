@@ -69,3 +69,26 @@ mat-form-field {
   display: none;
 }
 
+.places-radio-btn {
+  display: inline-grid;
+}
+
+.places-radio-btn__photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+}
+
+.places-radio-btn__name {
+  color: var(--color-main-grey);
+  font: var(--font-text);
+  margin: 0;
+}
+
+.places-radio-btn__button {
+  padding-bottom: 20px;
+}
+
+.places-radio-btn__button:last-of-type {
+  padding-bottom: 0;
+}

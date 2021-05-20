@@ -80,13 +80,11 @@
                 Кількість символів має бути не більше 255
               </mat-error>
             </mat-form-field>
-            <mat-radio-group class="places" *ngIf="places?.length" formControlName="place_id"
+            <mat-radio-group class="places-radio-btn" *ngIf="places?.length" formControlName="place_id"
                              aria-label="Select an option">
-                <mat-radio-button class="places-button" *ngFor="let place of places" value="{{place.id}}">
-
-                <img class="search__img " src="{{place.main_photo}}" alt="{{place.name}}">
-                <p class="subtitle">{{place.name}}</p>
-
+              <mat-radio-button class="places-radio-btn__button" *ngFor="let place of places" value="{{place.id}}">
+                <img class="avatar-img places-radio-btn__photo" src="{{place.main_photo}}" alt="{{place.name}}">
+                <p class="mat-h3 places-radio-btn__name">{{place.name}}</p>
               </mat-radio-button>
             </mat-radio-group>
             <mat-form-field class="example-full-width">

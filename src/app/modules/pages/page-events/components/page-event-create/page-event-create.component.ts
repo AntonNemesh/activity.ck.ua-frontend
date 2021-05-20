@@ -142,7 +142,7 @@ export class PageEventCreateComponent implements OnInit {
     this.mainGroup.get('price').setValue('145');
     this.mainGroup.get('organizer').setValue('Клуб кмітливих');
     this.mainGroup.get('description').setValue('Вам дуже сподобається ця подія, тому що там буде весело.');
-    this.mainGroup.get('address').setValue('бул. Шевченко, 244, Черкассы, Черкасская область, 18000');
+    this.mainGroup.get('address').setValue('Гагарина 7');
     this.mainGroup.get('website').setValue('http://fakesite.com');
     this.phones.controls[0].setValue('+380 (93) 256 65 45');
     this.availabilityGroup.get('child_friendly').setValue(true);
