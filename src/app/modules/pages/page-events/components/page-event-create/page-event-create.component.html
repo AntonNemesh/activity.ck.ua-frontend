@@ -240,7 +240,7 @@
         Повторіть будь ласка спробу через декілька хвилин.
       </p>
       <a routerLink="" class="contact__link">Повернутися на голову сторінку</a><br>
-      <a class="link link-add link-create link-add-more" mat-raised-button appAuthorizationTooltip>Створити ще подію</a>
+      <a class="link link-add link-create link-add-more" routerLink="/event_create"  mat-raised-button appAuthorizationTooltip>Створити ще подію</a>
     </div>
   </div>
   <div *ngIf="formLoaderVisibility | async" class="container spinner-wrapper">
