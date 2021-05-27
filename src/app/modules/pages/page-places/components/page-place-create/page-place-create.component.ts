@@ -188,13 +188,13 @@ export class PagePlaceCreateComponent implements OnInit {
   }
 
   private autocompleteData(): void {
-    this.organizationGroup.get('organization_id').setValue('Федерація альпінізму і скелелазіння');
-    this.categoryGroup.get('category_id').setValue('recreation');
-    this.categoryGroup.get('type_id').setValue('water');
-    this.mainGroup.get('name').setValue('Імя організіції');
-    this.mainGroup.get('description').setValue('Опис організіціїОпис організіціїОпис організіціїОпис організіції');
+    // this.organizationGroup.get('organization_id').setValue('Федерація альпінізму і скелелазіння');
+    // this.categoryGroup.get('category_id').setValue('recreation');
+    // this.categoryGroup.get('type_id').setValue('active');
+    this.mainGroup.get('name').setValue('Боулдер зал "Клаймб"');
+    this.mainGroup.get('description').setValue('Опис супер довгий супер довгий супер довгий місця');
     this.mainGroup.get('address').setValue('бул. Шевченко, 244, Черкассы, Черкасская область, 18000');
-    this.mainGroup.get('website').setValue('http://fakesite.com');
+    this.mainGroup.get('website').setValue('http://fais.ck.ua');
     this.placePhones.controls[0].setValue('+380 (93) 256 65 45');
     this.availabilityGroup.get('child_friendly').setValue(true);
     this.workTimeGroup.get('mon_start').setValue('8:00');

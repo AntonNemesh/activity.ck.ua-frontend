@@ -43,8 +43,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loginForm.get('email').setValue('test@gmail.com');
-    this.loginForm.get('password').setValue('12345678');
   }
 
 }

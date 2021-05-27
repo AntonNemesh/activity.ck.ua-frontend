@@ -134,16 +134,16 @@ export class PageEventCreateComponent implements OnInit {
   }
 
   private autocompleteData(): void {
-    this.scheduleGroup.get('date').setValue(new Date('Tue May 15 2021 00:00:00 GMT+0300 (Eastern European Summer Time)'));
-    this.scheduleGroup.get('start_time').setValue('08:00');
-    this.scheduleGroup.get('end_time').setValue('21:00');
+    this.scheduleGroup.get('date').setValue(new Date('Tue May 22 2021 00:00:00 GMT+0300 (Eastern European Summer Time)'));
+    // this.scheduleGroup.get('start_time').setValue('08:00');
+    // this.scheduleGroup.get('end_time').setValue('21:00');
     this.mainGroup.get('name').setValue('Головна подія року');
     this.mainGroup.get('program').setValue('Програма на цей івєнт');
     this.mainGroup.get('price').setValue('145');
     this.mainGroup.get('organizer').setValue('Клуб кмітливих');
     this.mainGroup.get('description').setValue('Вам дуже сподобається ця подія, тому що там буде весело.');
     this.mainGroup.get('address').setValue('Гагарина 7');
-    this.mainGroup.get('website').setValue('http://fakesite.com');
+    this.mainGroup.get('website').setValue('http://event.com');
     this.phones.controls[0].setValue('+380 (93) 256 65 45');
     this.availabilityGroup.get('child_friendly').setValue(true);
     this.photosGroup.get('main_photo').setValue('a');
