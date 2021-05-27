@@ -15,7 +15,6 @@ export class SectionCategoryComponent implements OnInit {
   constructor(
     private totalPlaces: TotalPlacesService,
     private categoryService: CategoriesService) {
-    console.log(this.totalPlaces.totalPlaces)
     this.totalImpression = this.totalPlaces.totalPlaces;
   }
 
