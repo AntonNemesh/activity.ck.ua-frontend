@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-layout-footer',
   templateUrl: './layout-footer.component.html',
   styleUrls: ['./layout-footer.component.css']
 })
-export class LayoutFooterComponent implements OnInit {
+export class LayoutFooterComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  goTop(): void {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
 
 }

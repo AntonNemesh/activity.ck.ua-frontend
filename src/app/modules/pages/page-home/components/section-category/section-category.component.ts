@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from '../../../../../services';
 import { IPlacesCategories } from '../../../../../static/type';
 

@@ -917,3 +917,32 @@ main {
   justify-self: center;
 
 }
+
+.go-top {
+  font-size: 25px;
+  position: fixed;
+  right: 3%;
+  bottom: 5%;
+  padding: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--color-overlay);
+  background-color: var(--color-light-saturated);
+  color: var(--color-light-grey);
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.go-top:hover {
+  color: var(--color-light-saturated);
+  background-color: var(--color-overlay);
+
+}
+
+.go-top__icon {
+  font-weight: bold;
+  height: 40px!important;
+  width: 40px!important;
+  font-size: 40px;
+}
