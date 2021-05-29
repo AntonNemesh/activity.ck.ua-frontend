@@ -34,7 +34,7 @@ export class FilesValidator {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
   }
 
-  public checkTypeOfFile(types: string[] = ['jpeg', 'jpg']): boolean {
+  public checkTypeOfFile(types: string[] = ['jpeg', 'jpg', 'png']): boolean {
     if (this.image?.name) {
       const fileName: string = this.image.name;
       if ( !fileName ) { return true; }

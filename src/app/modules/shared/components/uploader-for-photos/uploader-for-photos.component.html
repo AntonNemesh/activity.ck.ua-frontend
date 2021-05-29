@@ -27,7 +27,7 @@
     </mat-error>
     <div class="photos-warning orange" *ngIf="!hasErrorPhotosRequired && messagesWarningOfType?.length">
       <mat-error>
-        Відхилено запит на завантаження {{messagesWarningOfType?.length}} файлу(ів), з типом не "jpeg", "jpg":
+        Відхилено запит на завантаження {{messagesWarningOfType?.length}} файлу(ів), з типом не "jpeg", "jpg", "png":
       </mat-error>
       <ul>
         <li *ngFor="let filename of messagesWarningOfType">
