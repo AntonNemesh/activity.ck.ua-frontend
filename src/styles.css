@@ -34,7 +34,7 @@ body {
 main {
   display: block;
   padding: 0;
-  min-height: 85%;
+  /*min-height: 85%;*/
 }
 
 /**
@@ -351,9 +351,9 @@ template {
   display: none;
 }
 
-html, body {
-  height: 100%;
-}
+/*html, body {*/
+/*  height: 100%;*/
+/*}*/
 
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -405,7 +405,7 @@ p {
 /*root classes*/
 
 main {
-  padding-top: 160px;
+  /*padding-top: 160px;*/
 }
 
 .container {
@@ -519,9 +519,9 @@ main {
 
 @media (min-width: 576px) {
 
-  main {
-    padding-top: 125px;
-  }
+  /*main {*/
+  /*  padding-top: 125px;*/
+  /*}*/
 
   .headline {
     font: var(--font-headline)!important;
