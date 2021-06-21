@@ -14,7 +14,7 @@
 
 .header {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 4fr 1fr;
   align-items: center;
 }
 
@@ -117,8 +117,9 @@
 
   .logo-headline {
     display: block;
-    font-size: 35px;
+    font-size: 25px;
     letter-spacing: 3px;
+    text-transform: uppercase;
   }
 
   .logo-text {
@@ -156,12 +157,10 @@
 
 @media (min-width: 860px) {
 
-  .logo-hide {
-
-  }
 
   .logo-headline {
-    font-size: 45px;
+    font-weight: 900;
+    font-size: 30px;
     letter-spacing: 5px;
   }
 
