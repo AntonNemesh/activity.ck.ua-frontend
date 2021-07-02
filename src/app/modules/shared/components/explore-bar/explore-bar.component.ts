@@ -19,6 +19,7 @@ export class ExploreBarComponent implements OnInit {
   public isLoggedIn$: Observable<boolean> = this.authorizationService.isLoggedIn$;
   public isLoggedOut$: Observable<boolean> = this.authorizationService.isLoggedOut$;
 
+
   public roles: string[] = ['Новачок', 'Любитель', 'Гуру'];
 
   public explore: number = 0;
